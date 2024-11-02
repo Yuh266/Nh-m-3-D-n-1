@@ -22,9 +22,6 @@ class AdminLoaiHangController{
                 echo "Lỗi";
             }
          }
-
-
-
     }
 
 }
