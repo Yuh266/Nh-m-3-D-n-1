@@ -23,19 +23,6 @@ if (isset($_GET['act'])) {
 
 match ($act) {
     // Trang chủ
-    '/'=>(new ProductController())->Home(),
-
-    'danh-sach-san-pham'=>(new ProductController())->listProduct(),
-
-    'form-them-san-pham'=>(new ProductController())->formAddProduct(),
-
-    'them-san-pham' =>(new ProductController())->createProduct(),
-
-    'form-sua-san-pham'=>(new ProductController())->formUpdateProduct(),
     
-    'sua-san-pham'=>(new ProductController())->UpdateProduct(),
-
-    'xoa-san-pham'=>(new ProductController())->DeleteProduct(),
-
 
 };
