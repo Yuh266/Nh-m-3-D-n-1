@@ -10,8 +10,7 @@ require_once './controllers/ProductController.php';
 
 // Require toàn bộ file Models
 require_once './models/ProductModel.php';
-// var_dump($_GET);die();
-// Route
+
 // $act = $_GET['act'] ?? '/';
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
