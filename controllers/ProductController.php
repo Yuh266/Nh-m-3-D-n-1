@@ -1,8 +1,10 @@
 <?php 
-// có class chứa các function thực thi xử lý logic 
-// Hầu như là hàm không trả về
+
 class ProductController
 {
-
+    public function __construct() {
+        echo "Đã vào được";
+        
+    }
 
 }
