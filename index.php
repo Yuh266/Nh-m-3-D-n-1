@@ -21,21 +21,10 @@ if (isset($_GET['act'])) {
 
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 
+
+
 match ($act) {
-    // Trang chủ
-    '/'=>(new ProductController())->Home(),
-
-    'danh-sach-san-pham'=>(new ProductController())->listProduct(),
-
-    'form-them-san-pham'=>(new ProductController())->formAddProduct(),
-
-    'them-san-pham' =>(new ProductController())->createProduct(),
-
-    'form-sua-san-pham'=>(new ProductController())->formUpdateProduct(),
-    
-    'sua-san-pham'=>(new ProductController())->UpdateProduct(),
-
-    'xoa-san-pham'=>(new ProductController())->DeleteProduct(),
-
+    // Trang chủclgur
+    "/"=>(new ProductController),
 
 };

@@ -2,16 +2,15 @@
 // Require toàn bộ các file khai báo môi trường, thực thi,...(không require view)
 
 // Require file Common
-require_once './commons/env.php'; // Khai báo biến môi trường
-require_once './commons/function.php'; // Hàm hỗ trợ
+require_once '../commons/env.php'; // Khai báo biến môi trường
+require_once '../commons/function.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
-require_once './controllers/ProductController.php';
+require_once './controllers/AdminLoaiHangController.php';
 
 // Require toàn bộ file Models
-require_once './models/ProductModel.php';
-// var_dump($_GET);die();
-// Route
+require_once './models/AdminLoaiHang.php';
+
 // $act = $_GET['act'] ?? '/';
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -23,19 +22,7 @@ if (isset($_GET['act'])) {
 
 match ($act) {
     // Trang chủ
-    '/'=>(new ProductController())->Home(),
-
-    'danh-sach-san-pham'=>(new ProductController())->listProduct(),
-
-    'form-them-san-pham'=>(new ProductController())->formAddProduct(),
-
-    'them-san-pham' =>(new ProductController())->createProduct(),
-
-    'form-sua-san-pham'=>(new ProductController())->formUpdateProduct(),
-    
-    'sua-san-pham'=>(new ProductController())->UpdateProduct(),
-
-    'xoa-san-pham'=>(new ProductController())->DeleteProduct(),
-
+    "form-them-loai-hang"=>(new AdminLoaiHangController())->formAddLoaiHang(),
+    "them-loai-hang"=>(new AdminLoaiHangController())->postAddLoaiHang(),
 
 };
