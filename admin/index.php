@@ -7,6 +7,7 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
 require_once './controllers/AdminLoaiHangController.php';
+require_once './controllers/AdminTaiKhoanController.php';
 
 // Require toàn bộ file Models
 require_once './models/AdminLoaiHang.php';
@@ -24,5 +25,8 @@ match ($act) {
     // Trang chủ
     "form-them-loai-hang"=>(new AdminLoaiHangController())->formAddLoaiHang(),
     "them-loai-hang"=>(new AdminLoaiHangController())->postAddLoaiHang(),
+
+    "form-dang-nhap"=>(new AdminTaiKhoanController())->formLogin(),
+    "form-dang-ky"=>(new AdminTaiKhoanController())->formRegister(),
 
 };
