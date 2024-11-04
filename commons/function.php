@@ -22,6 +22,24 @@ function connectDB() {
     }
 }
 
+function upLoadFile($file,$floderUpload) {
+    $path = $floderUpload . time() . $file["name"];
+
+    $form = $file['tmp_name'];
+    $to = PATH_ROOT . $path ;
+
+    if (move_uploaded_file($form,$to)) {
+        return $path;
+    }
+    return null;
+}
+
+function delete($nameFile) {
+    $path = PATH_ROOT . $nameFile;
+    if (file_exists($nameFile)) {
+       unlink($nameFile);
+    }
+}
 
 
 
