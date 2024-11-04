@@ -1,10 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Register</title><!--begin::Primary Meta Tags-->
+    <title>Đăng ký | Plant Haven</title><!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="AdminLTE 4 | Register Page v2">
     <meta name="author" content="ColorlibHQ">
@@ -20,14 +19,14 @@
     <div class="register-box"> <!-- /.register-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header"> <a href="../index2.html" class="link-dark text-center link-offset-2 link-opacity-100 link-opacity-50-hover">
-                    <h1 class="mb-0"> <b>Admin</b>LTE
+                    <h1 class="mb-0"> Plant Haven
                     </h1>
                 </a> </div>
             <div class="card-body register-card-body">
-                <p class="register-box-msg">Register a new membership</p>
+                <p class="register-box-msg">Đăng ký</p>
                 <form action="../index3.html" method="post">
                     <div class="input-group mb-1">
-                        <div class="form-floating"> <input id="registerFullName" type="text" class="form-control" placeholder=""> <label for="registerFullName">Full Name</label> </div>
+                        <div class="form-floating"> <input id="registerFullName" type="text" class="form-control" placeholder=""> <label for="registerFullName">Họ và tên</label> </div>
                         <div class="input-group-text"> <span class="bi bi-person"></span> </div>
                     </div>
                     <div class="input-group mb-1">
@@ -35,26 +34,21 @@
                         <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
                     </div>
                     <div class="input-group mb-1">
-                        <div class="form-floating"> <input id="registerPassword" type="password" class="form-control" placeholder=""> <label for="registerPassword">Password</label> </div>
+                        <div class="form-floating"> <input id="registerPassword" type="password" class="form-control" placeholder=""> <label for="registerPassword">Mật khẩu</label> </div>
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
                     </div> <!--begin::Row-->
                     <div class="row">
-                        <div class="col-8 d-inline-flex align-items-center">
+                        <div class="col-12 d-inline-flex align-items-center">
                             <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> <label class="form-check-label" for="flexCheckDefault">
-                                    I agree to the <a href="#">terms</a> </label> </div>
+                                    Tôi đồng ý với <a href="#">điều khoản và dịch vụ</a> </label> </div>
                         </div> <!-- /.col -->
-                        <div class="col-4">
-                            <div class="d-grid gap-2"> <button type="submit" class="btn btn-primary">Sign In</button> </div>
+                        <div class="col-12 my-3">
+                            <div class="d-grid gap-2"> <button type="submit" class="btn btn-primary">Đăng ký</button> </div>
                         </div> <!-- /.col -->
                     </div> <!--end::Row-->
                 </form>
-                <div class="social-auth-links text-center mb-3 d-grid gap-2">
-                    <p>- OR -</p> <a href="#" class="btn btn-primary"> <i class="bi bi-facebook me-2"></i> Sign in using Facebook
-                    </a> <a href="#" class="btn btn-danger"> <i class="bi bi-google me-2"></i> Sign in using Google+
-                    </a>
-                </div> <!-- /.social-auth-links -->
-                <p class="mb-0"> <a href="login.html" class="link-primary text-center">
-                        I already have a membership
+                <p class="mb-0"> <a href="<?= BASE_URL_ADMIN . "/?act=form-dang-nhap" ?>" class="link-primary text-center">
+                        Bạn đã có tài khoản
                     </a> </p>
             </div> <!-- /.register-card-body -->
         </div>
