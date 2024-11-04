@@ -19,9 +19,8 @@
 <body class="login-page bg-body-secondary">
     <div class="login-box">
         <div class="card card-outline card-primary">
-            <div class="card-header"> <a href="<?= BASE_URL_ADMIN ?>" class="link-dark text-center link-offset-2 link-opacity-100 link-opacity-50-hover">
-                    <h1 class="mb-0"> Plant Haven
-                    </h1>
+            <div class="card-header"><a href="<?= BASE_URL_ADMIN ?>" class="link-dark text-center link-offset-2 link-opacity-100 link-opacity-50-hover">
+                    <h1 class="mb-0"> Plant Haven </h1>
                 </a> </div>
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Đăng nhập</p>

@@ -1,4 +1,5 @@
 <?php 
+session_start();
 // Require toàn bộ các file khai báo môi trường, thực thi,...(không require view)
 
 // Require file Common
@@ -8,9 +9,11 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once './controllers/AdminLoaiHangController.php';
 require_once './controllers/AdminTaiKhoanController.php';
+require_once './controllers/AdminSlideShowController.php';
 
 // Require toàn bộ file Models
 require_once './models/AdminLoaiHang.php';
+require_once './models/AdminSlideShow.php';
 
 // $act = $_GET['act'] ?? '/';
 if (isset($_GET['act'])) {
@@ -28,5 +31,12 @@ match ($act) {
 
     "form-dang-nhap"=>(new AdminTaiKhoanController())->formLogin(),
     "form-dang-ky"=>(new AdminTaiKhoanController())->formRegister(),
+
+
+
+
+
+    "form-them-slide-show"=>(new AdminSlideShowController())->formAddSlideShow(),
+    "them-slide-show"=>(new AdminSlideShowController())->postAddSlideShow(),
 
 };
