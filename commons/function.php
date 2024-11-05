@@ -22,6 +22,7 @@ function connectDB() {
     }
 }
 
+
 function deleteSessionError(){
     if(isset($_SESSION['flash'])){
         // Hủy session sau khi đã tải trang
@@ -30,6 +31,27 @@ function deleteSessionError(){
         session_destroy();
     }
 }
+
+function upLoadFile($file,$floderUpload) {
+    $path = $floderUpload . time() . $file["name"];
+
+    $form = $file['tmp_name'];
+    $to = PATH_ROOT . $path ;
+
+    if (move_uploaded_file($form,$to)) {
+        return $path;
+    }
+    return null;
+}
+
+function delete($nameFile) {
+    $path = PATH_ROOT . $nameFile;
+    if (file_exists($nameFile)) {
+       unlink($nameFile);
+    }
+}
+
+
 
 
 
