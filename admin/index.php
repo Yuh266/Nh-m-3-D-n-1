@@ -6,14 +6,19 @@ session_start();
 require_once '../commons/env.php'; // Khai báo biến môi trường
 require_once '../commons/function.php'; // Hàm hỗ trợ
 
-// Require toàn bộ file Controllers
-require_once './controllers/AdminLoaiHangController.php';
-require_once './controllers/AdminTaiKhoanController.php';
-require_once './controllers/AdminSlideShowController.php';
+spl_autoload_register(function ($class) {
+    $fileName = "$class.php";
+    $fileModel = PATH_ADMIN_CONTROLLERS . $fileName ;
+    $fileController = PATH_ADMIN_MODELS . $fileName ;
+    // var_dump($fileModel);die();
 
-// Require toàn bộ file Models
-require_once './models/AdminLoaiHang.php';
-require_once './models/AdminSlideShow.php';
+    if (is_readable($fileModel)) {
+        require_once $fileModel ;
+    }elseif (is_readable($fileController)) {
+        require_once $fileController ;
+    }
+
+});
 
 // $act = $_GET['act'] ?? '/';
 if (isset($_GET['act'])) {
@@ -31,9 +36,6 @@ match ($act) {
 
     "form-dang-nhap"=>(new AdminTaiKhoanController())->formLogin(),
     "form-dang-ky"=>(new AdminTaiKhoanController())->formRegister(),
-
-
-
 
 
     "form-them-slide-show"=>(new AdminSlideShowController())->formAddSlideShow(),

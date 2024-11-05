@@ -5,11 +5,20 @@
 require_once './commons/env.php'; // Khai báo biến môi trường
 require_once './commons/function.php'; // Hàm hỗ trợ
 
-// Require toàn bộ file Controllers
-require_once './controllers/ProductController.php';
+spl_autoload_register(function ($class) {
+    $fileName = "$class.php";
+    $fileModel = PATH_ROOT_MODELS . $fileName ;
+    $fileController = PATH_ROOT_CONTROLLERS . $fileName ;
+    // var_dump($fileModel);die();
 
-// Require toàn bộ file Models
-require_once './models/ProductModel.php';
+    if (is_readable($fileModel)) {
+        require_once $fileModel ;
+    }elseif (is_readable($fileController)) {
+        require_once $fileController ;
+    }
+
+});
+
 // var_dump($_GET);die();
 // Route
 // $act = $_GET['act'] ?? '/';
