@@ -5,6 +5,14 @@ class AdminSlideShowController{
     public function __construct(){
         $this->modelSlideShows = new AdminSlideShow();
     }
+
+    public function listSlideShow(){
+        $listSlideShow = $this->modelSlideShows->getAllSlideShows();
+        $title = "Danh Sách Slide Show";
+
+        require "./views/SlideShow/listSlideShow.php";
+    }
+
     public function formAddSlideShow(){
         require "./views/SlideShow/addSlideShow.php";
     }
@@ -52,6 +60,20 @@ class AdminSlideShowController{
                 $_SESSION['slide_show'] = $slide_show;
                 header('Location:'.BASE_URL_ADMIN.'/?act=form-them-slide-show') ;
             }
+        }
+    }
+
+    public function deleteSlideShow(){
+        if($_GET['id']){
+            $id = $_GET['id'];
+            if($this->modelSlideShows->deleteSlideShow($id)){
+
+                header('Location:'.BASE_URL_ADMIN.'/?act=danh-sach-slide-show') ;
+            }else{
+                echo "Lỗi";
+            }
+        }else{
+            header('Location:'.BASE_URL_ADMIN.'/?act=danh-sach-slide-show') ;
         }
     }
 
