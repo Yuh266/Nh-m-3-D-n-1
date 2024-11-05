@@ -31,9 +31,10 @@ match ($act) {
     "form-them-loai-hang"=>(new AdminLoaiHangController())->formAddLoaiHang(),
     "them-loai-hang"=>(new AdminLoaiHangController())->postAddLoaiHang(),
 
-    // Danh mục
-    // "form-them-danh-muc"=>(new AdminDanhMucController())->formAddDanhMuc(),
-    "/"=>(new AdminDanhMucController())->formAddDanhMuc(),
+    // Route danh mục
+    "danh-muc"=>(new AdminDanhMucController())->danhSachDanhMuc(),
+    "form-them-danh-muc"=>(new AdminDanhMucController())->formAddDanhMuc(),
+    // "/"=>(new AdminDanhMucController())->formAddDanhMuc(),
     "them-danh-muc"=>(new AdminDanhMucController())->postAddDanhMuc(),
     "form-sua-danh-muc"=>(new AdminDanhMucController())->formEditDanhMuc(),
     "sua-danh-muc"=>(new AdminDanhMucController())->postEditDanhMuc(),

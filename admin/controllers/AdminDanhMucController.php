@@ -14,12 +14,12 @@ class AdminDanhMucController{
     public function formAddDanhMuc(){
         require_once './views/Danhmuc/addDanhMuc.php';
         // Xóa session sau khi load trang
-        // deleteSessionError();
+        deleteSessionError();
     }
 
     public function postAddDanhMuc(){
         // Kiểm tra xem dữ liệu có được submit lên không
-        if($_SESSION['REQUEST_METHOD'] == 'POST'){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Lấy ra dữ liệu
             $ten_danh_muc = $_POST['ten_danh_muc'] ?? '';
             $mo_ta = $_POST['mo_ta'] ?? '';
@@ -33,13 +33,13 @@ class AdminDanhMucController{
 
             // Nếu không có lỗi thì tiến hành thêm danh mục
             if(empty($errors)){
-                $this->modelDanhMuc->insertDanhMuc(ten_danh_muc: $ten_danh_muc, mo_ta: $mo_ta);
-                header(header: 'Location'.BASE_URL_ADMIN.'?act=danh-muc');
+                $this->modelDanhMuc->insertDanhMuc($ten_danh_muc, $mo_ta);
+                header('Location:'.BASE_URL_ADMIN.'?act=danh-muc');
                 exit();
             }else{
                 // Đặt chỉ thị xóa session sau khi hiển thị form
                 $_SESSION['flash'] = true;
-                header(header: 'Location'.BASE_URL_ADMIN.'?act=form-them-danh-muc');
+                header('Location:'.BASE_URL_ADMIN.'?act=form-them-danh-muc');
                 exit(); 
             }
         }
@@ -48,11 +48,11 @@ class AdminDanhMucController{
     public function formEditDanhMuc(){
         // Lấy ra thông tin danh mục cần sửa
         $id = $_GET['id_danh_muc'];
-        $danhMuc = $this->modelDanhMuc->getDetailDanhMuc(id: $id);
+        $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);
         if($danhMuc){
-            require_once '../views/Danhmuc/editDanhMuc.php';
+            require_once './views/Danhmuc/editDanhMuc.php';
         }else{
-            header(header: 'Location'.BASE_URL_ADMIN.'?act=danh-muc');
+            header('Location:'.BASE_URL_ADMIN.'?act=danh-muc');
             exit();
         }
     }
@@ -75,7 +75,7 @@ class AdminDanhMucController{
             // Nếu không có lỗi thì tiến hành thêm danh mục
             if(empty($errors)){
                 $this->modelDanhMuc->updateDanhMuc(id: $id, ten_danh_muc: $ten_danh_muc, mo_ta: $mo_ta);
-                header(header: 'Location'.BASE_URL_ADMIN.'?act=danh-muc');
+                header('Location:'.BASE_URL_ADMIN.'?act=danh-muc');
                 exit();
             }else{
                 // Trả về form báo lỗi
@@ -91,7 +91,7 @@ class AdminDanhMucController{
         if($danhMuc){
             $this->modelDanhMuc->destroyDanhMuc(id: $id);
         }
-        header(header: 'Location'.BASE_URL_ADMIN.'?act=danh-muc');
+        header('Location:'.BASE_URL_ADMIN.'?act=danh-muc');
         exit();
     }
 }

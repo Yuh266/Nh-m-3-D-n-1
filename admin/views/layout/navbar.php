@@ -19,11 +19,11 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./index.html" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Dashboard v1</p>
+                                <li class="nav-item"> <a href="<?= BASE_URL_ADMIN.'?act=danh-muc' ?>" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
+                                        <p>Danh mục sản phẩm</p>
                                     </a> </li>
-                                <li class="nav-item"> <a href="./index2.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Dashboard v2</p>
+                                <li class="nav-item"> <a href="<?= BASE_URL_ADMIN ?>" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                        <p>Sản phẩm</p>
                                     </a> </li>
                                 <li class="nav-item"> <a href="./index3.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Dashboard v3</p>
