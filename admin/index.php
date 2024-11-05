@@ -51,9 +51,14 @@ match ($act) {
     "form-dang-nhap"=>(new AdminTaiKhoanController())->formLogin(),
     "form-dang-ky"=>(new AdminTaiKhoanController())->formRegister(),
 
-
+    // Slide Show
+    "danh-sach-slide-show"=>(new AdminSlideShowController())->listSlideShow(),
+    
     "form-them-slide-show"=>(new AdminSlideShowController())->formAddSlideShow(),
     "them-slide-show"=>(new AdminSlideShowController())->postAddSlideShow(),
+    
+    "xoa-slide-show"=>(new AdminSlideShowController())->deleteSlideShow(),
+    
 
 
 };

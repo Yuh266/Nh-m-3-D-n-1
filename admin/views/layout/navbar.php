@@ -33,7 +33,7 @@
                         <li class="nav-item"> <a href="./generate/theme.html" class="nav-link"> <i class="nav-icon bi bi-palette"></i>
                                 <p>Theme Generate</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-shows" ?>" class="nav-link"> <i class="nav-icon bi bi-palette"></i>
+                        <li class="nav-item"> <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>" class="nav-link"> <i class="nav-icon bi bi-palette"></i>
                                 <p>Quản trị slide shows</p>
                             </a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
@@ -87,4 +87,19 @@
                     </ul> <!--end::Sidebar Menu-->
                 </nav>
             </div> <!--end::Sidebar Wrapper-->
-        </aside> <!--end::Sidebar-->
+</aside> <!--end::Sidebar-->
+
+<main class="m-3">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3 class="mb-0"><?= $title ?></h3>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-end">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Dashboard
+                </li>
+            </ol>
+        </div>
+    </div>
