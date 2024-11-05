@@ -6,6 +6,7 @@ session_start();
 require_once '../commons/env.php'; // Khai báo biến môi trường
 require_once '../commons/function.php'; // Hàm hỗ trợ
 
+
 spl_autoload_register(function ($class) {
     $fileName = "$class.php";
     $fileModel = PATH_ADMIN_CONTROLLERS . $fileName ;
@@ -20,6 +21,7 @@ spl_autoload_register(function ($class) {
 
 });
 
+
 // $act = $_GET['act'] ?? '/';
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -31,8 +33,20 @@ if (isset($_GET['act'])) {
 
 match ($act) {
     // Trang chủ
+    // '/' => (new AdminBaoCaoThongKeController())->home(),
+    // Sản phẩm
     "form-them-loai-hang"=>(new AdminLoaiHangController())->formAddLoaiHang(),
     "them-loai-hang"=>(new AdminLoaiHangController())->postAddLoaiHang(),
+
+
+    // Route danh mục
+    "danh-muc"=>(new AdminDanhMucController())->danhSachDanhMuc(),
+    "form-them-danh-muc"=>(new AdminDanhMucController())->formAddDanhMuc(),
+    // "/"=>(new AdminDanhMucController())->formAddDanhMuc(),
+    "them-danh-muc"=>(new AdminDanhMucController())->postAddDanhMuc(),
+    "form-sua-danh-muc"=>(new AdminDanhMucController())->formEditDanhMuc(),
+    "sua-danh-muc"=>(new AdminDanhMucController())->postEditDanhMuc(),
+    "xoa-danh-muc"=>(new AdminDanhMucController())->deleteDanhMuc(),
 
     "form-dang-nhap"=>(new AdminTaiKhoanController())->formLogin(),
     "form-dang-ky"=>(new AdminTaiKhoanController())->formRegister(),
@@ -40,5 +54,6 @@ match ($act) {
 
     "form-them-slide-show"=>(new AdminSlideShowController())->formAddSlideShow(),
     "them-slide-show"=>(new AdminSlideShowController())->postAddSlideShow(),
+
 
 };
