@@ -33,7 +33,7 @@
                         <label for="exampleInputEmail1" class="form-label">Thời gian tồn tại</label> 
                         <input value="<?= $_SESSION['slide_show']['thoi_gian_ton_tai']??"" ?>" name="thoi_gian_ton_tai" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text">
-                            
+                            <?= $_SESSION['error']['thoi_gian_ton_tai']??"" ?>
                         </div>
                     </div>
                     <div class="mb-3 col-md-6"> 
@@ -44,6 +44,20 @@
                         </div>
                     </div>
                 </div>
+                <div class=" d-flex">
+                    <label for="">Trạng thái :</label>
+                    <div class="form-check mx-3 mb-3 ">
+                        <input class="form-check-input" <?= isset($_SESSION['slide_show']['trang_thai'])?($_SESSION['slide_show']['trang_thai']==1?"checked":""):"" ?> type="radio" name="trang_thai" value="1" > 
+                        <label class="form-check-label" for="gridRadios1">Kích hoạt</label> 
+                    </div>
+                    <div class="form-check mx-3 mb-3 ">
+                        <input class="form-check-input" <?= isset($_SESSION['slide_show']['trang_thai'])?($_SESSION['slide_show']['trang_thai']==0?"checked":""):"" ?> type="radio" name="trang_thai" value="0" > 
+                        <label class="form-check-label" for="gridRadios1">Vô hiệu</label> 
+                    </div>
+                    <div id="emailHelp" class="form-text">
+                        <?= $_SESSION['error']['trang_thai']??"" ?>
+                    </div>
+                </div>
                 <div class="input-group mb-3 col-md-6"> 
                     <input name="file_anh" type="file" class="form-control" id="inputGroupFile02"> 
                     <label class="input-group-text" for="inputGroupFile02">Ảnh</label> 
@@ -51,7 +65,10 @@
                 
                 <!-- <div class="mb-3 form-check"> <input type="checkbox" class="form-check-input" id="exampleCheck1"> <label class="form-check-label" for="exampleCheck1">Check me out</label> </div> -->
             </div> <!--end::Body--> <!--begin::Footer-->
-            <div class="card-footer"> <button type="submit" class="btn btn-primary">Sửa</button> </div> <!--end::Footer-->
+            <div class="card-footer"> 
+                <button type="submit" class="btn btn-primary">Sửa</button> 
+                <button type="reset" class="btn btn-primary">Nhập lại</button> 
+            </div> <!--end::Footer-->
         </form> <!--end::Form-->
     </div> <!--end::Quick Example--> <!--begin::Input Group-->
     <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>"><button class="btn btn-success">Trang danh sách</button></a>
