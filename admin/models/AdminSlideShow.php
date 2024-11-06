@@ -9,7 +9,8 @@ class AdminSlideShow{
 
     public function getAllSlideShows(){
         try {
-            $sql = "SELECT * FROM slide_shows";
+            $sql = "SELECT * FROM slide_shows
+                    ORDER BY so_thu_tu";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
 
@@ -49,10 +50,13 @@ class AdminSlideShow{
         }
     }
 
-    public function updateSlideShow($ten_anh,$so_thu_tu,$thoi_gian_ton_tai,$link_anh,$link_chuyen_huong){
+    public function updateSlideShow($id,$ten_anh,$so_thu_tu,$thoi_gian_ton_tai,$link_anh,$link_chuyen_huong){
         try {
-            $sql = "UPDATE slide_shows SET
-            (:ten_anh, :so_thu_tu, :thoi_gian_ton_tai, :link_anh, :link_chuyen_huong)";
+            $sql = "UPDATE slide_shows 
+                SET
+                    ten_anh=:ten_anh, so_thu_tu=:so_thu_tu, thoi_gian_ton_tai=:thoi_gian_ton_tai, link_anh=:link_anh, link_chuyen_huong=:link_chuyen_huong
+                WHERE 
+                    id=".$id;   
             $stmt = $this->conn->prepare($sql); 
             $stmt->execute([':ten_anh'=>$ten_anh,
                                     ':so_thu_tu'=>$so_thu_tu,
