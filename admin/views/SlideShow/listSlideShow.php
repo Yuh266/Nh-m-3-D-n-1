@@ -40,6 +40,7 @@
                 <th>Thời gian tồn tại</th>
                 <th>Link chuyển hướng</th>
                 <th>Hình ảnh</th>
+                <th>Trạng thái</th>
                 <th>Chức năng</th>
             </thead>
             <tbody class="">
@@ -51,6 +52,7 @@
                         <td><?= $value['thoi_gian_ton_tai'] ?></td>
                         <td><a href="<?= $value['link_chuyen_huong'] ?>" target="_blank" ><?= $value['link_chuyen_huong'] ?></a></td>
                         <td><img src="<?= BASE_URL . $value['link_anh'] ?>" width="100px" alt=""></td>
+                        <td><?= $value['trang_thai'] == 1 ? "Kích hoạt" : "Vô hiệu" ?></td>
                         <td>
                             <a href="<?= BASE_URL_ADMIN . "/?act=form-sua-slide-show&id=".$value['id'] ?>"><button type="button" class="btn btn-warning" >Sửa</button></a>
                             <a href="<?= BASE_URL_ADMIN . "/?act=xoa-slide-show&id=".$value['id'] ?>"><button type="button" onclick="return confirm('Bạn chắc chứ') " class="btn btn-danger" >Xóa</button></a>
@@ -65,6 +67,7 @@
                 <th>Thời gian tồn tại</th>
                 <th>Link chuyển hướng</th>
                 <th>Hình ảnh</th>
+                <th>Trạng thái</th>
                 <th>Chức năng</th>
             </thead>
         </table>

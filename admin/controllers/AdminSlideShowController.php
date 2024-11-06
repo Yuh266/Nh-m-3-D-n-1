@@ -17,6 +17,7 @@ class AdminSlideShowController{
         $title = "Thêm Slide Show";
 
         require "./views/SlideShow/addSlideShow.php";
+        deleteSessionError();
     }
 
     public function postAddSlideShow(){
@@ -25,6 +26,7 @@ class AdminSlideShowController{
             $so_thu_tu = $_POST['so_thu_tu'] ?? "" ;
             $thoi_gian_ton_tai = $_POST['thoi_gian_ton_tai'] ?? null ;
             $link_chuyen_huong = $_POST['link_chuyen_huong'] ?? "" ;
+            $trang_thai = $_POST['trang_thai'] ?? "" ;
             $file_anh = $_FILES['file_anh'] ?? "" ;
             // var_dump("Vào r");
             // Begin validate
@@ -38,6 +40,12 @@ class AdminSlideShowController{
             if(empty($link_chuyen_huong)){
                 $error['link_chuyen_huong'] = "Không được bỏ trống";
             }
+            if(empty($thoi_gian_ton_tai)){
+                $error['thoi_gian_ton_tai'] = "Không được bỏ trống";
+            }
+            if(empty($trang_thai)&&$trang_thai!= "0"){
+                $error['trang_thai'] = "Không được bỏ trống";
+            }
             // End validate
             
             $_SESSION['error'] = $error;
@@ -46,7 +54,7 @@ class AdminSlideShowController{
             if (empty($error)) {
                 // Lưu ảnh
                 $link_anh = upLoadFile($file_anh,"/uploads/");
-                if ($this->modelSlideShows->insertSlideShow($ten_anh, $so_thu_tu, $thoi_gian_ton_tai,$link_anh, $link_chuyen_huong)){
+                if ($this->modelSlideShows->insertSlideShow($ten_anh, $so_thu_tu, $thoi_gian_ton_tai,$link_anh, $link_chuyen_huong,$trang_thai)){
                     session_unset();
                     header('Location:'.BASE_URL_ADMIN.'/?act=form-them-slide-show') ;
                 }else{
@@ -58,8 +66,10 @@ class AdminSlideShowController{
                     'so_thu_tu'=>$so_thu_tu,
                     'thoi_gian_ton_tai'=>$thoi_gian_ton_tai,
                     'link_chuyen_huong'=>$link_chuyen_huong,
+                    'trang_thai'=>$trang_thai,
                 ];
                 $_SESSION['slide_show'] = $slide_show;
+                $_SESSION['flash'] = 1 ;
                 header('Location:'.BASE_URL_ADMIN.'/?act=form-them-slide-show') ;
             }
         }
@@ -69,12 +79,14 @@ class AdminSlideShowController{
         if ($_GET['id']) {
             $id = $_GET['id'];
             $dd = $this->modelSlideShows->getSlideShowsByID( $id );
-            // var_dump($dd);die();
-
-            $_SESSION['slide_show'] = $dd;
-            // var_dump($slide_show);die();
-            $title = "Sửa Slide Show | ".$dd['ten_anh'];
+            // var_dump($dd);
+            if(isset($_SESSION['slide_show'])){
+                $_SESSION['slide_show'] = $dd;
+            }
+            // var_dump($_SESSION['slide_show']);die();
+            $title = "Sửa Slide Show | " . $dd['ten_anh'];
             require "./views/SlideShow/editSlideShow.php";
+            deleteSessionError();
         }else{
             header("Location:".BASE_URL_ADMIN."?act=danh-sach-slide-show") ;
         }        
@@ -88,6 +100,7 @@ class AdminSlideShowController{
             $so_thu_tu = $_POST['so_thu_tu'] ?? "" ;
             $thoi_gian_ton_tai = $_POST['thoi_gian_ton_tai'] ?? null ;
             $link_chuyen_huong = $_POST['link_chuyen_huong'] ?? "" ;
+            $trang_thai = $_POST['trang_thai'] ?? "" ;
             $file_anh = $_FILES['file_anh'] ?? "" ;
             // var_dump("Vào r");
             // Begin validate
@@ -100,6 +113,12 @@ class AdminSlideShowController{
             }
             if(empty($link_chuyen_huong)){
                 $error['link_chuyen_huong'] = "Không được bỏ trống";
+            }
+            if(empty($thoi_gian_ton_tai)){
+                $error['thoi_gian_ton_tai'] = "Không được bỏ trống";
+            }
+            if(empty($trang_thai) && $trang_thai!= "0"){
+                $error['trang_thai'] = "Không được bỏ trống";
             }
             // End validate
             
@@ -118,8 +137,8 @@ class AdminSlideShowController{
                     $link_anh = $old_image;
                 }
                 
-                if ($this->modelSlideShows->updateSlideShow($id,$ten_anh, $so_thu_tu, $thoi_gian_ton_tai,$link_anh, $link_chuyen_huong)){
-                    session_unset();
+                if ($this->modelSlideShows->updateSlideShow($id,$ten_anh, $so_thu_tu, $thoi_gian_ton_tai,$link_anh, $link_chuyen_huong,$trang_thai)){
+                   
                     header('Location:'.BASE_URL_ADMIN.'/?act=danh-sach-slide-show') ;
                 }else{
                     echo"Lỗi";
@@ -132,8 +151,10 @@ class AdminSlideShowController{
                     'so_thu_tu'=>$so_thu_tu,
                     'thoi_gian_ton_tai'=>$thoi_gian_ton_tai,
                     'link_chuyen_huong'=>$link_chuyen_huong,
+                    'trang_thai'=>$trang_thai,
                 ];
                 $_SESSION['slide_show'] = $slide_show;
+                $_SESSION['flash'] = 1 ;
                 // var_dump(444);die();
                 header('Location:'.BASE_URL_ADMIN.'?act=form-sua-slide-show&id='.$id ) ;
             }
