@@ -221,7 +221,26 @@
             option_sparkline3,
         );
         sparkline3.render();
-    </script> <!--end::Script-->
+    </script> 
+    
+    <!-- // Xử lí js trang list -->
+    <script>
+        const input = document.getElementsByName('id[]');
+
+        const chonTatCa = ()=>{
+            input.forEach(function(element, key) {
+                input[key].checked = true;
+            });
+        }
+        const boChonTatCa = ()=>{
+            input.forEach(function(element, key) {
+                input[key].checked = false;
+            });
+        }
+        
+    </script>
+    
+    <!--end::Script-->
 </body><!--end::Body-->
 
 </html>

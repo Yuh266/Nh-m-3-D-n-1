@@ -5,7 +5,7 @@
 <div class="col-md-12"> <!--begin::Quick Example-->
     <div class="card card-primary card-outline mb-4"> <!--begin::Header-->
         <div class="card-header">
-            <div class="card-title">Thêm SlideShow</div>
+            <div class="card-title"></div>
         </div> <!--end::Header--> <!--begin::Form-->
         <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL_ADMIN . "/?act=them-slide-show" ?>"  > <!--begin::Body-->
             <div class="card-body">
@@ -51,7 +51,10 @@
             </div> <!--end::Body--> <!--begin::Footer-->
             <div class="card-footer"> <button type="submit" class="btn btn-primary">Thêm</button> </div> <!--end::Footer-->
         </form> <!--end::Form-->
+
     </div> <!--end::Quick Example--> <!--begin::Input Group-->
+    <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>"><button class="btn btn-success">Trang danh sách</button></a>
+
 </div>
 
 

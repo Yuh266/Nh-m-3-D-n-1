@@ -26,7 +26,7 @@ spl_autoload_register(function ($class) {
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
 }else{
-    $act = '/';
+    $act = 'danh-sach-slide-show';
 }
 
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
@@ -38,15 +38,17 @@ match ($act) {
     "form-them-loai-hang"=>(new AdminLoaiHangController())->formAddLoaiHang(),
     "them-loai-hang"=>(new AdminLoaiHangController())->postAddLoaiHang(),
 
-
     // Route danh mục
     "danh-muc"=>(new AdminDanhMucController())->danhSachDanhMuc(),
+
     "form-them-danh-muc"=>(new AdminDanhMucController())->formAddDanhMuc(),
-    // "/"=>(new AdminDanhMucController())->formAddDanhMuc(),
     "them-danh-muc"=>(new AdminDanhMucController())->postAddDanhMuc(),
+    
     "form-sua-danh-muc"=>(new AdminDanhMucController())->formEditDanhMuc(),
     "sua-danh-muc"=>(new AdminDanhMucController())->postEditDanhMuc(),
+
     "xoa-danh-muc"=>(new AdminDanhMucController())->deleteDanhMuc(),
+    // Tài khoản
 
     "form-dang-nhap"=>(new AdminTaiKhoanController())->formLogin(),
     "form-dang-ky"=>(new AdminTaiKhoanController())->formRegister(),
@@ -56,9 +58,10 @@ match ($act) {
     
     "form-them-slide-show"=>(new AdminSlideShowController())->formAddSlideShow(),
     "them-slide-show"=>(new AdminSlideShowController())->postAddSlideShow(),
+
+    "form-sua-slide-show"=>(new AdminSlideShowController())->formEditSlideShow(),
+    "sua-slide-show"=>(new AdminSlideShowController())->postEditSlideShow(),
     
     "xoa-slide-show"=>(new AdminSlideShowController())->deleteSlideShow(),
     
-
-
 };

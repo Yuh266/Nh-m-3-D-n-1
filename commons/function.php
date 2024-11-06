@@ -44,7 +44,7 @@ function upLoadFile($file,$floderUpload) {
     return null;
 }
 
-function delete($nameFile) {
+function deleteFile($nameFile) {
     $path = PATH_ROOT . $nameFile;
     if (file_exists($nameFile)) {
        unlink($nameFile);
