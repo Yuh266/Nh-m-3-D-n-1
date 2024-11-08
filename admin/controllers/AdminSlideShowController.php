@@ -14,13 +14,13 @@ class AdminSlideShowController{
             ["link"=> 'href='.BASE_URL_ADMIN.'',"ten"=> "Trang Chủ"],
             ["link"=> '',"ten"=> $title ],
         ];
-        $_SESSION['flash'] = 1 ;
-        deleteAlertSession();
+        // deleteAlertSession();
         require "./views/SlideShow/listSlideShow.php";
         // Xóa dòng bảng đc tô màu sau khi load trang
-        if (isset($_SESSION['id_active'])) {
-            unset($_SESSION['id_active']);
-        }
+        // if (isset($_SESSION['id_active'])) {
+        //     unset($_SESSION['id_active']);
+        // }
+        $_SESSION['flash'] = 1 ;
         deleteSessionError();
 
     }
@@ -42,6 +42,7 @@ class AdminSlideShowController{
         ];
         require "./views/SlideShow/addSlideShow.php";
         deleteSessionError();
+        deleteAlertSession();
     }
 
     public function postAddSlideShow(){
@@ -77,7 +78,7 @@ class AdminSlideShowController{
 
             if (empty($error)) {
                 // Lưu ảnh
-                $link_anh = upLoadFile($file_anh,"/uploads/");
+                $link_anh = upLoadFile($file_anh,'./uploads/');
 
                 if ($id=$this->modelSlideShows->insertSlideShow($ten_anh, $so_thu_tu, $thoi_gian_ton_tai,$link_anh, $link_chuyen_huong,$trang_thai)){
                     // Xóa toàn bộ session đã lưu (hướng tới xóa Session báo lỗi và hiện thị lại đã nhập) error , slide_show
@@ -103,6 +104,7 @@ class AdminSlideShowController{
                 $_SESSION['alert_error'] = 1;
 
                 header('Location:'.BASE_URL_ADMIN.'/?act=form-them-slide-show') ;
+                
             }
         }
     }
@@ -120,7 +122,6 @@ class AdminSlideShowController{
 
         if ($_GET['id']) {
             $id = $_GET['id'];
-
             // var_dump($id);
             if (isset($_SESSION['slide_show']['id'])) {
                 // var_dump($_SESSION['slide_show']);
@@ -151,6 +152,7 @@ class AdminSlideShowController{
 
             require "./views/SlideShow/editSlideShow.php";
             deleteSessionError();
+            deleteAlertSession();
         }else{
             header("Location:".BASE_URL_ADMIN."?act=danh-sach-slide-show") ;
         }        
@@ -193,7 +195,7 @@ class AdminSlideShowController{
                 // var_dump(444);die();
                 // Xử lí ảnh
                 if(isset($file_anh) && $file_anh["error"] == UPLOAD_ERR_OK  ){
-                    $link_anh = upLoadFile($file_anh,"/uploads/");
+                    $link_anh = upLoadFile($file_anh,"./uploads/");
                     if (!empty($old_image)) {
                         deleteFile($old_image);
                     }
@@ -238,16 +240,19 @@ class AdminSlideShowController{
             $id = $_GET['id']??$_POST["id"];
             if(is_array($id)){
                 foreach($id as $key => $value){
+                    $slide_show = $this->modelSlideShows->getSlideShowsByID($id[$key]);
+                    deleteFile($slide_show['link_anh']);
                     $this->modelSlideShows->deleteSlideShow($id[$key]);
                 }
-                $_SESSION['alert_delete_success']=1;
-                header('Location:'.BASE_URL_ADMIN.'/?act=danh-sach-slide-show') ;
-            }elseif($this->modelSlideShows->deleteSlideShow($id)){
-                $_SESSION['alert_delete_success']=1;
-                header('Location:'.BASE_URL_ADMIN.'/?act=danh-sach-slide-show') ;
             }else{
-                echo "Lỗi";
+                $slide_show = $this->modelSlideShows->getSlideShowsByID($id);
+                // var_dump($slide_show);
+                deleteFile($slide_show['link_anh']);
+                $this->modelSlideShows->deleteSlideShow($id);
+                
             }
+            $_SESSION['alert_delete_success']=1;
+            header('Location:'.BASE_URL_ADMIN.'/?act=danh-sach-slide-show') ;
         }else {
             header('Location:'.BASE_URL_ADMIN.'/?act=danh-sach-slide-show') ;
         }
