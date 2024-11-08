@@ -26,11 +26,21 @@ function connectDB() {
 function deleteSessionError(){
     if(isset($_SESSION['flash'])){
         // Hủy session sau khi đã tải trang
-        unset($_SESSION['flash']);
+        // unset($_SESSION['flash']);
         session_unset();
         session_destroy();
     }
 }
+
+function deleteAlertSession() {
+    if(isset($_SESSION['alert_danger'])){
+        unset($_SESSION['alert_danger']);
+    }
+    if(isset($_SESSION['alert_success'])){
+        unset($_SESSION['alert_success']);
+    }
+}
+
 
 function upLoadFile($file,$floderUpload) {
     $path = $floderUpload . time() . $file["name"];

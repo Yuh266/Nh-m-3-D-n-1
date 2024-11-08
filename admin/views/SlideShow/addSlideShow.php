@@ -5,7 +5,19 @@
 <div class="col-md-12"> <!--begin::Quick Example-->
     <div class="card card-primary card-outline mb-4"> <!--begin::Header-->
         <div class="card-header">
-            <div class="card-title"></div>
+            <!-- <div class="card-title"> -->
+            <!-- Hiển thị thông báo thêm thành công  -->
+            <?php if (isset($_SESSION['alert_success'])): ?>
+                <div class="alert alert-success w-100" role="alert">
+                    Thêm thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>" class="alert-link">Đi đến trang danh sách.</a>
+                </div>
+            <?php elseif (isset($_SESSION['alert_error'])):?>
+                <div class="alert alert-danger w-100" role="alert">
+                    Thêm thất bại. 
+                </div>
+            <?php endif ?>
+            <?php deleteAlertSession(); ?>
+            <!-- </div> -->
         </div> <!--end::Header--> <!--begin::Form-->
         <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL_ADMIN . "/?act=them-slide-show" ?>"  > <!--begin::Body-->
             <div class="card-body">

@@ -34,6 +34,6 @@ if (isset($_GET['act'])) {
 
 match ($act) {
     // Trang chủclgur
-    "/"=>(new ProductController),
+    "/"=>(header("Location:".BASE_URL_ADMIN)),
 
 };
