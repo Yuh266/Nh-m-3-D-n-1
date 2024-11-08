@@ -46,7 +46,7 @@ class AdminSlideShow{
                                     ]
                             );
 
-            return true;
+            return $this->conn->lastInsertId() ;
         } catch (Exception $th) {
             echo "Lỗi".$th->getMessage();
         }
