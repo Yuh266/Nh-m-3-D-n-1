@@ -22,13 +22,15 @@
                         <button onclick="boChonTatCa()" type="button" class="btn btn-success" >Bỏ chọn tất cả</button>
                     </li>
                     <li class="nav-item active mx-2">
-                        <button type="submit" onclick="return confirm('Bạn chắc chứ?') " class="btn btn-success" >Xóa các mục đã chọn</button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal" data-link="<?= 'deleteAll' ?>">
+                            Xóa các mục đã chọn 
+                        </button>
                     </li>
                 </ul>
-                <div class="form-inline d-flex">
+                <!-- <div class="form-inline d-flex">
                     <input class="form-control mr-2" type="search" placeholder="Tìm kiếm..." aria-label="Search">
                     <button class="btn btn-outline-success w-50 mx-2" type="submit">Tìm kiếm</button>
-                </div>
+                </div> -->
             </div>
         </nav>    
 
@@ -86,10 +88,10 @@
                     
                     
                 </ul>
-                <div class="form-inline d-flex">
+                <!-- <div class="form-inline d-flex">
                     <input class="form-control mr-2" type="search" placeholder="Tìm kiếm..." aria-label="Search">
                     <button class="btn btn-outline-success w-50 mx-2" type="submit">Tìm kiếm</button>
-                </div>
+                </div> -->
             </div>
         </nav>
 
