@@ -60,6 +60,7 @@ class AdminTaiKhoan{
         }catch (Exception $th) {
             echo "Lỗi". $th->getMessage();
         }
+        
     }
 
 }

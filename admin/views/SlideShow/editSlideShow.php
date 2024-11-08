@@ -8,11 +8,11 @@
             <!-- Hiển thị thông báo thêm thành công  -->
             <?php if (isset($_SESSION['alert_success'])): ?>
                 <div class="alert alert-success w-100" role="alert">
-                    Thêm thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>" class="alert-link">Đi đến trang danh sách.</a>
+                    Sửa thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>" class="alert-link">Đi đến trang danh sách.</a>
                 </div>
             <?php elseif (isset($_SESSION['alert_error'])):?>
                 <div class="alert alert-danger w-100" role="alert">
-                    Thêm thất bại. 
+                    Sửa thất bại. 
                 </div>
             <?php endif ?>
         </div> <!--end::Header--> <!--begin::Form-->
