@@ -19,7 +19,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="<?= BASE_URL_ADMIN.'?act=danh-muc' ?>" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
+                                <li class="nav-item"> <a href="<?= BASE_URL_ADMIN.'?act=danh-sach-danh-muc' ?>" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Danh mục sản phẩm</p>
                                     </a> </li>
                                 <li class="nav-item"> <a href="<?= BASE_URL_ADMIN ?>" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
@@ -30,7 +30,7 @@
                                     </a> </li>
                             </ul>
                         </li>
-                        <li class="nav-item"> <a href="./generate/theme.html" class="nav-link"> <i class="nav-icon bi bi-palette"></i>
+                        <li class="nav-item"> <a href="<?= BASE_URL_ADMIN.'?act=danh-sach-danh-muc' ?>" class="nav-link"> <i class="nav-icon bi bi-palette"></i>
                                 <p>Theme Generate</p>
                             </a> </li>
                         <li class="nav-item"> <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>" class="nav-link"> <i class="nav-icon bi bi-palette"></i>
@@ -89,7 +89,7 @@
             </div> <!--end::Sidebar Wrapper-->
 </aside> <!--end::Sidebar-->
 
-<main class="m-3">
+<!-- <main class="m-3">
     <div class="row">
         <div class="col-sm-6">
             <h3 class="mb-0"><?= $title ?></h3>
@@ -102,4 +102,4 @@
                 </li>
             </ol>
         </div>
-    </div>
+    </div> -->

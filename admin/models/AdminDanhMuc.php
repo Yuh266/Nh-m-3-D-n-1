@@ -1,5 +1,6 @@
 <?php
 class AdminDanhMuc{
+
     public $conn;
 
     public function __construct(){
@@ -19,12 +20,12 @@ class AdminDanhMuc{
 
     public function insertDanhMuc($ten_danh_muc, $mo_ta){
         try{
-            $sql = 'INSERT INTO danh_mucs (ten_danh_muc, mo_ta )
-            VALUE (:ten_danh_muc, :mo_ta)';
+            $sql = 'INSERT INTO danh_mucs (ten_danh_muc, mo_ta)
+                    VALUE (:ten_danh_muc, :mo_ta)';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
-                'ten_danh_muc' => $ten_danh_muc,
-                'mo_ta' => $mo_ta
+                ':ten_danh_muc' => $ten_danh_muc,
+                ':mo_ta' => $mo_ta
             ]);
             return true;
         }catch(Exception $e){
@@ -47,13 +48,13 @@ class AdminDanhMuc{
 
     public function updateDanhMuc($id, $ten_danh_muc, $mo_ta){
         try{
-            $sql = 'UPDATE danh_mucs SET ten_danh_muc=:ten_danh_muc, mo_ta=:mo_ta 
-            WHERE id=:id';
+            $sql = 'UPDATE danh_mucs SET ten_danh_muc=:ten_danh_muc, mo_ta=:mo_ta
+                    WHERE id=:id';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
                 ':id' => $id,
-                'ten_danh_muc' => $ten_danh_muc,
-                'mo_ta' => $mo_ta
+                ':ten_danh_muc' => $ten_danh_muc,
+                ':mo_ta' => $mo_ta
             ]);
             return true;
         }catch(Exception $e){
@@ -68,7 +69,7 @@ class AdminDanhMuc{
             $stmt->execute([
                 ':id' => $id
             ]);
-            return $stmt->fetch();
+            return true;
         }catch(Exception $e){
             echo "Lỗi".$e->getMessage();
         }

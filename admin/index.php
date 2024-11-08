@@ -26,7 +26,7 @@ spl_autoload_register(function ($class) {
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
 }else{
-    $act = 'danh-sach-slide-show';
+    $act = 'danh-sach-danh-muc';
 }
 
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
@@ -35,11 +35,11 @@ match ($act) {
     // Trang chủ
     // '/' => (new AdminBaoCaoThongKeController())->home(),
     // Sản phẩm
-    "form-them-loai-hang"=>(new AdminLoaiHangController())->formAddLoaiHang(),
-    "them-loai-hang"=>(new AdminLoaiHangController())->postAddLoaiHang(),
+    // "form-them-loai-hang"=>(new AdminLoaiHangController())->formAddLoaiHang(),
+    // "them-loai-hang"=>(new AdminLoaiHangController())->postAddLoaiHang(),
 
     // Route danh mục
-    "danh-muc"=>(new AdminDanhMucController())->danhSachDanhMuc(),
+    "danh-sach-danh-muc"=>(new AdminDanhMucController())->listDanhMuc(),
 
     "form-them-danh-muc"=>(new AdminDanhMucController())->formAddDanhMuc(),
     "them-danh-muc"=>(new AdminDanhMucController())->postAddDanhMuc(),
