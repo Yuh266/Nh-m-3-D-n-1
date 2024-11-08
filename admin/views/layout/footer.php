@@ -1,5 +1,8 @@
 </main>
 <!--begin::Footer-->
+
+
+
 <footer class="app-footer"> <!--begin::To the end-->
             <div class="float-end d-none d-sm-inline">Anything you want</div> <!--end::To the end--> <!--begin::Copyright--> <strong>
                 Copyright &copy; 2014-2024&nbsp;
@@ -35,6 +38,7 @@
             }
         });
     </script> <!--end::OverlayScrollbars Configure--> <!-- OPTIONAL SCRIPTS --> <!-- sortablejs -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" integrity="sha256-ipiJrswvAR4VAx/th+6zWsdeYmVae0iJuiR+6OqHJHQ=" crossorigin="anonymous"></script> <!-- sortablejs -->
     <script>
         const connectedSortables =
@@ -237,6 +241,47 @@
                 input[key].checked = false;
             });
         }
+        
+
+        // Sử lí sự kiện xóa hiện modal
+        var buttons = document.querySelectorAll('button[data-bs-toggle="modal"]');
+        var modalLink = document.getElementById('modalLink');
+        var form =document.getElementById("form");
+        // console.log(form);
+        
+        // Thêm sự kiện cho từng nút
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Lấy đường link từ thuộc tính data-link
+                var link = button.getAttribute('data-link');
+                // Cập nhật href của nút trong modal
+                if (link == 'deleteAll' ) {   
+                    modalLink.addEventListener("click",function(){
+                        form.submit();
+                        showToast();
+                    }) 
+                    // console.log('Có deleteAll');
+                    
+                }else{
+                    modalLink.setAttribute('href', link);
+                    // modalLink.addEventListener("click",(e)=>{
+                    //     e.preventDefault()
+                    //     window.location.href = modalLink.href;
+                    //     showToast()
+                    // }
+                        
+                    // ) 
+                }
+            });
+        });
+        
+        // Thông báo toast
+        function showToast() {
+            const toastElement = document.getElementById('customToast');
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+        }
+        // showToast()
         
     </script>
     
