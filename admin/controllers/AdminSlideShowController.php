@@ -78,8 +78,10 @@ class AdminSlideShowController{
             if (empty($error)) {
                 // Lưu ảnh
                 $link_anh = upLoadFile($file_anh,"/uploads/");
+
                 if ($id=$this->modelSlideShows->insertSlideShow($ten_anh, $so_thu_tu, $thoi_gian_ton_tai,$link_anh, $link_chuyen_huong,$trang_thai)){
                     // Xóa toàn bộ session đã lưu (hướng tới xóa Session báo lỗi và hiện thị lại đã nhập) error , slide_show
+
                     session_unset();
                     $_SESSION['alert_success'] = 1 ;
                     $_SESSION['id_active'] = $id ;
@@ -97,7 +99,9 @@ class AdminSlideShowController{
                 ];
                 $_SESSION['slide_show'] = $slide_show;
                 $_SESSION['flash'] = 1 ;
+
                 $_SESSION['alert_error'] = 1;
+
                 header('Location:'.BASE_URL_ADMIN.'/?act=form-them-slide-show') ;
             }
         }
@@ -116,6 +120,7 @@ class AdminSlideShowController{
 
         if ($_GET['id']) {
             $id = $_GET['id'];
+
             // var_dump($id);
             if (isset($_SESSION['slide_show']['id'])) {
                 // var_dump($_SESSION['slide_show']);
@@ -142,6 +147,7 @@ class AdminSlideShowController{
                 ["link"=> 'href="'.BASE_URL_ADMIN.'/?act=danh-sach-slide-show"',"ten"=> "Danh Sách Slide Show"],
                 ["link"=> '',"ten"=> $title ],
             ];
+
 
             require "./views/SlideShow/editSlideShow.php";
             deleteSessionError();
@@ -196,11 +202,13 @@ class AdminSlideShowController{
                 }
                 
                 if ($this->modelSlideShows->updateSlideShow($id,$ten_anh, $so_thu_tu, $thoi_gian_ton_tai,$link_anh, $link_chuyen_huong,$trang_thai)){
+
                     session_unset();
                     $_SESSION['alert_success'] = 1 ;
                     $_SESSION['id_active'] = $id ;
                     // var_dump($_SESSION['id_active']);die();
                     header('Location:'.BASE_URL_ADMIN.'/?act=form-sua-slide-show&id='.$id) ;
+
                 }else{
                     echo"Lỗi";
                 }
@@ -216,7 +224,9 @@ class AdminSlideShowController{
                 ];
                 $_SESSION['slide_show'] = $slide_show;
                 $_SESSION['flash'] = 1 ;
+
                 $_SESSION['alert_error'] = 1 ;
+
                 // var_dump(444);die();
                 header('Location:'.BASE_URL_ADMIN.'?act=form-sua-slide-show&id='.$id ) ;
             }
