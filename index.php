@@ -30,7 +30,13 @@ if (isset($_GET['act'])) {
 
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 
-
+// $path = "D:\laragon\www\Du_an_1\commons/.././uploads/1731075972anh2.PNG";
+// if (file_exists($path)) {
+//     echo "File exists!";
+// } else {
+//     echo "File does not exist!";
+// }
+// die();
 
 match ($act) {
     // Trang chủclgur

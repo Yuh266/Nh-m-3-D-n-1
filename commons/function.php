@@ -33,8 +33,8 @@ function deleteSessionError(){
 }
 
 function deleteAlertSession() {
-    if(isset($_SESSION['alert_danger'])){
-        unset($_SESSION['alert_danger']);
+    if(isset($_SESSION['alert_error'])){
+        unset($_SESSION['alert_error']);
     }
     if(isset($_SESSION['alert_success'])){
         unset($_SESSION['alert_success']);
@@ -56,8 +56,11 @@ function upLoadFile($file,$floderUpload) {
 
 function deleteFile($nameFile) {
     $path = PATH_ROOT . $nameFile;
-    if (file_exists($nameFile)) {
-       unlink($nameFile);
+    // var_dump($path);
+    // var_dump(file_exists($path));
+    // die();
+    if (file_exists($path)) {
+       unlink($path);
     }
 }
 
