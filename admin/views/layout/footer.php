@@ -229,26 +229,32 @@
     
     <!-- // Xử lí js trang list -->
     <script>
+        const delete_checkeds =document.getElementsByClassName('delete_checked')
         const inputs = document.getElementsByName('id[]');
 
-        const clickTr = ()=>{
-            inputs.forEach(input => {
-                let tr = input.parentElement.parentElement
-                tr.addEventListener("click",()=>{
-                    input.checked == true ?  input.checked = false : input.checked = true
-                })
-            });
-            
-        }
-        clickTr()
+        
+        inputs.forEach(input => {
+            let tr = input.parentElement.parentElement
+            tr.addEventListener("click",()=>{
+                input.checked == true ?  input.checked = false : input.checked = true
+                input.checked == true ? tr.classList.add("table-warning") : tr.classList.remove("table-warning")
+            })
+            input.addEventListener("click",(e)=>{
+                input.checked == true ?  input.checked = false : input.checked = true
+                // e.preventDefault();
+            })
+        });
+
         const chonTatCa = ()=>{
             inputs.forEach(function(element, key) {
-                inputs[key].checked = true;
+                element.checked = true;
+                element.parentElement.parentElement.classList.add("table-warning") 
             });
         }
         const boChonTatCa = ()=>{
             inputs.forEach(function(element, key) {
-                inputs[key].checked = false;
+                element.checked = false;
+                element.parentElement.parentElement.classList.remove("table-warning")
             });
         }
         
