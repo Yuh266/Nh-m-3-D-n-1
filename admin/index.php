@@ -51,7 +51,16 @@ match ($act) {
     // Tài khoản
 
     "form-dang-nhap"=>(new AdminTaiKhoanController())->formLogin(),
+
     "form-dang-ky"=>(new AdminTaiKhoanController())->formRegister(),
+    "danh-sach-tai-khoan"=>(new AdminTaiKhoanController())->listTaiKhoan(),
+    "form-them-tai-khoan"=>(new AdminTaiKhoanController())->formAddTaiKhoan(),
+    "them-tai-khoan"=>(new AdminTaiKhoanController())->postAddTaiKhoan(),
+    
+    "form-sua-tai-khoan"=>(new AdminTaiKhoanController())->formEditTaiKhoan(),
+    "sua-tai-khoan"=>(new AdminTaiKhoanController())->postEditTaiKhoan(),
+
+    "xoa-tai-khoan"=>(new AdminTaiKhoanController())->deleteTaiKhoan(),
 
     // Slide Show
     "danh-sach-slide-show"=>(new AdminSlideShowController())->listSlideShow(),
