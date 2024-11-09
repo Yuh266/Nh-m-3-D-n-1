@@ -41,7 +41,7 @@ class AdminSlideShowController{
             ["link"=> '',"ten"=> $title ],
         ];
         require "./views/SlideShow/addSlideShow.php";
-        $_SESSION['flash'] = 1 ;
+        deleteAlertSession();
         deleteSessionError();
 
     }
@@ -111,16 +111,6 @@ class AdminSlideShowController{
     }
 
     public function formEditSlideShow(){
-        // deleteAlertSession();
-        // deleteSessionError();
-        // Chỉ xóa đúng mảng id trong slide_show , còn slide_show vẫn tồn tại dưới dạng rỗng
-        // if (isset($_SESSION['id_active'])) {
-        //     unset($_SESSION['id_active']);
-        // }
-
-
-        // var_dump($_SESSION);die();
-
         if ($_GET['id']) {
             $id = $_GET['id'];
             // var_dump($id);
@@ -151,7 +141,7 @@ class AdminSlideShowController{
             ];
 
             require "./views/SlideShow/editSlideShow.php";
-            $_SESSION['flash'] = 1 ;
+            deleteAlertSession();
             deleteSessionError();
         }else{
             header("Location:".BASE_URL_ADMIN."?act=danh-sach-slide-show") ;
@@ -164,7 +154,7 @@ class AdminSlideShowController{
             $old_image = $_POST['old_image'] ?? ($_POST['link_anh']  ?? "") ;
             $ten_anh = $_POST['ten_anh'] ?? "" ;
             $so_thu_tu = $_POST['so_thu_tu'] ?? "" ;
-            $thoi_gian_ton_tai = $_POST['thoi_gian_ton_tai'] ?? null ;
+            $thoi_gian_ton_tai = $_POST['thoi_gian_ton_tai'] ?? "" ;
             $link_chuyen_huong = $_POST['link_chuyen_huong'] ?? "" ;
             $trang_thai = $_POST['trang_thai'] ?? "" ;
             $file_anh = $_FILES['file_anh'] ?? "" ;
