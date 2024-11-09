@@ -37,12 +37,13 @@ class AdminSlideShowController{
         // Mảng chỉnh sửa để dổ đg link nav (Phần html này đg ở layout/navbar)
         $link_navs = [
             ["link"=> 'href="'.BASE_URL_ADMIN.'"',"ten"=> "Trang Chủ"],
-            ["link"=> 'href="'.BASE_URL_ADMIN.'"."/?act=danh-sach-slide-show"',"ten"=> "Danh Sách Slide Show"],
+            ["link"=> 'href="'.BASE_URL_ADMIN.'/?act=danh-sach-slide-show"',"ten"=> "Danh Sách Slide Show"],
             ["link"=> '',"ten"=> $title ],
         ];
         require "./views/SlideShow/addSlideShow.php";
+        $_SESSION['flash'] = 1 ;
         deleteSessionError();
-        deleteAlertSession();
+
     }
 
     public function postAddSlideShow(){
@@ -149,10 +150,9 @@ class AdminSlideShowController{
                 ["link"=> '',"ten"=> $title ],
             ];
 
-
             require "./views/SlideShow/editSlideShow.php";
+            $_SESSION['flash'] = 1 ;
             deleteSessionError();
-            deleteAlertSession();
         }else{
             header("Location:".BASE_URL_ADMIN."?act=danh-sach-slide-show") ;
         }        
