@@ -69,9 +69,9 @@ class AdminDanhMucController{
     }
 
     public function formEditDanhMuc(){
-        // Lấy ra thông tin cần sửa
         $id = $_GET['id_danh_muc'];
         $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);
+        
         if($danhMuc){
             $title = "Sửa Danh Mục";
             $link_navs = [
@@ -82,8 +82,7 @@ class AdminDanhMucController{
             require_once './views/Danhmuc/editDanhMuc.php';
             deleteAlertSession();
             deleteSessionError();
-            
-        }else{
+        } else {
             header('Location: ' . BASE_URL_ADMIN . '?act=danh-sach-danh-muc');
             exit();
         }
@@ -93,7 +92,7 @@ class AdminDanhMucController{
         // Kiểm tra xem dữ liệu có phải được submit lên không
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Lấy dữ liệu
-            $id = $_POST['id'];
+            $id = $_POST['id'] ?? '';
             $ten_danh_muc = $_POST['ten_danh_muc'] ?? '';
             $mo_ta = $_POST['mo_ta'] ?? '';
 
@@ -107,7 +106,7 @@ class AdminDanhMucController{
             // Nếu không có lỗi tiến hành sửa danh mục
             if(empty($errors)){
                 if($this->modelDanhMuc->updateDanhMuc($id, $ten_danh_muc, $mo_ta)){
-                    // session_unset();
+                    session_unset();
                     $_SESSION['alert_success']=1;
                     $_SESSION['id_active'] = $id;
                     header('Location: ' . BASE_URL_ADMIN . '?act=form-sua-danh-muc&id_danh_muc='.$id);
@@ -117,12 +116,12 @@ class AdminDanhMucController{
                 }    
             }else{
                 // Trả về form báo lỗi
-                // $danh_muc = [
-                //     'id'=>$id,
-                //     'ten_danh_muc'=>$ten_danh_muc,
-                //     'mo_ta'=>$mo_ta
-                // ];
-                // $_SESSION['danh_muc'] = $danh_muc;
+                $danh_muc = [
+                    'id'=>$id,
+                    'ten_danh_muc'=>$ten_danh_muc,
+                    'mo_ta'=>$mo_ta
+                ];
+                $_SESSION['danh_muc'] = $danh_muc;
                 // var_dump($_SESSION);die();
                 $_SESSION['flash'] = 1 ;
                 $_SESSION['alert_error']=1;

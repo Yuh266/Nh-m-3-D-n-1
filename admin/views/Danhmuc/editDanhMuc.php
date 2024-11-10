@@ -21,26 +21,18 @@
             <div class="card-body">
                 <input type="text" name="id" value="<?= $danhMuc['id'] ?>" hidden >
                 <div class="row">
-                    <!-- <div class="mb-3 col-md-12 "> 
-                        <label for="exampleInputEmail1" class="form-label">Tên danh mục</label> 
-                        <input value="<?= $danhMuc['ten_danh_muc'] ?>" name="ten_danh_muc" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập tên danh mục">
-                        <div id="emailHelp" class="form-text">
-                          <?php if(isset($errors['ten_danh_muc'])){ ?>
-                          <p class="text-danger"><?= $errors['ten_danh_muc'] ?></p>
-                          <?php } ?>
-                        </div>
-                    </div> -->
-                    <div class="mb-3 col-md-6"> 
-                        <label for="exampleInputEmail1" class="form-label">Tên danh mục</label> 
-                        <input value="<?= $_SESSION['ten_danh_muc']??"" ?>" name="ten_danh_muc" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
-                        <p class="text-danger"><?= $_SESSION['error']['ten_danh_muc']??"" ?></p>   
-                        </div>
+                <div class="mb-3 col-md-6">
+                    <label for="exampleInputEmail1" class="form-label">Tên danh mục</label>
+                    <input value="<?= isset($_SESSION['danh_muc']) ? $_SESSION['danh_muc']['ten_danh_muc'] : $danhMuc['ten_danh_muc'] ?>" name="ten_danh_muc" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">
+                        <p class="text-danger"><?= $_SESSION['error']['ten_danh_muc'] ?? "" ?></p>
                     </div>
-                    <div class="mb-3 col-md-12"> 
-                        <label for="exampleInputEmail1" class="form-label">Mô tả</label> 
-                        <textarea name="mo_ta" id="" class="form-control" id="exampleInputEmail1" placeholder="Nhập mô tả"><?= $danhMuc['mo_ta'] ?></textarea>
-                    </div>
+                </div>
+
+                <div class="mb-3 col-md-12">
+                    <label for="exampleInputEmail1" class="form-label">Mô tả</label>
+                    <textarea name="mo_ta" class="form-control" id="exampleInputEmail1" placeholder="Nhập mô tả"><?= isset($_SESSION['danh_muc']) ? $_SESSION['danh_muc']['mo_ta'] : $danhMuc['mo_ta'] ?></textarea>
+                </div>
                 </div>
 
             </div> <!--end::Body--> <!--begin::Footer-->

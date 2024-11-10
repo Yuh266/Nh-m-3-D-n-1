@@ -31,24 +31,22 @@
                             <p>Quản trị slide shows</p>
                         </a>
                     </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
-                    <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item menu-open"> <a href="#" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i>
 
+                    <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
                                 <p>
-                                    Dashboard
+                                    Widgets
                                     <i class="nav-arrow bi bi-chevron-right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="<?= BASE_URL_ADMIN.'?act=danh-sach-danh-muc' ?>" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Danh mục sản phẩm</p>
+                                <li class="nav-item"> <a href="./widgets/small-box.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                        <p>Small Box</p>
                                     </a> </li>
-                                <li class="nav-item"> <a href="<?= BASE_URL_ADMIN ?>" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Sản phẩm</p>
+                                <li class="nav-item"> <a href="./widgets/info-box.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                        <p>info Box</p>
                                     </a> </li>
-                                <li class="nav-item"> <a href="./index3.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Dashboard v3</p>
+                                <li class="nav-item"> <a href="./widgets/cards.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                        <p>Cards</p>
                                     </a> </li>
                             </ul>
                         </li>
@@ -85,20 +83,6 @@
                         </li>
                     </ul> <!-- end::Sidebar Menu -->
 
-                        <li class="nav-item"> <a href="<?= BASE_URL_ADMIN.'?act=danh-sach-danh-muc' ?>" class="nav-link"> <i class="nav-icon bi bi-palette"></i>
-                                <p>Theme Generate</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>" class="nav-link"> <i class="nav-icon bi bi-palette"></i>
-                                <p>Quản trị slide shows</p>
-                            </a> 
-                        </li>
-                        <li class="nav-item"> <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-tai-khoan" ?>" class="nav-link"> <i class="nav-icon bi bi-palette"></i>
-                                <p>Quản trị tài khoản </p>
-                            </a> 
-                        </li>
-                       
-                      
-                    <!-- </ul> end::Sidebar Menu -->
 
                 </nav>
             </div> <!--end::Sidebar Wrapper-->
