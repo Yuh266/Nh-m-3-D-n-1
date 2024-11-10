@@ -10,14 +10,26 @@ class AdminDanhMucController{
     public function listDanhMuc(){
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
         $title = "Danh Sách Danh Mục";
+        $link_navs = [
+            ["link"=> 'href='.BASE_URL_ADMIN.'',"ten"=> "Trang Chủ"],
+            ["link"=> '',"ten"=> $title ],
+        ];
         require_once './views/Danhmuc/listDanhMuc.php';
+        $_SESSION['flash'] = 1 ;
+        deleteSessionError();
     }
 
     public function formAddDanhMuc(){
         $title = "Thêm Danh Mục";
+        $link_navs = [
+            ["link"=> 'href="'.BASE_URL_ADMIN.'"',"ten"=> "Trang Chủ"],
+            ["link"=> 'href="'.BASE_URL_ADMIN.'/?act=danh-sach-danh-muc"',"ten"=> "Danh Sách Danh Mục"],
+            ["link"=> '',"ten"=> $title ],
+        ];
         require_once './views/Danhmuc/addDanhMuc.php';
         // Xóa session sau khi load trang
         deleteSessionError();
+        deleteAlertSession();
     }
 
     public function postAddDanhMuc(){
@@ -36,12 +48,20 @@ class AdminDanhMucController{
 
             // Nếu không có lỗi tiến hành thêm danh mục
             if(empty($errors)){
-                $this->modelDanhMuc->insertDanhMuc($ten_danh_muc, $mo_ta);
-                header('Location: ' . BASE_URL_ADMIN . '?act=danh-sach-danh-muc');
-                exit();
+                if($id = $this->modelDanhMuc->insertDanhMuc($ten_danh_muc, $mo_ta)){
+                    session_unset();
+                    $_SESSION['alert_success']=1;
+                    $_SESSION['id_active'] = $id;
+                    header('Location: ' . BASE_URL_ADMIN . '?act=form-them-danh-muc');
+                    exit();
+                }else{
+                    echo "Lỗi";
+                }
+                
             }else{
                 // Đặt chỉ thị xóa session sau khi hiển thị form
                 $_SESSION['flash'] = true;
+                $_SESSION['alert_error']=1;
                 header('Location: ' . BASE_URL_ADMIN . '?act=form-them-danh-muc');
                 exit();
             }
@@ -49,13 +69,20 @@ class AdminDanhMucController{
     }
 
     public function formEditDanhMuc(){
-        // Lấy ra thông tin cần sửa
         $id = $_GET['id_danh_muc'];
         $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);
+        
         if($danhMuc){
             $title = "Sửa Danh Mục";
+            $link_navs = [
+                ["link"=> 'href="'.BASE_URL_ADMIN.'"',"ten"=> "Trang Chủ"],
+                ["link"=> 'href="'.BASE_URL_ADMIN.'/?act=danh-sach-danh-muc"',"ten"=> "Danh Sách Danh Muc"],
+                ["link"=> '',"ten"=> $title ],
+            ];
             require_once './views/Danhmuc/editDanhMuc.php';
-        }else{
+            deleteAlertSession();
+            deleteSessionError();
+        } else {
             header('Location: ' . BASE_URL_ADMIN . '?act=danh-sach-danh-muc');
             exit();
         }
@@ -65,7 +92,7 @@ class AdminDanhMucController{
         // Kiểm tra xem dữ liệu có phải được submit lên không
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Lấy dữ liệu
-            $id = $_POST['id'];
+            $id = $_POST['id'] ?? '';
             $ten_danh_muc = $_POST['ten_danh_muc'] ?? '';
             $mo_ta = $_POST['mo_ta'] ?? '';
 
@@ -74,16 +101,34 @@ class AdminDanhMucController{
             if(empty($ten_danh_muc)){
                 $errors['ten_danh_muc'] = 'Tên danh mục không được để trống';
             }
+            $_SESSION['error'] = $errors;
 
             // Nếu không có lỗi tiến hành sửa danh mục
             if(empty($errors)){
-                $this->modelDanhMuc->updateDanhMuc($id, $ten_danh_muc, $mo_ta);
-                header('Location: ' . BASE_URL_ADMIN . '?act=danh-sach-danh-muc');
-                exit();
+                if($this->modelDanhMuc->updateDanhMuc($id, $ten_danh_muc, $mo_ta)){
+                    session_unset();
+                    $_SESSION['alert_success']=1;
+                    $_SESSION['id_active'] = $id;
+                    header('Location: ' . BASE_URL_ADMIN . '?act=form-sua-danh-muc&id_danh_muc='.$id);
+                    exit();
+                }else{
+                    echo "Lỗi";
+                }    
             }else{
                 // Trả về form báo lỗi
-                $danhMuc = ['id' => $id, 'ten_danh_muc' => $ten_danh_muc, 'mo_ta' => $mo_ta];
-                require_once './views/Danhmuc/editDanhMuc.php';
+                $danh_muc = [
+                    'id'=>$id,
+                    'ten_danh_muc'=>$ten_danh_muc,
+                    'mo_ta'=>$mo_ta
+                ];
+                $_SESSION['danh_muc'] = $danh_muc;
+                // var_dump($_SESSION);die();
+                $_SESSION['flash'] = 1 ;
+                $_SESSION['alert_error']=1;
+                // $danhMuc = ['id' => $id, 'ten_danh_muc' => $ten_danh_muc, 'mo_ta' => $mo_ta];
+                // require_once './views/Danhmuc/editDanhMuc.php';
+                header('Location: ' . BASE_URL_ADMIN . '?act=form-sua-danh-muc&id_danh_muc='.$id);
+                exit();  
             }
         }
     }

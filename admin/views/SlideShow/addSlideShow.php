@@ -25,14 +25,14 @@
                     <div class="mb-3 col-md-6 "> 
                         <label for="exampleInputEmail1" class="form-label">Tên ảnh</label> 
                         <input value="<?= $_SESSION['slide_show']['ten_anh']??"" ?>" name="ten_anh" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
+                        <div id="emailHelp" class="form-text text-danger">
                             <?= $_SESSION['error']['ten_anh']??"" ?>
                         </div>
                     </div>
                     <div class="mb-3 col-md-6"> 
                         <label for="exampleInputEmail1" class="form-label">Số thứ tự</label> 
                         <input value="<?= $_SESSION['slide_show']['so_thu_tu']??"" ?>" name="so_thu_tu" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
+                        <div id="emailHelp" class="form-text text-danger">
                             <?= $_SESSION['error']['so_thu_tu']??"" ?>
                             
                         </div>
@@ -42,14 +42,14 @@
                     <div class="mb-3 col-md-6"> 
                         <label for="exampleInputEmail1" class="form-label">Thời gian tồn tại</label> 
                         <input value="<?= $_SESSION['slide_show']['thoi_gian_ton_tai']??"" ?>" name="thoi_gian_ton_tai" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
+                        <div id="emailHelp" class="form-text text-danger">
                             <?= $_SESSION['error']['thoi_gian_ton_tai']??"" ?>
                         </div>
                     </div>
                     <div class="mb-3 col-md-6"> 
                         <label for="exampleInputEmail1" class="form-label">Link chuyển hướng</label> 
                         <input value="<?= $_SESSION['slide_show']['link_chuyen_huong']??"" ?>" name="link_chuyen_huong" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
+                        <div id="emailHelp" class="form-text text-danger">
                             <?= $_SESSION['error']['link_chuyen_huong']??"" ?>
                         </div>
                     </div>
@@ -64,14 +64,16 @@
                         <input class="form-check-input" <?= isset($_SESSION['slide_show']['trang_thai'])?($_SESSION['slide_show']['trang_thai']==0?"checked":""):"" ?> type="radio" name="trang_thai" value="0" > 
                         <label class="form-check-label" for="gridRadios1">Vô hiệu</label> 
                     </div>
-                    <div id="emailHelp" class="form-text">
+                    <div class="form-text text-danger">
                         <?= $_SESSION['error']['trang_thai']??"" ?>
                     </div>
                 </div>
-                
-                <div class="input-group mb-3 col-md-6"> 
+                <div class="input-group mb-3 col-md-12"> 
                     <input name="file_anh" type="file" class="form-control" id="inputGroupFile02"> 
                     <label class="input-group-text" for="inputGroupFile02">Ảnh</label> 
+                </div>
+                <div class="form-text text-danger">
+                    <?= $_SESSION['error']['link_anh'] ?? "" ?>
                 </div>
                 
                 <!-- <div class="mb-3 form-check"> <input type="checkbox" class="form-check-input" id="exampleCheck1"> <label class="form-check-label" for="exampleCheck1">Check me out</label> </div> -->
