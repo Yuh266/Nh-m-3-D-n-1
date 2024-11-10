@@ -27,14 +27,15 @@
             </div> <!--end::Body--> <!--begin::Footer-->
             <div class="card-footer"> 
                 <button type="submit" class="btn btn-primary">Thêm</button> 
-                <button type="reset " class="btn btn-primary">Nhập lại</button> 
+                <button type="reset" class="btn btn-primary">Nhập lại</button> 
             </div> <!--end::Footer-->
         </form> <!--end::Form-->
 
     </div> <!--end::Quick Example--> <!--begin::Input Group-->
-    <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-danh-muc" ?>"><button class="btn btn-success">Trang danh sách</button></a>
+    
 
 </div>
+<div><a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-danh-muc" ?>"><button class="btn btn-success">Trang danh sách</button></a></div>
 
 
 

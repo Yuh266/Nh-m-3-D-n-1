@@ -34,7 +34,9 @@ if (isset($_GET['act'])) {
 match ($act) {
     // Trang chủ
     // '/' => (new AdminBaoCaoThongKeController())->home(),
-    // Sản phẩm
+    // Route Sản phẩm
+    "danh-sach-san-pham"=>(new AdminProductController())->listProduct(),
+
     // "form-them-loai-hang"=>(new AdminLoaiHangController())->formAddLoaiHang(),
     // "them-loai-hang"=>(new AdminLoaiHangController())->postAddLoaiHang(),
 

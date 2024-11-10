@@ -5,7 +5,7 @@
 
 <footer class="app-footer"> <!--begin::To the end-->
             <div class="float-end d-none d-sm-inline">Anything you want</div> <!--end::To the end--> <!--begin::Copyright--> <strong>
-                Copyright &copy; 2014-2024&nbsp;
+                Nhom-3 &copy; 2024-2025&nbsp;
                 <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
             </strong>
             All rights reserved.
@@ -229,16 +229,32 @@
     
     <!-- // Xử lí js trang list -->
     <script>
-        const input = document.getElementsByName('id[]');
+        const delete_checkeds =document.getElementsByClassName('delete_checked')
+        const inputs = document.getElementsByName('id[]');
+
+        
+        inputs.forEach(input => {
+            let tr = input.parentElement.parentElement
+            tr.addEventListener("click",()=>{
+                input.checked == true ?  input.checked = false : input.checked = true
+                input.checked == true ? tr.classList.add("table-warning") : tr.classList.remove("table-warning")
+            })
+            input.addEventListener("click",(e)=>{
+                input.checked == true ?  input.checked = false : input.checked = true
+                // e.preventDefault();
+            })
+        });
 
         const chonTatCa = ()=>{
-            input.forEach(function(element, key) {
-                input[key].checked = true;
+            inputs.forEach(function(element, key) {
+                element.checked = true;
+                element.parentElement.parentElement.classList.add("table-warning") 
             });
         }
         const boChonTatCa = ()=>{
-            input.forEach(function(element, key) {
-                input[key].checked = false;
+            inputs.forEach(function(element, key) {
+                element.checked = false;
+                element.parentElement.parentElement.classList.remove("table-warning")
             });
         }
         

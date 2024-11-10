@@ -200,7 +200,7 @@ class AdminTaiKhoanController{
 
                     session_unset();
                     $_SESSION['alert_success'] = 1 ;
-                    $_SESSION['id_active'] = $id ;
+                    
                     // var_dump($_SESSION['id_active']);die();
                     header('Location:'.BASE_URL_ADMIN.'/?act=form-sua-tai-khoan&id='.$id) ;
 
@@ -231,36 +231,29 @@ class AdminTaiKhoanController{
             }
         }
     }
-    public function deleteTaiKhoan() {
-        // Lấy id từ request, có thể là từ GET hoặc POST
-        $id = $_GET['id'] ?? $_POST['id'] ?? null;
-    
-        // Kiểm tra nếu id không tồn tại
-        if (empty($id)) {
-            header('Location:' . BASE_URL_ADMIN . '/?act=danh-sach-tai-khoan');
-            exit;
-        }
-    
-        // Kiểm tra nếu id là một mảng (xóa nhiều tài khoản) hoặc một giá trị đơn
-        if (is_array($id)) {
-            foreach ($id as $value) {
-                if (!$this->modelTaiKhoan->deleteTaiKhoan($value)) {
-                    $_SESSION['alert_delete_error'] = "Có lỗi xảy ra khi xóa tài khoản với ID: $value";
-                    header('Location:' . BASE_URL_ADMIN . '/?act=danh-sach-tai-khoan');
-                    exit;
+    public function deleteTaiKhoan(){
+        if($_GET['id'] || $_POST["id"]){
+            $id = $_GET['id']??$_POST["id"];
+            if(is_array($id)){
+                foreach($id as $key => $value){
+                    $tai_khoan = $this->modelTaiKhoan->getTaiKhoanByID($id[$key]);
+                    deleteFile($tai_khoan['anh_dai_dien']);
+                    $this->modelTaiKhoan->deleteTaiKhoan($id[$key]);
                 }
+            }else{
+                $tai_khoan = $this->modelTaiKhoan->getTaiKhoanByID($id);
+                // var_dump($slide_show);
+                deleteFile($tai_khoan['anh_dai_dien']);
+                $this->modelTaiKhoan->deleteTaiKhoan($id);
+                
             }
-            $_SESSION['alert_delete_success'] = "Xóa thành công các tài khoản được chọn.";
-        } elseif ($this->modelTaiKhoan->deleteTaiKhoan($id)) {
-            $_SESSION['alert_delete_success'] = "Xóa tài khoản thành công.";
-        } else {
-            $_SESSION['alert_delete_error'] = "Xóa tài khoản thất bại hoặc tài khoản không tồn tại.";
+            $_SESSION['alert_delete_success']=1;
+            header('Location:'.BASE_URL_ADMIN.'/?act=danh-sach-tai-khoan') ;
+        }else {
+            header('Location:'.BASE_URL_ADMIN.'/?act=danh-sach-tai-khoan') ;
         }
-    
-        // Điều hướng lại về trang danh sách tài khoản sau khi xử lý
-        header('Location:' . BASE_URL_ADMIN . '/?act=danh-sach-tai-khoan');
-        exit;
     }
+
     
 
     }

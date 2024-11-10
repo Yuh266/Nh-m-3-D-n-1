@@ -60,7 +60,7 @@
                         <td><?= $value['ten_anh'] ?></td>
                         <td><?= $value['so_thu_tu'] ?></td>
                         <td><?= $value['thoi_gian_ton_tai'] ?></td>
-                        <td><a href="<?= $value['link_chuyen_huong'] ?>" target="_blank" ><?= $value['link_chuyen_huong'] ?></a></td>
+                        <td><a class="delete_checked" href="<?= $value['link_chuyen_huong'] ?>" target="_blank" ><?= $value['link_chuyen_huong'] ?></a></td>
                         <td><img src="<?= BASE_URL . $value['link_anh'] ?>" width="100px" alt=""></td>
                         <td><?= $value['trang_thai'] == 1 ? "Kích hoạt" : "Vô hiệu" ?></td>
                         <td>

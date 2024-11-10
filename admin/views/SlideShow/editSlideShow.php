@@ -81,7 +81,8 @@
             </div> <!--end::Footer-->
         </form> <!--end::Form-->
     </div> <!--end::Quick Example--> <!--begin::Input Group-->
-    <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>"><button class="btn btn-success">Trang danh sách</button></a>
+    <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>"><button class="btn btn-success">Danh sách</button></a>
+    <a href="<?= BASE_URL_ADMIN . "/?act=form-them-slide-show" ?>"><button class="btn btn-success">Thêm</button></a>
     
 </div>
 
