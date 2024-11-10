@@ -44,7 +44,15 @@
             </thead>
             <tbody class="">
                 <?php foreach ($listDanhMuc as $key => $danhMuc) : ?>
-                    <tr>
+                    <tr
+                        <?php 
+                            if (isset($_SESSION['id_active'])) {
+                                if ($_SESSION['id_active']==$danhMuc['id']) {
+                                        echo "class='table-success'" ;
+                                }
+                            }
+                        ?>
+                    >
                         <td><input name="id[]" danhMuc="<?= $danhMuc['id'] ?>" type="checkbox" ></td>
                         <td><?= $key + 1 ?></td>
                         <td><?= $danhMuc['ten_danh_muc'] ?></td>
@@ -77,15 +85,16 @@
                         <a href="<?= BASE_URL_ADMIN . "/?act=form-them-danh-muc" ?>"><button type="button" class="btn btn-success" >Thêm</button></a>
                     </li>
                     <li class="nav-item active mx-2">
-                        <a href=""><button type="button" class="btn btn-success" >Chọn tất cả</button></a>
+                        <button onclick="chonTatCa()" type="button" class="btn btn-success" >Chọn tất cả</button>
                     </li>
                     <li class="nav-item active mx-2">
-                        <a href=""><button type="button" class="btn btn-success" >Bỏ chọn tất cả</button></a>
+                        <button onclick="boChonTatCa()" type="button" class="btn btn-success" >Bỏ chọn tất cả</button>
                     </li>
                     <li class="nav-item active mx-2">
-                        <a href=""><button type="button" class="btn btn-success" >Xóa các mục đã chọn</button></a>
-                    </li>
-                    
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal" data-link="<?= 'deleteAll' ?>">
+                            Xóa các mục đã chọn 
+                        </button>
+                    </li>  
                     
                 </ul>
                 <!-- <div class="form-inline d-flex">
