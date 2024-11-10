@@ -7,8 +7,6 @@
             <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
-            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
 
             <div class="collapse navbar-collapse d-flex justify-content-between " id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
@@ -27,10 +25,7 @@
                         </button>
                     </li>
                 </ul>
-                <!-- <div class="form-inline d-flex">
-                    <input class="form-control mr-2" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-                    <button class="btn btn-outline-success w-50 mx-2" type="submit">Tìm kiếm</button>
-                </div> -->
+            
             </div>
         </nav>    
 
@@ -45,7 +40,7 @@
                 <th>Trạng thái</th>
                 <th>Chức năng</th>
             </thead>
-            <tbody class="">
+            <tbody class = "" >
                 <?php foreach ($listSlideShow as $key => $value) : ?>
                     <tr 
                         <?php 
@@ -109,10 +104,7 @@
                         </button>
                     </li>
                 </ul>
-                <!-- <div class="form-inline d-flex">
-                    <input class="form-control mr-2" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-                    <button class="btn btn-outline-success w-50 mx-2" type="submit">Tìm kiếm</button>
-                </div> -->
+                
             </div>
         </nav>    
 

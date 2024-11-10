@@ -14,26 +14,18 @@ class AdminSlideShowController{
             ["link"=> 'href='.BASE_URL_ADMIN.'',"ten"=> "Trang Chủ"],
             ["link"=> '',"ten"=> $title ],
         ];
-        // deleteAlertSession();
+        
         require "./views/SlideShow/listSlideShow.php";
-        // Xóa dòng bảng đc tô màu sau khi load trang
-        // if (isset($_SESSION['id_active'])) {
-        //     unset($_SESSION['id_active']);
-        // }
+
         $_SESSION['flash'] = 1 ;
         deleteSessionError();
 
     }
 
     public function formAddSlideShow(){
-        // deleteAlertSession();
-
-        // if (isset($_SESSION['slide_show']['id'])) {
-        //     unset($_SESSION['slide_show']['id']);
-        // }
 
         $title = "Thêm Slide Show";
-        // var_dump($_SESSION);die();
+        
         // Mảng chỉnh sửa để dổ đg link nav (Phần html này đg ở layout/navbar)
         $link_navs = [
             ["link"=> 'href="'.BASE_URL_ADMIN.'"',"ten"=> "Trang Chủ"],
@@ -43,7 +35,6 @@ class AdminSlideShowController{
         require "./views/SlideShow/addSlideShow.php";
         deleteAlertSession();
         deleteSessionError();
-
     }
 
     public function postAddSlideShow(){
@@ -71,6 +62,9 @@ class AdminSlideShowController{
             }
             if(empty($trang_thai)&&$trang_thai!= "0"){
                 $error['trang_thai'] = "Không được bỏ trống";
+            }
+            if(!isset($file_anh) || $file_anh["error"] != UPLOAD_ERR_OK ){
+                $error['link_anh'] = "Không được bỏ trống";
             }
             // End validate
             
@@ -113,25 +107,20 @@ class AdminSlideShowController{
     public function formEditSlideShow(){
         if ($_GET['id']) {
             $id = $_GET['id'];
-            // var_dump($id);
+            
             if (isset($_SESSION['slide_show']['id'])) {
-                // var_dump($_SESSION['slide_show']);
+                
                 if($id != $_SESSION['slide_show']['id']){
                     $slide_show = $this->modelSlideShows->getSlideShowsByID( $id );
                     $_SESSION['slide_show'] = $slide_show;
-                    // var_dump($_SESSION['slide_show']);die();
                 }
             }
-            
-            // var_dump($dd);
+
             if(!isset($_SESSION['slide_show'])){
                 $slide_show = $this->modelSlideShows->getSlideShowsByID( $id );
                 $_SESSION['slide_show'] = $slide_show;
-                // var_dump($_SESSION['slide_show']);die();
-                
             }
 
-            // var_dump($_SESSION['slide_show']);die();
             $title = "Sửa Slide Show " ;
             // Mảng chỉnh sửa để dổ đg link nav (Phần html này đg ở layout/navbar)
             $link_navs = [
@@ -158,7 +147,7 @@ class AdminSlideShowController{
             $link_chuyen_huong = $_POST['link_chuyen_huong'] ?? "" ;
             $trang_thai = $_POST['trang_thai'] ?? "" ;
             $file_anh = $_FILES['file_anh'] ?? "" ;
-            // var_dump("Vào r");
+            var_dump("Vào r");
             // Begin validate
             $error = [] ;
             if(empty($ten_anh)){
@@ -176,10 +165,12 @@ class AdminSlideShowController{
             if(empty($trang_thai) && $trang_thai!= "0"){
                 $error['trang_thai'] = "Không được bỏ trống";
             }
+            
             // End validate
             
             $_SESSION['error'] = $error;
             // var_dump($error);die();
+            // var_dump($_SESSION['error']);die();
 
             if (empty($error)) {
                 // var_dump(444);die();
@@ -194,13 +185,11 @@ class AdminSlideShowController{
                 }
                 
                 if ($this->modelSlideShows->updateSlideShow($id,$ten_anh, $so_thu_tu, $thoi_gian_ton_tai,$link_anh, $link_chuyen_huong,$trang_thai)){
-
                     session_unset();
                     $_SESSION['alert_success'] = 1 ;
                     $_SESSION['id_active'] = $id ;
                     // var_dump($_SESSION['id_active']);die();
                     header('Location:'.BASE_URL_ADMIN.'/?act=form-sua-slide-show&id='.$id) ;
-
                 }else{
                     echo"Lỗi";
                 }
