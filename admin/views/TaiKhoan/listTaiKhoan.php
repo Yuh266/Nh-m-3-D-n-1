@@ -1,11 +1,14 @@
 <?php include './views/layout/header.php' ?>
+
 <?php include './views/layout/navbar.php' ?>
     
-<form id="form" method="POST" action="<?= BASE_URL_ADMIN . '/?act=xoa-tai-khoan' ?>">
+<form id="form" method="POST" action="<?= BASE_URL_ADMIN . '/?act=xoa-tai-khoan'?>">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+
 
         <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarTogglerDemo03">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -19,7 +22,7 @@
                     <button type="button" class="btn btn-success" onclick="boChonTatCa()">Bỏ chọn tất cả</button>
                 </li>
                 <li class="nav-item active mx-2">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal" onclick="prepareDeleteSelected()">Xóa các mục đã chọn</button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal" data-link="<?= 'deleteAll'?>">Xóa các mục đã chọn</button>
                 </li>
             </ul>
         </div>
@@ -51,7 +54,7 @@
                     <td><?= $taiKhoan['ho_ten'] ?></td>
                     <td><img src="<?= BASE_URL . $taiKhoan['anh_dai_dien'] ?>" width="100px" alt=""></td>
                     <td><?= $taiKhoan['so_dien_thoai'] ?></td>
-                    <td><?= $taiKhoan['gioi_tinh'] == 1 ? "Nam" : "Nữ" ?></td>
+                    <td><?= $taiKhoan['gioi_tinh'] == 1 ? "Nam" : ($taiKhoan['gioi_tinh'] == 0 ? "Nữ" : "Khác")?></td>
                     <td><?= $taiKhoan['email'] ?></td>
                     <td><?= $taiKhoan['chuc_vu'] == 1 ? "Admin" : "Thành viên" ?></td>
                     <td><?= $taiKhoan['mat_khau'] ?></td>
@@ -62,7 +65,7 @@
                         <a href="<?= BASE_URL_ADMIN . "/?act=form-sua-tai-khoan&id=" . $taiKhoan['id'] ?>">
                             <button type="button" class="btn btn-warning">Sửa</button>
                         </a>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal" data-link="<?= BASE_URL_ADMIN . "/?act=xoa-tai-khoan&id=" . $taiKhoan['id'] ?>" onclick="setDeleteLink(this)">Xóa</button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal" data-link="<?= BASE_URL_ADMIN . "/?act=xoa-tai-khoan&id=" . $taiKhoan['id'] ?>">Xóa</button>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -85,7 +88,7 @@
                     <button type="button" class="btn btn-success" onclick="boChonTatCa()">Bỏ chọn tất cả</button>
                 </li>
                 <li class="nav-item active mx-2">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal" onclick="prepareDeleteSelected()">Xóa các mục đã chọn</button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal" data-link="<?= 'deleteAll' ?>">Xóa các mục đã chọn</button>
                 </li>
             </ul>
         </div>
@@ -105,56 +108,15 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                <a href="#" id="modalLink"><button type="button" class="btn btn-primary">Xác nhận xóa</button></a>
+                <a href="#" id="modalLink"><button type="button" class="btn btn-primary" onclick="showToast()">Xác nhận xóa</button></a>
             </div>
         </div>
     </div>
 </div>
 
-
-<!-- Thông Báo Thành Công -->
-<?php if (isset($_SESSION["alert_delete_success"])) : ?>
-    <div class="toast align-items-center text-white bg-success border-0 position-fixed top-0 end-0 m-3" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body">
-                <?= $_SESSION["alert_delete_success"] ?>
-            </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-    </div>
-    <?php unset($_SESSION["alert_delete_success"]); ?>
-<?php endif; ?>
-
-<script>
-    // Hàm chọn tất cả checkbox
-    function chonTatCa() {
-        document.querySelectorAll("input[type='checkbox'][name='id[]']").forEach(checkbox => checkbox.checked = true);
-    }
-
-    // Hàm bỏ chọn tất cả checkbox
-    function boChonTatCa() {
-        document.querySelectorAll("input[type='checkbox'][name='id[]']").forEach(checkbox => checkbox.checked = false);
-    }
-
-    // Chuẩn bị modal cho xóa nhiều mục
-    function prepareDeleteSelected() {
-        const selectedIds = Array.from(document.querySelectorAll("input[type='checkbox'][name='id[]']:checked"))
-                                 .map(checkbox => checkbox.value);
-        if (selectedIds.length > 0) {
-            const link = "<?= BASE_URL_ADMIN . '/?act=xoa-tai-khoan' ?>" + "&id=" + selectedIds.join(",");
-            document.getElementById("modalLink").setAttribute("href", link);
-        } else {
-            alert("Vui lòng chọn ít nhất một tài khoản để xóa.");
-        }
-    }
-
-    function setDeleteLink(button) {
-    // Lấy đường dẫn xóa từ thuộc tính data-link của nút "Xóa"
-    const deleteLink = button.getAttribute("data-link");
-    
-    // Gán đường dẫn này vào thuộc tính href của nút "Xác nhận xóa" trong modal
-    document.getElementById("modalLink").setAttribute("href", deleteLink);
-}
-</script>
-
 <?php include './views/layout/footer.php' ?>
+<!-- // Kiểm tra phát hiện thông báo đã xóa  -->
+<?php if(isset($_SESSION["alert_delete_success"]) ):?>
+    <script>showToast()</script>
+    <?php unset($_SESSION["alert_delete_success"]); ?>
+<?php endif ?>

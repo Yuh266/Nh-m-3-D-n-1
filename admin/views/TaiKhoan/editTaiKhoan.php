@@ -66,6 +66,10 @@
                             <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['gioi_tinh'])?($_SESSION['tai_khoan']['gioi_tinh']==0?"checked":""):"" ?> type="radio" name="gioi_tinh" value="0" > 
                             <label class="form-check-label" for="gridRadios1">Nữ</label> 
                         </div>
+                        <div class="form-check mx-3 mb-3 ">
+                            <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['gioi_tinh'])?($_SESSION['tai_khoan']['gioi_tinh']==2?"checked":""):"" ?> type="radio" name="gioi_tinh" value="2" > 
+                            <label class="form-check-label" for="gridRadios1">Khác</label> 
+                        </div>
                         <div id="emailHelp" class="form-text">
                             <?= $_SESSION['error']['gioi_tinh']??"" ?>
                         </div>
