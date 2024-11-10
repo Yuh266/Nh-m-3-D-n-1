@@ -27,7 +27,7 @@ class AdminDanhMuc{
                 ':ten_danh_muc' => $ten_danh_muc,
                 ':mo_ta' => $mo_ta
             ]);
-            return true;
+            return $this->conn->lastInsertId();
         }catch(Exception $e){
             echo "Lỗi".$e->getMessage();
         }
