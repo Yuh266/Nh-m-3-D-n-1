@@ -62,9 +62,7 @@
                     <td><?= $taiKhoan['ngay_sinh'] ?></td>
                     <td><?= $taiKhoan['dia_chi'] ?></td>
                     <td>
-                        <a href="<?= BASE_URL_ADMIN . "/?act=form-sua-tai-khoan&id=" . $taiKhoan['id'] ?>">
-                            <button type="button" class="btn btn-warning">Sửa</button>
-                        </a>
+                        <a href="<?= BASE_URL_ADMIN . "/?act=form-sua-tai-khoan&id=" . $taiKhoan['id'] ?>"><button type="button" class="btn btn-warning">Sửa</button></a>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal" data-link="<?= BASE_URL_ADMIN . "/?act=xoa-tai-khoan&id=" . $taiKhoan['id'] ?>">Xóa</button>
                     </td>
                 </tr>
