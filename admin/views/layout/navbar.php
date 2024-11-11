@@ -34,16 +34,19 @@
 
                     <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
                                 <p>
-                                    Widgets
+                                    Quản trị đơn hàng
                                     <i class="nav-arrow bi bi-chevron-right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./widgets/small-box.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Small Box</p>
-                                    </a> </li>
+                                <li class="nav-item">
+                                    <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-dia-chi-nhan-hang' ?>" class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'danh-sach-slide-show') ? 'active' : '' ?>">
+                                        <i class="nav-icon bi bi-palette"></i>
+                                        <p>Địa chỉ nhận hàng</p>
+                                    </a>
+                                </li>
                                 <li class="nav-item"> <a href="./widgets/info-box.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>info Box</p>
+                                        <p>Quản lí đơn hàng</p>
                                     </a> </li>
                                 <li class="nav-item"> <a href="./widgets/cards.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Cards</p>
