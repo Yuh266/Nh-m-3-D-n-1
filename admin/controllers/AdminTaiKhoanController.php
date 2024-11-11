@@ -158,7 +158,7 @@ class AdminTaiKhoanController{
             $email  = $_POST['email'] ?? "" ;
             $chuc_vu = $_POST['chuc_vu'] ?? null ;
             $mat_khau = $_POST['mat_khau'] ?? '' ;
-            $trang_thai = $_POST['chuc_vu'] ?? '' ;
+            $trang_thai = $_POST['trang_thai'] ?? '' ;
             $ngay_sinh = $_POST['ngay_sinh'] ?? null ;
             $dia_chi = $_POST['dia_chi'] ?? null ;
             // var_dump($mat_khau);die();
