@@ -30,17 +30,17 @@ class AdminDiaChiNhanHang{
             echo $th->getMessage() ;
         }
     }
-    public function insertDiaChi($id_tai_khoan,$ten_nguoi_nhan,$std_nguoi_nhan,$dia_chi_nguoi_nhan){
+    public function insertDiaChi($id_tai_khoan,$ten_nguoi_nhan,$sdt_nguoi_nhan,$dia_chi_nguoi_nhan){
         try {
-            $sql = "INSERT INTO dia_chi_nhan_hangs(id_tai_khoan,ten_nguoi_nhan,std_nguoi_nhan,dia_chi_nguoi_nhan) 
-                    VALUE (:id_tai_khoan,:ten_nguoi_nhan,:std_nguoi_nhan,:dia_chi_nguoi_nhan)
+            $sql = "INSERT INTO dia_chi_nhan_hangs(id_tai_khoan,ten_nguoi_nhan,sdt_nguoi_nhan,dia_chi_nguoi_nhan) 
+                    VALUE (:id_tai_khoan,:ten_nguoi_nhan,:sdt_nguoi_nhan,:dia_chi_nguoi_nhan)
                    ";
             $stmt = $this->conn->prepare($sql) ;
             $stmt->execute([
-                $id_tai_khoan,
-                $ten_nguoi_nhan,
-                $std_nguoi_nhan,
-                $dia_chi_nguoi_nhan,
+                ":id_tai_khoan"=>$id_tai_khoan,
+                ":ten_nguoi_nhan"=>$ten_nguoi_nhan,
+                ":sdt_nguoi_nhan"=>$sdt_nguoi_nhan,
+                ":dia_chi_nguoi_nhan"=>$dia_chi_nguoi_nhan,
             ]) ;
 
             return $this->conn->lastInsertId() ;
@@ -49,7 +49,7 @@ class AdminDiaChiNhanHang{
         }
     }
 
-    public function updateDiaChi($id,$id_tai_khoan,$ten_nguoi_nhan,$std_nguoi_nhan,$dia_chi_nguoi_nhan){
+    public function updateDiaChi($id,$id_tai_khoan,$ten_nguoi_nhan,$sdt_nguoi_nhan,$dia_chi_nguoi_nhan){
         try {
             $sql = "UPDATE dia_chi_nhan_hangs 
                     SET 
@@ -61,10 +61,10 @@ class AdminDiaChiNhanHang{
                         id=".$id;
             $stmt = $this->conn->prepare($sql) ;
             $stmt->execute([
-                $id_tai_khoan,
-                $ten_nguoi_nhan,
-                $std_nguoi_nhan,
-                $dia_chi_nguoi_nhan,
+                ":id_tai_khoan"=>$id_tai_khoan,
+                ":ten_nguoi_nhan"=>$ten_nguoi_nhan,
+                ":sdt_nguoi_nhan"=>$sdt_nguoi_nhan,
+                ":dia_chi_nguoi_nhan"=>$dia_chi_nguoi_nhan,
             ]) ;
 
             return true ;
@@ -79,7 +79,7 @@ class AdminDiaChiNhanHang{
             $stmt = $this->conn->prepare($sql) ;
             $stmt->execute() ;
 
-            return $stmt->fetch() ;
+            return true ;
         } catch (Exception $th) {
             echo $th->getMessage() ;
         }
