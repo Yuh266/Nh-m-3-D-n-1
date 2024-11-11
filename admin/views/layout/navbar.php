@@ -1,3 +1,25 @@
+ <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn sẽ không thể khôi phục lại nội dung đã xóa.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <a href="#" id="modalLink" ><button  class="btn btn-primary" onclick="showToast()">Xác nhận xóa</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
+ 
+ 
  <!--begin::Sidebar-->
  <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
             <div class="sidebar-brand"> <!--begin::Brand Link--> 
@@ -34,16 +56,19 @@
 
                     <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
                                 <p>
-                                    Widgets
+                                    Quản trị đơn hàng
                                     <i class="nav-arrow bi bi-chevron-right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./widgets/small-box.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Small Box</p>
-                                    </a> </li>
+                                <li class="nav-item">
+                                    <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-dia-chi-nhan-hang' ?>" class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'danh-sach-slide-show') ? 'active' : '' ?>">
+                                        <i class="nav-icon bi bi-palette"></i>
+                                        <p>Địa chỉ nhận hàng</p>
+                                    </a>
+                                </li>
                                 <li class="nav-item"> <a href="./widgets/info-box.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>info Box</p>
+                                        <p>Quản lí đơn hàng</p>
                                     </a> </li>
                                 <li class="nav-item"> <a href="./widgets/cards.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Cards</p>
@@ -102,3 +127,10 @@
             </ol>
         </div>
     </div>
+
+
+
+
+
+
+

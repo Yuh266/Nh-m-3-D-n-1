@@ -5,22 +5,22 @@
 <div class="col-md-12"> <!--begin::Quick Example-->
     <div class="card card-primary card-outline mb-4"> <!--begin::Header-->
         <div class="card-header">
-            <!-- <div class="card-title"> -->
             <!-- Hiển thị thông báo thêm thành công  -->
             <?php if (isset($_SESSION['alert_success'])): ?>
                 <div class="alert alert-success w-100" role="alert">
-                    Thêm thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-dia-chi-nhan-hang" ?>" class="alert-link">Đi đến trang danh sách.</a>
+                    Sửa thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>" class="alert-link">Đi đến trang danh sách.</a>
                 </div>
             <?php elseif (isset($_SESSION['alert_error'])):?>
                 <div class="alert alert-danger w-100" role="alert">
-                    Thêm thất bại. 
+                    Sửa thất bại. 
                 </div>
             <?php endif ?>
-            <?php deleteAlertSession(); ?>
-            <!-- </div> -->
         </div> <!--end::Header--> <!--begin::Form-->
-        <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL_ADMIN . "/?act=them-dia-chi-nhan-hang" ?>"  > <!--begin::Body-->
+        <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL_ADMIN . "/?act=sua-slide-show" ?>"  > <!--begin::Body-->
             <div class="card-body">
+                
+                <input type="text" name="id" value="<?= $_SESSION['slide_show']['id']??"" ?>" hidden >
+                <input type="text" name="old_image" value="<?= $_SESSION['slide_show']['link_anh']??"" ?>" hidden >
                 <div class="row">
                     <div class="mb-3 col-md-6 "> 
                         <label for="exampleInputEmail1" class="form-label">Tên ảnh</label> 
@@ -64,31 +64,27 @@
                         <input class="form-check-input" <?= isset($_SESSION['slide_show']['trang_thai'])?($_SESSION['slide_show']['trang_thai']==0?"checked":""):"" ?> type="radio" name="trang_thai" value="0" > 
                         <label class="form-check-label" for="gridRadios1">Vô hiệu</label> 
                     </div>
-                    <div class="form-text text-danger">
+                    <div id="emailHelp" class="form-text text-danger">
                         <?= $_SESSION['error']['trang_thai']??"" ?>
                     </div>
                 </div>
-                <div class="input-group mb-3 col-md-12"> 
+                <div class="input-group mb-3 col-md-6"> 
                     <input name="file_anh" type="file" class="form-control" id="inputGroupFile02"> 
                     <label class="input-group-text" for="inputGroupFile02">Ảnh</label> 
-                </div>
-                <div class="form-text text-danger">
-                    <?= $_SESSION['error']['link_anh'] ?? "" ?>
                 </div>
                 
                 <!-- <div class="mb-3 form-check"> <input type="checkbox" class="form-check-input" id="exampleCheck1"> <label class="form-check-label" for="exampleCheck1">Check me out</label> </div> -->
             </div> <!--end::Body--> <!--begin::Footer-->
             <div class="card-footer"> 
-                <button type="submit" class="btn btn-primary">Thêm</button> 
-                <button type="reset " class="btn btn-primary">Nhập lại</button> 
+                <button type="submit" class="btn btn-primary">Sửa</button> 
+                <button type="reset" class="btn btn-primary">Nhập lại</button> 
             </div> <!--end::Footer-->
         </form> <!--end::Form-->
-
     </div> <!--end::Quick Example--> <!--begin::Input Group-->
-    <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-dia-chi-nhan-hang" ?>"><button class="btn btn-success">Trang danh sách</button></a>
-
+    <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>"><button class="btn btn-success">Danh sách</button></a>
+    <a href="<?= BASE_URL_ADMIN . "/?act=form-them-slide-show" ?>"><button class="btn btn-success">Thêm</button></a>
+    
 </div>
-
 
 
 <?php include './views/layout/footer.php' ?>

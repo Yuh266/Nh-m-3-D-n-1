@@ -232,7 +232,6 @@
         const delete_checkeds =document.getElementsByClassName('delete_checked')
         const inputs = document.getElementsByName('id[]');
 
-        
         inputs.forEach(input => {
             let tr = input.parentElement.parentElement
             tr.addEventListener("click",()=>{
@@ -273,20 +272,12 @@
                 // Cập nhật href của nút trong modal
                 if (link == 'deleteAll' ) {   
                     modalLink.addEventListener("click",function(){
+                        // console.log('vào r');
                         form.submit();
-                        showToast();
+                        
                     }) 
-                    // console.log('Có deleteAll');
-                    
                 }else{
                     modalLink.setAttribute('href', link);
-                    // modalLink.addEventListener("click",(e)=>{
-                    //     e.preventDefault()
-                    //     window.location.href = modalLink.href;
-                    //     showToast()
-                    // }
-                        
-                    // ) 
                 }
             });
         });

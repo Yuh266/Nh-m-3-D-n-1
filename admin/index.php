@@ -74,5 +74,15 @@ match ($act) {
     "sua-slide-show"=>(new AdminSlideShowController())->postEditSlideShow(),
     
     "xoa-slide-show"=>(new AdminSlideShowController())->deleteSlideShow(),
+    // Địa chỉ nhận hàng
+    "danh-sach-dia-chi-nhan-hang"=>(new AdminDiaChiNhanHangController())->listDiaChi(),
+    
+    "form-them-dia-chi-nhan-hang"=>(new AdminDiaChiNhanHangController())->formAddDiaChi(),
+    "them-dia-chi-nhan-hang"=>(new AdminDiaChiNhanHangController())->addDiaChi(),
+
+    "form-sua-dia-chi-nhan-hang"=>(new AdminDiaChiNhanHangController())->formEditDiaChi(),
+    "sua-dia-chi-nhan-hang"=>(new AdminDiaChiNhanHangController())->editDiaChi(),
+    
+    "xoa-dia-chi-nhan-hang"=>(new AdminDiaChiNhanHangController())->deleteDiaChi(),
     
 };
