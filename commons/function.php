@@ -31,6 +31,13 @@ function deleteSessionError(){
         session_destroy();
     }
 }
+function deleteSession($name_session) {
+    if(isset($_SESSION[$name_session])){
+        unset($_SESSION[$name_session]) ;
+    }
+}
+
+
 
 function deleteAlertSession() {
     if(isset($_SESSION['alert_error'])){

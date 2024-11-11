@@ -55,8 +55,8 @@ class AdminDiaChiNhanHang{
                     SET 
                         id_tai_khoan=:id_tai_khoan,
                         ten_nguoi_nhan=:ten_nguoi_nhan,
-                        std_nguoi_nhan=:std_nguoi_nhan,
-                        dia_chi_nguoi_nhan=:dia_chi_nguoi_nhan,
+                        sdt_nguoi_nhan=:sdt_nguoi_nhan,
+                        dia_chi_nguoi_nhan=:dia_chi_nguoi_nhan
                     WHERE
                         id=".$id;
             $stmt = $this->conn->prepare($sql) ;

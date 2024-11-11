@@ -19,11 +19,9 @@ class AdminSlideShowController{
 
         $_SESSION['flash'] = 1 ;
         deleteSessionError();
-
     }
 
     public function formAddSlideShow(){
-
         $title = "Thêm Slide Show";
         
         // Mảng chỉnh sửa để dổ đg link nav (Phần html này đg ở layout/navbar)
@@ -32,6 +30,8 @@ class AdminSlideShowController{
             ["link"=> 'href="'.BASE_URL_ADMIN.'/?act=danh-sach-slide-show"',"ten"=> "Danh Sách Slide Show"],
             ["link"=> '',"ten"=> $title ],
         ];
+
+
         require "./views/SlideShow/addSlideShow.php";
         deleteAlertSession();
         deleteSessionError();
@@ -95,7 +95,6 @@ class AdminSlideShowController{
                 ];
                 $_SESSION['slide_show'] = $slide_show;
                 $_SESSION['flash'] = 1 ;
-
                 $_SESSION['alert_error'] = 1;
 
                 header('Location:'.BASE_URL_ADMIN.'/?act=form-them-slide-show') ;
@@ -109,13 +108,11 @@ class AdminSlideShowController{
             $id = $_GET['id'];
             
             if (isset($_SESSION['slide_show']['id'])) {
-                
                 if($id != $_SESSION['slide_show']['id']){
                     $slide_show = $this->modelSlideShows->getSlideShowsByID( $id );
                     $_SESSION['slide_show'] = $slide_show;
                 }
             }
-
             if(!isset($_SESSION['slide_show'])){
                 $slide_show = $this->modelSlideShows->getSlideShowsByID( $id );
                 $_SESSION['slide_show'] = $slide_show;
@@ -132,6 +129,7 @@ class AdminSlideShowController{
             require "./views/SlideShow/editSlideShow.php";
             deleteAlertSession();
             deleteSessionError();
+            $_SESSION['flash'] = 1;
         }else{
             header("Location:".BASE_URL_ADMIN."?act=danh-sach-slide-show") ;
         }        
