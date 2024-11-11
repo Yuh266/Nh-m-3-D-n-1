@@ -19,7 +19,7 @@
             <?php deleteAlertSession(); ?>
             <!-- </div> -->
         </div> <!--end::Header--> <!--begin::Form-->
-        <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL_ADMIN . "/?act=them-dia-chi-nhan-hang" ?>"  > <!--begin::Body-->
+        <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL_ADMIN . "/?act=them-slide-show" ?>"  > <!--begin::Body-->
             <div class="card-body">
                 <div class="row">
                     <div class="mb-3 col-md-6 "> 
