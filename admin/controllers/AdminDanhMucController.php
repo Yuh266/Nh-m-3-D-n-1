@@ -134,12 +134,34 @@ class AdminDanhMucController{
     }
 
     public function deleteDanhMuc(){
-        $id = $_GET['id_danh_muc'];
-        $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);
-        if($danhMuc){
-            $this->modelDanhMuc->destroyDanhMuc($id);
+        // $id = $_GET['id_danh_muc'];
+        // $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);
+        // if($danhMuc){
+        //     $this->modelDanhMuc->destroyDanhMuc($id);
+        // }
+        // header('Location: ' . BASE_URL_ADMIN . '?act=danh-sach-danh-muc');
+        // exit();
+
+        if ($_GET['id_danh_muc'] || $_POST["id"]) {
+            $id = $_GET['id_danh_muc'] ?? $_POST["id"];
+            if (is_array($id)) {
+                foreach ($id as $value) {
+                    $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($value);
+                    if ($danhMuc) {
+                        $this->modelDanhMuc->destroyDanhMuc($value);
+                    }
+                }
+            } else {
+                $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);
+                // var_dump($danhMuc);die();
+                
+                $this->modelDanhMuc->destroyDanhMuc($id);
+            }
+            
+            $_SESSION['alert_delete_success'] = 1;
+            header('Location:' . BASE_URL_ADMIN . '/?act=danh-sach-danh-muc');
+        } else {
+            header('Location:' . BASE_URL_ADMIN . '/?act=danh-sach-danh-muc');
         }
-        header('Location: ' . BASE_URL_ADMIN . '?act=danh-sach-danh-muc');
-        exit();
     }
 }
