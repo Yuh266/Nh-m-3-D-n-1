@@ -5,26 +5,23 @@
 <div class="col-md-12"> <!--begin::Quick Example-->
     <div class="card card-primary card-outline mb-4"> <!--begin::Header-->
         <div class="card-header">
-            <!-- <div class="card-title"> -->
             <!-- Hiển thị thông báo thêm thành công  -->
             <?php if (isset($_SESSION['alert_success'])): ?>
                 <div class="alert alert-success w-100" role="alert">
-                    Thêm thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-".$title_url ?>" class="alert-link">Đi đến trang danh sách.</a>
+                    Sửa thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-".$title_url ?>" class="alert-link">Đi đến trang danh sách.</a>
                 </div>
             <?php elseif (isset($_SESSION['alert_error'])):?>
                 <div class="alert alert-danger w-100" role="alert">
-                    Thêm thất bại. 
+                    Sửa thất bại. 
                 </div>
             <?php endif ?>
-            <?php deleteAlertSession(); ?>
-            <!-- </div> -->
         </div> <!--end::Header--> <!--begin::Form-->
-        <form method="POST" action="<?= BASE_URL_ADMIN . "/?act=them-".$title_url ?>"  > <!--begin::Body-->
+        <form method="POST" action="<?= BASE_URL_ADMIN . "/?act=sua-".$title_url ?>"  > <!--begin::Body-->
             <div class="card-body">
+                <input type="text" name="id" value="<?= $_SESSION['dia_chi']['id']??"" ?>" hidden >
                 <div class="row">
                     <div class="col-md-6"> <label for="validationCustom04" class="form-label">Email tài khoản</label> 
                         <select name="id_tai_khoan" class="form-select" id="validationCustom04" >
-                            <option  value="">Chọn...</option>
                             <?php foreach ($listTaiKhoan as $key => $TaiKhoan):?>
                                 <option <?= isset($_SESSION['dia_chi']['id_tai_khoan'])?($TaiKhoan['id']==$_SESSION['dia_chi']['id_tai_khoan']?"selected":""):"" ?> value="<?= $TaiKhoan['id'] ?>" ><?= $TaiKhoan['email'] . " - id: ".$TaiKhoan['id'] ?></option>
                             <?php endforeach ?>
@@ -60,16 +57,15 @@
                 </div>
             </div> <!--end::Body--> <!--begin::Footer-->
             <div class="card-footer"> 
-                <button type="submit" class="btn btn-primary">Thêm</button> 
+                <button type="submit" class="btn btn-primary">Sửa</button> 
                 <button type="reset " class="btn btn-primary">Nhập lại</button> 
             </div> <!--end::Footer-->
         </form> <!--end::Form-->
-
     </div> <!--end::Quick Example--> <!--begin::Input Group-->
-    <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-".$title_url ?>"><button class="btn btn-success">Trang danh sách</button></a>
-
+    <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-".$title_url ?>"><button class="btn btn-success">Danh sách</button></a>
+    <a href="<?= BASE_URL_ADMIN . "/?act=form-them-".$title_url ?>"><button class="btn btn-success">Thêm</button></a>
+    
 </div>
-
 
 
 <?php include './views/layout/footer.php' ?>
