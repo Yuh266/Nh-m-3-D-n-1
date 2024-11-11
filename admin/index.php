@@ -84,5 +84,16 @@ match ($act) {
     "sua-dia-chi-nhan-hang"=>(new AdminDiaChiNhanHangController())->editDiaChi(),
     
     "xoa-dia-chi-nhan-hang"=>(new AdminDiaChiNhanHangController())->deleteDiaChi(),
+
+    // Địa chỉ nhận hàng
+    "danh-sach-trang-thai-don-hang"=>(new AdminTrangThaiDonHangController())->listTrangThai(),
+    
+    "form-them-trang-thai-don-hang"=>(new AdminTrangThaiDonHangController())->formAddTrangThai(),
+    "them-trang-thai-don-hang"=>(new AdminTrangThaiDonHangController())->addTrangThai(),
+
+    "form-sua-trang-thai-don-hang"=>(new AdminTrangThaiDonHangController())->formEditTrangThai(),
+    "sua-trang-thai-don-hang"=>(new AdminTrangThaiDonHangController())->editTrangThai(),
+    
+    "xoa-trang-thai-don-hang"=>(new AdminTrangThaiDonHangController())->deleteTrangThai(),
     
 };
