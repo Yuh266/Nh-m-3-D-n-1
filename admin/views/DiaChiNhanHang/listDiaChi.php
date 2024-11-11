@@ -32,7 +32,8 @@
         <table class="table table-striped table-hover text-center">
             <thead>
                 <th>#</th>
-                <th>Id tài khảo</th>
+                <th>Id tài khoản</th>
+                <th>Email tài khoản</th>
                 <th>Tên người nhận</th>
                 <th>SĐT người nhận</th>
                 <th>Địa chỉ người nhận</th>
@@ -51,6 +52,7 @@
                     >
                         <td><input name="id[]" value="<?= $value['id'] ?>" type="checkbox" ></td>
                         <td><?= $value['id_tai_khoan'] ?></td>
+                        <td><?= $value['email'] ?></td>
                         <td><?= $value['ten_nguoi_nhan'] ?></td>
                         <td><?= $value['sdt_nguoi_nhan'] ?></td>
                         <td><?= $value['dia_chi_nguoi_nhan'] ?></td>
@@ -64,8 +66,9 @@
                 <?php endforeach ?>
             </tbody>
             <thead>
-                <th>#</th>
-                <th>Id tài khảo</th>
+            <th>#</th>
+                <th>Id tài khoản</th>
+                <th>Email tài khoản</th>
                 <th>Tên người nhận</th>
                 <th>SĐT người nhận</th>
                 <th>Địa chỉ người nhận</th>

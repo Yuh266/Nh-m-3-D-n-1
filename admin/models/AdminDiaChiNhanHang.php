@@ -9,7 +9,16 @@ class AdminDiaChiNhanHang{
 
     public function getAllDiaChi(){  
         try {
-            $sql = "SELECT * FROM dia_chi_nhan_hangs";
+            $sql = "SELECT
+                        dia_chi_nhan_hangs.`id` AS id, 
+                        dia_chi_nhan_hangs.`id_tai_khoan` AS id_tai_khoan, 
+                        dia_chi_nhan_hangs.`ten_nguoi_nhan` AS ten_nguoi_nhan, 
+                        dia_chi_nhan_hangs.`sdt_nguoi_nhan` AS sdt_nguoi_nhan, 
+                        dia_chi_nhan_hangs.`dia_chi_nguoi_nhan` AS dia_chi_nguoi_nhan, 
+                        tai_khoans.email AS email 
+                    FROM `dia_chi_nhan_hangs` 
+                    JOIN tai_khoans 
+                    ON dia_chi_nhan_hangs.id_tai_khoan = tai_khoans.id;";
             $stmt = $this->conn->prepare($sql) ;
             $stmt->execute() ;
 
