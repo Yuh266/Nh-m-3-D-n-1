@@ -1,24 +1,15 @@
 <?php 
 
-class AdminDiaChiNhanHang{
+class AdminTrangThaiDonHang{
     public $conn ;
 
     public function __construct(){
         $this->conn = connectDB() ;
     }
 
-    public function getTrangThai(){  
+    public function getAllTrangThai(){  
         try {
-            $sql = "SELECT
-                        dia_chi_nhan_hangs.`id` AS id, 
-                        dia_chi_nhan_hangs.`id_tai_khoan` AS id_tai_khoan, 
-                        dia_chi_nhan_hangs.`ten_nguoi_nhan` AS ten_nguoi_nhan, 
-                        dia_chi_nhan_hangs.`sdt_nguoi_nhan` AS sdt_nguoi_nhan, 
-                        dia_chi_nhan_hangs.`dia_chi_nguoi_nhan` AS dia_chi_nguoi_nhan, 
-                        tai_khoans.email AS email 
-                    FROM `dia_chi_nhan_hangs` 
-                    JOIN tai_khoans 
-                    ON dia_chi_nhan_hangs.id_tai_khoan = tai_khoans.id;";
+            $sql = "SELECT * FROM trang_thai_don_hangs ";
             $stmt = $this->conn->prepare($sql) ;
             $stmt->execute() ;
 
@@ -28,9 +19,9 @@ class AdminDiaChiNhanHang{
         }
     } 
 
-    public function getAllDiaChiByID($id){
+    public function getTrangThaiByID($id){
         try {
-            $sql = "SELECT * FROM dia_chi_nhan_hangs WHERE id=".$id;
+            $sql = "SELECT * FROM trang_thai_don_hangs WHERE id=".$id;
             $stmt = $this->conn->prepare($sql) ;
             $stmt->execute() ;
 
@@ -39,17 +30,14 @@ class AdminDiaChiNhanHang{
             echo $th->getMessage() ;
         }
     }
-    public function insertDiaChi($id_tai_khoan,$ten_nguoi_nhan,$sdt_nguoi_nhan,$dia_chi_nguoi_nhan){
+    public function insertTrangThai($ten_trang_thai){
         try {
-            $sql = "INSERT INTO dia_chi_nhan_hangs(id_tai_khoan,ten_nguoi_nhan,sdt_nguoi_nhan,dia_chi_nguoi_nhan) 
-                    VALUE (:id_tai_khoan,:ten_nguoi_nhan,:sdt_nguoi_nhan,:dia_chi_nguoi_nhan)
+            $sql = "INSERT INTO `trang_thai_don_hangs`(`ten_trang_thai`) 
+                    VALUES (:ten_trang_thai)
                    ";
             $stmt = $this->conn->prepare($sql) ;
             $stmt->execute([
-                ":id_tai_khoan"=>$id_tai_khoan,
-                ":ten_nguoi_nhan"=>$ten_nguoi_nhan,
-                ":sdt_nguoi_nhan"=>$sdt_nguoi_nhan,
-                ":dia_chi_nguoi_nhan"=>$dia_chi_nguoi_nhan,
+                ":ten_trang_thai"=>$ten_trang_thai,
             ]) ;
 
             return $this->conn->lastInsertId() ;
@@ -58,22 +46,16 @@ class AdminDiaChiNhanHang{
         }
     }
 
-    public function updateDiaChi($id,$id_tai_khoan,$ten_nguoi_nhan,$sdt_nguoi_nhan,$dia_chi_nguoi_nhan){
+    public function updateTrangThai($id,$ten_trang_thai){
         try {
-            $sql = "UPDATE dia_chi_nhan_hangs 
+            $sql = "UPDATE trang_thai_don_hangs 
                     SET 
-                        id_tai_khoan=:id_tai_khoan,
-                        ten_nguoi_nhan=:ten_nguoi_nhan,
-                        sdt_nguoi_nhan=:sdt_nguoi_nhan,
-                        dia_chi_nguoi_nhan=:dia_chi_nguoi_nhan
+                        ten_trang_thai=:ten_trang_thai
                     WHERE
                         id=".$id;
             $stmt = $this->conn->prepare($sql) ;
             $stmt->execute([
-                ":id_tai_khoan"=>$id_tai_khoan,
-                ":ten_nguoi_nhan"=>$ten_nguoi_nhan,
-                ":sdt_nguoi_nhan"=>$sdt_nguoi_nhan,
-                ":dia_chi_nguoi_nhan"=>$dia_chi_nguoi_nhan,
+                ":ten_trang_thai"=>$ten_trang_thai,
             ]) ;
 
             return true ;
@@ -82,9 +64,9 @@ class AdminDiaChiNhanHang{
         }
     }
 
-    public function deleteDiaChi($id){
+    public function deleteTrangThai($id){
         try {
-            $sql = "DELETE FROM dia_chi_nhan_hangs WHERE id=".$id;
+            $sql = "DELETE FROM trang_thai_don_hangs WHERE id=".$id;
             $stmt = $this->conn->prepare($sql) ;
             $stmt->execute() ;
 

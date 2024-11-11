@@ -51,7 +51,14 @@
                             <p>Quản trị danh mục</p>
                         </a>
                     </li>
-
+                    <!-- Quản trị tài khoản  -->
+                    <li class="nav-item">
+                        <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-tai-khoan' ?>" 
+                        class="nav-link <?= (isset($_GET['act']) && in_array($_GET['act'], ['danh-sach-tai-khoan', 'them-tai-khoan', 'sua-tai-khoan'])) ? 'active' : '' ?>">
+                            <i class="nav-icon bi bi-list-check"></i>
+                            <p>Quản trị tài khoản</p>
+                        </a>
+                    </li>
                     <!-- Quản trị sản phẩm -->
                     <li class="nav-item">
                         <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-san-pham' ?>" 
@@ -96,10 +103,10 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= BASE_URL_ADMIN . '?act=don-hang-chua-xu-ly' ?>" 
-                                class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'don-hang-chua-xu-ly') ? 'active' : '' ?>">
+                                <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-trang-thai-don-hang' ?>" 
+                                class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'danh-sach-trang-thai-don-hang') ? 'active' : '' ?>">
                                     <i class="nav-icon bi bi-hourglass-split"></i>
-                                    <p>Đơn hàng chưa xử lý</p>
+                                    <p>Trạng Thái Đơn Hàng</p>
                                 </a>
                             </li>
                         </ul>
