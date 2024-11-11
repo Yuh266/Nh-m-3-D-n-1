@@ -35,78 +35,111 @@
                 <nav class="mt-2"> <!--begin::Sidebar Menu-->
 
                 <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+                    <!-- Dashboard -->
                     <li class="nav-item">
-                        <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-danh-muc' ?>" class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'danh-sach-danh-muc') ? 'active' : '' ?>">
-                            <i class="nav-icon bi bi-circle"></i>
+                        <a href="<?= BASE_URL_ADMIN ?>" class="nav-link <?= (!isset($_GET['act'])) ? 'active' : '' ?>">
+                            <i class="nav-icon bi bi-speedometer2"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+
+                    <!-- Quản trị danh mục -->
+                    <li class="nav-item">
+                        <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-danh-muc' ?>" 
+                        class="nav-link <?= (isset($_GET['act']) && in_array($_GET['act'], ['danh-sach-danh-muc', 'them-danh-muc', 'sua-danh-muc'])) ? 'active' : '' ?>">
+                            <i class="nav-icon bi bi-list-check"></i>
                             <p>Quản trị danh mục</p>
                         </a>
                     </li>
+
+                    <!-- Quản trị sản phẩm -->
                     <li class="nav-item">
-                        <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-san-pham' ?>" class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'danh-sach-san-pham') ? 'active' : '' ?>">
-                            <i class="nav-icon bi bi-circle"></i>
+                        <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-san-pham' ?>" 
+                        class="nav-link <?= (isset($_GET['act']) && in_array($_GET['act'], ['danh-sach-san-pham', 'them-san-pham', 'sua-san-pham'])) ? 'active' : '' ?>">
+                            <i class="nav-icon bi bi-box-seam"></i>
                             <p>Quản trị sản phẩm</p>
                         </a>
                     </li>
+
+                    <!-- Quản trị slide shows -->
                     <li class="nav-item">
-                        <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-slide-show' ?>" class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'danh-sach-slide-show') ? 'active' : '' ?>">
-                            <i class="nav-icon bi bi-palette"></i>
+                        <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-slide-show' ?>" 
+                        class="nav-link <?= (isset($_GET['act']) && in_array($_GET['act'], ['danh-sach-slide-show', 'them-slide-show', 'sua-slide-show'])) ? 'active' : '' ?>">
+                            <i class="nav-icon bi bi-images"></i>
                             <p>Quản trị slide shows</p>
                         </a>
                     </li>
 
-                    <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
-                                <p>
-                                    Quản trị đơn hàng
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-dia-chi-nhan-hang' ?>" class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'danh-sach-slide-show') ? 'active' : '' ?>">
-                                        <i class="nav-icon bi bi-palette"></i>
-                                        <p>Địa chỉ nhận hàng</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item"> <a href="./widgets/info-box.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Quản lí đơn hàng</p>
-                                    </a> </li>
-                                <li class="nav-item"> <a href="./widgets/cards.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Cards</p>
-                                    </a> </li>
-                            </ul>
-                        </li>
+                    <!-- Quản trị đơn hàng -->
+                    <li class="nav-item <?= (isset($_GET['act']) && (strpos($_GET['act'], 'don-hang') !== false || strpos($_GET['act'], 'dia-chi-nhan-hang') !== false)) ? 'menu-open' : '' ?>">
+                        <a href="#" 
+                        class="nav-link <?= (isset($_GET['act']) && (strpos($_GET['act'], 'don-hang') !== false || strpos($_GET['act'], 'dia-chi-nhan-hang') !== false)) ? 'active' : '' ?>">
+                            <i class="nav-icon bi bi-cart-check"></i>
+                            <p>
+                                Quản trị đơn hàng
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-don-hang' ?>" 
+                                class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'danh-sach-don-hang') ? 'active' : '' ?>">
+                                    <i class="nav-icon bi bi-list-ul"></i>
+                                    <p>Danh sách đơn hàng</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-dia-chi-nhan-hang' ?>" 
+                                class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'danh-sach-dia-chi-nhan-hang') ? 'active' : '' ?>">
+                                    <i class="nav-icon bi bi-geo-alt"></i>
+                                    <p>Địa chỉ nhận hàng</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= BASE_URL_ADMIN . '?act=don-hang-chua-xu-ly' ?>" 
+                                class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'don-hang-chua-xu-ly') ? 'active' : '' ?>">
+                                    <i class="nav-icon bi bi-hourglass-split"></i>
+                                    <p>Đơn hàng chưa xử lý</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-clipboard-fill"></i>
-                                <p>
-                                    Layout Options
-                                    <span class="nav-badge badge text-bg-secondary me-3">6</span> <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./layout/unfixed-sidebar.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Default Sidebar</p>
-                                    </a> </li>
-                                <li class="nav-item"> <a href="./layout/fixed-sidebar.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Fixed Sidebar</p>
-                                    </a> </li>
-                                <li class="nav-item"> <a href="./layout/layout-custom-area.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Layout <small>+ Custom Area </small></p>
-                                    </a> </li>
-                                <li class="nav-item"> <a href="./layout/sidebar-mini.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Sidebar Mini</p>
-                                    </a> </li>
-                                <li class="nav-item"> <a href="./layout/collapsed-sidebar.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Sidebar Mini <small>+ Collapsed</small></p>
-                                    </a> </li>
-                                <li class="nav-item"> <a href="./layout/logo-switch.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Sidebar Mini <small>+ Logo Switch</small></p>
-                                    </a> </li>
-                                <li class="nav-item"> <a href="./layout/layout-rtl.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>Layout RTL</p>
-                                    </a> </li>
-                            </ul>
-                        </li>
-                    </ul> <!-- end::Sidebar Menu -->
+                    <!-- Cấu hình hệ thống -->
+                    <li class="nav-item <?= (isset($_GET['act']) && strpos($_GET['act'], 'cau-hinh') !== false) ? 'menu-open' : '' ?>">
+                        <a href="#" 
+                        class="nav-link <?= (isset($_GET['act']) && strpos($_GET['act'], 'cau-hinh') !== false) ? 'active' : '' ?>">
+                            <i class="nav-icon bi bi-gear"></i>
+                            <p>
+                                Cấu hình hệ thống
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= BASE_URL_ADMIN . '?act=cau-hinh-chung' ?>" 
+                                class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'cau-hinh-chung') ? 'active' : '' ?>">
+                                    <i class="nav-icon bi bi-sliders"></i>
+                                    <p>Cấu hình chung</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= BASE_URL_ADMIN . '?act=cau-hinh-giao-dien' ?>" 
+                                class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'cau-hinh-giao-dien') ? 'active' : '' ?>">
+                                    <i class="nav-icon bi bi-palette"></i>
+                                    <p>Giao diện</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= BASE_URL_ADMIN . '?act=sao-luu-du-lieu' ?>" 
+                                class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'sao-luu-du-lieu') ? 'active' : '' ?>">
+                                    <i class="nav-icon bi bi-database"></i>
+                                    <p>Sao lưu dữ liệu</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
 
 
                 </nav>
