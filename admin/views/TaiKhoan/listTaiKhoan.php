@@ -54,11 +54,11 @@
                     <td><?= $taiKhoan['ho_ten'] ?></td>
                     <td><img src="<?= BASE_URL . $taiKhoan['anh_dai_dien'] ?>" width="100px" alt=""></td>
                     <td><?= $taiKhoan['so_dien_thoai'] ?></td>
-                    <td><?= $taiKhoan['gioi_tinh'] == 1 ? "Nam" : ($taiKhoan['gioi_tinh'] == 0 ? "Nữ" : "Khác")?></td>
+                    <td><?= $taiKhoan['gioi_tinh'] === 1 ? "Nam" : ($taiKhoan['gioi_tinh'] === 0 ? "Nữ" : ($taiKhoan['gioi_tinh'] === 2 ? "Khác" : ""))?></td>
                     <td><?= $taiKhoan['email'] ?></td>
-                    <td><?= $taiKhoan['chuc_vu'] == 1 ? "Admin" : "Thành viên" ?></td>
+                    <td><?= $taiKhoan['chuc_vu'] === 1 ? "Quản trị" : ($taiKhoan['chuc_vu'] === 2 ? "Thành viên" : ($taiKhoan['chuc_vu'] === 3 ? "Nhân viên" : "")) ?></td>
                     <td><?= $taiKhoan['mat_khau'] ?></td>
-                    <td><?= $taiKhoan['trang_thai'] == 1 ? "Kích hoạt" : "Vô hiệu" ?></td>
+                    <td><?= $taiKhoan['trang_thai'] === 0 ? "Kích hoạt" :($taiKhoan['trang_thai'] === 2 ? "Vô hiệu" : "") ?></td>
                     <td><?= $taiKhoan['ngay_sinh'] ?></td>
                     <td><?= $taiKhoan['dia_chi'] ?></td>
                     <td>

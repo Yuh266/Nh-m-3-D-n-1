@@ -54,7 +54,7 @@ class AdminTaiKhoanController{
             $chuc_vu = $_POST['chuc_vu'] ?? null;
             $mat_khau = $_POST['mat_khau'] ?? '';
             $trang_thai = $_POST['trang_thai'] ?? null;
-            $ngay_sinh = $_POST['ngay_sinh'] ?? null;
+            $ngay_sinh = $_POST['ngay_sinh'] ?? '';
             $dia_chi = $_POST['dia_chi'] ?? null;
     
             // Kiểm tra và xử lý file ảnh đại diện
@@ -73,12 +73,13 @@ class AdminTaiKhoanController{
             }
             if (empty($_POST['mat_khau'])) { // Kiểm tra gốc trước khi mã hóa
                 $errors['mat_khau'] = 'Mật khẩu không được để trống';
-            }
+            } 
+            $date = empty($ngay_sinh) ? NULL : $ngay_sinh;  
             $_SESSION['error'] = $errors;
     
             // Nếu không có lỗi thì thêm vào database
             if (empty($errors)) {
-                if ($id = $this->modelTaiKhoan->addTaiKhoan($ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email, $chuc_vu, $mat_khau, $trang_thai, $ngay_sinh, $dia_chi)) {
+                if ($id = $this->modelTaiKhoan->addTaiKhoan($ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email, $chuc_vu, $mat_khau, $trang_thai, $date, $dia_chi)) {
                     unset($_SESSION['error']);
                     $_SESSION['alert_success'] = 'Thêm tài khoản thành công!';
                     $_SESSION['id_active'] = $id;
@@ -99,7 +100,7 @@ class AdminTaiKhoanController{
                     'chuc_vu' => $chuc_vu,
                     'mat_khau' => $_POST['mat_khau'], // Không lưu mật khẩu mã hóa để user có thể sửa lại nếu sai
                     'trang_thai' => $trang_thai,
-                    'ngay_sinh' => $ngay_sinh,
+                    'ngay_sinh' => $date,
                     'dia_chi' => $dia_chi
                 ];
                 $_SESSION['alert_error'] = 'Có lỗi trong quá trình thêm tài khoản';
@@ -175,10 +176,7 @@ class AdminTaiKhoanController{
             if(empty($mat_khau)){
                 $error['mat_khau'] = "Không được bỏ trống";
             }
-            
-            if(empty($trang_thai) && $trang_thai!= "0"){
-                $error['trang_thai'] = "Không được bỏ trống";
-            }
+            $date = empty($ngay_sinh) ? NULL : $ngay_sinh;  
             // End validate
             
             $_SESSION['error'] = $error;
@@ -196,7 +194,7 @@ class AdminTaiKhoanController{
                     $link_anh = $old_image;
                 }
                 
-                if ($this->modelTaiKhoan->updateTaikhoan($id,$ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$mat_khau,$trang_thai,$ngay_sinh,$dia_chi)){
+                if ($this->modelTaiKhoan->updateTaikhoan($id,$ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$mat_khau,$trang_thai,$date,$dia_chi)){
 
                     session_unset();
                     $_SESSION['alert_success'] = 1 ;
@@ -218,7 +216,7 @@ class AdminTaiKhoanController{
                     'chuc_vu'=>$chuc_vu,
                     'mat_khau'=>$mat_khau,
                     'trang_thai'=>$trang_thai,
-                    'ngay_sinh'=>$ngay_sinh,
+                    'ngay_sinh'=>$date,
                     'dia_chi'=>$dia_chi
                 ];
                 $_SESSION['tai_khoan'] = $tai_khoan;
