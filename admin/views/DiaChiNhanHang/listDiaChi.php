@@ -2,7 +2,7 @@
 
 <?php include './views/layout/navbar.php' ?>
     
-    <form id="form" method="GET" action="<?= BASE_URL_ADMIN . '/?act=xoa-dia-chi-nhan-hang'?>" >
+    <form id="form" method="POST" action="<?= BASE_URL_ADMIN . '/?act=xoa-dia-chi-nhan-hang'?>" >
         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
             <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -104,24 +104,6 @@
 
     </form>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa?</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Bạn sẽ không thể khôi phục lại nội dung đã xóa.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <a href="#" id="modalLink" ><button  class="btn btn-primary" onclick="showToast()">Xác nhận xóa</button></a>
-      </div>
-    </div>
-  </div>
-</div>
 
 </main>
     
