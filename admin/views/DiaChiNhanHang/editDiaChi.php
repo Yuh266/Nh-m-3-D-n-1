@@ -58,7 +58,7 @@
             </div> <!--end::Body--> <!--begin::Footer-->
             <div class="card-footer"> 
                 <button type="submit" class="btn btn-primary">Sửa</button> 
-                <button type="reset " class="btn btn-primary">Nhập lại</button> 
+                <button type="reset" class="btn btn-primary">Nhập lại</button> 
             </div> <!--end::Footer-->
         </form> <!--end::Form-->
     </div> <!--end::Quick Example--> <!--begin::Input Group-->
