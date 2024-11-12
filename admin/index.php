@@ -37,8 +37,8 @@ match ($act) {
     // Route Sản phẩm
     "danh-sach-san-pham"=>(new AdminProductController())->listProduct(),
 
-    // "form-them-loai-hang"=>(new AdminLoaiHangController())->formAddLoaiHang(),
-    // "them-loai-hang"=>(new AdminLoaiHangController())->postAddLoaiHang(),
+    "form-them-san-pham"=>(new AdminProductController())->formAddSanPham(),
+    "them-san-pham"=>(new AdminProductController())->postAddSanPham(),
 
     // Route danh mục
     "danh-sach-danh-muc"=>(new AdminDanhMucController())->listDanhMuc(),

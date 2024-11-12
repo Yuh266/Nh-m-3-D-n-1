@@ -160,8 +160,10 @@ class AdminDanhMucController{
             
             $_SESSION['alert_delete_success'] = 1;
             header('Location:' . BASE_URL_ADMIN . '/?act=danh-sach-danh-muc');
+            exit();
         } else {
             header('Location:' . BASE_URL_ADMIN . '/?act=danh-sach-danh-muc');
+            exit();
         }
     }
 }
