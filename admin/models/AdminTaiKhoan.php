@@ -31,7 +31,7 @@ class AdminTaiKhoan{
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([":ho_ten"=>$ho_ten,":anh_dai_dien"=>$anh_dai_dien,":so_dien_thoai"=>$so_dien_thoai,":gioi_tinh"=>$gioi_tinh,":email"=>$email,":chuc_vu"=>$chuc_vu,":mat_khau"=>$mat_khau,":trang_thai"=>$trang_thai,":ngay_sinh"=>$ngay_sinh,":dia_chi"=>$dia_chi]);
 
-            return true;
+            return $this->conn->lastInsertId();
         } catch (Exception $th) {
             echo"Lôi". $th->getMessage();
         }

@@ -9,7 +9,7 @@
             <!-- Hiển thị thông báo thêm thành công  -->
             <?php if (isset($_SESSION['alert_success'])): ?>
                 <div class="alert alert-success w-100" role="alert">
-                    Thêm thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-dia-chi-nhan-hang" ?>" class="alert-link">Đi đến trang danh sách.</a>
+                    Thêm thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>" class="alert-link">Đi đến trang danh sách.</a>
                 </div>
             <?php elseif (isset($_SESSION['alert_error'])):?>
                 <div class="alert alert-danger w-100" role="alert">
@@ -19,7 +19,7 @@
             <?php deleteAlertSession(); ?>
             <!-- </div> -->
         </div> <!--end::Header--> <!--begin::Form-->
-        <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL_ADMIN . "/?act=them-dia-chi-nhan-hang" ?>"  > <!--begin::Body-->
+        <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL_ADMIN . "/?act=them-slide-show" ?>"  > <!--begin::Body-->
             <div class="card-body">
                 <div class="row">
                     <div class="mb-3 col-md-6 "> 
@@ -85,7 +85,7 @@
         </form> <!--end::Form-->
 
     </div> <!--end::Quick Example--> <!--begin::Input Group-->
-    <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-dia-chi-nhan-hang" ?>"><button class="btn btn-success">Trang danh sách</button></a>
+    <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>"><button class="btn btn-success">Trang danh sách</button></a>
 
 </div>
 

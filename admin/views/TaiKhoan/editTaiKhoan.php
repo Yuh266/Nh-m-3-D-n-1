@@ -8,7 +8,7 @@
             <!-- Hiển thị thông báo thêm thành công  -->
             <?php if (isset($_SESSION['alert_success'])): ?>
                 <div class="alert alert-success w-100" role="alert">
-                    Thêm thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-tai-khoan" ?>" class="alert-link">Đi đến trang danh sách.</a>
+                    Sửa thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-tai-khoan" ?>" class="alert-link">Đi đến trang danh sách.</a>
                 </div>
             <?php elseif (isset($_SESSION['alert_error'])):?>
                 <div class="alert alert-danger w-100" role="alert">
@@ -78,11 +78,15 @@
                     <label for="">Chức vụ :</label>
                     <div class="form-check mx-3 mb-3 ">
                         <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['chuc_vu'])?($_SESSION['tai_khoan']['chuc_vu']==1?"checked":""):"" ?> type="radio" name="chuc_vu" value="1" > 
-                        <label class="form-check-label" for="gridRadios1">Admin</label> 
+                        <label class="form-check-label" for="gridRadios1">Quản trị</label> 
                     </div>
                     <div class="form-check mx-3 mb-3 ">
-                        <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['chuc_vu'])?($_SESSION['tai_khoan']['chuc_vu']==0?"checked":""):"" ?> type="radio" name="chuc_vu" value="0" > 
+                        <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['chuc_vu'])?($_SESSION['tai_khoan']['chuc_vu']==2?"checked":""):"" ?> type="radio" name="chuc_vu" value="2" > 
                         <label class="form-check-label" for="gridRadios1">Thành viên</label> 
+                    </div>
+                    <div class="form-check mx-3 mb-3 ">
+                        <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['chuc_vu'])?($_SESSION['tai_khoan']['chuc_vu']==3?"checked":""):"" ?> type="radio" name="chuc_vu" value="3" > 
+                        <label class="form-check-label" for="gridRadios1">Nhân viên</label> 
                     </div>
                     <div id="emailHelp" class="form-text">
                         <?= $_SESSION['error']['chuc_vu']??"" ?>
@@ -107,14 +111,14 @@
                     <div class=" d-flex">
                     <label for="">Trạng thái :</label>
                     <div class="form-check mx-3 mb-3 ">
-                        <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['trang_thai'])?($_SESSION['tai_khoan']['trang_thai']==1?"checked":""):"" ?> type="radio" name="trang_thai" value="1" > 
-                        <label class="form-check-label" for="gridRadios1">Hoạt dộng</label> 
+                        <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['trang_thai'])?($_SESSION['tai_khoan']['trang_thai']==0?"checked":""):"" ?> type="radio" name="trang_thai" value="0" > 
+                        <label class="form-check-label" for="gridRadios1">Kích hoạt</label> 
                     </div>
                     <div class="form-check mx-3 mb-3 ">
-                        <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['trang_thai'])?($_SESSION['tai_khoan']['trang_thai']==0?"checked":""):"" ?> type="radio" name="trang_thai" value="0" > 
+                        <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['trang_thai'])?($_SESSION['tai_khoan']['trang_thai']==2?"checked":""):"" ?> type="radio" name="trang_thai" value="2" > 
                         <label class="form-check-label" for="gridRadios1">Vô hiệu</label> 
                     </div>
-                    <div id="emailHelp" class="form-text">
+                    <div id="emailHelp" class="form-text text-danger">
                         <?= $_SESSION['error']['trang_thai']??"" ?>
                     </div>
                     </div>
