@@ -3,8 +3,12 @@
 class ProductController
 {
     public function __construct() {
-        echo "Đã vào được";
         
+    }
+
+    public function Trangchu(){
+
+        require './views/TrangChinh/trangchu.php' ;
     }
 
 }
