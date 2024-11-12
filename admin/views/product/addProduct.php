@@ -88,10 +88,10 @@
 
                     <div class="mb-3 col-md-4 "> 
                         <label for="exampleInputEmail1" class="form-label">Danh mục</label> 
-                        <select name="id_danh_muc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <select class="form-select" name="id_danh_muc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 <option value=""  hidden>Chọn danh mục sản phẩm</option>
                             <?php foreach($listDanhMuc as $danhMuc): ?>
-                                <option value="<?=$danhMuc['id'] ?>"><?=$danhMuc['ten_danh_muc'] ?></option>
+                                <option <?=isset($_SESSION['san_pham']['id_danh_muc'])?($danhMuc['id']==$_SESSION['san_pham']['id_danh_muc']?"selected":""):"" ?> value="<?=$danhMuc['id'] ?>"><?=$danhMuc['ten_danh_muc'] ?></option>
                             <?php endforeach ?>
                         </select>
                         <div id="emailHelp" class="form-text">
@@ -103,10 +103,10 @@
 
                     <div class="mb-3 col-md-4 "> 
                         <label for="exampleInputEmail1" class="form-label">Trạng thái</label> 
-                        <select value="<?= $_SESSION['san_pham']['trang_thai'] ?? '' ?>" name="trang_thai" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <select class="form-select" value="<?= $_SESSION['san_pham']['trang_thai'] ??'' ?>" name="trang_thai" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             <option value="" hidden>Chọn trạng thái sản phẩm</option>
-                            <option value="1">Còn bán</option>
-                            <option value="2">Dừng bán</option>
+                            <option <?= isset($_SESSION['san_pham']['trang_thai']) && $_SESSION['san_pham']['trang_thai'] == "1" ? "selected" : "" ?> value="1">Còn bán</option>
+                            <option <?= isset($_SESSION['san_pham']['trang_thai']) && $_SESSION['san_pham']['trang_thai'] == "2" ? "selected" : "" ?> value="2">Dừng bán</option>
                         </select>
                         <div id="emailHelp" class="form-text">
                           <?php if(isset($_SESSION['error']['trang_thai'])){ ?>
