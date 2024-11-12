@@ -46,9 +46,17 @@
                 <th>Thao Tác</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
             <?php foreach ($listTaiKhoan as $key => $taiKhoan) : ?>
-                <tr>
+                <tr 
+                <?php 
+                            if (isset($_SESSION['id_active'])) {
+                                if ($_SESSION['id_active']==$taiKhoan['id']) {
+                                        echo "class='table-success'";
+                                }
+                            }
+                        ?> 
+            >
                     <td><input name="id[]" type="checkbox" value="<?= $taiKhoan['id'] ?>"></td>
                     <td><?= $key + 1 ?></td>
                     <td><?= $taiKhoan['ho_ten'] ?></td>

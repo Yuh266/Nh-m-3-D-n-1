@@ -71,7 +71,7 @@ class AdminTaiKhoanController{
             if (empty($email)) {
                 $errors['email'] = 'Email không được để trống';
             }
-            if (empty($_POST['mat_khau'])) { // Kiểm tra gốc trước khi mã hóa
+            if (empty($mat_khau)) { 
                 $errors['mat_khau'] = 'Mật khẩu không được để trống';
             } 
             $date = empty($ngay_sinh) ? NULL : $ngay_sinh;  
@@ -98,7 +98,7 @@ class AdminTaiKhoanController{
                     'gioi_tinh' => $gioi_tinh,
                     'email' => $email,
                     'chuc_vu' => $chuc_vu,
-                    'mat_khau' => $_POST['mat_khau'], // Không lưu mật khẩu mã hóa để user có thể sửa lại nếu sai
+                    'mat_khau' => $mat_khau, 
                     'trang_thai' => $trang_thai,
                     'ngay_sinh' => $date,
                     'dia_chi' => $dia_chi
@@ -159,7 +159,7 @@ class AdminTaiKhoanController{
             $email  = $_POST['email'] ?? "" ;
             $chuc_vu = $_POST['chuc_vu'] ?? null ;
             $mat_khau = $_POST['mat_khau'] ?? '' ;
-            $trang_thai = $_POST['trang_thai'] ?? '' ;
+            $trang_thai = $_POST['trang_thai']  ?? null  ;
             $ngay_sinh = $_POST['ngay_sinh'] ?? null ;
             $dia_chi = $_POST['dia_chi'] ?? null ;
             // var_dump($mat_khau);die();
@@ -198,6 +198,7 @@ class AdminTaiKhoanController{
 
                     session_unset();
                     $_SESSION['alert_success'] = 1 ;
+                    $_SESSION['id_active'] = $id ;
                     
                     // var_dump($_SESSION['id_active']);die();
                     header('Location:'.BASE_URL_ADMIN.'/?act=form-sua-tai-khoan&id='.$id) ;
