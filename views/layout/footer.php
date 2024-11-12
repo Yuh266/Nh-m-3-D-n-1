@@ -308,7 +308,7 @@
         </div>
     </div>
 
-    <!-- Side-tool -->
+    <!-- Side-tool
     <div class="cr-tool-overlay"></div>
     <div class="cr-tool">
         <div class="cr-tool-btn">
@@ -400,7 +400,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Vendor Custom -->
     <script src="assets/js/vendor/jquery-3.6.4.min.js"></script>

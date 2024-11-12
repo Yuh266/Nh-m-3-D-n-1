@@ -51,13 +51,13 @@
                             <img src="assets/img/logo/dark-logo.png" alt="logo" class="dark-logo">
                         </a>
                         <form class="cr-search">
-                            <input class="search-input" type="text" placeholder="Search For items...">
-                            <select class="form-select" aria-label="Default select example">
+                            <input class="search-input" type="text" placeholder="Tìm kiếm sản phẩm...">
+                            <!-- <select class="form-select" aria-label="Default select example">
                                 <option selected>All Categories</option>
                                 <option value="1">Mens</option>
                                 <option value="2">Womens</option>
                                 <option value="3">Electronics</option>
-                            </select>
+                            </select> -->
                             <a href="javascript:void(0)" class="search-btn">
                                 <i class="ri-search-line"></i>
                             </a>
@@ -67,28 +67,26 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
                                         <i class="ri-user-3-line"></i>
-                                        <span>Account</span>
+                                        <span>Tài khoản</span>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="register.html">Register</a>
+                                            <a class="dropdown-item" href="register.html">Đăng ký</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="checkout.html">Checkout</a>
+                                            <a class="dropdown-item" href="checkout.html">Đăng nhập</a>
                                         </li>
-                                        <li>
-                                            <a class="dropdown-item" href="login.html">Login</a>
-                                        </li>
+                                        
                                     </ul>
                                 </li>
                             </ul>
-                            <a href="wishlist.html" class="cr-right-bar-item">
+                            <!-- <a href="wishlist.html" class="cr-right-bar-item">
                                 <i class="ri-heart-3-line"></i>
                                 <span>Wishlist</span>
-                            </a>
+                            </a> -->
                             <a href="javascript:void(0)" class="cr-right-bar-item Shopping-toggle">
                                 <i class="ri-shopping-cart-line"></i>
-                                <span>Cart</span>
+                                <span>Giỏ hàng</span>
                             </a>
                         </div>
                     </div>
@@ -313,32 +311,29 @@
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.html">
-                                        Home
+                                        Trang Chủ
                                     </a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)">
-                                        Category
+                                        Danh mục
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="shop-left-sidebar.html">Shop Left
-                                                sidebar</a>
+                                            <a class="dropdown-item" href="shop-left-sidebar.html">Danh mục 1</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="shop-right-sidebar.html">Shop
-                                                Right
-                                                sidebar</a>
+                                            <a class="dropdown-item" href="shop-left-sidebar.html">Danh mục 1</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="shop-full-width.html">Full
-                                                Width</a>
+                                            <a class="dropdown-item" href="shop-left-sidebar.html">Danh mục 1</a>
                                         </li>
+                                        
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)">
-                                        Products
+                                        Sản phẩm 
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
