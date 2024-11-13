@@ -1,13 +1,24 @@
 <?php 
-class SanPhamController
+class SanPham
 {
     public $conn;
     public function __construct() {
         $this->conn = connectDB();    
     }
-    public function Trangchu(){
+    public function getAllSanPham() {
+        try {
+            $sql = "SELECT * FROM san_phams
+                    ORDER BY luot_xem 
+                    ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
 
-        require './views/TrangChinh/trangchu.php' ;
+            return $stmt->fetchAll();
+        } catch (Exception $th) {
+            echo $th->getMessage();
+        }
     }
+
+
 
 }
