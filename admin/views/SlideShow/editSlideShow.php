@@ -39,19 +39,34 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="mb-3 col-md-6"> 
-                        <label for="exampleInputEmail1" class="form-label">Thời gian tồn tại</label> 
-                        <input value="<?= $_SESSION['slide_show']['thoi_gian_ton_tai']??"" ?>" name="thoi_gian_ton_tai" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div class="mb-3 col-md-6 "> 
+                        <label for="exampleInputEmail1" class="form-label">Tiêu đề</label> 
+                        <input value="<?= $_SESSION['slide_show']['tieu_de']??"" ?>" name="tieu_de" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text text-danger">
-                            <?= $_SESSION['error']['thoi_gian_ton_tai']??"" ?>
+                            <?= $_SESSION['error']['tieu_de']??"" ?>
                         </div>
                     </div>
+                    <div class="mb-3 col-md-6"> 
+                        <label for="exampleInputEmail1" class="form-label">Mô tả</label> 
+                        <input value="<?= $_SESSION['slide_show']['mo_ta']??"" ?>" name="mo_ta" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text text-danger">
+                            <?= $_SESSION['error']['mo_ta']??"" ?>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="mb-3 col-md-6"> 
                         <label for="exampleInputEmail1" class="form-label">Link chuyển hướng</label> 
                         <input value="<?= $_SESSION['slide_show']['link_chuyen_huong']??"" ?>" name="link_chuyen_huong" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text text-danger">
                             <?= $_SESSION['error']['link_chuyen_huong']??"" ?>
                         </div>
+                    </div>
+                    <div class="mb-3 col-md-6"> 
+                        <label for="exampleInputEmail1" class="form-label">Ảnh</label> 
+                        <input name="file_anh" type="file" class="form-control" id="inputGroupFile02"> 
+                        <!-- <label class="input-group-text" for="inputGroupFile02">Ảnh</label>  -->
                     </div>
                 </div>
                 <div class=" d-flex">
@@ -68,10 +83,7 @@
                         <?= $_SESSION['error']['trang_thai']??"" ?>
                     </div>
                 </div>
-                <div class="input-group mb-3 col-md-6"> 
-                    <input name="file_anh" type="file" class="form-control" id="inputGroupFile02"> 
-                    <label class="input-group-text" for="inputGroupFile02">Ảnh</label> 
-                </div>
+                
                 
                 <!-- <div class="mb-3 form-check"> <input type="checkbox" class="form-check-input" id="exampleCheck1"> <label class="form-check-label" for="exampleCheck1">Check me out</label> </div> -->
             </div> <!--end::Body--> <!--begin::Footer-->

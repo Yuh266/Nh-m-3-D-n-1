@@ -32,17 +32,18 @@ class AdminSlideShow{
         }
     }
 
-    public function insertSlideShow($ten_anh,$so_thu_tu,$thoi_gian_ton_tai,$link_anh,$link_chuyen_huong,$trang_thai){
+    public function insertSlideShow($ten_anh,$so_thu_tu,$link_anh,$link_chuyen_huong,$trang_thai,$tieu_de,$mo_ta){
         try {
-            $sql = "INSERT INTO slide_shows(ten_anh, so_thu_tu, thoi_gian_ton_tai, link_anh, link_chuyen_huong,trang_thai) 
-                    VALUE (:ten_anh, :so_thu_tu, :thoi_gian_ton_tai, :link_anh, :link_chuyen_huong, :trang_thai)";
+            $sql = "INSERT INTO slide_shows(ten_anh, so_thu_tu,link_anh, link_chuyen_huong,trang_thai,tieu_de,mo_ta) 
+                    VALUE (:ten_anh, :so_thu_tu,:link_anh, :link_chuyen_huong, :trang_thai, :tieu_de, :mo_ta)";
             $stmt = $this->conn->prepare($sql); 
             $stmt->execute([':ten_anh'=>$ten_anh,
                                     ':so_thu_tu'=>$so_thu_tu,
-                                    ':thoi_gian_ton_tai'=>$thoi_gian_ton_tai,
                                     ':link_anh'=>$link_anh,
                                     ':link_chuyen_huong'=>$link_chuyen_huong,
                                     ':trang_thai'=>$trang_thai,
+                                    ':tieu_de'=>$tieu_de,
+                                    ':mo_ta'=>$mo_ta,
                                     ]
                             );
 
@@ -52,20 +53,27 @@ class AdminSlideShow{
         }
     }
 
-    public function updateSlideShow($id,$ten_anh,$so_thu_tu,$thoi_gian_ton_tai,$link_anh,$link_chuyen_huong,$trang_thai){
+    public function updateSlideShow($id,$ten_anh,$so_thu_tu,$link_anh,$link_chuyen_huong,$trang_thai,$tieu_de,$mo_ta){
         try {
             $sql = "UPDATE slide_shows 
                 SET
-                    ten_anh=:ten_anh, so_thu_tu=:so_thu_tu, thoi_gian_ton_tai=:thoi_gian_ton_tai, link_anh=:link_anh, link_chuyen_huong=:link_chuyen_huong,trang_thai=:trang_thai
+                    ten_anh=:ten_anh, 
+                    so_thu_tu=:so_thu_tu,
+                    link_anh=:link_anh, 
+                    link_chuyen_huong=:link_chuyen_huong,
+                    trang_thai=:trang_thai,
+                    tieu_de=:tieu_de,
+                    mo_ta=:mo_ta
                 WHERE 
                     id=".$id;   
             $stmt = $this->conn->prepare($sql); 
             $stmt->execute([':ten_anh'=>$ten_anh,
                                     ':so_thu_tu'=>$so_thu_tu,
-                                    ':thoi_gian_ton_tai'=>$thoi_gian_ton_tai,
                                     ':link_anh'=>$link_anh,
                                     ':link_chuyen_huong'=>$link_chuyen_huong,
                                     ':trang_thai'=>$trang_thai,
+                                    ':tieu_de'=>$tieu_de,
+                                    ':mo_ta'=>$mo_ta,
                                     ]
                             );
 
