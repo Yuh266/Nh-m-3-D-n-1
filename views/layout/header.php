@@ -318,18 +318,13 @@
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)">
                                         Danh mục
                                     </a>
+                                    <?php foreach ($list_danh_muc as $key => $value):?>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="shop-left-sidebar.html">Danh mục 1</a>
+                                            <a class="dropdown-item" href="shop-left-sidebar.html"><?= $value['ten_danh_muc']?></a>
                                         </li>
-                                        <li>
-                                            <a class="dropdown-item" href="shop-left-sidebar.html">Danh mục 1</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="shop-left-sidebar.html">Danh mục 1</a>
-                                        </li>
-                                        
                                     </ul>
+                                    <?php endforeach ?>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)">

@@ -132,45 +132,19 @@
             <div class="row mb-minus-24">
                 <div class="col-lg-4 col-12 mb-24">
                     <div class="cr-categories">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active center-categories-inner" id="cake_milk-tab"
+                        <ul class="nav row nav-tabs justify-content-start" id="myTab" role="tablist">
+                            <?php foreach ($list_danh_muc as $key => $value) :?>
+                            <li class="nav-item col-6 col-md-3" role="presentation">
+                                <button class="nav-link active center-categories-inner  " id="cake_milk-tab"
                                     data-bs-toggle="tab" data-bs-target="#cake_milk" type="button" role="tab"
                                     aria-controls="cake_milk" aria-selected="true">
-                                    Cake & Milk <span>(65 items)</span>
+                                    <?= $value['ten_danh_muc'] ?> <span>(65 items)</span>
                                 </button>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link center-categories-inner" id="meat-tab" data-bs-toggle="tab"
-                                    data-bs-target="#meat" type="button" role="tab" aria-controls="meat"
-                                    aria-selected="false" tabindex="-1">
-                                    Fresh Meat <span>(30 items)</span>
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link center-categories-inner" id="Vegetables-tab"
-                                    data-bs-toggle="tab" data-bs-target="#Vegetables" type="button" role="tab"
-                                    aria-controls="Vegetables" aria-selected="false" tabindex="-1">
-                                    Vegetables <span>(25 items)</span>
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link center-categories-inner" id="Custard-tab" data-bs-toggle="tab"
-                                    data-bs-target="#Custard" type="button" role="tab" aria-controls="Custard"
-                                    aria-selected="false" tabindex="-1">
-                                    Apple & Mango <span>(45 items)</span>
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link center-categories-inner" id="Strawberry-tab"
-                                    data-bs-toggle="tab" data-bs-target="#Strawberry" type="button" role="tab"
-                                    aria-controls="Strawberry" aria-selected="false" tabindex="-1">
-                                    Strawberry <span>(68 items)</span>
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
+                            <?php endforeach ?>
+                            <li class="nav-item col-6 col-md-3 " role="presentation">
                                 <a class="center-categories-inner cr-view-more" href="shop-left-sidebar.html">
-                                    View More
+                                    Xem Thêm
                                 </a>
                             </li>
                         </ul>
@@ -181,145 +155,7 @@
                         <div class="tab-pane fade active show" id="cake_milk" role="tabpanel"
                             aria-labelledby="cake_milk-tab">
                             <div class="row mb-minus-24">
-                                <div class="col-6 cr-categories-box mb-24">
-                                    <div class="cr-side-categories">
-                                        <div class="categories-inner">
-                                            <h4>50
-                                                <span>
-                                                    <small>%</small>
-                                                    <small>Off</small>
-                                                </span>
-                                            </h4>
-                                        </div>
-                                        <div class="categories-contain">
-                                            <div class="categories-text">
-                                                <h5>Cake</h5>
-                                            </div>
-                                            <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
-                                            </div>
-                                        </div>
-                                        <img src="assets/img/categories/3.jpg" alt="categories-3">
-                                    </div>
-                                </div>
-                                <div class="col-6 cr-categories-box mb-24">
-                                    <div class="cr-side-categories">
-                                        <div class="categories-inner">
-                                            <h4>40
-                                                <span>
-                                                    <small>%</small>
-                                                    <small>Off</small>
-                                                </span>
-                                            </h4>
-                                        </div>
-                                        <div class="categories-contain">
-                                            <div class="categories-text">
-                                                <h5>Milk</h5>
-                                            </div>
-                                            <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
-                                            </div>
-                                        </div>
-                                        <img src="assets/img/categories/4.jpg" alt="categories-4">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="meat" role="tabpanel" aria-labelledby="meat-tab">
-                            <div class="row mb-minus-24">
-                                <div class="col-6 cr-categories-box">
-                                    <div class="cr-side-categories">
-                                        <div class="categories-inner">
-                                            <h4>35
-                                                <span>
-                                                    <small>%</small>
-                                                    <small>Off</small>
-                                                </span>
-                                            </h4>
-                                        </div>
-                                        <div class="categories-contain">
-                                            <div class="categories-text">
-                                                <h5>Fish Meat</h5>
-                                            </div>
-                                            <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
-                                            </div>
-                                        </div>
-                                        <img src="assets/img/categories/1.jpg" alt="categories-1">
-                                    </div>
-                                </div>
-                                <div class="col-6 cr-categories-box">
-                                    <div class="cr-side-categories">
-                                        <div class="categories-inner">
-                                            <h4>24
-                                                <span>
-                                                    <small>%</small>
-                                                    <small>Off</small>
-                                                </span>
-                                            </h4>
-                                        </div>
-                                        <div class="categories-contain">
-                                            <div class="categories-text">
-                                                <h5>Fresh Meat</h5>
-                                            </div>
-                                            <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
-                                            </div>
-                                        </div>
-                                        <img src="assets/img/categories/2.jpg" alt="categories-2">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="Vegetables" role="tabpanel" aria-labelledby="Vegetables-tab">
-                            <div class="row mb-minus-24">
-                                <div class="col-6 cr-categories-box mb-24">
-                                    <div class="cr-side-categories">
-                                        <div class="categories-inner">
-                                            <h4>45
-                                                <span>
-                                                    <small>%</small>
-                                                    <small>Off</small>
-                                                </span>
-                                            </h4>
-                                        </div>
-                                        <div class="categories-contain">
-                                            <div class="categories-text">
-                                                <h5>Coriander</h5>
-                                            </div>
-                                            <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
-                                            </div>
-                                        </div>
-                                        <img src="assets/img/categories/5.jpg" alt="categories-5">
-                                    </div>
-                                </div>
-                                <div class="col-6 cr-categories-box mb-24">
-                                    <div class="cr-side-categories">
-                                        <div class="categories-inner">
-                                            <h4>20
-                                                <span>
-                                                    <small>%</small>
-                                                    <small>Off</small>
-                                                </span>
-                                            </h4>
-                                        </div>
-                                        <div class="categories-contain">
-                                            <div class="categories-text">
-                                                <h5>Broccoli</h5>
-                                            </div>
-                                            <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
-                                            </div>
-                                        </div>
-                                        <img src="assets/img/categories/6.jpg" alt="categories-6">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="Custard" role="tabpanel" aria-labelledby="Custard-tab">
-                            <div class="row mb-minus-24">
-                                <div class="col-6 cr-categories-box mb-24">
+                                <div  class="col-6  cr-categories-box mb-24">
                                     <div class="cr-side-categories">
                                         <div class="categories-inner">
                                             <h4>30
@@ -331,19 +167,19 @@
                                         </div>
                                         <div class="categories-contain">
                                             <div class="categories-text">
-                                                <h5>Apple</h5>
+                                                <!-- <h5>Cây</h5> -->
                                             </div>
                                             <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
+                                                <a href="shop-left-sidebar.html" class="cr-button">Mua ngay</a>
                                             </div>
                                         </div>
-                                        <img src="assets/img/categories/7.jpg" alt="categories-7">
+                                        <img style=" height: 600px; " src="https://i.pinimg.com/736x/97/89/2b/97892bf8ce2325698b12f801b594343f.jpg" alt="categories-3">
                                     </div>
                                 </div>
-                                <div class="col-6 cr-categories-box mb-24">
+                                <div  class="col-6 cr-categories-box mb-24">
                                     <div class="cr-side-categories">
                                         <div class="categories-inner">
-                                            <h4>25
+                                            <h4>20
                                                 <span>
                                                     <small>%</small>
                                                     <small>Off</small>
@@ -352,65 +188,134 @@
                                         </div>
                                         <div class="categories-contain">
                                             <div class="categories-text">
-                                                <h5>Mango</h5>
+                                                <!-- <h5>Cây để bàn</h5> -->
                                             </div>
                                             <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
+                                                <a href="shop-left-sidebar.html" class="cr-button">Mua ngay</a>
                                             </div>
                                         </div>
-                                        <img src="assets/img/categories/8.jpg" alt="categories-8">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="Strawberry" role="tabpanel" aria-labelledby="Strawberry-tab">
-                            <div class="row mb-minus-24">
-                                <div class="col-6 cr-categories-box mb-24">
-                                    <div class="cr-side-categories">
-                                        <div class="categories-inner">
-                                            <h4>33
-                                                <span>
-                                                    <small>%</small>
-                                                    <small>Off</small>
-                                                </span>
-                                            </h4>
-                                        </div>
-                                        <div class="categories-contain">
-                                            <div class="categories-text">
-                                                <h5>Strawberry</h5>
-                                            </div>
-                                            <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
-                                            </div>
-                                        </div>
-                                        <img src="assets/img/categories/9.jpg" alt="categories-9">
-                                    </div>
-                                </div>
-                                <div class="col-6 cr-categories-box mb-24">
-                                    <div class="cr-side-categories">
-                                        <div class="categories-inner">
-                                            <h4>15
-                                                <span>
-                                                    <small>%</small>
-                                                    <small>Off</small>
-                                                </span>
-                                            </h4>
-                                        </div>
-                                        <div class="categories-contain">
-                                            <div class="categories-text">
-                                                <h5>Strawberry</h5>
-                                            </div>
-                                            <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
-                                            </div>
-                                        </div>
-                                        <img src="assets/img/categories/10.jpg" alt="categories-10">
+                                        <img style=" height: 600px; " src="https://i.pinimg.com/736x/66/9b/b9/669bb983cf23757f4200c5bb747bf1f8.jpg" alt="categories-4">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- Sản phẩm hot -->
+      <section class="section-popular margin-b-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="mb-30">
+                        <div class="cr-banner">
+                            <h2>Sản phẩm yêu thích</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="cr-twocolumns-product">
+                        <?php foreach ($list_san_pham_hot as $key => $value):?>
+                        <div class="mix vegetable col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
+                            <div class="cr-product-card">
+                                <div class="cr-product-image">
+                                    <div class="cr-image-inner zoom-image-hover">
+                                        <img src="<?= BASE_URL . $value['link_anh'] ?>" alt="<?= $value['ten_san_pham'] ?> ">
+                                    </div>
+                                    <div class="cr-side-view">
+                                        <a href="javascript:void(0)" class="wishlist">
+                                            <i class="ri-heart-line"></i>
+                                        </a>
+                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
+                                            role="button">
+                                            <i class="ri-eye-line"></i>
+                                        </a>
+                                    </div>
+                                    <a class="cr-shopping-bag" href="javascript:void(0)">
+                                        <i class="ri-shopping-bag-line"></i>
+                                    </a>
+                                </div>
+                                <div class="cr-product-details">
+                                    <!-- <div class="cr-brand">
+                                        <a href="shop-left-sidebar.html">Vegetables</a>
+                                        <div class="cr-star">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-line"></i>
+                                            <p>(4.5)</p>
+                                        </div>
+                                    </div> -->
+                                    <a href="product-left-sidebar.html" class="title"> <?= $value['ten_san_pham'] ?> </a>
+                                    <p class="cr-price"><span class="new-price"><?= $value['gia_khuyen_mai'] ?></span> <span
+                                            class="old-price"><?= $value['gia_san_pham'] ?></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach ?> 
+                        <div class="slick-slide">
+                            <div class="cr-product-card">
+                                <div class="cr-product-image">
+                                    <div class="cr-image-inner zoom-image-hover">
+                                        <img src="assets/img/product/3.jpg" alt="product-1">
+                                    </div>
+                                    <div class="cr-side-view">
+                                        <a href="javascript:void(0)" class="wishlist">
+                                            <i class="ri-heart-line"></i>
+                                        </a>
+                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
+                                            role="button">
+                                            <i class="ri-eye-line"></i>
+                                        </a>
+                                    </div>
+                                    <a class="cr-shopping-bag" href="javascript:void(0)">
+                                        <i class="ri-shopping-bag-line"></i>
+                                    </a>
+                                </div>
+                                <div class="cr-product-details">
+                                    <div class="cr-brand">
+                                        <a href="shop-left-sidebar.html">Snacks</a>
+                                        <div class="cr-star">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <p>(5.0)</p>
+                                        </div>
+                                    </div>
+                                    <a href="product-left-sidebar.html" class="title">Sweet snakes crunchy nut
+                                        mix 250gm
+                                        pack</a>
+                                    <p class="cr-price"><span class="new-price">$100.00</span> <span
+                                            class="old-price">$110.00</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-xxl-5 col-xl-6 col-lg-6 col-md-12" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="cr-products-rightbar">
+                        <img src="assets/img/product/products-rightview.jpg" alt="products-rightview">
+                        <div class="cr-products-rightbar-content">
+                            <h4>Organic & Healthy <br> Vegetables</h4>
+                            <div class="cr-off">
+                                <span>25% <code>OFF</code></span>
+                            </div>
+                            <div class="rightbar-buttons">
+                                <a href="shop-left-sidebar.html" class="cr-button">
+                                    shop now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -422,26 +327,27 @@
                 <div class="col-lg-12">
                     <div class="mb-30">
                         <div class="cr-banner">
-                            <h2>Popular Products</h2>
+                            <h2>Gợi ý cho bạn</h2>
                         </div>
-                        <div class="cr-banner-sub-title">
+                        <!-- <div class="cr-banner-sub-title">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore lacus vel facilisis. </p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
             <div class="product-content row mb-minus-24" id="MixItUpDA2FB7">
+                <!-- Navbar lọc bên sản phẩm nổi bật  -->
                 <div class="col-xl-3 col-lg-4 col-12 mb-24">
                     <div class="row mb-minus-24 sticky">
                         <div class="col-lg-12 col-sm-6 col-6 cr-product-box mb-24">
                             <div class="cr-product-tabs">
                                 <ul>
-                                    <li class="active" data-filter="all">All</li>
-                                    <li data-filter=".snack">Snack</li>
-                                    <li data-filter=".vegetable">Vegetable</li>
-                                    <li data-filter=".fruit">Fruit</li>
-                                    <li data-filter=".bakery">Bakery</li>
+                                    <li class="active" data-filter="all">Tất cả</li>
+                                    <li data-filter=".snack">Sen Đá</li>
+                                    <li data-filter=".vegetable">Hoa</li>
+                                    <li data-filter=".fruit">Lan</li>
+                                    <li data-filter=".ten1">Lan Đột Biến</li>
                                 </ul>
                             </div>
                         </div>
@@ -460,6 +366,47 @@
                 </div>
                 <div class="col-xl-9 col-lg-8 col-12 mb-24">
                     <div class="row mb-minus-24">
+                        <!-- Begin Thẻ sản phẩm  -->
+                        <?php foreach ($list_san_pham_hot as $key => $value):?>
+                        <div class="mix vegetable col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
+                            <div class="cr-product-card">
+                                <div class="cr-product-image">
+                                    <div class="cr-image-inner zoom-image-hover">
+                                        <img src="<?= BASE_URL . $value['link_anh'] ?>" alt="<?= $value['ten_san_pham'] ?> ">
+                                    </div>
+                                    <div class="cr-side-view">
+                                        <a href="javascript:void(0)" class="wishlist">
+                                            <i class="ri-heart-line"></i>
+                                        </a>
+                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
+                                            role="button">
+                                            <i class="ri-eye-line"></i>
+                                        </a>
+                                    </div>
+                                    <a class="cr-shopping-bag" href="javascript:void(0)">
+                                        <i class="ri-shopping-bag-line"></i>
+                                    </a>
+                                </div>
+                                <div class="cr-product-details">
+                                    <!-- <div class="cr-brand">
+                                        <a href="shop-left-sidebar.html">Vegetables</a>
+                                        <div class="cr-star">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-line"></i>
+                                            <p>(4.5)</p>
+                                        </div>
+                                    </div> -->
+                                    <a href="product-left-sidebar.html" class="title"> <?= $value['ten_san_pham'] ?> </a>
+                                    <p class="cr-price"><span class="new-price"><?= $value['gia_khuyen_mai'] ?></span> <span
+                                            class="old-price"><?= $value['gia_san_pham'] ?></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach ?> 
+                        <!-- End Thẻ sản phẩm  -->
                         <div class="mix vegetable col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
                             <div class="cr-product-card">
                                 <div class="cr-product-image">
@@ -498,7 +445,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mix snack col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
+                        <div class="mix ten1 col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
                             <div class="cr-product-card">
                                 <div class="cr-product-image">
                                     <div class="cr-image-inner zoom-image-hover">
@@ -536,242 +483,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mix fruit col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/2.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Fruits</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-line"></i>
-                                            <p>(4.5)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Fresh organic apple 1kg simla
-                                        marming</a>
-                                    <p class="cr-price"><span class="new-price">$120.25</span> <span
-                                            class="old-price">$123.25</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mix bakery col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/17.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Bakery</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Delicious white baked fresh bread
-                                        and toast</a>
-                                    <p class="cr-price"><span class="new-price">$20</span> <span
-                                            class="old-price">$22.10</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mix snack col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/11.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Sweet crunchy nut mix 250gm
-                                        pack</a>
-                                    <p class="cr-price"><span class="new-price">$120.25</span> <span
-                                            class="old-price">$123.25</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mix fruit col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/3.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Fruits</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-line"></i>
-                                            <i class="ri-star-line"></i>
-                                            <p>(3.2)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Organic fresh venila farm
-                                        watermelon 5kg</a>
-                                    <p class="cr-price"><span class="new-price">$50.30</span> <span
-                                            class="old-price">$72.60</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mix snack col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/10.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Sweet crunchy nut mix 250gm
-                                        pack</a>
-                                    <p class="cr-price"><span class="new-price">$120.25</span> <span
-                                            class="old-price">$123.25</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mix bakery col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/17.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Bakery</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Delicious white baked fresh bread
-                                        and toast</a>
-                                    <p class="cr-price"><span class="new-price">$20</span> <span
-                                            class="old-price">$22.10</span></p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </section>
 
     <!-- Product banner -->
-    <section class="section-product-banner padding-b-100">
+    <!-- <section class="section-product-banner padding-b-100">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -821,7 +541,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Services -->
     <section class="section-services padding-b-100">
@@ -837,8 +557,8 @@
                                             <i class="ri-red-packet-line"></i>
                                         </div>
                                         <div class="cr-services-contain">
-                                            <h4>Product Packing</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                                            <h4>Đóng gói sản phẩm</h4>
+                                            <p>Đóng gói sản phẩm cẩn thận đảm bảo chất lượng sản phẩm đến khách hàng.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -848,8 +568,8 @@
                                             <i class="ri-customer-service-2-line"></i>
                                         </div>
                                         <div class="cr-services-contain">
-                                            <h4>24X7 Support</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                                            <h4>Hỗ trợ 24/7</h4>
+                                            <p>Giải đáp mọi thắc mặc của khách hàng mọi lúc mọi nơi.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -859,8 +579,8 @@
                                             <i class="ri-truck-line"></i>
                                         </div>
                                         <div class="cr-services-contain">
-                                            <h4>Delivery in 5 Days</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                                            <h4>Giao hàng nhanh</h4>
+                                            <p>Hỗ trợ giao hàng đến khắp các tỉnh thành của Việt Nam.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -870,8 +590,8 @@
                                             <i class="ri-money-dollar-box-line"></i>
                                         </div>
                                         <div class="cr-services-contain">
-                                            <h4>Payment Secure</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                                            <h4>Thanh toán an toàn</h4>
+                                            <p>Hỗ trợ khách hàng qua nhiều phương thức thanh toán đa dạng.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -924,229 +644,10 @@
         </div>
     </section>
 
-    <!-- Popular product -->
-    <section class="section-popular margin-b-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-xxl-7 col-xl-6 col-lg-6 col-md-12" data-aos="fade-up" data-aos-duration="2000">
-                    <div class="cr-twocolumns-product">
-                        <div class="slick-slide">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/9.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-line"></i>
-                                            <p>(4.5)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Best snakes with hazel nut
-                                        mix pack 200gm</a>
-                                    <p class="cr-price"><span class="new-price">$120.25</span> <span
-                                            class="old-price">$123.25</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slick-slide">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/10.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Sweet snakes crunchy nut
-                                        mix 250gm
-                                        pack</a>
-                                    <p class="cr-price"><span class="new-price">$100.00</span> <span
-                                            class="old-price">$110.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slick-slide">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/1.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-line"></i>
-                                            <p>(4.5)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Best snakes with hazel nut
-                                        mix pack 200gm</a>
-                                    <p class="cr-price"><span class="new-price">$120.25</span> <span
-                                            class="old-price">$123.25</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slick-slide">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/2.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Sweet snakes crunchy nut
-                                        mix 250gm
-                                        pack</a>
-                                    <p class="cr-price"><span class="new-price">$100.00</span> <span
-                                            class="old-price">$110.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slick-slide">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/3.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Sweet snakes crunchy nut
-                                        mix 250gm
-                                        pack</a>
-                                    <p class="cr-price"><span class="new-price">$100.00</span> <span
-                                            class="old-price">$110.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-5 col-xl-6 col-lg-6 col-md-12" data-aos="fade-up" data-aos-duration="2000">
-                    <div class="cr-products-rightbar">
-                        <img src="assets/img/product/products-rightview.jpg" alt="products-rightview">
-                        <div class="cr-products-rightbar-content">
-                            <h4>Organic & Healthy <br> Vegetables</h4>
-                            <div class="cr-off">
-                                <span>25% <code>OFF</code></span>
-                            </div>
-                            <div class="rightbar-buttons">
-                                <a href="shop-left-sidebar.html" class="cr-button">
-                                    shop now
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  
 
     <!-- Testimonial -->
-    <section class="section-testimonial padding-b-100">
+    <!-- <section class="section-testimonial padding-b-100">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -1233,10 +734,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Blog -->
-    <section class="section-blog padding-b-100">
+    <!-- <section class="section-blog padding-b-100">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -1332,7 +833,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 </main>
 
