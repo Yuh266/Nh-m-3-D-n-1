@@ -37,8 +37,12 @@ match ($act) {
     // Route Sản phẩm
     "danh-sach-san-pham"=>(new AdminProductController())->listProduct(),
 
-    // "form-them-loai-hang"=>(new AdminLoaiHangController())->formAddLoaiHang(),
-    // "them-loai-hang"=>(new AdminLoaiHangController())->postAddLoaiHang(),
+    "form-them-san-pham"=>(new AdminProductController())->formAddSanPham(),
+    "them-san-pham"=>(new AdminProductController())->postAddSanPham(),
+
+    "form-sua-san-pham"=>(new AdminProductController())->formEditSanPham(),
+    "sua-san-pham"=>(new AdminProductController())->postEditSanPham(),
+    'sua-album-anh-san-pham' => (new AdminProductController())->postEditAnhSanPham(),
 
     // Route danh mục
     "danh-sach-danh-muc"=>(new AdminDanhMucController())->listDanhMuc(),
