@@ -22,8 +22,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="mb-3 col-md-4 "> 
-                        <label for="exampleInputEmail1" class="form-label">Tên sản phẩm</label> 
-                        <input value="<?= $_SESSION['san_pham']['ten_san_pham'] ??'' ?>" name="ten_san_pham" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập tên sản phẩm">
+                        <label for="ten_san_pham" class="form-label">Tên sản phẩm</label> 
+                        <input value="<?= $_SESSION['san_pham']['ten_san_pham'] ??'' ?>" name="ten_san_pham" type="text" class="form-control" id="ten_san_pham" aria-describedby="emailHelp" placeholder="Nhập tên sản phẩm">
                         <div id="emailHelp" class="form-text">
                           <?php if(isset($_SESSION['error']['ten_san_pham'])){ ?>
                             <p class="text-danger"><?= $_SESSION['error']['ten_san_pham'] ?></p>
@@ -33,7 +33,7 @@
 
                     <div class="mb-3 col-md-4 "> 
                         <label for="exampleInputEmail1" class="form-label">Giá sản phẩm</label> 
-                        <input value="<?= $_SESSION['san_pham']['gia_san_pham'] ?? '' ?>" name="gia_san_pham" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập giá phẩm">
+                        <input value="<?= $_SESSION['san_pham']['gia_san_pham'] ?? '' ?>" name="gia_san_pham" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập giá phẩm">
                         <div id="emailHelp" class="form-text">
                           <?php if(isset($_SESSION['error']['gia_san_pham'])){ ?>
                             <p class="text-danger"><?= $_SESSION['error']['gia_san_pham'] ?></p>
@@ -43,7 +43,7 @@
 
                     <div class="mb-3 col-md-4 "> 
                         <label for="exampleInputEmail1" class="form-label">Giá khuyến mãi</label> 
-                        <input value="<?= $_SESSION['san_pham']['gia_khuyen_mai'] ?? '' ?>" name="gia_khuyen_mai" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập giá khuyến mãi">
+                        <input value="<?= $_SESSION['san_pham']['gia_khuyen_mai'] ?? '' ?>" name="gia_khuyen_mai" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập giá khuyến mãi">
                         <div id="emailHelp" class="form-text">
                           <?php if(isset($_SESSION['error']['gia_khuyen_mai'])){ ?>
                             <p class="text-danger"><?= $_SESSION['error']['gia_khuyen_mai'] ?></p>
@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="mb-3 col-md-4 "> 
-                        <label for="exampleInputEmail1" class="form-label">Danh mục</label> 
+                        <label for="exampleInputEmail1" class="form-label">Danh mục sản phẩm</label> 
                         <select class="form-select" name="id_danh_muc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 <option value=""  hidden>Chọn danh mục sản phẩm</option>
                             <?php foreach($listDanhMuc as $danhMuc): ?>
@@ -115,9 +115,12 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 col-md-12 "> 
-                        <label for="exampleInputEmail1" class="form-label">Mô tả</label> 
-                        <textarea name="mo_ta" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập mô tả"></textarea>
+                    <div class="mb-3 col-md-12">
+                        <label for="exampleInputEmail1" class="form-label">Mô tả</label>
+                        <textarea name="mo_ta" class="form-control" id="exampleInputEmail1" placeholder="Nhập mô tả"><?= htmlspecialchars($_SESSION['san_pham']['mo_ta'] ?? ($_POST['mo_ta'] ?? '')) ?></textarea>
+                        <?php if (isset($_SESSION['mo_ta'])) { ?>
+                            <p class="text-danger"><?= isset($_SESSION['mo_ta']) ?></p>
+                        <?php } ?>
                     </div>
                     
             </div> <!--end::Body--> <!--begin::Footer-->
