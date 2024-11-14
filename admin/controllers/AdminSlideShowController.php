@@ -41,9 +41,10 @@ class AdminSlideShowController{
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $ten_anh = $_POST['ten_anh'] ?? "" ;
             $so_thu_tu = $_POST['so_thu_tu'] ?? "" ;
-            $thoi_gian_ton_tai = $_POST['thoi_gian_ton_tai'] ?? null ;
             $link_chuyen_huong = $_POST['link_chuyen_huong'] ?? "" ;
             $trang_thai = $_POST['trang_thai'] ?? "" ;
+            $mo_ta = $_POST['mo_ta'] ?? "" ;
+            $tieu_de = $_POST['tieu_de'] ?? "" ;
             $file_anh = $_FILES['file_anh'] ?? "" ;
             // var_dump("Vào r");
             // Begin validate
@@ -57,8 +58,11 @@ class AdminSlideShowController{
             if(empty($link_chuyen_huong)){
                 $error['link_chuyen_huong'] = "Không được bỏ trống";
             }
-            if(empty($thoi_gian_ton_tai)){
-                $error['thoi_gian_ton_tai'] = "Không được bỏ trống";
+            if(empty($tieu_de)){
+                $error['tieu_de'] = "Không được bỏ trống";
+            }
+            if(empty($mo_ta)){
+                $error['mo_ta'] = "Không được bỏ trống";
             }
             if(empty($trang_thai)&&$trang_thai!= "0"){
                 $error['trang_thai'] = "Không được bỏ trống";
@@ -75,7 +79,7 @@ class AdminSlideShowController{
                 // Lưu ảnh
                 $link_anh = upLoadFile($file_anh,'./uploads/');
 
-                if ($id=$this->modelSlideShows->insertSlideShow($ten_anh, $so_thu_tu, $thoi_gian_ton_tai,$link_anh, $link_chuyen_huong,$trang_thai)){
+                if ($id=$this->modelSlideShows->insertSlideShow($ten_anh, $so_thu_tu, $link_anh, $link_chuyen_huong,$trang_thai,$tieu_de,$mo_ta)){
                     // Xóa toàn bộ session đã lưu (hướng tới xóa Session báo lỗi và hiện thị lại đã nhập) error , slide_show
 
                     session_unset();
@@ -89,9 +93,10 @@ class AdminSlideShowController{
                 $slide_show = [
                     'ten_anh'=>$ten_anh,
                     'so_thu_tu'=>$so_thu_tu,
-                    'thoi_gian_ton_tai'=>$thoi_gian_ton_tai,
                     'link_chuyen_huong'=>$link_chuyen_huong,
                     'trang_thai'=>$trang_thai,
+                    'tieu_de'=>$tieu_de,
+                    'mo_ta'=>$mo_ta,
                 ];
                 $_SESSION['slide_show'] = $slide_show;
                 $_SESSION['flash'] = 1 ;
@@ -144,6 +149,8 @@ class AdminSlideShowController{
             $thoi_gian_ton_tai = $_POST['thoi_gian_ton_tai'] ?? "" ;
             $link_chuyen_huong = $_POST['link_chuyen_huong'] ?? "" ;
             $trang_thai = $_POST['trang_thai'] ?? "" ;
+            $tieu_de = $_POST['tieu_de'] ?? "" ;
+            $mo_ta = $_POST['mo_ta'] ?? "" ;
             $file_anh = $_FILES['file_anh'] ?? "" ;
             var_dump("Vào r");
             // Begin validate
@@ -157,8 +164,11 @@ class AdminSlideShowController{
             if(empty($link_chuyen_huong)){
                 $error['link_chuyen_huong'] = "Không được bỏ trống";
             }
-            if(empty($thoi_gian_ton_tai)){
-                $error['thoi_gian_ton_tai'] = "Không được bỏ trống";
+            if(empty($tieu_de)){
+                $error['tieu_de'] = "Không được bỏ trống";
+            }
+            if(empty($mo_ta)){
+                $error['mo_ta'] = "Không được bỏ trống";
             }
             if(empty($trang_thai) && $trang_thai!= "0"){
                 $error['trang_thai'] = "Không được bỏ trống";
@@ -182,7 +192,7 @@ class AdminSlideShowController{
                     $link_anh = $old_image;
                 }
                 
-                if ($this->modelSlideShows->updateSlideShow($id,$ten_anh, $so_thu_tu, $thoi_gian_ton_tai,$link_anh, $link_chuyen_huong,$trang_thai)){
+                if ($this->modelSlideShows->updateSlideShow($id,$ten_anh, $so_thu_tu, $link_anh, $link_chuyen_huong,$trang_thai,$tieu_de,$mo_ta)){
                     session_unset();
                     $_SESSION['alert_success'] = 1 ;
                     $_SESSION['id_active'] = $id ;
@@ -197,9 +207,10 @@ class AdminSlideShowController{
                     'id'=>$id,
                     'ten_anh'=>$ten_anh,
                     'so_thu_tu'=>$so_thu_tu,
-                    'thoi_gian_ton_tai'=>$thoi_gian_ton_tai,
                     'link_chuyen_huong'=>$link_chuyen_huong,
                     'trang_thai'=>$trang_thai,
+                    'tieu_de'=>$tieu_de,
+                    'mo_ta'=>$mo_ta,
                 ];
                 $_SESSION['slide_show'] = $slide_show;
                 $_SESSION['flash'] = 1 ;

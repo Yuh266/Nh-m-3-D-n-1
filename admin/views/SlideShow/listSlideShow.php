@@ -34,7 +34,8 @@
                 <th>#</th>
                 <th>Tên ảnh</th>
                 <th>Số thứ tự slide </th>
-                <th>Thời gian tồn tại</th>
+                <th>Tiêu đề </th>
+                <th>Mô tả </th>
                 <th>Link chuyển hướng</th>
                 <th>Hình ảnh</th>
                 <th>Trạng thái</th>
@@ -54,7 +55,8 @@
                         <td><input name="id[]" value="<?= $value['id'] ?>" type="checkbox" ></td>
                         <td><?= $value['ten_anh'] ?></td>
                         <td><?= $value['so_thu_tu'] ?></td>
-                        <td><?= $value['thoi_gian_ton_tai'] ?></td>
+                        <td><?= $value['tieu_de'] ?></td>
+                        <td><?= $value['mo_ta'] ?></td>
                         <td><a class="delete_checked" href="<?= $value['link_chuyen_huong'] ?>" target="_blank" ><?= $value['link_chuyen_huong'] ?></a></td>
                         <td><img src="<?= BASE_URL . $value['link_anh'] ?>" width="100px" alt=""></td>
                         <td><?= $value['trang_thai'] == 1 ? "Kích hoạt" : "Vô hiệu" ?></td>
@@ -68,10 +70,11 @@
                 <?php endforeach ?>
             </tbody>
             <thead>
-            <th>#</th>
+                <th>#</th>
                 <th>Tên ảnh</th>
                 <th>Số thứ tự slide </th>
-                <th>Thời gian tồn tại</th>
+                <th>Tiêu đề </th>
+                <th>Mô tả </th>
                 <th>Link chuyển hướng</th>
                 <th>Hình ảnh</th>
                 <th>Trạng thái</th>

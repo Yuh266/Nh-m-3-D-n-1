@@ -16,7 +16,6 @@ spl_autoload_register(function ($class) {
     }elseif (is_readable($fileController)) {
         require_once $fileController ;
     }
-
 });
 
 // var_dump($_GET);die();
@@ -40,6 +39,6 @@ if (isset($_GET['act'])) {
 
 match ($act) {
     // Trang chủclgur
-    "/"=>(header("Location:".BASE_URL_ADMIN)),
-
+    "/"=>(new SanPhamController() )->Trangchu(),
+    
 };
