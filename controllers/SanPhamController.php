@@ -17,5 +17,8 @@ class SanPhamController
         
         require './views/TrangChinh/trangchu.php' ;
     }
+    public function Login(){
+        require './views/TrangChinh/login.php' ;
+    }
 
 }
