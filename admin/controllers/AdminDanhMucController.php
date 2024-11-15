@@ -15,8 +15,9 @@ class AdminDanhMucController{
             ["link"=> '',"ten"=> $title ],
         ];
         require_once './views/Danhmuc/listDanhMuc.php';
-        $_SESSION['flash'] = 1 ;
-        deleteSessionError();
+        deleteAlertSession();
+        deleteSession('error');
+        deleteSession('danh_muc');
     }
 
     public function formAddDanhMuc(){
@@ -28,8 +29,9 @@ class AdminDanhMucController{
         ];
         require_once './views/Danhmuc/addDanhMuc.php';
         // Xóa session sau khi load trang
-        deleteSessionError();
         deleteAlertSession();
+        deleteSession('error');
+        deleteSession('danh_muc');
     }
 
     public function postAddDanhMuc(){
@@ -59,8 +61,7 @@ class AdminDanhMucController{
                 }
                 
             }else{
-                // Đặt chỉ thị xóa session sau khi hiển thị form
-                $_SESSION['flash'] = true;
+                
                 $_SESSION['alert_error']=1;
                 header('Location: ' . BASE_URL_ADMIN . '?act=form-them-danh-muc');
                 exit();

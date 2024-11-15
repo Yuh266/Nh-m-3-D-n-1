@@ -6,7 +6,6 @@ class AdminTaiKhoan{
     public function __construct() {
         $this->conn = connectDB();
     }
-
     
     public function getTaiKhoanByID($id){
         $sql = "SELECT * FROM tai_khoans WHERE id=".$id;
@@ -63,5 +62,25 @@ class AdminTaiKhoan{
         
     }
 
+    public function checkLoginAdmin($email, $mat_khau){
+        try {
+            $sql = " SELECT * FROM tai_khoans 
+                    WHERE email=:email  
+                    AND mat_khau=:mat_khau 
+                    AND (chuc_vu = 1 OR chuc_vu = 3) 
+                    AND trang_thai = 1";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':email'=>$email,
+                ':mat_khau'=>$mat_khau,
+            ]);
+            
+            return $stmt->fetch() ;
+        }catch (Exception $th) {
+            echo $th->getMessage();           
+        }
+    }
+
+   
 }
 

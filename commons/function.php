@@ -91,5 +91,3 @@ function uploadFileAlbum($file, $folderUpload, $key){
 
 
 
-
-
