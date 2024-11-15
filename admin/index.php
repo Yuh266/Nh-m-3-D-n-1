@@ -18,16 +18,21 @@ spl_autoload_register(function ($class) {
     }elseif (is_readable($fileController)) {
         require_once $fileController ;
     }
-
 });
-
 
 // $act = $_GET['act'] ?? '/';
 if (isset($_GET['act'])) {
-    $act = $_GET['act'];
+    $act = $_GET['act'] ;
 }else{
     $act = 'danh-sach-danh-muc';
 }
+
+if ( !isset($_SESSION['user']) && !in_array($act,['form-dang-nhap','dang-nhap'])  ) {
+    header('Location:'.BASE_URL_ADMIN.'/?act=form-dang-nhap');
+}else {
+    
+}
+
 
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 
@@ -53,15 +58,14 @@ match ($act) {
     // Tài khoản
 
     "form-dang-nhap"=>(new AdminTaiKhoanController())->formLogin(),
+    "dang-nhap"=>(new AdminTaiKhoanController())->login(),
+    "dang-xuat"=>(new AdminTaiKhoanController())->logout(),
 
-    "form-dang-ky"=>(new AdminTaiKhoanController())->formRegister(),
     "danh-sach-tai-khoan"=>(new AdminTaiKhoanController())->listTaiKhoan(),
     "form-them-tai-khoan"=>(new AdminTaiKhoanController())->formAddTaiKhoan(),
     "them-tai-khoan"=>(new AdminTaiKhoanController())->postAddTaiKhoan(),
-    
     "form-sua-tai-khoan"=>(new AdminTaiKhoanController())->formEditTaiKhoan(),
     "sua-tai-khoan"=>(new AdminTaiKhoanController())->postEditTaiKhoan(),
-
     "xoa-tai-khoan"=>(new AdminTaiKhoanController())->deleteTaiKhoan(),
 
     // Slide Show
