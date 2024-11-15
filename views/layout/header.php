@@ -71,10 +71,13 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="register.html">Đăng ký</a>
+                                            <a class="dropdown-item" href="register.php">Đăng ký</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="checkout.html">Đăng nhập</a>
+                                            <a class="dropdown-item" href="<?= BASE_URL."?act=form-login"?>">Đăng nhập</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="<?= BASE_URL."?act=form-login"?>">Đăng xuất</a>
                                         </li>
                                         
                                     </ul>
@@ -289,13 +292,13 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="register.html">Register</a>
+                                            <a class="dropdown-item" href="register.php">Register</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="checkout.html">Checkout</a>
+                                            <a class="dropdown-item" href="checkout.php">Checkout</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="login.html">Login</a>
+                                            <a class="dropdown-item" href="login.php">Login</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -364,7 +367,7 @@
                                             <a class="dropdown-item" href="cart.html">Cart</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="checkout.html">Checkout</a>
+                                            <a class="dropdown-item" href="checkout.php">Checkout</a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="track-order.html">Track Order</a>
@@ -376,10 +379,10 @@
                                             <a class="dropdown-item" href="faq.html">Faq</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="login.html">Login</a>
+                                            <a class="dropdown-item" href="login.php">Login</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="register.html">Register</a>
+                                            <a class="dropdown-item" href="register.php">Register</a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="policy.html">Policy</a>
