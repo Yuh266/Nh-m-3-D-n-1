@@ -40,7 +40,7 @@ if (isset($_GET['act'])) {
 match ($act) {
     // Trang chủclgur
     "/"=>(new SanPhamController() )->Trangchu(),
-    //login
+
     "login"=>(new TaiKhoanController())->Login(),
     "form-login"=>(new TaiKhoanController())->post_Login(),
     //register

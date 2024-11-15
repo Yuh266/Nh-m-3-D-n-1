@@ -18,7 +18,14 @@ class SanPhamController
         require './views/TrangChinh/trangchu.php' ;
     }
     public function Login(){
+        $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
+
         require './views/TrangChinh/login.php' ;
     }
 
+    public function timKiem(){
+        $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
+        
+        require './views/TrangChinh/tim_kiem.php' ;
+    }
 }

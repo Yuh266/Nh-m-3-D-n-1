@@ -21,8 +21,8 @@ class AdminDiaChiNhanHangController{
 
         require_once "./views/DiaChiNhanHang/listDiaChi.php";
         deleteAlertSession();
-        $_SESSION['flash'] = 1;
-        deleteSessionError();
+        deleteSession('error');
+        deleteSession('dia_chi');
 
     }
 
@@ -91,7 +91,7 @@ class AdminDiaChiNhanHangController{
                 ];
                 $_SESSION['dia_chi'] = $dia_chi;
                 $_SESSION['alert_error'] =1;
-                $_SESSION['flash'] =1;
+                
                 header('Location:'.BASE_URL_ADMIN.'/?act=form-them-'.$title_url);
             }
         }else {

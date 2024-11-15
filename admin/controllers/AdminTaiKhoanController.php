@@ -10,10 +10,52 @@ class AdminTaiKhoanController{
         
         require "./views/TaiKhoan/login.php";
     }
+    public function login(){
+       if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $email = $_POST['email'] ?? '';
+            $mat_khau = $_POST['mat_khau'] ?? '';
+            // var_dump($_POST);die();
+            $errors = [];
+            if (empty($email)) {
+                $errors['email'] = 'Email không được để trống';
+            }
+            if (empty($mat_khau)) { 
+                $errors['mat_khau'] = 'Mật khẩu không được để trống';
+            } 
 
-    public function formRegister(){
-        
-        require "./views/TaiKhoan/register.php";
+            $_SESSION['error'] = $errors;
+
+            if (empty($errors)) {
+                $user = $this->modelTaiKhoan->checkLoginAdmin( $email,$mat_khau );
+                // var_dump($user);die();
+                if (empty($user)) {
+                    $_SESSION['alert_error'] = 'Tài khoản , mật khẩu không tồn tại';
+                }else {
+                    $_SESSION['user'] = $user;
+                    // var_dump($_SESSION['user']);die();
+                    header("Location:".BASE_URL_ADMIN);
+                }
+                // header('Location: ' . BASE_URL_ADMIN ) ;
+            
+            } else {
+                // Lưu dữ liệu vào session để giữ lại dữ liệu khi có lỗi
+                $_SESSION['tai_khoan'] = [
+                    'email' => $email,
+                    'mat_khau' => $mat_khau, 
+                ];
+                // var_dump($errors);die();
+                // $_SESSION['alert_error'] = 'Có lỗi trong quá trình thêm tài khoản';
+                header('Location: ' . BASE_URL_ADMIN . '/?act=form-login');
+                exit;
+            }
+       }
+
+    }
+
+    public function logout(){
+        session_destroy();
+
+        header('Location:'.BASE_URL_ADMIN."/?act=form-dang-nhap");
     }
     public function listTaiKhoan(){
         $listTaiKhoan = $this->modelTaiKhoan->getAllTaiKhoan();
