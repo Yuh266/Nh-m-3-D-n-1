@@ -17,9 +17,12 @@ class AdminTrangThaiDonHangController{
         $listTrangThai = $this->modelTrangThai->getAllTrangThai();
 
         require_once "./views/TrangThaiDonHang/listTrangThai.php";
+        if (isset($_SESSION['id_active'])) {
+            unset($_SESSION['id_active']);
+        }
         deleteAlertSession();
-        $_SESSION['flash'] = 1;
-        deleteSessionError();
+        deleteSession('error');
+        deleteSession('trang_thai');
     }
 
     public function formAddTrangThai(){
@@ -67,7 +70,7 @@ class AdminTrangThaiDonHangController{
                 ];
                 $_SESSION['trang_thai'] = $trang_thai;
                 $_SESSION['alert_error'] =1;
-                $_SESSION['flash'] =1;
+                
                 header('Location:'.BASE_URL_ADMIN.'/?act=form-them-'.$title_url);
             }
         }else {
@@ -137,7 +140,6 @@ class AdminTrangThaiDonHangController{
                 ];
                 $_SESSION['trang_thai'] = $trang_thai;
                 $_SESSION['alert_error'] =1;
-                $_SESSION['flash'] =1;
                 header('Location:'.BASE_URL_ADMIN.'/?act=form-sua-'.$title_url."&id=".$id);
             }
         }else {

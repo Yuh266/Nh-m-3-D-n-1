@@ -16,7 +16,10 @@ class AdminSlideShowController{
         ];
         
         require "./views/SlideShow/listSlideShow.php";
-
+        if (isset($_SESSION['id_active'])) {
+            unset($_SESSION['id_active']);
+        }
+        deleteAlertSession();
         deleteSession('error');
         deleteSession('slide_show');
     }
