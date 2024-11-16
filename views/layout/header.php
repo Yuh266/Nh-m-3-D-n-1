@@ -1,5 +1,5 @@
 <?php
-$isLoggedIn = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'];
+$isLoggedIn = isset($_SESSION['user_logged']) && $_SESSION['user_logged'];
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -65,27 +65,41 @@ $isLoggedIn = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'];
                         </form>
                         <div class="cr-right-bar">
                             <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
+                                 <?php if (isset($_SESSION['user'])): ?>
+                                    <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
                                         <i class="ri-user-3-line"></i>
-                                        <span>Tài khoản</span>
+                                        <span><?=$_SESSION['user']['ho_ten']?></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                    <?php if (!$isLoggedIn): ?>
+                                            
+                                            <li>
+                                                <a class="dropdown-item" href="<?= BASE_URL . "?act=form-login"  ?> ">Đăng xuất</a>
+        
+                                            </li>
+                                      
+                                    </ul>
+                                </li>
+                                    <?php else: ?>
+                                        <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
+                                        <i class="ri-user-3-line"></i>
+                                        <span>Tài Khoản</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                    
                                             <li>
                                                 <a class="dropdown-item" href="<?= BASE_URL . "?act=register" ?>">Đăng ký</a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="<?= BASE_URL . "?act=login" ?>">Đăng nhập</a>
                                             </li>
-                                        <?php else: ?>
-                                            <li>
-                                                <a class="dropdown-item" href="<?= BASE_URL . "?act=form-login"  ?> ">Đăng xuất</a>
-                                              <?  unset($_SESSION['user_logged_in']) ?>
-                                            </li>
-                                        <?php endif; ?>
+
+                                      
                                     </ul>
                                 </li>
+                                        <?php endif; ?>
+                               
                             </ul>
                             <!-- <a href="wishlist.html" class="cr-right-bar-item">
                                 <i class="ri-heart-3-line"></i>
@@ -93,7 +107,7 @@ $isLoggedIn = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'];
                             </a> -->
                             <a href="javascript:void(0)" class="cr-right-bar-item Shopping-toggle">
                                 <i class="ri-shopping-cart-line"></i>
-                                <span>Giỏ hàng</span>
+                              
                             </a>
                         </div>
                     </div>
