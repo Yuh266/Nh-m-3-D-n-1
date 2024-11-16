@@ -72,7 +72,8 @@ class AdminTaiKhoanController{
         if (isset($_SESSION['id_active'])) {
             unset($_SESSION['id_active']);
         }
-        deleteSessionError();
+        deleteSession('error');
+        deleteSession('slide_show');
     }
     public function formAddTaiKhoan() {
         $title = "Thêm Tài Khoản";
@@ -82,7 +83,8 @@ class AdminTaiKhoanController{
             ["link" => '', "ten" => $title],
         ];
         require "./views/TaiKhoan/addTaiKhoan.php";
-        unset($_SESSION['error']);
+        deleteSession('error');
+        deleteSession('slide_show');
     }
     
     public function postAddTaiKhoan() {
@@ -186,7 +188,8 @@ class AdminTaiKhoanController{
 
 
             require "./views/TaiKhoan/editTaiKhoan.php";
-            deleteSessionError();
+            deleteSession('error');
+            deleteSession('slide_show');
         }else{
             header("Location:".BASE_URL_ADMIN."?act=danh-sach-tai-khoan") ;
         }        
@@ -238,7 +241,7 @@ class AdminTaiKhoanController{
                 
                 if ($this->modelTaiKhoan->updateTaikhoan($id,$ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$mat_khau,$trang_thai,$date,$dia_chi)){
 
-                    session_unset();
+                    
                     $_SESSION['alert_success'] = 1 ;
                     $_SESSION['id_active'] = $id ;
                     

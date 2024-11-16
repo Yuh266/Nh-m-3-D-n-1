@@ -17,7 +17,8 @@ class AdminProductController{
             ["link"=> '',"ten"=> $title ],
         ];
         require_once './views/product/listProduct.php';
-        session_unset();
+        deleteSession('error');
+        deleteSession('san_pham');
     }
 
     public function formAddSanPham(){
@@ -104,7 +105,7 @@ class AdminProductController{
                         $this->modelProduct->insertAlbumSanPham($id_san_pham, $link_anh);
                     }
                 }
-                    session_unset();
+                   
                     $_SESSION['alert_success'] = 1;
                     $_SESSION['id_active'] = $id_san_pham;
                 header('Location: ' . BASE_URL_ADMIN. '?act=form-them-san-pham');
@@ -152,7 +153,7 @@ class AdminProductController{
             deleteAlertSession();
         }else{
             header('Location: ' . BASE_URL_ADMIN. '?act=danh-sach-san-pham');
-                exit();
+            exit();
         }
     }
 
@@ -220,7 +221,7 @@ class AdminProductController{
                 $id = $this->modelProduct->updateSanPham($id_san_pham, $ten_san_pham, $gia_san_pham, 
                 $gia_khuyen_mai, $so_luong, $ngay_nhap, $id_danh_muc, $trang_thai, $mo_ta, $new_file);
                 // var_dump($id);die;
-                session_unset();
+               
                 $_SESSION['alert_success'] = 1;
                 $_SESSION['id_active'] = $id;
                 header('Location: ' . BASE_URL_ADMIN. '?act=form-sua-san-pham&id_san_pham=' . $id_san_pham);

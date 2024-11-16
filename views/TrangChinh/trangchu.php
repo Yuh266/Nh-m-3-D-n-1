@@ -214,7 +214,7 @@
                             <div class="cr-product-card">
                                 <div class="cr-product-image">
                                     <div class="cr-image-inner zoom-image-hover">
-                                        <img src="<?= BASE_URL . $value['link_anh'] ?>" alt="<?= $value['ten_san_pham'] ?> ">
+                                        <img src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="<?= $value['ten_san_pham'] ?> ">
                                     </div>
                                     <div class="cr-side-view">
                                         <a href="javascript:void(0)" class="wishlist">
@@ -361,7 +361,7 @@
                             <div class="cr-product-card">
                                 <div class="cr-product-image">
                                     <div class="cr-image-inner zoom-image-hover">
-                                        <img src="<?= BASE_URL . $value['link_anh'] ?>" alt="<?= $value['ten_san_pham'] ?> ">
+                                        <img src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="<?= $value['ten_san_pham'] ?> ">
                                     </div>
                                     <div class="cr-side-view">
                                         <a href="javascript:void(0)" class="wishlist">
