@@ -21,7 +21,7 @@
                         <button onclick="boChonTatCa()" type="button" class="btn btn-success" >Bỏ chọn tất cả</button>
                     </li>
                     <li class="nav-item active mx-2">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal"  data-link="<?= 'deleteAll' ?>">
+                        <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal"  data-link="<?= 'deleteAll' ?>">
                             Xóa các mục đã chọn 
                         </button>
                     </li>
@@ -57,7 +57,7 @@
                             }
                         ?>
                     >
-                        <td><input name="id[]" product="<?= $product['id'] ?>" type="checkbox" ></td>
+                        <td><input name="id[]" value="<?= $product['id'] ?>" type="checkbox"></td>
                         <td><?= $key + 1 ?></td>
                         <td><?= $product['ten_san_pham'] ?></td>
                         <td><img src="<?= BASE_URL . $product['hinh_anh'] ?>" style="width: 100px" alt=""
@@ -68,7 +68,9 @@
                         <td><?= $product['trang_thai'] == 1 ? 'Còn Bán' : 'Dừng Bán' ?></td>
                         <td>
                             <a href="<?= BASE_URL_ADMIN . "/?act=form-sua-san-pham&id_san_pham=".$product['id'] ?>"><button type="button" class="btn btn-warning" >Sửa</button></a>
-                            <a href="<?= BASE_URL_ADMIN . "/?act=xoa-san-pham&id_san_pham=".$product['id'] ?>"><button type="button" onclick="return confirm('Bạn chắc chứ') " class="btn btn-danger" >Xóa</button></a>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal" data-link="<?= BASE_URL_ADMIN . "/?act=xoa-san-pham&id_san_pham=" . $product['id'] ?>">
+                                Xóa
+                            </button>
                         </td>
                     </tr>
                 <?php endforeach ?>
@@ -123,22 +125,24 @@
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa?</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn sẽ không thể khôi phục lại nội dung đã xóa.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <a href="#" id="modalLink" >
+                    <button  class="btn btn-primary" onclick="showToast()">Xác nhận xóa</button>
+                </a>
+            </div>
+            </div>
         </div>
-        <div class="modal-body">
-            Bạn sẽ không thể khôi phục lại nội dung đã xóa.
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-            <a href="#" id="modalLink" ><button  class="btn btn-primary" onclick="showToast()">Xác nhận xóa</button></a>
-        </div>
-        </div>
-    </div>
-    </div>    
+    </div>        
 
 </main>
     

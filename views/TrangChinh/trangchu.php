@@ -209,7 +209,7 @@
             <div class="row">
                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12" data-aos="fade-up" data-aos-duration="2000">
                     <div class="cr-twocolumns-product">
-                        <?php foreach ($list_san_pham_hot as $key => $value):?>
+                        <?php foreach ($list_san_pham_hot as $key => $value): ?>
                         <div class="mix vegetable col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
                             <div class="cr-product-card">
                                 <div class="cr-product-image">
@@ -230,8 +230,8 @@
                                     </a>
                                 </div>
                                 <div class="cr-product-details">
-                                    <!-- <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Vegetables</a>
+                                    <div class="cr-brand">
+                                        <!-- <a href="shop-left-sidebar.html"><?= $value['ten_danh_muc']?></a> -->
                                         <div class="cr-star">
                                             <i class="ri-star-fill"></i>
                                             <i class="ri-star-fill"></i>
@@ -240,10 +240,9 @@
                                             <i class="ri-star-line"></i>
                                             <p>(4.5)</p>
                                         </div>
-                                    </div> -->
-                                    <a href="product-left-sidebar.html" class="title"> <?= $value['ten_san_pham'] ?> </a>
-                                    <p class="cr-price"><span class="new-price"><?= $value['gia_khuyen_mai'] ?></span> <span
-                                            class="old-price"><?= $value['gia_san_pham'] ?></span></p>
+                                    </div>
+                                    <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $value['id']?>" class="title"> <?= $value['ten_san_pham'] ?> </a>
+                                    <p class="cr-price"><span class="new-price"><?= number_format($value['gia_khuyen_mai']) . "đ" ?></span> <span class="old-price"><?= number_format($value['gia_san_pham']) . "đ" ?></span></p>
                                 </div>
                             </div>
                         </div>
@@ -389,8 +388,7 @@
                                         </div>
                                     </div> -->
                                     <a href="product-left-sidebar.html" class="title"> <?= $value['ten_san_pham'] ?> </a>
-                                    <p class="cr-price"><span class="new-price"><?= $value['gia_khuyen_mai'] ?></span> <span
-                                            class="old-price"><?= $value['gia_san_pham'] ?></span></p>
+                                    <p class="cr-price"><span class="new-price"><?= number_format($value['gia_khuyen_mai']) . "đ" ?></span> <span class="old-price"><?= number_format($value['gia_san_pham']) . "đ" ?></span></p>
                                 </div>
                             </div>
                         </div>
@@ -825,6 +823,10 @@
     </section> -->
 
 </main>
+<link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
+<script src="<?= BASE_URL ?>assets/js/script.js"></script>
 
 <?php include './views/layout/footer.php' ?>
+
+
 

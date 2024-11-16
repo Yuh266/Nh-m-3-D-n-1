@@ -137,17 +137,13 @@ class AdminProduct{
 
     public function updateAnhSanPham($id, $new_file){
         try{
-            $sql =  'UPDATE hinh_anh_san_phams
-                    SET 
-                        link_anh = :new_file          
-                    WHERE id=:id';
+            $sql =  'UPDATE hinh_anh_san_phams SET link_anh = :new_file WHERE id=:id';
             $stmt = $this->conn->prepare($sql);
             // var_dump($trang_thai);die;
             $stmt->execute([
                 ':new_file'=>$new_file,
                 ':id'=>$id, 
             ]);
-
             // Lấy id sản phẩm vừa thêm
             return true;
         }catch(Exception $e){
@@ -157,8 +153,20 @@ class AdminProduct{
 
     public function destroyAnhSanPham($id){
         try{
-            $sql =  'DELETE FROM hinh_anh_san_phams 
-                    WHERE id=:id';
+            $sql =  'DELETE FROM hinh_anh_san_phams WHERE id_san_pham=:id_san_pham';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':id_san_pham' => $id,
+            ]);
+            return true;
+        }catch(Exception $e){
+            echo "Lỗi".$e->getMessage();
+        }
+    }
+
+    public function destroySanPham($id){
+        try{
+            $sql =  'DELETE FROM san_phams WHERE id=:id';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
                 ':id' => $id,
