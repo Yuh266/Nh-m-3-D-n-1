@@ -1,6 +1,6 @@
 <?php 
 // Require toàn bộ các file khai báo môi trường, thực thi,...(không require view)
-
+session_start();
 // Require file Common
 require_once './commons/env.php'; // Khai báo biến môi trường
 require_once './commons/function.php'; // Hàm hỗ trợ
@@ -40,8 +40,11 @@ if (isset($_GET['act'])) {
 match ($act) {
     // Trang chủclgur
     "/"=>(new SanPhamController() )->Trangchu(),
-    "tim-kiem"=>(new SanPhamController() )->timKiem(),
+
     "login"=>(new TaiKhoanController())->Login(),
-    "form-login"=>(new TaiKhoanController())->post_Login()
+    "form-login"=>(new TaiKhoanController())->post_Login(),
+    //register
+    "register"=>(new TaiKhoanController())->register(),
+    "form-register"=>(new TaiKhoanController())->post_Register()
     
 };

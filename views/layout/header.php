@@ -1,7 +1,8 @@
+<?php
+$isLoggedIn = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'];
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
-
 <!-- Mirrored from maraviyainfotech.com/projects/carrot/carrot-v21/carrot-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2024 15:29:37 GMT -->
 <head>
     <meta charset="utf-8">
@@ -70,16 +71,19 @@
                                         <span>Tài khoản</span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="register.php">Đăng ký</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="<?= BASE_URL."?act=form-login"?>">Đăng nhập</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="<?= BASE_URL."?act=form-login"?>">Đăng xuất</a>
-                                        </li>
-                                        
+                                    <?php if (!$isLoggedIn): ?>
+                                            <li>
+                                                <a class="dropdown-item" href="<?= BASE_URL . "?act=register" ?>">Đăng ký</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="<?= BASE_URL . "?act=login" ?>">Đăng nhập</a>
+                                            </li>
+                                        <?php else: ?>
+                                            <li>
+                                                <a class="dropdown-item" href="<?= BASE_URL . "?act=form-login"  ?> ">Đăng xuất</a>
+                                              <?  unset($_SESSION['user_logged_in']) ?>
+                                            </li>
+                                        <?php endif; ?>
                                     </ul>
                                 </li>
                             </ul>
@@ -313,7 +317,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.html">
+                                    <a class="nav-link" href="index.php">
                                         Trang Chủ
                                     </a>
                                 </li>
