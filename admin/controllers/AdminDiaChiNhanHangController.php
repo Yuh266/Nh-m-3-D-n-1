@@ -159,7 +159,7 @@ class AdminDiaChiNhanHangController{
             $_SESSION['error'] = $error;
             if (empty($error)) {
                 if ($this->modelDiaChi->updateDiaChi($id,$id_tai_khoan,$ten_nguoi_nhan,$sdt_nguoi_nhan,$dia_chi_nguoi_nhan) ) {
-                    session_unset();
+                  
                     $_SESSION['alert_success'] = 1;
                     $_SESSION['id_active'] = $id;
                     header('Location:'.BASE_URL_ADMIN.'/?act=form-sua-'.$title_url.'&id='.$id);
@@ -177,7 +177,7 @@ class AdminDiaChiNhanHangController{
                 ];
                 $_SESSION['dia_chi'] = $dia_chi;
                 $_SESSION['alert_error'] =1;
-                $_SESSION['flash'] =1;
+                
                 header('Location:'.BASE_URL_ADMIN.'/?act=form-sua-'.$title_url."&id=".$id);
             }
         }else {

@@ -17,8 +17,8 @@ class AdminSlideShowController{
         
         require "./views/SlideShow/listSlideShow.php";
 
-        $_SESSION['flash'] = 1 ;
-        deleteSessionError();
+        deleteSession('error');
+        deleteSession('slide_show');
     }
 
     public function formAddSlideShow(){
@@ -34,7 +34,8 @@ class AdminSlideShowController{
 
         require "./views/SlideShow/addSlideShow.php";
         deleteAlertSession();
-        deleteSessionError();
+        deleteSession('error');
+        deleteSession('slide_show');
     }
 
     public function postAddSlideShow(){
@@ -80,9 +81,7 @@ class AdminSlideShowController{
                 $link_anh = upLoadFile($file_anh,'./uploads/');
 
                 if ($id=$this->modelSlideShows->insertSlideShow($ten_anh, $so_thu_tu, $link_anh, $link_chuyen_huong,$trang_thai,$tieu_de,$mo_ta)){
-                    // Xóa toàn bộ session đã lưu (hướng tới xóa Session báo lỗi và hiện thị lại đã nhập) error , slide_show
-
-                    session_unset();
+                    
                     $_SESSION['alert_success'] = 1 ;
                     $_SESSION['id_active'] = $id ;
                     header('Location:'.BASE_URL_ADMIN.'/?act=form-them-slide-show') ;
@@ -99,7 +98,7 @@ class AdminSlideShowController{
                     'mo_ta'=>$mo_ta,
                 ];
                 $_SESSION['slide_show'] = $slide_show;
-                $_SESSION['flash'] = 1 ;
+               
                 $_SESSION['alert_error'] = 1;
 
                 header('Location:'.BASE_URL_ADMIN.'/?act=form-them-slide-show') ;
@@ -133,8 +132,8 @@ class AdminSlideShowController{
 
             require "./views/SlideShow/editSlideShow.php";
             deleteAlertSession();
-            deleteSessionError();
-            $_SESSION['flash'] = 1;
+            deleteSession('error');
+            deleteSession('slide_show');
         }else{
             header("Location:".BASE_URL_ADMIN."?act=danh-sach-slide-show") ;
         }        
@@ -146,7 +145,6 @@ class AdminSlideShowController{
             $old_image = $_POST['old_image'] ?? ($_POST['link_anh']  ?? "") ;
             $ten_anh = $_POST['ten_anh'] ?? "" ;
             $so_thu_tu = $_POST['so_thu_tu'] ?? "" ;
-            $thoi_gian_ton_tai = $_POST['thoi_gian_ton_tai'] ?? "" ;
             $link_chuyen_huong = $_POST['link_chuyen_huong'] ?? "" ;
             $trang_thai = $_POST['trang_thai'] ?? "" ;
             $tieu_de = $_POST['tieu_de'] ?? "" ;
@@ -193,7 +191,7 @@ class AdminSlideShowController{
                 }
                 
                 if ($this->modelSlideShows->updateSlideShow($id,$ten_anh, $so_thu_tu, $link_anh, $link_chuyen_huong,$trang_thai,$tieu_de,$mo_ta)){
-                    session_unset();
+                   
                     $_SESSION['alert_success'] = 1 ;
                     $_SESSION['id_active'] = $id ;
                     // var_dump($_SESSION['id_active']);die();
