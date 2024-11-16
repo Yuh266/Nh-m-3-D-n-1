@@ -3,14 +3,18 @@
 class TaiKhoanController
 {
     public $modelTaiKhoan;
+    public $modelDanhMuc;
  
     public function __construct() {
         $this->modelTaiKhoan = new TaiKhoan();
+        $this->modelDanhMuc=new DanhMuc();
      
     }
     
     public function Login(){
+        $list_danh_muc=$this->modelDanhMuc->getAllDanhMuc();
         require './views/TrangChinh/login.php' ;
+     
         
     }
     
@@ -18,9 +22,11 @@ class TaiKhoanController
         $email=$_POST['email'];
         $password=$_POST['mat_khau'];
         $check_user=$this->modelTaiKhoan->check_login($email,$password);
+
+      
         if($check_user){
-            $_SESSION['user_logged_in']=true;    
-            $_SESSION['user_logged']=true;   
+            $_SESSION['user']=$check_user;
+
             header('Location:'.BASE_URL."");           
         }
         else{
@@ -30,6 +36,7 @@ class TaiKhoanController
         }
     }
     public function register(){
+        $list_danh_muc=$this->modelDanhMuc->getAllDanhMuc();
         require './views/TrangChinh/register.php' ;
     }
     public function post_Register(){

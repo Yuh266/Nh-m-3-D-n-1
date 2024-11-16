@@ -6,13 +6,15 @@ class TaiKhoan{
     public function __construct(){
         $this->conn = connectDB();
     }
-
+      
+    
+    
     public function check_login($email,$password){
 
         try {
-            $sql="SELECT * from tai_khoans where email='$email' and mat_khau='$password' ";
+            $sql="SELECT * from tai_khoans where email=:email and mat_khau=:mat_khau ";
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
+            $stmt->execute([":email"=>$email,":mat_khau"=>$password]);
              return $stmt->fetch();
         } catch (Exception $th) {
             echo "". $th->getMessage();
