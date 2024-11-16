@@ -34,7 +34,7 @@
                         <div class="form-logo">
                             <img src="assets/img/logo/logo.png" alt="logo">
                         </div>
-                        <form class="cr-content-form" method="post" action="<?= BASE_URL."?act=form-register"?>" >
+                        <form class="cr-content-form" enctype="multipart/form-data" method="post" action="<?= BASE_URL."?act=form-register"?>" >
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
@@ -66,7 +66,13 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Address*</label>
-                                        <input type="text" name="dia_chi" placeholder="Address" class="cr-form-control">
+                                        <input type="text" name="dia_chi" placeholder="Enter Your Address" class="cr-form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Avatar*</label>
+                                        <input type="file" name="file_anh" placeholder="Enter Your Avatar" class="cr-form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
