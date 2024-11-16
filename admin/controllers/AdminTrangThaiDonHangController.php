@@ -123,7 +123,7 @@ class AdminTrangThaiDonHangController{
             $_SESSION['error'] = $error;
             if (empty($error)) {
                 if ($this->modelTrangThai->updateTrangThai($id,$ten_trang_thai) ) {
-                    session_unset();
+                    
                     $_SESSION['alert_success'] = 1;
                     $_SESSION['id_active'] = $id;
                     header('Location:'.BASE_URL_ADMIN.'/?act=form-sua-'.$title_url.'&id='.$id);
