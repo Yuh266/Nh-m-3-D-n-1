@@ -20,7 +20,8 @@ class AdminProductController
             ["link" => '', "ten" => $title],
         ];
         require_once './views/product/listProduct.php';
-        session_unset();
+        deleteSession('error');
+        deleteSession('san_pham');
     }
 
     public function formAddSanPham()
@@ -118,10 +119,9 @@ class AdminProductController
                         $this->modelProduct->insertAlbumSanPham($id_san_pham, $link_anh);
                     }
                 }
-                session_unset();
-                $_SESSION['alert_success'] = 1;
-                $_SESSION['id_active'] = $id_san_pham;
-                header('Location: ' . BASE_URL_ADMIN . '?act=form-them-san-pham');
+                    $_SESSION['alert_success'] = 1;
+                    $_SESSION['id_active'] = $id_san_pham;
+                header('Location: ' . BASE_URL_ADMIN. '?act=form-them-san-pham');
                 exit();
             } else {
                 //Đặt chỉ thị xóa sesson sau khi hiển thị form
@@ -165,8 +165,8 @@ class AdminProductController
             deleteSession('error');
             deleteSession('san_pham');
             deleteAlertSession();
-        } else {
-            header('Location: ' . BASE_URL_ADMIN . '?act=danh-sach-san-pham');
+        }else{
+            header('Location: ' . BASE_URL_ADMIN. '?act=danh-sach-san-pham');
             exit();
         }
     }
@@ -246,7 +246,7 @@ class AdminProductController
                     $new_file
                 );
                 // var_dump($id);die;
-                session_unset();
+               
                 $_SESSION['alert_success'] = 1;
                 $_SESSION['id_active'] = $id;
                 header('Location: ' . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $id_san_pham);

@@ -1,7 +1,8 @@
+<?php
+$isLoggedIn = isset($_SESSION['user_logged']) && $_SESSION['user_logged'];
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
-
 <!-- Mirrored from maraviyainfotech.com/projects/carrot/carrot-v21/carrot-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2024 15:29:37 GMT -->
 <head>
     <meta charset="utf-8">
@@ -64,24 +65,41 @@
                         </form>
                         <div class="cr-right-bar">
                             <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
+                                 <?php if (isset($_SESSION['user'])): ?>
+                                    <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
                                         <i class="ri-user-3-line"></i>
-                                        <span>Tài khoản</span>
+                                        <span><?=$_SESSION['user']['ho_ten']?></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="register.php">Đăng ký</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="<?= BASE_URL."?act=form-login"?>">Đăng nhập</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="<?= BASE_URL."?act=form-login"?>">Đăng xuất</a>
-                                        </li>
-                                        
+                                            
+                                            <li>
+                                                <a class="dropdown-item" href="<?= BASE_URL . "?act=form-login"  ?> ">Đăng xuất</a>
+        
+                                            </li>
+                                      
                                     </ul>
                                 </li>
+                                    <?php else: ?>
+                                        <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
+                                        <i class="ri-user-3-line"></i>
+                                        <span>Tài Khoản</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                    
+                                            <li>
+                                                <a class="dropdown-item" href="<?= BASE_URL . "?act=register" ?>">Đăng ký</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="<?= BASE_URL . "?act=login" ?>">Đăng nhập</a>
+                                            </li>
+
+                                      
+                                    </ul>
+                                </li>
+                                        <?php endif; ?>
+                               
                             </ul>
                             <!-- <a href="wishlist.html" class="cr-right-bar-item">
                                 <i class="ri-heart-3-line"></i>
@@ -89,7 +107,7 @@
                             </a> -->
                             <a href="javascript:void(0)" class="cr-right-bar-item Shopping-toggle">
                                 <i class="ri-shopping-cart-line"></i>
-                                <span>Giỏ hàng</span>
+                              
                             </a>
                         </div>
                     </div>
@@ -313,7 +331,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.html">
+                                    <a class="nav-link" href="index.php">
                                         Trang Chủ
                                     </a>
                                 </li>
