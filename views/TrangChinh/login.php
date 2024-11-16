@@ -1,4 +1,7 @@
-<?php include './views/layout/header.php' ?>
+
+<?php
+ include './views/layout/header.php';
+ ?>
 <main>
     <!-- Mobile menu -->
     <div class="cr-sidebar-overlay"></div>
@@ -111,6 +114,14 @@
                         <div class="form-logo">
                             <img src="assets/img/logo/logo.png" alt="logo">
                         </div>
+                        <div class="form-text text-danger">
+                            <?php 
+                            if(isset($_SESSION['error'])){
+                              echo "<p>".$_SESSION['error']."</p>";
+                              unset($_SESSION['error']);
+                            }
+                              ?>
+                        </div>
                         <form   class="cr-content-form" method="POST" action="<?= BASE_URL."?act=form-login"?>"  >
                             <div class="form-group">
                                 <label>Email Address*</label>
@@ -129,7 +140,7 @@
                             </div><br>
                             <div class="login-buttons">
                                 <button type="submit" class="cr-button">Login</button>
-                                <a href="register.php" class="link">
+                                <a href="<?= BASE_URL . "?act=register" ?>" class="link">
                                      Signup?
                                 </a>
                             </div>
