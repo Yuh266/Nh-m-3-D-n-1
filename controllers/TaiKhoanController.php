@@ -18,23 +18,57 @@ class TaiKhoanController
         
     }
     
+    public function Logout(){
+        session_destroy();
+        header('Location:'.BASE_URL."/?act=login");
+    }
+    
     public function post_Login(){
-        $email=$_POST['email'];
-        $password=$_POST['mat_khau'];
-        $check_user=$this->modelTaiKhoan->check_login($email,$password);
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $email = $_POST['email'] ?? '';
+            $mat_khau = $_POST['mat_khau'] ?? '';
+        
+            $errors = [];
+            if (empty($email)) {
+                $errors['email'] = 'Email không được để trống';
+            }
+            if (empty($mat_khau)) { 
+                $errors['mat_khau'] = 'Mật khẩu không được để trống';
+            } 
+
+            $_SESSION['error'] = $errors;
+
+            if (empty($errors)) {
+                $user = $this->modelTaiKhoan->check_login( $email,$mat_khau );
+              
+                if($user){
+                    $_SESSION['user']=$user;
+        
+                    header('Location:'.BASE_URL."");           
+                } else{
+                    $_SESSION['check-false']="Mật khẩu hoặc Email không đúng";
+                    header('Location:'.BASE_URL. "?act=login");
+                    exit();
+                }
+                
+            
+            } else {
+              
+                $_SESSION['tai_khoan'] = [
+                    'email' => $email,
+                    'mat_khau' => $mat_khau, 
+                ];
+                header('Location: '. BASE_URL.'?act=login');
+                exit();
+            }
+       }
+
+        }
+    
 
       
-        if($check_user){
-            $_SESSION['user']=$check_user;
-
-            header('Location:'.BASE_URL."");           
-        }
-        else{
-            $_SESSION['error']="Mật khẩu hoặc Email không đúng";
-            header('Location:'.BASE_URL. "?act=login");
-            exit();
-        }
-    }
+       
+    
     public function register(){
         $list_danh_muc=$this->modelDanhMuc->getAllDanhMuc();
         require './views/TrangChinh/register.php' ;
