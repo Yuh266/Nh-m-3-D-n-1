@@ -9,12 +9,12 @@ class TaiKhoan{
       
     
     
-    public function check_login($email,$password){
+    public function check_login($email,$mat_khau){
 
         try {
             $sql="SELECT * from tai_khoans where email=:email and mat_khau=:mat_khau ";
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute([":email"=>$email,":mat_khau"=>$password]);
+            $stmt->execute([":email"=>$email,":mat_khau"=>$mat_khau]);
              return $stmt->fetch();
         } catch (Exception $th) {
             echo "". $th->getMessage();

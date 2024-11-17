@@ -15,6 +15,9 @@ class AdminDanhMucController{
             ["link"=> '',"ten"=> $title ],
         ];
         require_once './views/Danhmuc/listDanhMuc.php';
+        if (isset($_SESSION['id_active'])) {
+            unset($_SESSION['id_active']);
+        }
         deleteAlertSession();
         deleteSession('error');
         deleteSession('danh_muc');

@@ -65,13 +65,12 @@ class AdminTaiKhoanController{
             ["link"=> 'href='.BASE_URL_ADMIN.'',"ten"=> "Trang Chủ"],
             ["link"=> '',"ten"=> $title ],
         ];
-        $_SESSION['flash'] = 1 ;
-        deleteAlertSession();
         require "./views/TaiKhoan/listTaiKhoan.php";
         // Xóa dòng bảng đc tô màu sau khi load trang
         if (isset($_SESSION['id_active'])) {
             unset($_SESSION['id_active']);
         }
+        deleteAlertSession();
         deleteSession('error');
         deleteSession('slide_show');
     }

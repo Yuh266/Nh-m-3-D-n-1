@@ -20,6 +20,10 @@ class AdminProductController
             ["link" => '', "ten" => $title],
         ];
         require_once './views/product/listProduct.php';
+        if (isset($_SESSION['id_active'])) {
+            unset($_SESSION['id_active']);
+        }
+        deleteAlertSession();
         deleteSession('error');
         deleteSession('san_pham');
     }
