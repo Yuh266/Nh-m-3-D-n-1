@@ -53,9 +53,15 @@ class TrangChinhController
 
 
     public function timKiem(){
-        $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
-        
-        require './views/TrangChinh/tim_kiem.php' ;
+        if(isset($_GET['keyword'])){
+            $keyword = $_GET['keyword'];
+            $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
+            $list_san_pham = $this->modelSanPham->getSanPhamByKeyword($keyword);
+            // var_dump($list_san_pham);die();
+            require './views/TrangChinh/tim_kiem.php' ;
+        }else{
+            header(''. BASE_URL . '/');
+        }
     }
 
     public function chiTietGioHang(){

@@ -119,16 +119,19 @@
                 <div class="col-lg-4 col-12 mb-24">
                     <div class="cr-categories">
                         <ul class="nav row nav-tabs justify-content-start" id="myTab" role="tablist">
-                            <?php foreach ($list_danh_muc as $key => $value): ?>
-                                <li class="nav-item col-6 col-md-3" role="presentation">
-                                    <a href="<?= BASE_URL . "/?act=tim-kiem&noi-dung=" . $value['ten_danh_muc'] ?>">
-                                        <button class="nav-link active center-categories-inner  " id="cake_milk-tab"
-                                            data-bs-toggle="tab" data-bs-target="#cake_milk" type="button" role="tab"
-                                            aria-controls="cake_milk" aria-selected="true">
-                                            <?= $value['ten_danh_muc'] ?> <span>(65 items)</span>
-                                        </button>
-                                    </a>
-                                </li>
+
+                            <?php foreach ($list_danh_muc as $key => $value) :?>
+                            <li class="nav-item col-6 col-md-3" role="presentation">
+                                <a href="<?= BASE_URL . "/?act=tim-kiem&keyword=".$value['ten_danh_muc'] ?>">
+                                <button class="nav-link active center-categories-inner  " id="cake_milk-tab"
+                                    data-bs-toggle="tab" data-bs-target="#cake_milk" type="button" role="tab"
+                                    aria-controls="cake_milk" aria-selected="true">
+                                    <?= $value['ten_danh_muc'] ?> 
+                                    <!-- <span>(65 items)</span> -->
+                                </button>
+                                </a>
+                            </li>
+
                             <?php endforeach ?>
                             <li class="nav-item col-6 col-md-3 " role="presentation">
                                 <a class="center-categories-inner cr-view-more" href="shop-left-sidebar.html">
@@ -297,22 +300,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-xxl-5 col-xl-6 col-lg-6 col-md-12" data-aos="fade-up" data-aos-duration="2000">
-                    <div class="cr-products-rightbar">
-                        <img src="assets/img/product/products-rightview.jpg" alt="products-rightview">
-                        <div class="cr-products-rightbar-content">
-                            <h4>Organic & Healthy <br> Vegetables</h4>
-                            <div class="cr-off">
-                                <span>25% <code>OFF</code></span>
-                            </div>
-                            <div class="rightbar-buttons">
-                                <a href="shop-left-sidebar.html" class="cr-button">
-                                    shop now
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>
@@ -326,10 +313,6 @@
                         <div class="cr-banner">
                             <h2>Gợi ý cho bạn</h2>
                         </div>
-                        <!-- <div class="cr-banner-sub-title">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore lacus vel facilisis. </p>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -646,197 +629,6 @@
             </div>
         </div>
     </section>
-
-
-
-    <!-- Testimonial -->
-    <!-- <section class="section-testimonial padding-b-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="mb-30" data-aos="fade-up" data-aos-duration="2000">
-                        <div class="cr-banner">
-                            <h2>Great Words From People</h2>
-                        </div>
-                        <div class="cr-banner-sub-title">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore lacus vel facilisis. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="cr-testimonial-slider swiper-container">
-                        <div class="swiper-wrapper cr-testimonial-pt-50">
-                            <div class="swiper-slide" data-aos="fade-up" data-aos-duration="2000">
-                                <div class="cr-testimonial">
-                                    <div class="cr-testimonial-image">
-                                        <img src="assets/img/testimonial/1.jpg" alt="businessman">
-                                    </div>
-                                    <div class="cr-testimonial-inner">
-                                        <span>Co Founder</span>
-                                        <h4 class="title">Stephen Smith</h4>
-                                        <p>“eiusmpsu dolor sit amet, conse cte tur ng elit, sed do eiusmod tem lacus vel
-                                            facilisis.”
-                                        </p>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" data-aos="fade-up" data-aos-duration="2000">
-                                <div class="cr-testimonial">
-                                    <div class="cr-testimonial-image">
-                                        <img src="assets/img/testimonial/2.jpg" alt="businessman">
-                                    </div>
-                                    <div class="cr-testimonial-inner">
-                                        <span>Manager</span>
-                                        <h4 class="title">Lorem Robinson</h4>
-                                        <p>“eiusmpsu dolor sit amet, conse cte tur ng elit, sed do eiusmod tem lacus vel
-                                            facilisis.”
-                                        </p>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-line"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" data-aos="fade-up" data-aos-duration="2000">
-                                <div class="cr-testimonial">
-                                    <div class="cr-testimonial-image">
-                                        <img src="assets/img/testimonial/3.jpg" alt="businessman">
-                                    </div>
-                                    <div class="cr-testimonial-inner">
-                                        <span>Team Leader</span>
-                                        <h4 class="title">Saddika Alard</h4>
-                                        <p>“eiusmpsu dolor sit amet, conse cte tur ng elit, sed do eiusmod tem lacus vel
-                                            facilisis.”
-                                        </p>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Blog -->
-    <!-- <section class="section-blog padding-b-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="mb-30" data-aos="fade-up" data-aos-duration="2000">
-                        <div class="cr-banner">
-                            <h2>Latest News</h2>
-                        </div>
-                        <div class="cr-banner-sub-title">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore lacus vel facilisis. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="cr-blog-slider swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide" data-aos="fade-up" data-aos-duration="2000">
-                                <div class="cr-blog">
-                                    <div class="cr-blog-content">
-                                        <span><code>By Admin</code> | <a href="blog-left-sidebar.html">Snacks</a></span>
-                                        <h5>Urna pretium elit mauris cursus at elit Vestibulum.</h5>
-                                        <a class="read" href="blog-detail-left-sidebar.html">Read More</a>
-                                    </div>
-                                    <div class="cr-blog-image">
-                                        <img src="assets/img/blog/2.jpg" alt="blog-2">
-                                        <div class="cr-blog-date">
-                                            <span>
-                                                10
-                                                <code>oct</code>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" data-aos="fade-up" data-aos-duration="2000">
-                                <div class="cr-blog">
-                                    <div class="cr-blog-content">
-                                        <span><code>By Admin</code> | <a href="blog-left-sidebar.html">Food</a></span>
-                                        <h5>Best guide to Shopping for organic ingredients.</h5>
-                                        <a class="read" href="blog-detail-left-sidebar.html">Read More</a>
-                                    </div>
-                                    <div class="cr-blog-image">
-                                        <img src="assets/img/blog/1.jpg" alt="blog-1">
-                                        <div class="cr-blog-date">
-                                            <span>
-                                                09<code>sep</code>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" data-aos="fade-up" data-aos-duration="2000">
-                                <div class="cr-blog">
-                                    <div class="cr-blog-content">
-                                        <span><code>By Admin</code> | <a href="blog-left-sidebar.html">Snacks</a></span>
-                                        <h5>Cursus at elit vestibulum urna pretium elit mauris.</h5>
-                                        <a class="read" href="blog-detail-left-sidebar.html">Read More</a>
-                                    </div>
-                                    <div class="cr-blog-image">
-                                        <img src="assets/img/blog/3.jpg" alt="blog-2">
-                                        <div class="cr-blog-date">
-                                            <span>
-                                                12
-                                                <code>oct</code>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" data-aos="fade-up" data-aos-duration="2000">
-                                <div class="cr-blog">
-                                    <div class="cr-blog-content">
-                                        <span><code>By Admin</code> | <a
-                                                href="blog-left-sidebar.html">Vegetable</a></span>
-                                        <h5>Condimentum Nam enim bestMorbi odio sodales.</h5>
-                                        <a class="read" href="blog-detail-left-sidebar.html">Read More</a>
-                                    </div>
-                                    <div class="cr-blog-image">
-                                        <img src="assets/img/blog/2.jpg" alt="blog-3">
-                                        <div class="cr-blog-date">
-                                            <span>
-                                                22
-                                                <code>jan</code>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
 </main>
 <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">

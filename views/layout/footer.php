@@ -31,7 +31,7 @@
                 <div class="col-xl-2 col-lg-3 col-sm-12 col-12 cr-footer-border">
                     <div class="cr-footer">
                         <h4 class="cr-sub-title">
-                            Company
+                            Liên hệ
                             <span class="cr-heading-res"></span>
                         </h4>
                         <ul class="cr-footer-links cr-footer-dropdown">
@@ -47,16 +47,13 @@
                 <div class="col-xl-2 col-lg-3 col-sm-12 col-12 cr-footer-border">
                     <div class="cr-footer">
                         <h4 class="cr-sub-title">
-                            Category
+                            Danh mục
                             <span class="cr-heading-res"></span>
                         </h4>
                         <ul class="cr-footer-links cr-footer-dropdown">
-                            <li><a href="shop-left-sidebar.html">Dairy & Bakery</a></li>
-                            <li><a href="shop-left-sidebar.html">Fruits & Vegetable</a></li>
-                            <li><a href="shop-left-sidebar.html">Snack & Spice</a></li>
-                            <li><a href="shop-left-sidebar.html">Juice & Drinks</a></li>
-                            <li><a href="shop-left-sidebar.html">Chicken & Meat</a></li>
-                            <li><a href="shop-left-sidebar.html">Fast Food</a></li>
+                            <?php foreach ($list_danh_muc as $key => $value): ?>
+                            <li><a href="<?= BASE_URL . "/?act=tim-kiem&keyword=".$value['ten_danh_muc'] ?> "><?= $value['ten_danh_muc'] ?></a></li>
+                            <?php endforeach ?>
                         </ul>
                     </div>
                 </div>
@@ -138,7 +135,7 @@
                 </div>
             </div>
             <div class="cr-last-footer">
-                <p>&copy; <span id="copyright_year"></span> <a href="index.html">Carrot</a>, All rights reserved.</p>
+                <p>&copy; <span id="copyright_year"></span> <a href="index.html">Plant Haven</a>, All rights reserved.</p>
             </div>
         </div>
     </footer>
