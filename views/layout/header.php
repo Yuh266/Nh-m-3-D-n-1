@@ -1,9 +1,7 @@
-<?php
-$isLoggedIn = isset($_SESSION['user_logged']) && $_SESSION['user_logged'];
-?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <!-- Mirrored from maraviyainfotech.com/projects/carrot/carrot-v21/carrot-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2024 15:29:37 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,29 +59,30 @@ $isLoggedIn = isset($_SESSION['user_logged']) && $_SESSION['user_logged'];
                         </form>
                         <div class="cr-right-bar">
                             <ul class="navbar-nav">
-                                 <?php if (isset($_SESSION['user'])): ?>
-                                    <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
-                                        <i class="ri-user-3-line"></i>
-                                        <span><?=$_SESSION['user']['ho_ten']?></span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                            
+                                <?php if (isset($_SESSION['user'])): ?>
+                                    <li class="nav-item dropdown ">
+                                        <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
+                                            <i class=""></i>
+                                            <img src="<?= BASE_URL. $_SESSION['user']['anh_dai_dien'] ?>" width="30px" height="22px" class="user-image rounded-circle shadow"  alt="user_image">
+                                            <span style="padding-left: 15px;"><?= $_SESSION['user']['ho_ten'] ?></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+
                                             <li>
-                                                <a class="dropdown-item" href="<?= BASE_URL . "?act=form-login"  ?> ">Đăng xuất</a>
-        
+                                                <a class="dropdown-item" href="<?= BASE_URL . "?act=logout"  ?> ">Đăng xuất</a>
+
                                             </li>
-                                      
-                                    </ul>
-                                </li>
-                                    <?php else: ?>
-                                        <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
-                                        <i class="ri-user-3-line"></i>
-                                        <span>Tài Khoản</span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                    
+
+                                        </ul>
+                                    </li>
+                                <?php else: ?>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
+                                            <i class="ri-user-3-line"></i>
+                                            <span>Tài Khoản</span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+
                                             <li>
                                                 <a class="dropdown-item" href="<?= BASE_URL . "?act=register" ?>">Đăng ký</a>
                                             </li>
@@ -91,11 +90,11 @@ $isLoggedIn = isset($_SESSION['user_logged']) && $_SESSION['user_logged'];
                                                 <a class="dropdown-item" href="<?= BASE_URL . "?act=login" ?>">Đăng nhập</a>
                                             </li>
 
-                                      
-                                    </ul>
-                                </li>
-                                        <?php endif; ?>
-                               
+
+                                        </ul>
+                                    </li>
+                                <?php endif; ?>
+
                             </ul>
                             <!-- <a href="wishlist.html" class="cr-right-bar-item">
                                 <i class="ri-heart-3-line"></i>
@@ -103,7 +102,7 @@ $isLoggedIn = isset($_SESSION['user_logged']) && $_SESSION['user_logged'];
                             </a> -->
                             <a href="javascript:void(0)" class="cr-right-bar-item Shopping-toggle">
                                 <i class="ri-shopping-cart-line"></i>
-                              
+
                             </a>
                         </div>
                     </div>
@@ -340,12 +339,13 @@ $isLoggedIn = isset($_SESSION['user_logged']) && $_SESSION['user_logged'];
                                         <li>
                                             <a class="dropdown-item" href="<?= BASE_URL ."/?act=tim-kiem&keyword=".$value['ten_danh_muc'] ?>"><?= $value['ten_danh_muc']?></a>
                                         </li>
+
                                     <?php endforeach ?>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)">
-                                        Sản phẩm 
+                                        Sản phẩm
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>

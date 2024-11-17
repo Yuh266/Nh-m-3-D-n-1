@@ -116,20 +116,23 @@
                         </div>
                         <div class="form-text text-danger">
                             <?php 
-                            if(isset($_SESSION['error'])){
-                              echo "<p>".$_SESSION['error']."</p>";
-                              unset($_SESSION['error']);
+                            if(isset($_SESSION['check-false'])){
+                              echo "<p>".$_SESSION['check-false']."</p>";
+                              unset($_SESSION['check-false']);
                             }
                               ?>
                         </div>
+                      
                         <form   class="cr-content-form" method="POST" action="<?= BASE_URL."?act=form-login"?>"  >
                             <div class="form-group">
                                 <label>Email Address*</label>
                                 <input type="email" placeholder="Enter Your Email" class="cr-form-control" name="email">
+                                <div class="form-text text-danger"><?= $_SESSION['error']['email'] ?? "" ?></div>
                             </div>
                             <div class="form-group">
                                 <label>Password*</label>
                                 <input type="password" placeholder="Enter Your password" class="cr-form-control" name="mat_khau">
+                                <div class="form-text text-danger"><?= $_SESSION['error']['mat_khau'] ?? "" ?></div>
                             </div>
                             <div class="remember">
                                 <span class="form-group custom">
