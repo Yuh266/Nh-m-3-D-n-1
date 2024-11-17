@@ -5,10 +5,15 @@ class TrangChinhController
     public $modelSanPham;
     public $modelDanhMuc;
     public $modelSlideShow;
+
+    public $modelGioHang;
+
     public function __construct() {
         $this->modelSanPham = new SanPham();
         $this->modelDanhMuc = new DanhMuc();
         $this->modelSlideShow = new SlideShow();
+        $this->modelGioHang = new GioHang();
+
     }
     public function Trangchu() {
         $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
@@ -25,16 +30,17 @@ class TrangChinhController
 
 
     public function chiTietSanPham(){
+        $id = $_GET['id_san_pham'];
         
         if(isset($_GET['id_san_pham'])){
-            $id = $_GET['id_san_pham'];
+            $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
 
             $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
-            $list_danh_muc = is_array($list_danh_muc) ? $list_danh_muc : [];
 
-            $sanphan_ct = $this->modelSanPham->getDetailSanPham($id); 
-            // $danh_sach_anh = $this->modelSanPham->getListAnhSanPham($id);
-            // var_dump($danh_sach_anh); die;
+            $sanphan_ct = $this->modelSanPham->getDetailSanPham($id);
+            
+            $danh_sach_anh = $this->modelSanPham->getListAnhSanPham($id);
+            // var_dump($sanphan_ct); die;
 
         }else{
             
@@ -50,6 +56,14 @@ class TrangChinhController
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
         
         require './views/TrangChinh/tim_kiem.php' ;
+    }
+
+    public function chiTietGioHang(){
+        $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
+        $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
+
+        require "./views/gioHang/giohang.php";
+        
     }
 
 }

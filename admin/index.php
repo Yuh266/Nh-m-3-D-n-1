@@ -27,11 +27,11 @@ if (isset($_GET['act'])) {
     $act = 'danh-sach-danh-muc';
 }
 
-if ( !isset($_SESSION['user']) && !in_array($act,['form-dang-nhap','dang-nhap'])  ) {
-    header('Location:'.BASE_URL_ADMIN.'/?act=form-dang-nhap');
-}else {
+// if ( !isset($_SESSION['user']) && !in_array($act,['form-dang-nhap','dang-nhap'])  ) {
+//     header('Location:'.BASE_URL_ADMIN.'/?act=form-dang-nhap');
+// }else {
     
-}
+// }
 
 
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match

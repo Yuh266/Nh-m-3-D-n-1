@@ -44,7 +44,8 @@ match ($act) {
 
 
     "san-pham-chi-tiet"=>(new SanPhamController() )->chiTietSanPham(),
-    
+    "gio-hang-chi-tiet"=>(new TrangChinhController() )->chiTietGioHang(),
+
     "login"=>(new TaiKhoanController())->Login(),
     "logout"=>(new TaiKhoanController())->Logout(),
     "form-login"=>(new TaiKhoanController())->post_Login(),
