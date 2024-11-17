@@ -41,6 +41,7 @@ match ($act) {
     // Trang chủclgur
     "/"=>(new SanPhamController() )->Trangchu(),
     "san-pham-chi-tiet"=>(new SanPhamController() )->chiTietSanPham(),
+    "gio-hang-chi-tiet"=>(new GioHangController() )->chiTietGioHang(),
     "login"=>(new TaiKhoanController())->Login(),
     "form-login"=>(new TaiKhoanController())->post_Login()
     

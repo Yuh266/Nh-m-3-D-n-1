@@ -228,7 +228,7 @@
                     <button type="button" class="close-cart">×</button>
                 </div>
                 <ul class="crcart-pro-items">
-                    <li>
+                    <!-- <li>
                         <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/4.jpg"
                                 alt="product-1"></a>
                         <div class="cr-pro-content">
@@ -261,7 +261,7 @@
                             </div>
                             <a href="javascript:void(0)" class="remove">×</a>
                         </div>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/3.jpg"
                                 alt="product-3"></a>
@@ -301,7 +301,7 @@
                     </table>
                 </div>
                 <div class="cart_btn">
-                    <a href="cart.html" class="cr-button">View Cart</a>
+                    <a href="?act=gio-hang-chi-tiet" class="cr-button">View Cart</a>
                     <a href="checkout.html" class="cr-btn-secondary">Checkout</a>
                 </div>
             </div>
