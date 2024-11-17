@@ -122,11 +122,12 @@
                         <ul class="nav row nav-tabs justify-content-start" id="myTab" role="tablist">
                             <?php foreach ($list_danh_muc as $key => $value) :?>
                             <li class="nav-item col-6 col-md-3" role="presentation">
-                                <a href="<?= BASE_URL . "/?act=tim-kiem&noi-dung=".$value['ten_danh_muc'] ?>">
+                                <a href="<?= BASE_URL . "/?act=tim-kiem&keyword=".$value['ten_danh_muc'] ?>">
                                 <button class="nav-link active center-categories-inner  " id="cake_milk-tab"
                                     data-bs-toggle="tab" data-bs-target="#cake_milk" type="button" role="tab"
                                     aria-controls="cake_milk" aria-selected="true">
-                                    <?= $value['ten_danh_muc'] ?> <span>(65 items)</span>
+                                    <?= $value['ten_danh_muc'] ?> 
+                                    <!-- <span>(65 items)</span> -->
                                 </button>
                                 </a>
                             </li>
@@ -288,22 +289,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-xxl-5 col-xl-6 col-lg-6 col-md-12" data-aos="fade-up" data-aos-duration="2000">
-                    <div class="cr-products-rightbar">
-                        <img src="assets/img/product/products-rightview.jpg" alt="products-rightview">
-                        <div class="cr-products-rightbar-content">
-                            <h4>Organic & Healthy <br> Vegetables</h4>
-                            <div class="cr-off">
-                                <span>25% <code>OFF</code></span>
-                            </div>
-                            <div class="rightbar-buttons">
-                                <a href="shop-left-sidebar.html" class="cr-button">
-                                    shop now
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>
@@ -317,10 +302,6 @@
                         <div class="cr-banner">
                             <h2>Gợi ý cho bạn</h2>
                         </div>
-                        <!-- <div class="cr-banner-sub-title">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore lacus vel facilisis. </p>
-                        </div> -->
                     </div>
                 </div>
             </div>

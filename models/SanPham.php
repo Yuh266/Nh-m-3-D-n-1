@@ -191,6 +191,24 @@ class SanPham
     //     }
     // }
 
+    public function getSanPhamByKeyword($keyword){
+        try {
+            $sql=" SELECT *  
+                   FROM san_phams 
+                   JOIN danh_mucs ON san_phams.id_danh_muc = danh_mucs.id
+                   WHERE ten_san_pham LIKE :keyword
+                    OR ten_danh_muc LIKE :keyword  
+                ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ":keyword"=> "%".$keyword."%" ,
+            ]);
+
+            return $stmt->fetchAll();
+        } catch (Exception $th) {
+            echo "".$th->getMessage();
+        }
+    }
     
 
 }

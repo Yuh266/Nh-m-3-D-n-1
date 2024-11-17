@@ -47,21 +47,17 @@ $isLoggedIn = isset($_SESSION['user_logged']) && $_SESSION['user_logged'];
             <div class="row">
                 <div class="col-lg-12">
                     <div class="top-header">
-                        <a href="index.html" class="cr-logo">
+                        <a href="<?= BASE_URL ?>" class="cr-logo">
                             <img src="assets/img/logo/logo.png" alt="logo" class="logo">
                             <img src="assets/img/logo/dark-logo.png" alt="logo" class="dark-logo">
                         </a>
-                        <form class="cr-search">
-                            <input class="search-input" type="text" placeholder="Tìm kiếm sản phẩm...">
-                            <!-- <select class="form-select" aria-label="Default select example">
-                                <option selected>All Categories</option>
-                                <option value="1">Mens</option>
-                                <option value="2">Womens</option>
-                                <option value="3">Electronics</option>
-                            </select> -->
-                            <a href="javascript:void(0)" class="search-btn">
+                        <form action="<?= BASE_URL?>" method="GET" class="cr-search">
+                            <input type="text" name="act" value="tim-kiem" hidden >
+                            <input class="search-input" name="keyword" type="text" placeholder="Tìm kiếm sản phẩm...">
+                            <!-- <input type="text" name="hhuy" > -->
+                            <button type="submit" href="javascript:void(0)" class="search-btn border-0">
                                 <i class="ri-search-line"></i>
-                            </a>
+                            </button>
                         </form>
                         <div class="cr-right-bar">
                             <ul class="navbar-nav">
@@ -331,7 +327,7 @@ $isLoggedIn = isset($_SESSION['user_logged']) && $_SESSION['user_logged'];
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php">
+                                    <a class="nav-link" href="<?= BASE_URL ?>">
                                         Trang Chủ
                                     </a>
                                 </li>
@@ -339,13 +335,13 @@ $isLoggedIn = isset($_SESSION['user_logged']) && $_SESSION['user_logged'];
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)">
                                         Danh mục
                                     </a>
-                                    <?php foreach ($list_danh_muc as $key => $value):?>
                                     <ul class="dropdown-menu">
+                                    <?php foreach ($list_danh_muc as $key => $value):?>
                                         <li>
-                                            <a class="dropdown-item" href="shop-left-sidebar.html"><?= $value['ten_danh_muc']?></a>
+                                            <a class="dropdown-item" href="<?= BASE_URL ."/?act=tim-kiem&keyword=".$value['ten_danh_muc'] ?>"><?= $value['ten_danh_muc']?></a>
                                         </li>
-                                    </ul>
                                     <?php endforeach ?>
+                                    </ul>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)">
@@ -404,56 +400,6 @@ $isLoggedIn = isset($_SESSION['user_logged']) && $_SESSION['user_logged'];
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="policy.html">Policy</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)">
-                                        Blog
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="blog-left-sidebar.html">Left
-                                                Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="blog-right-sidebar.html">Right
-                                                Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="blog-full-width.html">Full
-                                                Width</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="blog-detail-left-sidebar.html">Detail
-                                                Left
-                                                Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="blog-detail-right-sidebar.html">Detail
-                                                Right
-                                                Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="blog-detail-full-width.html">Detail
-                                                Full
-                                                Width</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)">
-                                        Elements
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="elements-products.html">Products</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="elements-typography.html">Typography</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="elements-buttons.html">Buttons</a>
                                         </li>
                                     </ul>
                                 </li>
