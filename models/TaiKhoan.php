@@ -6,7 +6,13 @@ class TaiKhoan{
     public function __construct(){
         $this->conn = connectDB();
     }
-      
+    public function getTaiKhoanByID($id){
+        $sql = "SELECT * FROM tai_khoans WHERE id=".$id;
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
     
     
     public function check_login($email,$mat_khau){
@@ -33,6 +39,7 @@ class TaiKhoan{
         }
 
     }
+
 
     
 }
