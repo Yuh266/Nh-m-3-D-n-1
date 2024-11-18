@@ -32,7 +32,7 @@
                 <div class="col-12">
                     <div class="cr-register" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                         <div class="form-logo">
-                            <img src="assets/img/logo/logo.png" alt="logo">
+                            <img src="assets/img/logo/logo2.png" width="180px" height="150px" alt="logo">
                         </div>
                         <form class="cr-content-form" enctype="multipart/form-data" method="post" action="<?= BASE_URL."?act=form-register"?>" >
                             <div class="row">

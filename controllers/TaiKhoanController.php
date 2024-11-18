@@ -139,4 +139,12 @@ class TaiKhoanController
 
 
     }
+    public function tai_khoan(){
+        require './views/TrangChinh/tai_khoan.php' ;
+              
+    }
+
+    public function post_Tai_Khoan(){
+        
+    }
 }
