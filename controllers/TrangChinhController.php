@@ -5,14 +5,15 @@ class TrangChinhController
     public $modelSanPham;
     public $modelDanhMuc;
     public $modelSlideShow;
-
     public $modelGioHang;
+    public $modelDonHang;
 
     public function __construct() {
         $this->modelSanPham = new SanPham();
         $this->modelDanhMuc = new DanhMuc();
         $this->modelSlideShow = new SlideShow();
         $this->modelGioHang = new GioHang();
+        $this->modelDonHang = new DonHang();
 
     }
     public function Trangchu() {
@@ -51,7 +52,6 @@ class TrangChinhController
         require_once './views/sanPham/sanphamchitiet.php';
     }
 
-
     public function timKiem(){
         if(isset($_GET['keyword'])){
             $keyword = $_GET['keyword'];
@@ -71,5 +71,12 @@ class TrangChinhController
         require "./views/gioHang/giohang.php";
         
     }
-
+    public function listDonHang(){
+        $list_san_pham = $this->modelSanPham->getAllSanPham();
+        $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
+        $list_don_hang = $this->modelDonHang->getDonHangByID($_SESSION['user']['id']);
+        // echo "<pre>";
+        // var_dump($list_don_hang);die();
+        require "./views/TrangChinh/listdonhang.php";
+    }
 }
