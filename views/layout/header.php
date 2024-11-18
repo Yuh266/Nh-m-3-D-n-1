@@ -126,164 +126,126 @@
                                         <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
                                             data-bs-target="#v-pills-home" type="button" role="tab"
                                             aria-controls="v-pills-home" aria-selected="true">
-                                            Dairy &amp; Bakery</button>
+                                            Cây văn phòng</button>
                                         <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
                                             data-bs-target="#v-pills-profile" type="button" role="tab"
                                             aria-controls="v-pills-profile" aria-selected="false" tabindex="-1">
-                                            Fruits &amp; Vegetable</button>
+                                            Cây nội thất</button>
                                         <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
                                             data-bs-target="#v-pills-messages" type="button" role="tab"
                                             aria-controls="v-pills-messages" aria-selected="false" tabindex="-1">
-                                            Snack &amp; Spice</button>
+                                            Cây ngoài trời</button>
                                         <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
                                             data-bs-target="#v-pills-settings" type="button" role="tab"
                                             aria-controls="v-pills-settings" aria-selected="false" tabindex="-1">
-                                            Juice &amp; Drinks </button>
+                                            Cây treo tường</button>
                                         <a class="nav-link" href="shop-left-sidebar.html">
-                                            View All </a>
+                                            Xem tất cả </a>
                                     </div>
                                     <div class="tab-content" id="v-pills-tabContent">
+                                        <!-- Cây văn phòng -->
                                         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                                             aria-labelledby="v-pills-home-tab">
                                             <div class="tab-list row">
                                                 <div class="col">
-                                                    <h6 class="cr-col-title">Dairy</h6>
+                                                    <h6 class="cr-col-title">Cây xanh phổ biến</h6>
                                                     <ul class="cat-list">
-                                                        <li><a href="shop-left-sidebar.html">Milk</a></li>
-                                                        <li><a href="shop-left-sidebar.html">Ice cream</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Cheese</a></li>
-                                                        <li><a href="shop-left-sidebar.html">Frozen
-                                                                custard</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Frozen
-                                                                yogurt</a>
-                                                        </li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Kim Tiền</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Lưỡi Hổ</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Phú Quý</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Bàng Singapore</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Trầu Bà</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="cr-col-title">Bakery</h6>
+                                                    <h6 class="cr-col-title">Cây nhỏ để bàn</h6>
                                                     <ul class="cat-list">
-                                                        <li><a href="shop-left-sidebar.html">Cake and
-                                                                Pastry</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Rusk Toast</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Bread &amp;
-                                                                Buns</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Chocolate
-                                                                Brownie</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Cream Roll</a>
-                                                        </li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Xương Rồng</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Sen Đá</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Hồng Môn</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Cau Tiểu Trâm</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Ngũ Gia Bì</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Cây nội thất -->
                                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
                                             aria-labelledby="v-pills-profile-tab">
                                             <div class="tab-list row">
                                                 <div class="col">
-                                                    <h6 class="cr-col-title">Fruits</h6>
+                                                    <h6 class="cr-col-title">Cây trồng trong nhà</h6>
                                                     <ul class="cat-list">
-                                                        <li><a href="shop-left-sidebar.html">Cauliflower</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Bell
-                                                                Peppers</a></li>
-                                                        <li><a href="shop-left-sidebar.html">Broccoli</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Cabbage</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Tomato</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Cọ Nhật</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Monstera</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Lan Ý</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Thiết Mộc Lan</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Dương Xỉ</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="cr-col-title">Vegetable</h6>
+                                                    <h6 class="cr-col-title">Cây hợp phong thủy</h6>
                                                     <ul class="cat-list">
-                                                        <li><a href="shop-left-sidebar.html">Cauliflower</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Bell
-                                                                Peppers</a></li>
-                                                        <li><a href="shop-left-sidebar.html">Broccoli</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Cabbage</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Tomato</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Kim Ngân</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Đuôi Công</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Vạn Lộc</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Đại Phú Gia</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Phát Tài</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Cây ngoài trời -->
                                         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                                             aria-labelledby="v-pills-messages-tab">
                                             <div class="tab-list row">
                                                 <div class="col">
-                                                    <h6 class="cr-col-title">Snacks</h6>
+                                                    <h6 class="cr-col-title">Cây trang trí sân vườn</h6>
                                                     <ul class="cat-list">
-                                                        <li><a href="shop-left-sidebar.html">French
-                                                                fries</a></li>
-                                                        <li><a href="shop-left-sidebar.html">potato
-                                                                chips</a></li>
-                                                        <li><a href="shop-left-sidebar.html">Biscuits &amp;
-                                                                Cookies</a></li>
-                                                        <li><a href="shop-left-sidebar.html">Popcorn</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Rice Cakes</a>
-                                                        </li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Hoa Giấy</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Sứ Thái</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Tre Cảnh</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Dừa Cảnh</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Lộc Vừng</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="cr-col-title">Spice</h6>
+                                                    <h6 class="cr-col-title">Cây leo</h6>
                                                     <ul class="cat-list">
-                                                        <li><a href="shop-left-sidebar.html">Cinnamon
-                                                                Powder</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Cumin
-                                                                Powder</a></li>
-                                                        <li><a href="shop-left-sidebar.html">Fenugreek
-                                                                Powder</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Pepper
-                                                                Powder</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Long Pepper</a>
-                                                        </li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Hoa Thiên Lý</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Cẩm Tú Cầu</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Trầu Bà Leo</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Hoa Hồng Leo</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Hoa Mai Hoàng Yến</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Cây treo tường -->
                                         <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
                                             aria-labelledby="v-pills-settings-tab">
                                             <div class="tab-list row">
                                                 <div class="col">
-                                                    <h6 class="cr-col-title">Juice</h6>
+                                                    <h6 class="cr-col-title">Cây treo tường</h6>
                                                     <ul class="cat-list">
-                                                        <li><a href="shop-left-sidebar.html">Mango Juice</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Coconut
-                                                                Water</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Tetra Pack</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Apple
-                                                                Juices</a></li>
-                                                        <li><a href="shop-left-sidebar.html">Lychee
-                                                                Juice</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Dây Nhện</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Ráng Ổ Phụng</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Trầu Bà Xanh</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Lan Tim</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cây Ngọc Ngân</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="cr-col-title">soft drink</h6>
+                                                    <h6 class="cr-col-title">Chậu treo</h6>
                                                     <ul class="cat-list">
-                                                        <li><a href="shop-left-sidebar.html">Breizh Cola</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Green Cola</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Jolt Cola</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Mecca Cola</a>
-                                                        </li>
-                                                        <li><a href="shop-left-sidebar.html">Topsia Cola</a>
-                                                        </li>
+                                                        <li><a href="shop-left-sidebar.html">Chậu Treo Sứ</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Chậu Treo Nhựa</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Chậu Treo Kim Loại</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Giá Treo Cây</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Kệ Treo Cây Cảnh</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -408,7 +370,7 @@
                     </nav>
                     <div class="cr-calling">
                         <i class="ri-phone-line"></i>
-                        <a href="javascript:void(0)">+123 ( 456 ) ( 7890 )</a>
+                        <a href="javascript:void(0)">(+84) 987654321</a>
                     </div>
                 </div>
             </div>

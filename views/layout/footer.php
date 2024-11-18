@@ -221,16 +221,16 @@
         <div class="cr-cart-inner">
             <div class="cr-cart-top">
                 <div class="cr-cart-title">
-                    <h6>My Cart</h6>
+                    <h6>Giỏ hàng của bạn</h6>
                     <button type="button" class="close-cart">×</button>
                 </div>
                 <ul class="crcart-pro-items">
-                    <!-- <li>
+                    <li>
                         <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/4.jpg"
                                 alt="product-1"></a>
                         <div class="cr-pro-content">
-                            <a href="product-left-sidebar.html" class="cart_pro_title">Fresh Pomegranate</a>
-                            <span class="cart-price"><span>$56.00</span> x 1kg</span>
+                            <a href="product-left-sidebar.html" class="cart_pro_title">Cây Kim Tiền</a>
+                            <span class="cart-price"><span>350,000 VNĐ</span> x 1 cây</span>
                             <div class="cr-cart-qty">
                                 <div class="cart-qty-plus-minus">
                                     <button type="button" class="plus">+</button>
@@ -243,11 +243,11 @@
                         </div>
                     </li>
                     <li>
-                        <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/2.jpg"
+                        <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/1.jpg"
                                 alt="product-2"></a>
                         <div class="cr-pro-content">
-                            <a href="product-left-sidebar.html" class="cart_pro_title">Green Apples</a>
-                            <span class="cart-price"><span>$75.00</span> x 1kg</span>
+                            <a href="product-left-sidebar.html" class="cart_pro_title">Cây Lưỡi Hổ</a>
+                            <span class="cart-price"><span>250,000 VNĐ</span> x 1 cây</span>
                             <div class="cr-cart-qty">
                                 <div class="cart-qty-plus-minus">
                                     <button type="button" class="plus">+</button>
@@ -258,13 +258,13 @@
                             </div>
                             <a href="javascript:void(0)" class="remove">×</a>
                         </div>
-                    </li> -->
+                    </li>
                     <li>
                         <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/3.jpg"
                                 alt="product-3"></a>
                         <div class="cr-pro-content">
-                            <a href="product-left-sidebar.html" class="cart_pro_title">Watermelon - Small</a>
-                            <span class="cart-price"><span>$48.00</span> x 5kg</span>
+                            <a href="product-left-sidebar.html" class="cart_pro_title">Cây Bàng Singapore</a>
+                            <span class="cart-price"><span>1,200,000 VNĐ</span> x 1 cây</span>
                             <div class="cr-cart-qty">
                                 <div class="cart-qty-plus-minus">
                                     <button type="button" class="plus">+</button>
@@ -283,23 +283,23 @@
                     <table class="table cart-table">
                         <tbody>
                             <tr>
-                                <td class="text-left">Sub-Total :</td>
-                                <td class="text-right">$300.00</td>
+                                <td class="text-left">Tạm tính :</td>
+                                <td class="text-right">1,800,000 VNĐ</td>
                             </tr>
                             <tr>
-                                <td class="text-left">VAT (20%) :</td>
-                                <td class="text-right">$60.00</td>
+                                <td class="text-left">VAT (10%) :</td>
+                                <td class="text-right">180,000 VNĐ</td>
                             </tr>
                             <tr>
-                                <td class="text-left">Total :</td>
-                                <td class="text-right primary-color">$360.00</td>
+                                <td class="text-left">Tổng cộng :</td>
+                                <td class="text-right primary-color">1,980,000 VNĐ</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="cart_btn">
-                    <a href="?act=gio-hang-chi-tiet" class="cr-button">View Cart</a>
-                    <a href="checkout.html" class="cr-btn-secondary">Checkout</a>
+                    <a href="<?= BASE_URL . "?act=gio-hang-chi-tiet" ?>" class="cr-button">Xem giỏ hàng</a>
+                    <a href="checkout.html" class="cr-btn-secondary">Thanh toán</a>
                 </div>
             </div>
         </div>
