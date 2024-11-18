@@ -118,100 +118,6 @@
                         <div class="col-md-6 col-12 mb-24">
                             <div class="vehicle-detail-banner banner-content clearfix">
                                 <div class="banner-slider">
-                                    <!-- <div class="slider slider-for">
-                                        <div class="slider-banner-image">
-                                            <div class="zoom-image-hover">
-                                                <img src="assets/img/product/9.jpg" alt="product-tab-1"
-                                                    class="product-image">
-                                            </div>
-                                        </div>
-                                        <div class="slider-banner-image">
-                                            <div class="zoom-image-hover">
-                                                <img src="assets/img/product/10.jpg" alt="product-tab-2"
-                                                    class="product-image">
-                                            </div>
-                                        </div>
-                                        <div class="slider-banner-image">
-                                            <div class="zoom-image-hover">
-                                                <img src="assets/img/product/11.jpg" alt="product-tab-3"
-                                                    class="product-image">
-                                            </div>
-                                        </div>
-                                        <div class="slider-banner-image">
-                                            <div class="zoom-image-hover">
-                                                <img src="assets/img/product/12.jpg" alt="product-tab-1"
-                                                    class="product-image">
-                                            </div>
-                                        </div>
-                                        <div class="slider-banner-image">
-                                            <div class="zoom-image-hover">
-                                                <img src="assets/img/product/13.jpg" alt="product-tab-2"
-                                                    class="product-image">
-                                            </div>
-                                        </div>
-                                        <div class="slider-banner-image">
-                                            <div class="zoom-image-hover">
-                                                <img src="assets/img/product/14.jpg" alt="product-tab-3"
-                                                    class="product-image">
-                                            </div>
-                                        </div>
-                                        <div class="slider-banner-image">
-                                            <div class="zoom-image-hover">
-                                                <img src="assets/img/product/15.jpg" alt="product-tab-1"
-                                                    class="product-image">
-                                            </div>
-                                        </div>
-                                        <div class="slider-banner-image">
-                                            <div class="zoom-image-hover">
-                                                <img src="assets/img/product/16.jpg" alt="product-tab-2"
-                                                    class="product-image">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slider slider-nav thumb-image">
-                                        <div class="thumbnail-image">
-                                            <div class="thumbImg">
-                                                <img src="assets/img/product/9.jpg" alt="product-tab-1">
-                                            </div>
-                                        </div>
-                                        <div class="thumbnail-image">
-                                            <div class="thumbImg">
-                                                <img src="assets/img/product/10.jpg" alt="product-tab-2">
-                                            </div>
-                                        </div>
-                                        <div class="thumbnail-image">
-                                            <div class="thumbImg">
-                                                <img src="assets/img/product/11.jpg" alt="product-tab-3">
-                                            </div>
-                                        </div>
-                                        <div class="thumbnail-image">
-                                            <div class="thumbImg">
-                                                <img src="assets/img/product/12.jpg" alt="product-tab-1">
-                                            </div>
-                                        </div>
-                                        <div class="thumbnail-image">
-                                            <div class="thumbImg">
-                                                <img src="assets/img/product/13.jpg" alt="product-tab-2">
-                                            </div>
-                                        </div>
-                                        <div class="thumbnail-image">
-                                            <div class="thumbImg">
-                                                <img src="assets/img/product/14.jpg" alt="product-tab-3">
-                                            </div>
-                                        </div>
-                                        <div class="thumbnail-image">
-                                            <div class="thumbImg">
-                                                <img src="assets/img/product/15.jpg" alt="product-tab-1">
-                                            </div>
-                                        </div>
-                                        <div class="thumbnail-image">
-                                            <div class="thumbImg">
-                                                <img src="assets/img/product/16.jpg" alt="product-tab-2">
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    
-
                                     <div class="slider slider-for">
                                         <div class="slider-banner-image">
                                                 <div class="zoom-image-hover">
@@ -452,11 +358,7 @@
                 <div class="col-lg-12">
                     <div class="mb-30">
                         <div class="cr-banner">
-                            <h2>Popular Products</h2>
-                        </div>
-                        <div class="cr-banner-sub-title">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et viverra maecenas accumsan lacus vel facilisis. </p>
+                            <h2>Gợi Ý Cho Bạn</h2>
                         </div>
                     </div>
                 </div>
@@ -465,7 +367,6 @@
                 <div class="col-lg-12">
                     <div class="cr-popular-product">
                     <?php foreach ($list_san_pham_hot as $key => $value): ?>
-
                             <div class="slick-slide">
                                 <div class="cr-product-card">
                                     <div class="cr-product-image">
@@ -509,162 +410,6 @@
                                 </div>
                             </div>
                         <?php endforeach ?>
-
-                            <!-- <div class="slick-slide">
-                                <div class="cr-product-card">
-                                    <div class="cr-product-image">
-                                        <div class="cr-image-inner zoom-image-hover">
-                                            <img src="assets/img/product/10.jpg" alt="product-1">
-                                        </div>
-                                        <div class="cr-side-view">
-                                            <a href="javascript:void(0)" class="wishlist">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                                role="button">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </div>
-                                        <a class="cr-shopping-bag" href="javascript:void(0)">
-                                            <i class="ri-shopping-bag-line"></i>
-                                        </a>
-                                    </div>
-                                    <div class="cr-product-details">
-                                        <div class="cr-brand">
-                                            <a href="shop-left-sidebar.html">Snacks</a>
-                                            <div class="cr-star">
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <p>(5.0)</p>
-                                            </div>
-                                        </div>
-                                        <a href="product-left-sidebar.html" class="title">Sweet snakes crunchy nut
-                                            mix 250gm
-                                            pack</a>
-                                        <p class="cr-price"><span class="new-price">$100.00</span> <span
-                                                class="old-price">$110.00</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slick-slide">
-                                <div class="cr-product-card">
-                                    <div class="cr-product-image">
-                                        <div class="cr-image-inner zoom-image-hover">
-                                            <img src="assets/img/product/1.jpg" alt="product-1">
-                                        </div>
-                                        <div class="cr-side-view">
-                                            <a href="javascript:void(0)" class="wishlist">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                                role="button">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </div>
-                                        <a class="cr-shopping-bag" href="javascript:void(0)">
-                                            <i class="ri-shopping-bag-line"></i>
-                                        </a>
-                                    </div>
-                                    <div class="cr-product-details">
-                                        <div class="cr-brand">
-                                            <a href="shop-left-sidebar.html">Snacks</a>
-                                            <div class="cr-star">
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-line"></i>
-                                                <p>(4.5)</p>
-                                            </div>
-                                        </div>
-                                        <a href="product-left-sidebar.html" class="title">Best snakes with hazel nut
-                                            mix pack 200gm</a>
-                                        <p class="cr-price"><span class="new-price">$120.25</span> <span
-                                                class="old-price">$123.25</span></p>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <!-- <div class="slick-slide">
-                                <div class="cr-product-card">
-                                    <div class="cr-product-image">
-                                        <div class="cr-image-inner zoom-image-hover">
-                                            <img src="assets/img/product/2.jpg" alt="product-1">
-                                        </div>
-                                        <div class="cr-side-view">
-                                            <a href="javascript:void(0)" class="wishlist">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                                role="button">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </div>
-                                        <a class="cr-shopping-bag" href="javascript:void(0)">
-                                            <i class="ri-shopping-bag-line"></i>
-                                        </a>
-                                    </div>
-                                    <div class="cr-product-details">
-                                        <div class="cr-brand">
-                                            <a href="shop-left-sidebar.html">Snacks</a>
-                                            <div class="cr-star">
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <p>(5.0)</p>
-                                            </div>
-                                        </div>
-                                        <a href="product-left-sidebar.html" class="title">Sweet snakes crunchy nut
-                                            mix 250gm
-                                            pack</a>
-                                        <p class="cr-price"><span class="new-price">$100.00</span> <span
-                                                class="old-price">$110.00</span></p>
-                                    </div>
-                                </div> -->
-                            <!-- </div>
-                            <div class="slick-slide">
-                                <div class="cr-product-card">
-                                    <div class="cr-product-image">
-                                        <div class="cr-image-inner zoom-image-hover">
-                                            <img src="assets/img/product/3.jpg" alt="product-1">
-                                        </div>
-                                        <div class="cr-side-view">
-                                            <a href="javascript:void(0)" class="wishlist">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                                role="button">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </div>
-                                        <a class="cr-shopping-bag" href="javascript:void(0)">
-                                            <i class="ri-shopping-bag-line"></i>
-                                        </a>
-                                    </div>
-                                    <div class="cr-product-details">
-                                        <div class="cr-brand">
-                                            <a href="shop-left-sidebar.html">Snacks</a>
-                                            <div class="cr-star">
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <p>(5.0)</p>
-                                            </div>
-                                        </div>
-                                        <a href="product-left-sidebar.html" class="title">Sweet snakes crunchy nut
-                                            mix 250gm
-                                            pack</a>
-                                        <p class="cr-price"><span class="new-price">$100.00</span> <span
-                                                class="old-price">$110.00</span></p>
-                                    </div>
-                                </div>
-                            </div> -->
                     </div>
                 </div>
             </div>
@@ -672,14 +417,14 @@
     </section>
 
     <!-- Tab to top -->
-    <a href="#Top" class="back-to-top result-placeholder">
+    <!-- <a href="#Top" class="back-to-top result-placeholder">
         <i class="ri-arrow-up-line"></i>
         <div class="back-to-top-wrap">
             <svg viewBox="-1 -1 102 102">
                 <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
             </svg>
         </div>
-    </a>
+    </a> -->
 
     <!-- Model -->
     <div class="modal fade quickview-modal" id="quickview" aria-hidden="true" tabindex="-1">

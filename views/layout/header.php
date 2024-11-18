@@ -67,12 +67,12 @@
                                             <span style="padding-left: 15px;"><?= $_SESSION['user']['ho_ten'] ?></span>
                                         </a>
                                         <ul class="dropdown-menu">
-
+                                            <li>
+                                                <a class="dropdown-item" href="<?= BASE_URL . "?act=don-hang"  ?> ">Đơn hàng của tôi</a>
+                                            </li>
                                             <li>
                                                 <a class="dropdown-item" href="<?= BASE_URL . "?act=logout"  ?> ">Đăng xuất</a>
-
                                             </li>
-
                                         </ul>
                                     </li>
                                 <?php else: ?>
