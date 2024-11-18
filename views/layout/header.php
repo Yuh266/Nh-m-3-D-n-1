@@ -46,7 +46,7 @@
                 <div class="col-lg-12">
                     <div class="top-header">
                         <a href="<?= BASE_URL ?>" class="cr-logo">
-                            <img src="assets/img/logo/logo.png" alt="logo" class="logo">
+                            <img src="assets/img/logo/logo2.png"  alt="logo" class="logo">
                             <img src="assets/img/logo/dark-logo.png" alt="logo" class="dark-logo">
                         </a>
                         <form action="<?= BASE_URL?>" method="GET" class="cr-search">
@@ -71,7 +71,10 @@
                                                 <a class="dropdown-item" href="<?= BASE_URL . "?act=don-hang"  ?> ">Đơn hàng của tôi</a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="<?= BASE_URL . "?act=logout"  ?> ">Đăng xuất</a>
+
+                                                <a class="dropdown-item" href="<?=BASE_URL . "?act=tai_khoan" ?>"> Thông tin tài khoản</a>
+                                                <a class="dropdown-item" href="<?=BASE_URL . "?act=logout"  ?> ">Đăng xuất</a>
+
                                             </li>
                                         </ul>
                                     </li>
