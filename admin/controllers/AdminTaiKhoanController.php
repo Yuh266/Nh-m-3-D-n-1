@@ -9,6 +9,7 @@ class AdminTaiKhoanController{
     public function formLogin(){
         
         require "./views/TaiKhoan/login.php";
+        deleteAlertSession();
     }
     public function login(){
        if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -30,6 +31,7 @@ class AdminTaiKhoanController{
                 // var_dump($user);die();
                 if (empty($user)) {
                     $_SESSION['alert_error'] = 'Tài khoản , mật khẩu không tồn tại';
+                    header('Location: ' . BASE_URL_ADMIN . '/?act=form-login');
                 }else {
                     $_SESSION['user'] = $user;
                     // var_dump($_SESSION['user']);die();

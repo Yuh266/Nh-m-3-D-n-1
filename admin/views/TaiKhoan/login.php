@@ -35,24 +35,13 @@
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
                     </div> <!--begin::Row-->
                     <div class="form-text text-danger"><?= $_SESSION['error']['mat_khau'] ?? "" ?></div>
+                    <div class="form-text text-danger"><?= $_SESSION['alert_error'] ?? "" ?></div>
                     <div class="row">
-                        <!-- <div class="col-12 gap-3 d-inline-flex align-items-center">
-                            <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> <label class="form-check-label" for="flexCheckDefault">
-                                    Ghi nhớ
-                                </label> </div>
-                        </div> /.col -->
                         <div class="col-12 my-3">
                             <div class="d-grid gap-2"> <button type="submit" class="btn btn-primary">Đăng nhập</button> </div>
                         </div> <!-- /.col -->
                     </div> <!--end::Row-->
                 </form>
-                <!-- <div class="social-auth-links text-center mb-3 d-grid gap-2">
-                    <p>- OR -</p> <a href="#" class="btn btn-primary"> <i class="bi bi-facebook me-2"></i> Sign in using Facebook
-                    </a> <a href="#" class="btn btn-danger"> <i class="bi bi-google me-2"></i> Sign in using Google+
-                    </a>
-                </div> /.social-auth-links -->
-                <!-- <p class="mb-1"> <a href="forgot-password.html">Quên mật khẩu?</a> </p> -->
-               
             </div> <!-- /.login-card-body -->
         </div>
     </div> <!-- /.login-box --> <!--begin::Third Party Plugin(OverlayScrollbars)-->

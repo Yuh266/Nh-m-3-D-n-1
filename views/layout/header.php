@@ -46,7 +46,7 @@
                 <div class="col-lg-12">
                     <div class="top-header">
                         <a href="<?= BASE_URL ?>" class="cr-logo">
-                            <img src="assets/img/logo/logo2.png"  alt="logo" class="logo">
+                            <img src="assets/img/logo/logo.png"  alt="logo" class="logo">
                             <img src="assets/img/logo/dark-logo.png" alt="logo" class="dark-logo">
                         </a>
                         <form action="<?= BASE_URL?>" method="GET" class="cr-search">
