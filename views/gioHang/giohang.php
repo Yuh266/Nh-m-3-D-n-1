@@ -2,7 +2,7 @@
 
 <main>
     <!-- Mobile menu -->
-    <div class="cr-sidebar-overlay"></div>
+    <!-- <div class="cr-sidebar-overlay"></div>
     <div id="cr_mobile_menu" class="cr-side-cart cr-mobile-menu">
         <div class="cr-menu-title">
             <span class="menu-title">My Menu</span>
@@ -72,7 +72,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Breadcrumb -->
     <section class="section-breadcrumb">
@@ -81,8 +81,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="cr-breadcrumb-title">
-                            <h2>Cart</h2>
-                            <span> <a href="index.html">Home</a> / Cart</span>
+                            <h2>Giỏ hàng hàng</h2>
+                            <span> <a href="index.html">Trang chủ</a> / Giỏ hàng</span>
                         </div>
                     </div>
                 </div>
@@ -93,185 +93,154 @@
     <!-- Cart -->
     <section class="section-cart padding-t-100">
         <div class="container">
-            <div class="row d-none">
-                <div class="col-lg-12">
-                    <div class="mb-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                        <div class="cr-banner">
-                            <h2>Cart</h2>
-                        </div>
-                        <div class="cr-banner-sub-title">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore lacus vel facilisis. </p>
-                        </div>
+        <div class="row d-none">
+            <div class="col-lg-12">
+                <div class="mb-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+                    <div class="cr-banner">
+                        <h2>Giỏ hàng</h2>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                        <div class="row">
-                            <form action="#">
-                                <div class="cr-table-content">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Product</th>
-                                                <th>price</th>
-                                                <th class="text-center">Quantity</th>
-                                                <th>Total</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="cr-cart-name">
-                                                    <a href="javascript:void(0)">
-                                                        <img src="assets/img/product/1.jpg" alt="product-1"
-                                                            class="cr-cart-img">
-                                                        Organic Lemon
-                                                    </a>
-                                                </td>
-                                                <td class="cr-cart-price">
-                                                    <span class="amount">$56.00</span>
-                                                </td>
-                                                <td class="cr-cart-qty">
-                                                    <div class="cart-qty-plus-minus">
-                                                        <button type="button" class="plus">+</button>
-                                                        <input type="text" placeholder="." value="1" minlength="1"
-                                                            maxlength="20" class="quantity">
-                                                        <button type="button" class="minus">-</button>
-                                                    </div>
-                                                </td>
-                                                <td class="cr-cart-subtotal">$56.00</td>
-                                                <td class="cr-cart-remove">
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="cr-cart-name">
-                                                    <a href="javascript:void(0)">
-                                                        <img src="assets/img/product/2.jpg" alt="product-1"
-                                                            class="cr-cart-img">
-                                                        Apple Juice
-                                                    </a>
-                                                </td>
-                                                <td class="cr-cart-price">
-                                                    <span class="amount">$75.00</span>
-                                                </td>
-                                                <td class="cr-cart-qty">
-                                                    <div class="cart-qty-plus-minus">
-                                                        <button type="button" class="plus">+</button>
-                                                        <input type="text" placeholder="." value="1" minlength="1"
-                                                            maxlength="20" class="quantity">
-                                                        <button type="button" class="minus">-</button>
-                                                    </div>
-                                                </td>
-                                                <td class="cr-cart-subtotal">$75.00</td>
-                                                <td class="cr-cart-remove">
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="cr-cart-name">
-                                                    <a href="javascript:void(0)">
-                                                        <img src="assets/img/product/3.jpg" alt="product-1"
-                                                            class="cr-cart-img">
-                                                        Watermelon 5kg Pack
-                                                    </a>
-                                                </td>
-                                                <td class="cr-cart-price">
-                                                    <span class="amount">$48.00</span>
-                                                </td>
-                                                <td class="cr-cart-qty">
-                                                    <div class="cart-qty-plus-minus">
-                                                        <button type="button" class="plus">+</button>
-                                                        <input type="text" placeholder="." value="1" minlength="1"
-                                                            maxlength="20" class="quantity">
-                                                        <button type="button" class="minus">-</button>
-                                                    </div>
-                                                </td>
-                                                <td class="cr-cart-subtotal">$48.00</td>
-                                                <td class="cr-cart-remove">
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="cr-cart-name">
-                                                    <a href="javascript:void(0)">
-                                                        <img src="assets/img/product/4.jpg" alt="product-1"
-                                                            class="cr-cart-img">
-                                                        Pomegranate 5 kg pack
-                                                    </a>
-                                                </td>
-                                                <td class="cr-cart-price">
-                                                    <span class="amount">$90.00</span>
-                                                </td>
-                                                <td class="cr-cart-qty">
-                                                    <div class="cart-qty-plus-minus">
-                                                        <button type="button" class="plus">+</button>
-                                                        <input type="text" placeholder="." value="1" minlength="1"
-                                                            maxlength="20" class="quantity">
-                                                        <button type="button" class="minus">-</button>
-                                                    </div>
-                                                </td>
-                                                <td class="cr-cart-subtotal">$90.00</td>
-                                                <td class="cr-cart-remove">
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="cr-cart-name">
-                                                    <a href="javascript:void(0)">
-                                                        <img src="assets/img/product/5.jpg" alt="product-1"
-                                                            class="cr-cart-img">
-                                                        Organic Peach Fruits
-                                                    </a>
-                                                </td>
-                                                <td class="cr-cart-price">
-                                                    <span class="amount">$50.00</span>
-                                                </td>
-                                                <td class="cr-cart-qty">
-                                                    <div class="cart-qty-plus-minus">
-                                                        <button type="button" class="plus">+</button>
-                                                        <input type="text" placeholder="." value="1" minlength="1"
-                                                            maxlength="20" class="quantity">
-                                                        <button type="button" class="minus">-</button>
-                                                    </div>
-                                                </td>
-                                                <td class="cr-cart-subtotal">$50.00</td>
-                                                <td class="cr-cart-remove">
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="cr-cart-update-bottom">
-                                            <a href="javascript:void(0)" class="cr-links">Continue Shopping</a>
-                                            <a href="cart.html" class="cr-button">
-                                                Check Out
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="cr-banner-sub-title">
+                        <p>Kiểm tra các sản phẩm cây cảnh bạn đã chọn và hoàn tất đơn hàng.</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+                    <div class="row">
+                        <form action="#">
+                            <div class="cr-table-content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Sản phẩm</th>
+                                            <th>Giá</th>
+                                            <th class="text-center">Số lượng</th>
+                                            <th>Tổng cộng</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="cr-cart-name">
+                                                <a href="javascript:void(0)">
+                                                    <img src="assets/img/product/1.jpg" alt="Cây Kim Tiền"
+                                                        class="cr-cart-img">
+                                                    Cây Kim Tiền
+                                                </a>
+                                            </td>
+                                            <td class="cr-cart-price">
+                                                <span class="amount">350,000 VNĐ</span>
+                                            </td>
+                                            <td class="cr-cart-qty">
+                                                <div class="cart-qty-plus-minus">
+                                                    <button type="button" class="plus">+</button>
+                                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20" class="quantity">
+                                                    <button type="button" class="minus">-</button>
+                                                </div>
+                                            </td>
+                                            <td class="cr-cart-subtotal">350,000 VNĐ</td>
+                                            <td class="cr-cart-remove">
+                                                <a href="javascript:void(0)">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cr-cart-name">
+                                                <a href="javascript:void(0)">
+                                                    <img src="assets/img/product/2.jpg" alt="Cây Lưỡi Hổ"
+                                                        class="cr-cart-img">
+                                                    Cây Lưỡi Hổ
+                                                </a>
+                                            </td>
+                                            <td class="cr-cart-price">
+                                                <span class="amount">250,000 VNĐ</span>
+                                            </td>
+                                            <td class="cr-cart-qty">
+                                                <div class="cart-qty-plus-minus">
+                                                    <button type="button" class="plus">+</button>
+                                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20" class="quantity">
+                                                    <button type="button" class="minus">-</button>
+                                                </div>
+                                            </td>
+                                            <td class="cr-cart-subtotal">250,000 VNĐ</td>
+                                            <td class="cr-cart-remove">
+                                                <a href="javascript:void(0)">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cr-cart-name">
+                                                <a href="javascript:void(0)">
+                                                    <img src="assets/img/product/3.jpg" alt="Cây Bàng Singapore"
+                                                        class="cr-cart-img">
+                                                    Cây Bàng Singapore
+                                                </a>
+                                            </td>
+                                            <td class="cr-cart-price">
+                                                <span class="amount">1,200,000 VNĐ</span>
+                                            </td>
+                                            <td class="cr-cart-qty">
+                                                <div class="cart-qty-plus-minus">
+                                                    <button type="button" class="plus">+</button>
+                                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20" class="quantity">
+                                                    <button type="button" class="minus">-</button>
+                                                </div>
+                                            </td>
+                                            <td class="cr-cart-subtotal">1,200,000 VNĐ</td>
+                                            <td class="cr-cart-remove">
+                                                <a href="javascript:void(0)">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cr-cart-name">
+                                                <a href="javascript:void(0)">
+                                                    <img src="assets/img/product/4.jpg" alt="Cây Trầu Bà"
+                                                        class="cr-cart-img">
+                                                    Cây Trầu Bà
+                                                </a>
+                                            </td>
+                                            <td class="cr-cart-price">
+                                                <span class="amount">180,000 VNĐ</span>
+                                            </td>
+                                            <td class="cr-cart-qty">
+                                                <div class="cart-qty-plus-minus">
+                                                    <button type="button" class="plus">+</button>
+                                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20" class="quantity">
+                                                    <button type="button" class="minus">-</button>
+                                                </div>
+                                            </td>
+                                            <td class="cr-cart-subtotal">180,000 VNĐ</td>
+                                            <td class="cr-cart-remove">
+                                                <a href="javascript:void(0)">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="cr-cart-update-bottom">
+                                        <a href="javascript:void(0)" class="cr-links">Tiếp tục mua sắm</a>
+                                        <a href="checkout.html" class="cr-button">
+                                            Thanh toán
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </section>
 
     <!-- Popular products -->
@@ -282,11 +251,11 @@
                 <div class="col-lg-12">
                     <div class="mb-30">
                         <div class="cr-banner">
-                            <h2>Popular Products</h2>
+                            <h2>Sản Phẩm Cây Cảnh Nổi Bật</h2>
                         </div>
                         <div class="cr-banner-sub-title">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et viverra maecenas accumsan lacus vel facilisis. </p>
+                            <p>Khám phá những loại cây cảnh đẹp, dễ chăm sóc và phù hợp với mọi không gian sống của bạn. 
+                            Mang thiên nhiên gần gũi hơn với cuộc sống hàng ngày.</p>
                         </div>
                     </div>
                 </div>
@@ -343,122 +312,6 @@
                             <div class="cr-product-card">
                                 <div class="cr-product-image">
                                     <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/10.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Sweet snakes crunchy nut
-                                        mix 250gm
-                                        pack</a>
-                                    <p class="cr-price"><span class="new-price">$100.00</span> <span
-                                            class="old-price">$110.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slick-slide">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/1.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-line"></i>
-                                            <p>(4.5)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Best snakes with hazel nut
-                                        mix pack 200gm</a>
-                                    <p class="cr-price"><span class="new-price">$120.25</span> <span
-                                            class="old-price">$123.25</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slick-slide">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/2.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Sweet snakes crunchy nut
-                                        mix 250gm
-                                        pack</a>
-                                    <p class="cr-price"><span class="new-price">$100.00</span> <span
-                                            class="old-price">$110.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slick-slide">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
                                         <img src="assets/img/product/3.jpg" alt="product-1">
                                     </div>
                                     <div class="cr-side-view">
@@ -512,7 +365,7 @@
     </a>
 
     <!-- Model -->
-    <div class="modal fade quickview-modal" id="quickview" aria-hidden="true" tabindex="-1">
+    <!-- <div class="modal fade quickview-modal" id="quickview" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered cr-modal-dialog">
             <div class="modal-content">
                 <button type="button" class="cr-close-model btn-close" data-bs-dismiss="modal"
@@ -574,191 +427,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <!-- Cart -->
-    <div class="cr-cart-overlay"></div>
-    <div class="cr-cart-view">
-        <div class="cr-cart-inner">
-            <div class="cr-cart-top">
-                <div class="cr-cart-title">
-                    <h6>My Cart</h6>
-                    <button type="button" class="close-cart">×</button>
-                </div>
-                <ul class="crcart-pro-items">
-                    <li>
-                        <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/4.jpg"
-                                alt="product-1"></a>
-                        <div class="cr-pro-content">
-                            <a href="product-left-sidebar.html" class="cart_pro_title">Fresh Pomegranate</a>
-                            <span class="cart-price"><span>$56.00</span> x 1kg</span>
-                            <div class="cr-cart-qty">
-                                <div class="cart-qty-plus-minus">
-                                    <button type="button" class="plus">+</button>
-                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
-                                        class="quantity">
-                                    <button type="button" class="minus">-</button>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0)" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/2.jpg"
-                                alt="product-2"></a>
-                        <div class="cr-pro-content">
-                            <a href="product-left-sidebar.html" class="cart_pro_title">Green Apples</a>
-                            <span class="cart-price"><span>$75.00</span> x 1kg</span>
-                            <div class="cr-cart-qty">
-                                <div class="cart-qty-plus-minus">
-                                    <button type="button" class="plus">+</button>
-                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
-                                        class="quantity">
-                                    <button type="button" class="minus">-</button>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0)" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/3.jpg"
-                                alt="product-3"></a>
-                        <div class="cr-pro-content">
-                            <a href="product-left-sidebar.html" class="cart_pro_title">Watermelon - Small</a>
-                            <span class="cart-price"><span>$48.00</span> x 5kg</span>
-                            <div class="cr-cart-qty">
-                                <div class="cart-qty-plus-minus">
-                                    <button type="button" class="plus">+</button>
-                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
-                                        class="quantity">
-                                    <button type="button" class="minus">-</button>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0)" class="remove">×</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="cr-cart-bottom">
-                <div class="cart-sub-total">
-                    <table class="table cart-table">
-                        <tbody>
-                            <tr>
-                                <td class="text-left">Sub-Total :</td>
-                                <td class="text-right">$300.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">VAT (20%) :</td>
-                                <td class="text-right">$60.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">Total :</td>
-                                <td class="text-right primary-color">$360.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="cart_btn">
-                    <a href="cart.html" class="cr-button">View Cart</a>
-                    <a href="checkout.html" class="cr-btn-secondary">Checkout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Side-tool -->
-    <div class="cr-tool-overlay"></div>
-    <div class="cr-tool">
-        <div class="cr-tool-btn">
-            <a href="javascript:void(0)" class="btn-cr-tool result-placeholder">
-                <i class="ri-settings-line"></i>
-            </a>
-            <div class="color-variant">
-                <div class="cr-bar-title">
-                    <h6>Tools</h6>
-                    <a href="javascript:void(0)" class="close-tools">
-                        <i class="ri-close-line"></i>
-                    </a>
-                </div>
-                <div class="cr-tools-detail">
-                    <div class="heading">
-                        <h2>Select Color</h2>
-                    </div>
-                    <ul class="cr-color">
-                        <li class="colors c1 active-colors">
-                        </li>
-                        <li class="colors c2">
-                        </li>
-                        <li class="colors c3">
-                        </li>
-                        <li class="colors c4">
-                        </li>
-                        <li class="colors c5">
-                        </li>
-                        <li class="colors c6">
-                        </li>
-                        <li class="colors c7">
-                        </li>
-                        <li class="colors c8">
-                        </li>
-                        <li class="colors c9">
-                        </li>
-                        <li class="colors c10">
-                        </li>
-                    </ul>
-                </div>
-                <div class="cr-tools-detail">
-                    <div class="heading">
-                        <h2>Dark mode</h2>
-                    </div>
-                    <ul class="dark-mode">
-                        <li class="dark">
-                        </li>
-                        <li class="white active-dark-mode">
-                        </li>
-                    </ul>
-                </div>
-                <div class="cr-tools-detail">
-                    <div class="heading">
-                        <h2>RTL mode</h2>
-                    </div>
-                    <ul class="rtl-mode">
-                        <li class="rtl">
-                            <img src="assets/img/tool/rtl.png" alt="rtl">
-                        </li>
-                        <li class="ltr active-rtl-mode">
-                            <img src="assets/img/tool/ltr.png" alt="ltr">
-                        </li>
-                    </ul>
-                </div>
-                <div class="cr-tools-detail">
-                    <div class="heading">
-                        <h2>Backgrounds</h2>
-                    </div>
-                    <ul class="bg-panel">
-                        <li class="bg-1">
-                            <img src="assets/img/shape/bg-shape-1.png" alt="bg-shape-1">
-                        </li>
-                        <li class="bg-2">
-                            <img src="assets/img/shape/bg-shape-2.png" alt="bg-shape-2">
-                        </li>
-                        <li class="bg-3">
-                            <img src="assets/img/shape/bg-shape-3.png" alt="bg-shape-3">
-                        </li>
-                        <li class="bg-4">
-                            <img src="assets/img/shape/bg-shape-4.png" alt="bg-shape-4">
-                        </li>
-                        <li class="bg-5">
-                            <img src="assets/img/shape/bg-shape-5.png" alt="bg-shape-5">
-                        </li>
-                        <li class="bg-6 active-bg-panel">
-                            <img src="assets/img/shape/bg-shape-6.png" alt="bg-shape-6">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 </main>
 
 <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
