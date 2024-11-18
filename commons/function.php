@@ -23,20 +23,11 @@ function connectDB() {
 }
 
 
-function deleteSessionError(){
-    if(isset($_SESSION['flash'])){
-        // Hủy session sau khi đã tải trang
-        // unset($_SESSION['flash']);
-        session_unset();
-        session_destroy();
-    }
-}
 function deleteSession($name_session) {
     if(isset($_SESSION[$name_session])){
         unset($_SESSION[$name_session]) ;
     }
 }
-
 
 
 function deleteAlertSession() {

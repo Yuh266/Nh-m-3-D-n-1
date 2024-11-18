@@ -120,16 +120,21 @@
                                 <?php endforeach;?>
                             </div>
                         </div>
+                        
                         <div class="cr-shop-price">
                             <h4 class="cr-shop-sub-title">Giá tiền</h4>
-                            <div class="price-range-slider">
-                                <div id="slider-range" class="range-bar"></div>
-                                <p class="range-value">
-                                    <label>Giá tiền :</label>
-                                    <input type="text" id="amount" placeholder="'" readonly>
-                                </p>
-                                <button type="button" class="cr-button">Lọc</button>
-                            </div>
+                            <form class="price-range-slider" action="<?= BASE_URL ?>" method="GET" >
+                                <input type="text" name="act" value="tim-kiem" hidden >
+                                <input type="text" name="keyword" value="<?= $keyword ?>" hidden >
+                                <div class=" d-flex align-items-center gap-3 ">
+                                    <input class="form-control" type="number" name="minPrice" > 
+                                    <p>đến</p>
+                                    <input class="form-control" type="number" name="maxPrice" required >
+                                </div>
+                                <div class="m-auto mt-3">
+                                    <button type="submit" class="cr-button">Lọc</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="cr-shop-weight">
                             <h4 class="cr-shop-sub-title">Weight</h4>

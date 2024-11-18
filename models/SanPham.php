@@ -93,6 +93,28 @@ class SanPham
             echo "".$th->getMessage();
         }
     }
+    public function getSanPhamByPrice($keyword,$price_max,$price_min){
+        try {
+            $sql=" SELECT *  
+                   FROM san_phams 
+                   JOIN danh_mucs ON san_phams.id_danh_muc = danh_mucs.id
+                   WHERE (ten_san_pham LIKE :keyword
+                    OR ten_danh_muc LIKE :keyword  )
+                    AND gia_khuyen_mai > :price_min
+                    AND gia_khuyen_mai < :price_max
+                ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ":keyword"=> "%".$keyword."%" ,
+                ":price_min"=> $price_min,
+                ":price_max"=> $price_max,
+            ]);
+
+            return $stmt->fetchAll();
+        } catch (Exception $th) {
+            echo "".$th->getMessage();
+        }
+    }
     
 
 }

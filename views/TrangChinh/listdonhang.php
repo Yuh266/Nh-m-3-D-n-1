@@ -110,7 +110,7 @@
                 <div class="col-12">
                     <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                         <div class="row">
-                            <form action="#">
+                            
                                 <div>
                                     <table class="table">
                                         <thead>
@@ -152,8 +152,8 @@
                                                     <td><?= $value['tong_tien'] ?></td>
                                                     <td><?= $value['ngay_dat'] ?></td>
                                                     <td>
-                                                        <a href="javascript:void(0)">
-                                                            <button class="btn btn-primary">Xem</button>
+                                                        <a href="<?= BASE_URL . "/?act=chi-tiet-don-hang&id=".$value['id_don_hang'] ?>">
+                                                            <button type="submit" class="btn btn-primary">Xem</button>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -168,7 +168,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
