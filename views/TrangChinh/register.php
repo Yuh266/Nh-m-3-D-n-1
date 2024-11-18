@@ -5,8 +5,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="cr-breadcrumb-title">
-                            <h2>Register</h2>
-                            <span> <a href="index.php">Home</a> - Register</span>
+                            <h2>Đăng kí</h2>
+                            <span> <a href="index.php">Trang chủ</a> - Đăng kí</span>
                         </div>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                 <div class="col-lg-12">
                     <div class="mb-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                         <div class="cr-banner">
-                            <h2>Register</h2>
+                            <h2>Đăng kí</h2>
                         </div>
                         <div class="cr-banner-sub-title">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -38,51 +38,51 @@
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label>User Name*</label>
-                                        <input type="text" name="ho_ten" placeholder="Enter Your User Name" class="cr-form-control">
+                                        <label>Tên người dùng*</label>
+                                        <input type="text" name="ho_ten" placeholder="Nhập tên người dùng" class="cr-form-control">
                                         <div class="form-text text-danger"><?= $_SESSION['error']['ho_ten'] ?? "" ?></div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label>Password*</label>
-                                        <input type="password" name="mat_khau" placeholder="Enter Your Password" class="cr-form-control">
+                                        <label>Mật khẩu*</label>
+                                        <input type="password" name="mat_khau" placeholder="Nhập mật khẩu" class="cr-form-control">
                                         <div class="form-text text-danger"><?= $_SESSION['error']['mat_khau'] ?? "" ?></div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>Email*</label>
-                                        <input type="email"  name="email" placeholder="Enter Your email" class="cr-form-control">
+                                        <input type="email"  name="email" placeholder="Nhập Email" class="cr-form-control">
                                         <div class="form-text text-danger"><?= $_SESSION['error']['email'] ?? "" ?></div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label>Phone Number*</label>
-                                        <input type="text" name="so_dien_thoai" placeholder="Enter Your Phone Number" class="cr-form-control">
+                                        <label>Số điện thoại*</label>
+                                        <input type="text" name="so_dien_thoai" placeholder="Nhập số điện thoại" class="cr-form-control">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label>Address*</label>
-                                        <input type="text" name="dia_chi" placeholder="Enter Your Address" class="cr-form-control">
+                                        <label>Địa chỉ*</label>
+                                        <input type="text" name="dia_chi" placeholder="Nhập địa chỉ" class="cr-form-control">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label>Avatar*</label>
-                                        <input type="file" name="file_anh" placeholder="Enter Your Avatar" class="cr-form-control">
+                                        <label>Ảnh đại điện*</label>
+                                        <input type="file" name="file_anh" placeholder="Ảnh đại diện" class="cr-form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label>Sex*</label>
+                                        <label>Giới tính*</label>
                                         <select class="cr-form-control"  name="gioi_tinh" aria-label="Default select example">
-                                            <option selected value="3">Choose your sex</option>
-                                            <option value="1">Male</option>
-                                            <option value="0">Female</option>
-                                            <option value="2">Other</option>
+                                            <option selected value="3">Chọn giới tính của bạn</option>
+                                            <option value="1">Nam</option>
+                                            <option value="0">Nữ</option>
+                                            <option value="2">Khác</option>
                                         </select>
                                     </div>
                                 </div>
@@ -90,14 +90,14 @@
                             
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label>Date</label>
-                                        <input type="date" name="ngay_sinh" placeholder="Enter Your Date" class="cr-form-control">
+                                        <label>Ngày sinh</label>
+                                        <input type="date" name="ngay_sinh" placeholder="Nhập ngày sinh" class="cr-form-control">
                                     </div>
                                 </div>
                                 <div class="cr-register-buttons">
-                                    <button type="submit" class="cr-button">Signup</button>
-                                    <a href="<?= BASE_URL."?act=form-login"?>" class="link">
-                                        Have an account?
+                                    <button type="submit" class="cr-button">Đăng kí</button>
+                                    <a href="<?= BASE_URL."?act=login"?>" class="link">
+                                        Đã có tài khoản?
                                     </a>
                                 </div>
                             </div>

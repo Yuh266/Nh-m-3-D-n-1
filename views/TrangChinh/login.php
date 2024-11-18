@@ -83,8 +83,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="cr-breadcrumb-title">
-                            <h2>Login</h2>
-                            <span> <a href="index.php">Home</a> - Login</span>
+                            <h2>Đăng nhập</h2>
+                            <span> <a href="index.php">Trang chủ</a> - Đăng nhập</span>
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                 <div class="col-lg-12">
                     <div class="mb-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                         <div class="cr-banner">
-                            <h2>Login</h2>
+                            <h2>Đăng nhập</h2>
                         </div>
                         <div class="cr-banner-sub-title">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -125,26 +125,26 @@
                       
                         <form   class="cr-content-form" method="POST" action="<?= BASE_URL."?act=form-login"?>"  >
                             <div class="form-group">
-                                <label>Email Address*</label>
-                                <input type="email" placeholder="Enter Your Email" class="cr-form-control" name="email">
+                                <label>Email*</label>
+                                <input type="email" placeholder="Nhập Email" class="cr-form-control" name="email">
                                 <div class="form-text text-danger"><?= $_SESSION['error']['email'] ?? "" ?></div>
                             </div>
                             <div class="form-group">
-                                <label>Password*</label>
-                                <input type="password" placeholder="Enter Your password" class="cr-form-control" name="mat_khau">
+                                <label>Mật khẩu*</label>
+                                <input type="password" placeholder="Nhập mật khẩu" class="cr-form-control" name="mat_khau">
                                 <div class="form-text text-danger"><?= $_SESSION['error']['mat_khau'] ?? "" ?></div>
                             </div>
                             <div class="remember">
                                 <span class="form-group custom">
                                     <input type="checkbox" id="html">
-                                    <label for="html">Remember Me</label>
+                                    <label for="html">Ghi nhớ tôi</label>
                                 </span>
-                                <a class="link" href="forgot.html">Forgot Password?</a>
+                                <a class="link" href="forgot.html">Quên mật khẩu?</a>
                             </div><br>
                             <div class="login-buttons">
-                                <button type="submit" class="cr-button">Login</button>
+                                <button type="submit" class="cr-button">Đăng nhập</button>
                                 <a href="<?= BASE_URL . "?act=register" ?>" class="link">
-                                     Signup?
+                                     Đăng kí?
                                 </a>
                             </div>
                         </form>
