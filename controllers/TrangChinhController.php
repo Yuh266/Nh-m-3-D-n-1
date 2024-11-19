@@ -46,10 +46,8 @@ class TrangChinhController
             // var_dump($sanphan_ct); die;
 
         }else{
-            
             header('Location' . BASE_URL . '/');
             exit();
-
         }
         require_once './views/sanPham/sanphamchitiet.php';
     }
