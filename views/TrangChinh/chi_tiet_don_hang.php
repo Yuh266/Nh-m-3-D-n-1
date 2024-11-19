@@ -114,35 +114,32 @@
                                 <div>
                                 <div class="container my-4">
                                     <h2 class="text-center text-primary">Chi Tiết Đơn Hàng</h2>
-                                    <div class="list-group">
+                                    <ul class="list-group">
                                         <?php foreach ($list_don_hang as $key => $value): ?>
                                         <!-- Đơn hàng 1 -->
-                                        <div class="list-group-item">
-                                            <h5 class="mb-1 text-primary">Đơn hàng HH<?= $value['id_don_hang'] ?></h5>
-                                            <p class="mb-1"><strong>Khách hàng: </strong> <?= $value['ho_ten'] ?></p>
-                                            <p class="mb-1"><strong>Ngày đặt: </strong><?= $value['ngay_dat'] ?></p>
-                                            <p class="mb-1 text-danger" ><strong>Trạng thái: </strong><?= $value['ten_trang_thai'] ?></p>
+                                        <ul class="list-group">
+                                            <h5 class="list-group-item mb-1 text-primary">Đơn hàng HH<?= $value['id_don_hang'] ?></h5>
+                                            <li class="list-group-item  mb-1"><strong>Khách hàng: </strong> <?= $value['ho_ten'] ?></li>
+                                            <li class="list-group-item  mb-1"><strong>Ngày đặt: </strong><?= $value['ngay_dat'] ?></li>
+                                            <li class="list-group-item mb-1 text-danger" ><strong>Trạng thái: </strong><?= $value['ten_trang_thai'] ?></li>
                                             <?php foreach ($list_don_hang as $key => $value): ?>
-                                                <hr>
-                                                <p class="mb-1"><strong>Sản phẩm: </strong> <?= $value['ten_san_pham'] ?></p>
-                                                <img style="width: 100px; " src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="">
-                                                <p class="mb-1"><strong>Mô tả: </strong> <?= $value['mo_ta'] ?></p>
-                                            <small><strong>Số lượng:</strong> <?= $value['so_luong'] ?> | <strong>Giá:</strong> <?= $value['gia_khuyen_mai'] ?> VND | <strong>Tổng:</strong> <?= $value['thanh_tien'] ?> VND</small>
+                                                <li class="list-group-item mb-1"> <img style="width: 100px; " src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="<?= $value['ten_san_pham'] ?>"> <?= $value['ten_san_pham'] ?></li>
+                                                <li class="list-group-item mb-1"><strong>Mô tả: </strong> <?= $value['mo_ta'] ?></li>
+                                            <ul class="list-group-item"><strong>Số lượng:</strong> <?= $value['so_luong'] ?> | <strong>Giá:</strong> <?= $value['gia_khuyen_mai'] ?> VND | <strong>Tổng:</strong> <?= $value['thanh_tien'] ?> VND</ul>
                                             <?php endforeach ?>
-                                            <hr>
-                                            <small><strong>Tổng tiền:</strong> <?= $value['tong_tien'] ?> VND<strong></strong>
-                                        </div>
-                                        <div class="list-group-item">
-                                            <h5 class="mb-1 text-primary">Thông tin nhận hàng </h5>
-                                            <p class="mb-1"><strong>Tên người nhận: </strong> <?= $value['ten_nguoi_nhan'] ?></p>
-                                            <p class="mb-1"><strong>Số điện thoại: </strong><?= $value['sdt_nguoi_nhan'] ?></p>
-                                            <p class="mb-1"><strong>Địa chỉ: </strong> <?= $value['dia_chi_nguoi_nhan'] ?></p>
-                                            <p class="mb-1"><strong>Ghi chú: </strong> <?= $value['ghi_chu'] ?></p>
-                                        </div>
+                                            <ul class="list-group-item"><strong class="text-danger" >Tổng tiền:</strong> <?= $value['tong_tien'] ?> VND<strong></strong>
+                                        </ul>
+                                        <ul class="list-group">
+                                            <h5 class="list-group-item mb-1 text-primary">Thông tin nhận hàng </h5>
+                                            <li class="list-group-item mb-1"><strong>Tên người nhận: </strong> <?= $value['ten_nguoi_nhan'] ?></li>
+                                            <li class="list-group-item mb-1"><strong>Số điện thoại: </strong><?= $value['sdt_nguoi_nhan'] ?></li>
+                                            <li class="list-group-item mb-1"><strong>Địa chỉ: </strong> <?= $value['dia_chi_nguoi_nhan'] ?></li>
+                                            <li class="list-group-item mb-1"><strong>Ghi chú: </strong> <?= $value['ghi_chu'] ?></li>
+                                        </u>
                                     
                                         <?php break ; ?>
                                         <?php endforeach ?>
-                                    </div>
+                                    </u>
                                 </div>
 
                                 </div>
