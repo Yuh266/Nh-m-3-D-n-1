@@ -68,6 +68,7 @@ class SanPham
             $stmt->execute([
                 ':id' => $id,
             ]);
+            
             return $stmt->fetch();
         }catch(Exception $e){
             echo "Lỗi".$e->getMessage();
