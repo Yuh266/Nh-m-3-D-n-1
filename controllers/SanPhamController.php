@@ -16,8 +16,11 @@ class SanPhamController
         $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
         $list_slide_show = $this->modelSlideShow->getAllSlideShows();
-        $gio_hang = $this->modelGioHang->getGioHang($_SESSION['user']['id']);
-
+        if(isset($_SESSION['user']['id'])){
+            $gio_hang = $this->modelGioHang->getGioHang($_SESSION['user']['id']);
+        }else{
+            echo"";
+        }
     // var_dump($gio_hang);die();
         require './views/TrangChinh/trangchu.php';
     }
