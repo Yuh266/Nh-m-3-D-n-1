@@ -20,6 +20,8 @@ class TrangChinhController
         $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
         $list_slide_show = $this->modelSlideShow->getAllSlideShows();
+        $gio_hang = $this->modelGioHang->getGioHang($_SESSION['user']['id']);
+        // var_dump($list_slide_show);die();
     
         require './views/TrangChinh/trangchu.php';
     }
@@ -65,10 +67,19 @@ class TrangChinhController
     }
 
     public function chiTietGioHang(){
+        $id_gio_hang = $_GET['id_gio_hang'];
+        // $id = $_GET['id'];var
+        // var_dump($id_gio_hang);/
+
+
         $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
+        $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
+        // var_dump($chi_tiet_gio_hang);die();
+        // $gio_hang = $this->modelGioHang->getGioHang($_SESSION['user']['id']);
 
         require "./views/gioHang/giohang.php";
+        
         
     }
     public function listDonHang(){

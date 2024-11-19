@@ -9,12 +9,16 @@ class SanPhamController
         $this->modelSanPham = new SanPham();
         $this->modelDanhMuc = new DanhMuc();
         $this->modelSlideShow = new SlideShow();
+        $this->modelGioHang = new GioHang();
+
     }
     public function Trangchu() {
         $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
         $list_slide_show = $this->modelSlideShow->getAllSlideShows();
-    
+        $gio_hang = $this->modelGioHang->getGioHang($_SESSION['user']['id']);
+
+    // var_dump($gio_hang);die();
         require './views/TrangChinh/trangchu.php';
     }
     public function Login(){

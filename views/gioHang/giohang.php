@@ -122,16 +122,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php foreach ($chi_tiet_gio_hangs as $key => $chi_tiet_gio_hang): ?>
                                         <tr>
                                             <td class="cr-cart-name">
                                                 <a href="javascript:void(0)">
-                                                    <img src="assets/img/product/1.jpg" alt="Cây Kim Tiền"
+                                                    <img src="<?= $chi_tiet_gio_hang['hinh_anh']?>" alt=""
                                                         class="cr-cart-img">
-                                                    Cây Kim Tiền
+                                                    <!-- Cây Kim Tiền -->
                                                 </a>
                                             </td>
                                             <td class="cr-cart-price">
-                                                <span class="amount">350,000 VNĐ</span>
+                                                <span class="amount"></span>
                                             </td>
                                             <td class="cr-cart-qty">
                                                 <div class="cart-qty-plus-minus">
@@ -140,14 +141,15 @@
                                                     <button type="button" class="minus">-</button>
                                                 </div>
                                             </td>
-                                            <td class="cr-cart-subtotal">350,000 VNĐ</td>
+                                            <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien']?></td>
                                             <td class="cr-cart-remove">
                                                 <a href="javascript:void(0)">
                                                     <i class="ri-delete-bin-line"></i>
                                                 </a>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <?php endforeach ?>
+                                        <!-- <tr>
                                             <td class="cr-cart-name">
                                                 <a href="javascript:void(0)">
                                                     <img src="assets/img/product/2.jpg" alt="Cây Lưỡi Hổ"
@@ -221,7 +223,7 @@
                                                     <i class="ri-delete-bin-line"></i>
                                                 </a>
                                             </td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
