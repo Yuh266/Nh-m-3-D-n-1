@@ -46,7 +46,11 @@ match ($act) {
     "san-pham-chi-tiet"=>(new SanPhamController() )->chiTietSanPham(),
     "gio-hang-chi-tiet"=>(new TrangChinhController() )->chiTietGioHang(),
     "don-hang"=>(new TrangChinhController() )->listDonHang(),
+<<<<<<< HEAD
+    
+=======
     "chi-tiet-don-hang"=>(new TrangChinhController() )->chiTietDonHang(),
+>>>>>>> cd3c62990abfe387a349a02d1bbd7b33f975088d
 
     "login"=>(new TaiKhoanController())->Login(),
     "logout"=>(new TaiKhoanController())->Logout(),

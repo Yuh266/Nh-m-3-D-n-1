@@ -298,7 +298,7 @@
                     </table>
                 </div>
                 <div class="cart_btn">
-                    <a href="<?= BASE_URL . "?act=gio-hang-chi-tiet" ?>" class="cr-button">Xem giỏ hàng</a>
+                    <a href="?act=gio-hang-chi-tiet&id_gio_hang=<?= $gio_hang['id']?>" class="cr-button">Xem giỏ hàng</a>
                     <a href="checkout.html" class="cr-btn-secondary">Thanh toán</a>
                 </div>
             </div>
