@@ -58,7 +58,15 @@ class TrangChinhController
         if(isset($_GET['keyword'])){
             $keyword = $_GET['keyword'];
             $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
-            $list_san_pham = $this->modelSanPham->getSanPhamByKeyword($keyword);
+            if(isset($_GET['maxPrice'])){
+                $price_max = $_GET['maxPrice']?? 0 ;
+                $price_min = $_GET['minPrice']?? 0 ;
+
+                $list_san_pham = $this->modelSanPham->getSanPhamByPrice( $keyword, $price_max, $price_min);
+            }else{
+                $list_san_pham = $this->modelSanPham->getSanPhamByKeyword($keyword);
+            }
+
             // var_dump($list_san_pham);die();
             require './views/TrangChinh/tim_kiem.php' ;
         }else{
@@ -89,5 +97,20 @@ class TrangChinhController
         // echo "<pre>";
         // var_dump($list_don_hang);die();
         require "./views/TrangChinh/listdonhang.php";
+    }
+    public function chiTietDonHang(){
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+        
+            $list_san_pham = $this->modelSanPham->getAllSanPham();
+            $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
+
+            $list_don_hang = $this->modelDonHang->getDonHangByIDDonHang($id);
+            // echo "<pre>";
+            // var_dump($list_don_hang);die();
+            require "./views/TrangChinh/chi_tiet_don_hang.php";
+        }else{
+            header(BASE_URL);
+        }
     }
 }
