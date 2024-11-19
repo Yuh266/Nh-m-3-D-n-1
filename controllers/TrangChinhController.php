@@ -53,23 +53,18 @@ class TrangChinhController
     }
 
     public function timKiem(){
-        if(isset($_GET['keyword'])){
-            $keyword = $_GET['keyword'];
-            $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
-            if(isset($_GET['maxPrice'])){
-                $price_max = $_GET['maxPrice']?? 0 ;
-                $price_min = $_GET['minPrice']?? 0 ;
+        $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
+        // var_dump($_GET['id']);die();
+        $keyword = $_GET['keyword']??"";
+        $maxPrice = $_GET['maxPrice']??"";
+        $minPrice = $_GET['minPrice']??"";
+        $id = $_GET['id']??"";
 
-                $list_san_pham = $this->modelSanPham->getSanPhamByPrice( $keyword, $price_max, $price_min);
-            }else{
-                $list_san_pham = $this->modelSanPham->getSanPhamByKeyword($keyword);
-            }
+        $list_san_pham = $this->modelSanPham->getSanPhamByInformationSearch($keyword,$id,$maxPrice,$minPrice);
 
-            // var_dump($list_san_pham);die();
-            require './views/TrangChinh/tim_kiem.php' ;
-        }else{
-            header(''. BASE_URL . '/');
-        }
+        // var_dump($list_san_pham);die();
+        require './views/TrangChinh/tim_kiem.php' ;
+       
     }
 
     public function chiTietGioHang(){

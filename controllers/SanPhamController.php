@@ -18,7 +18,7 @@ class SanPhamController
         $list_slide_show = $this->modelSlideShow->getAllSlideShows();
         $gio_hang = $this->modelGioHang->getGioHang($_SESSION['user']['id']);
 
-    // var_dump($gio_hang);die();
+        // var_dump($gio_hang);die();
         require './views/TrangChinh/trangchu.php';
     }
     public function Login(){

@@ -10,14 +10,15 @@
     <meta name="description" content="Carrot - Multipurpose eCommerce HTML Template.">
     <meta name="author" content="ashishmaraviya">
 
-    <title>Carrot - Multipurpose eCommerce HTML Template</title>
+    <title>PLANT HAVEN</title>
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/img/logo/favicon.png">
+    <link rel="shortcut icon" href="assets/img/logo/logo.png>
 
     <!-- Icon CSS -->
     <link rel="stylesheet" href="assets/css/vendor/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/css/vendor/remixicon.css">
+
 
     <!-- Vendor -->
     <link rel="stylesheet" href="assets/css/vendor/animate.css">

@@ -216,7 +216,7 @@
                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12" data-aos="fade-up" data-aos-duration="2000">
                     <div class="cr-twocolumns-product">
                         <?php foreach ($list_san_pham_hot as $key => $value): ?>
-                            <div class="mix vegetable col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
+                            <div class="mix col-xxl-3 col-xl-3 col-6 cr-product-box mb-24">
                                 <div class="cr-product-card">
                                     <div class="cr-product-image">
                                         <div class="cr-image-inner zoom-image-hover">
