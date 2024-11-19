@@ -21,8 +21,8 @@
     <section class="section-product padding-t-100">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-12 md-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                    <div class="cr-shop-sideview">
+                <div class="col-lg-2 col-12 md-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+                    <!-- <div class="cr-shop-sideview">
                         <div class="cr-shop-categories">
                             <h4 class="cr-shop-sub-title">Danh mục</h4>
                             <div class="cr-checkbox">
@@ -122,9 +122,9 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="col-lg-9 col-12 md-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="600">
+                <div class="col-lg-8 col-12 md-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="600">
                     <div class="row mb-minus-24">
                         <div class="col-md-6 col-12 mb-24">
                             <div class="vehicle-detail-banner banner-content clearfix">
@@ -323,6 +323,8 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-2 col-12 md-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                 </div>
             </div>
         </div>

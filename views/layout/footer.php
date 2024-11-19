@@ -224,59 +224,60 @@
                     <h6>Giỏ hàng của bạn</h6>
                     <button type="button" class="close-cart">×</button>
                 </div>
-                <ul class="crcart-pro-items">
-                    <li>
-                        <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/4.jpg"
-                                alt="product-1"></a>
-                        <div class="cr-pro-content">
-                            <a href="product-left-sidebar.html" class="cart_pro_title">Cây Kim Tiền</a>
-                            <span class="cart-price"><span>350,000 VNĐ</span> x 1 cây</span>
-                            <div class="cr-cart-qty">
-                                <div class="cart-qty-plus-minus">
-                                    <button type="button" class="plus">+</button>
-                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
-                                        class="quantity">
-                                    <button type="button" class="minus">-</button>
+                <?php if(isset($_SESSION['user']['id'])){ ?>
+                    <ul class="crcart-pro-items">
+                        <li>
+                            <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/4.jpg"
+                                    alt="product-1"></a>
+                            <div class="cr-pro-content">
+                                <a href="product-left-sidebar.html" class="cart_pro_title">Cây Kim Tiền</a>
+                                <span class="cart-price"><span>350,000 VNĐ</span> x 1 cây</span>
+                                <div class="cr-cart-qty">
+                                    <div class="cart-qty-plus-minus">
+                                        <button type="button" class="plus">+</button>
+                                        <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
+                                            class="quantity">
+                                        <button type="button" class="minus">-</button>
+                                    </div>
                                 </div>
+                                <a href="javascript:void(0)" class="remove">×</a>
                             </div>
-                            <a href="javascript:void(0)" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/1.jpg"
-                                alt="product-2"></a>
-                        <div class="cr-pro-content">
-                            <a href="product-left-sidebar.html" class="cart_pro_title">Cây Lưỡi Hổ</a>
-                            <span class="cart-price"><span>250,000 VNĐ</span> x 1 cây</span>
-                            <div class="cr-cart-qty">
-                                <div class="cart-qty-plus-minus">
-                                    <button type="button" class="plus">+</button>
-                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
-                                        class="quantity">
-                                    <button type="button" class="minus">-</button>
+                        </li>
+                        <li>
+                            <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/1.jpg"
+                                    alt="product-2"></a>
+                            <div class="cr-pro-content">
+                                <a href="product-left-sidebar.html" class="cart_pro_title">Cây Lưỡi Hổ</a>
+                                <span class="cart-price"><span>250,000 VNĐ</span> x 1 cây</span>
+                                <div class="cr-cart-qty">
+                                    <div class="cart-qty-plus-minus">
+                                        <button type="button" class="plus">+</button>
+                                        <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
+                                            class="quantity">
+                                        <button type="button" class="minus">-</button>
+                                    </div>
                                 </div>
+                                <a href="javascript:void(0)" class="remove">×</a>
                             </div>
-                            <a href="javascript:void(0)" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/3.jpg"
-                                alt="product-3"></a>
-                        <div class="cr-pro-content">
-                            <a href="product-left-sidebar.html" class="cart_pro_title">Cây Bàng Singapore</a>
-                            <span class="cart-price"><span>1,200,000 VNĐ</span> x 1 cây</span>
-                            <div class="cr-cart-qty">
-                                <div class="cart-qty-plus-minus">
-                                    <button type="button" class="plus">+</button>
-                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
-                                        class="quantity">
-                                    <button type="button" class="minus">-</button>
+                        </li>
+                        <li>
+                            <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/3.jpg"
+                                    alt="product-3"></a>
+                            <div class="cr-pro-content">
+                                <a href="product-left-sidebar.html" class="cart_pro_title">Cây Bàng Singapore</a>
+                                <span class="cart-price"><span>1,200,000 VNĐ</span> x 1 cây</span>
+                                <div class="cr-cart-qty">
+                                    <div class="cart-qty-plus-minus">
+                                        <button type="button" class="plus">+</button>
+                                        <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
+                                            class="quantity">
+                                        <button type="button" class="minus">-</button>
+                                    </div>
                                 </div>
+                                <a href="javascript:void(0)" class="remove">×</a>
                             </div>
-                            <a href="javascript:void(0)" class="remove">×</a>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
             </div>
             <div class="cr-cart-bottom">
                 <div class="cart-sub-total">
@@ -302,6 +303,11 @@
                     <a href="checkout.html" class="cr-btn-secondary">Thanh toán</a>
                 </div>
             </div>
+            <?php }else{ ?>
+                        <!-- <h4>Vui lòng đăng nhập để sử dụng chức năng này</h4> -->
+                         <div class="alert alert-info">Bạn cần<a href="?act=login" class="text-primary"> đăng nhập </a>để sử dụng chức năng này</div>
+                        <!-- <button class="container">Đăng nhập</button> -->
+                <?php }?>
         </div>
     </div>
 
