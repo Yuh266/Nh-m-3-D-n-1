@@ -17,11 +17,16 @@ class TrangChinhController
 
     }
     public function Trangchu() {
+        $id_gio_hang = $_GET['id_gio_hang'];
+
         $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
         $list_slide_show = $this->modelSlideShow->getAllSlideShows();
         $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
         // var_dump($list_slide_show);die();
+        // $id_gio_hang = $gio_hang['id'];
+
+        // $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
     
         require './views/TrangChinh/trangchu.php';
     }
@@ -43,12 +48,16 @@ class TrangChinhController
             $sanphan_ct = $this->modelSanPham->getDetailSanPham($id);
             
             $danh_sach_anh = $this->modelSanPham->getListAnhSanPham($id);
+
+            // var_dump($sanphan_ct);die();
             // var_dump($sanphan_ct); die;
 
         }else{
             header('Location' . BASE_URL . '/');
             exit();
         }
+
+        
         require_once './views/sanPham/sanphamchitiet.php';
     }
 
@@ -80,9 +89,9 @@ class TrangChinhController
         // $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
 
         require "./views/gioHang/giohang.php";
-        
-        
+           
     }
+
     public function listDonHang(){
         $list_san_pham = $this->modelSanPham->getAllSanPham();
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 

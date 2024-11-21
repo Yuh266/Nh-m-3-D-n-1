@@ -45,6 +45,7 @@ match ($act) {
 
     "san-pham-chi-tiet"=>(new SanPhamController() )->chiTietSanPham(),
     "gio-hang-chi-tiet"=>(new TrangChinhController() )->chiTietGioHang(),
+    "them-gio-hang"=>(new SanPhamController() )->themGioHang(),
     "don-hang"=>(new TrangChinhController() )->listDonHang(),
 
     "chi-tiet-don-hang"=>(new TrangChinhController() )->chiTietDonHang(),

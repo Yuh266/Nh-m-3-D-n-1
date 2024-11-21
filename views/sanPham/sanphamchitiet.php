@@ -204,25 +204,27 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="cr-add-card">
-                                    <div class="cr-qty-main">
-                                        <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
-                                            class="quantity" style="width: 80px">
-                                        <button type="button" id="add" class="plus" style="width: 40px; height: 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">+</button>
-                                        <button type="button" id="sub" class="minus" style="width: 40px; height: 20px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">-</button>
+                                <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL . "/?act=san-pham-chi-tiet" ?>">
+                                    <div class="cr-add-card">
+                                        <div class="cr-qty-main">
+                                            <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
+                                                class="quantity" style="width: 80px">
+                                            <button type="button" id="add" class="plus" style="width: 40px; height: 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">+</button>
+                                            <button type="button" id="sub" class="minus" style="width: 40px; height: 20px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">-</button>
+                                        </div>
+                                        <div class="cr-add-button">
+                                            <button type="button" class="cr-button cr-shopping-bag"><a href="?act=them-gio-hang&id_gio_hang=<?= $gio_hang['id'] ?>&id_san_pham=<?= $sanphan_ct['id'] ?>">Thêm vào giỏ hàng</a></button>
+                                        </div>
+                                        <div class="cr-card-icon">
+                                            <a href="javascript:void(0)" class="wishlist">
+                                                <i class="ri-heart-line"></i>
+                                            </a>
+                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview" role="button">
+                                                <i class="ri-eye-line"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="cr-add-button">
-                                        <button type="button" class="cr-button cr-shopping-bag">Thêm vào giỏ hàng</button>
-                                    </div>
-                                    <div class="cr-card-icon">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview" role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>

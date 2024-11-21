@@ -120,17 +120,17 @@
                     <div class="cr-categories">
                         <ul class="nav row nav-tabs justify-content-start" id="myTab" role="tablist">
 
-                            <?php foreach ($list_danh_muc as $key => $value) :?>
-                            <li class="nav-item col-6 col-md-3" role="presentation">
-                                <a href="<?= BASE_URL . "/?act=tim-kiem&keyword=".$value['ten_danh_muc'] ?>">
-                                <button class="nav-link active center-categories-inner  " id="cake_milk-tab"
-                                    data-bs-toggle="tab" data-bs-target="#cake_milk" type="button" role="tab"
-                                    aria-controls="cake_milk" aria-selected="true">
-                                    <?= $value['ten_danh_muc'] ?> 
-                                    <!-- <span>(65 items)</span> -->
-                                </button>
-                                </a>
-                            </li>
+                            <?php foreach ($list_danh_muc as $key => $value): ?>
+                                <li class="nav-item col-6 col-md-3" role="presentation">
+                                    <a href="<?= BASE_URL . "/?act=tim-kiem&keyword=" . $value['ten_danh_muc'] ?>">
+                                        <button class="nav-link active center-categories-inner  " id="cake_milk-tab"
+                                            data-bs-toggle="tab" data-bs-target="#cake_milk" type="button" role="tab"
+                                            aria-controls="cake_milk" aria-selected="true">
+                                            <?= $value['ten_danh_muc'] ?>
+                                            <!-- <span>(65 items)</span> -->
+                                        </button>
+                                    </a>
+                                </li>
 
                             <?php endforeach ?>
                             <li class="nav-item col-6 col-md-3 " role="presentation">
@@ -364,9 +364,10 @@
                                                 <i class="ri-eye-line"></i>
                                             </a>
                                         </div>
-                                        <a class="cr-shopping-bag" href="javascript:void(0)">
+                                        <a class="cr-shopping-bag" href="javascript:void(0)" data-id="<?= $value['id'] ?>">
                                             <i class="ri-shopping-bag-line"></i>
                                         </a>
+
                                     </div>
                                     <div class="cr-product-details">
                                         <!-- <div class="cr-brand">
@@ -580,5 +581,30 @@
 </main>
 <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
 <script src="<?= BASE_URL ?>assets/js/script.js"></script>
+<script>
+    document.querySelectorAll('.cr-shopping-bag').forEach(button => {
+        button.addEventListener('click', function () {
+            const productId = this.dataset.id; // Lấy ID sản phẩm từ data attribute
+
+            fetch('add_to_cart.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ product_id: productId }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Sản phẩm đã được thêm vào giỏ hàng');
+                        // Cập nhật giao diện giỏ hàng nếu cần
+                    } else {
+                        alert('Không thể thêm sản phẩm vào giỏ hàng');
+                    }
+                });
+        });
+    });
+
+</script>
 
 <?php include './views/layout/footer.php' ?>
