@@ -20,7 +20,7 @@ class TrangChinhController
         $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
         $list_slide_show = $this->modelSlideShow->getAllSlideShows();
-        $gio_hang = $this->modelGioHang->getGioHang($_SESSION['user']['id']);
+        $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
         // var_dump($list_slide_show);die();
     
         require './views/TrangChinh/trangchu.php';
@@ -77,7 +77,7 @@ class TrangChinhController
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
         $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
         // var_dump($chi_tiet_gio_hang);die();
-        // $gio_hang = $this->modelGioHang->getGioHang($_SESSION['user']['id']);
+        // $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
 
         require "./views/gioHang/giohang.php";
         
@@ -86,7 +86,7 @@ class TrangChinhController
     public function listDonHang(){
         $list_san_pham = $this->modelSanPham->getAllSanPham();
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
-        $list_don_hang = $this->modelDonHang->getDonHangByID($_SESSION['user']['id']);
+        $list_don_hang = $this->modelDonHang->getDonHangByID($_SESSION['client_user']['id']);
         // echo "<pre>";
         // var_dump($list_don_hang);die();
         require "./views/TrangChinh/listdonhang.php";
