@@ -51,12 +51,12 @@
                     <label>Trạng thái:</label>
                  
                         <div class="form-check mx-3">
-                            <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['trang_thai']) && $_SESSION['tai_khoan']['trang_thai'] == 0 ? "checked" : "" ?> type="radio" name="trang_thai" value="0">
+                            <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['trang_thai']) && $_SESSION['tai_khoan']['trang_thai'] == 1 ? "checked" : "" ?> type="radio" name="trang_thai" value="1">
                             <label class="form-check-label">Kích Hoạt</label>
                         </div>
                     
                         <div class="form-check mx-3">
-                            <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['trang_thai']) && $_SESSION['tai_khoan']['trang_thai'] == 2 ? "checked" : "" ?> type="radio" name="trang_thai" value="2">
+                            <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['trang_thai']) && $_SESSION['tai_khoan']['trang_thai'] == 0 ? "checked" : "" ?> type="radio" name="trang_thai" value="0">
                             <label class="form-check-label">Vô hiệu</label>
                         </div>
                     
