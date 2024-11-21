@@ -34,45 +34,78 @@
                         <div class="form-logo">
                             <img src="assets/img/logo/logo2.png" width="180px" height="150px" alt="logo">
                         </div>
-                        <form class="cr-content-form" enctype="multipart/form-data" method="post" action="<?= BASE_URL."?act=form-register"?>" >
+                        <form class="cr-content-form" enctype="multipart/form-data" method="post" action="<?= BASE_URL."?act=form-register"?>" autocomplete="off" >
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>Tên người dùng*</label>
                                         <input type="text" name="ho_ten" placeholder="Nhập tên người dùng" class="cr-form-control">
-                                        <div class="form-text text-danger"><?= $_SESSION['error']['ho_ten'] ?? "" ?></div>
+                                        <div class="form-text text-danger"><?php 
+                                                if(isset($_SESSION['error_register']['ho_ten'])){
+                                                echo $_SESSION['error_register']['ho_ten'];
+                                                unset($_SESSION['error_register']['ho_ten']);
+                                                }
+                                        ?></div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>Mật khẩu*</label>
                                         <input type="password" name="mat_khau" placeholder="Nhập mật khẩu" class="cr-form-control">
-                                        <div class="form-text text-danger"><?= $_SESSION['error']['mat_khau'] ?? "" ?></div>
+                                        <div class="form-text text-danger"><?php 
+                                                if(isset($_SESSION['error_register']['mat_khau'])){
+                                                echo $_SESSION['error_register']['mat_khau'];
+                                                unset($_SESSION['error_register']['mat_khau']);
+                                                }
+                                        ?></div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>Email*</label>
-                                        <input type="email"  name="email" placeholder="Nhập Email" class="cr-form-control">
-                                        <div class="form-text text-danger"><?= $_SESSION['error']['email'] ?? "" ?></div>
+                                        <input type="text"  name="email" placeholder="Nhập Email" class="cr-form-control" >
+                                        <div class="form-text text-danger"><?php 
+                                                if(isset($_SESSION['error_register']['email'])){
+                                                echo $_SESSION['error_register']['email'];
+                                                unset($_SESSION['error_register']['email']);
+                                                }
+                                        ?></div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
                                         <label>Số điện thoại*</label>
                                         <input type="text" name="so_dien_thoai" placeholder="Nhập số điện thoại" class="cr-form-control">
+                                        <div class="form-text text-danger"><?php 
+                                                if(isset($_SESSION['error_register']['so_dien_thoai'])){
+                                                echo $_SESSION['error_register']['so_dien_thoai'];
+                                                unset($_SESSION['error_register']['so_dien_thoai']);
+                                                }
+                                        ?></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Địa chỉ*</label>
                                         <input type="text" name="dia_chi" placeholder="Nhập địa chỉ" class="cr-form-control">
+                                        <div class="form-text text-danger"><?php 
+                                                if(isset($_SESSION['error_register']['dia_chi'])){
+                                                echo $_SESSION['error_register']['dia_chi'];
+                                                unset($_SESSION['error_register']['dia_chi']);
+                                                }
+                                        ?></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Ảnh đại điện*</label>
-                                        <input type="file" name="file_anh" placeholder="Ảnh đại diện" class="cr-form-control">
+                                        <input type="file" name="file_anh"  class="cr-form-control">
+                                        <div class="form-text text-danger"><?php 
+                                                if(isset($_SESSION['error_register']['file_anh'])){
+                                                echo $_SESSION['error_register']['file_anh'];
+                                                unset($_SESSION['error_register']['file_anh']);
+                                                }
+                                        ?></div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -90,7 +123,7 @@
                             
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label>Ngày sinh</label>
+                                        <label>Ngày sinh*</label>
                                         <input type="date" name="ngay_sinh" placeholder="Nhập ngày sinh" class="cr-form-control">
                                     </div>
                                 </div>
