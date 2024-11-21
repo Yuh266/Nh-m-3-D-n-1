@@ -128,23 +128,23 @@
                                                 <a href="javascript:void(0)">
                                                     <img src="<?= $chi_tiet_gio_hang['hinh_anh']?>" alt=""
                                                         class="cr-cart-img">
-                                                    <!-- Cây Kim Tiền -->
                                                 </a>
                                             </td>
                                             <td class="cr-cart-price">
-                                                <span class="amount"></span>
+                                                <span class="text-center"><?= $chi_tiet_gio_hang['gia_san_pham']?></span>
                                             </td>
                                             <td class="cr-cart-qty">
-                                                <div class="cart-qty-plus-minus">
-                                                    <button type="button" class="plus">+</button>
-                                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20" class="quantity">
-                                                    <button type="button" class="minus">-</button>
-                                                </div>
+                                            <div class="cart-qty-plus-minus">
+                                                <button type="button" class="plus" data-id="<?= $chi_tiet_gio_hang['id'] ?>">+</button>
+                                                <input type="text" value="<?= $chi_tiet_gio_hang['so_luong'] ?>" class="quantity"
+                                                    data-id="<?= $chi_tiet_gio_hang['id'] ?>" readonly>
+                                                <button type="button" class="minus" data-id="<?= $chi_tiet_gio_hang['id'] ?>">-</button>
+                                            </div>
                                             </td>
                                             <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien']?></td>
                                             <td class="cr-cart-remove">
                                                 <a href="javascript:void(0)">
-                                                    <i class="ri-delete-bin-line"></i>
+                                                    <i class="ri-delete-bin-line"></i> 
                                                 </a>
                                             </td>
                                         </tr>
