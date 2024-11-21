@@ -59,12 +59,12 @@
                         </form>
                         <div class="cr-right-bar">
                             <ul class="navbar-nav">
-                                <?php if (isset($_SESSION['user'])): ?>
+                                <?php if (isset($_SESSION['client_user'])): ?>
                                     <li class="nav-item dropdown ">
                                         <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
                                             <i class=""></i>
-                                            <img src="<?= BASE_URL. $_SESSION['user']['anh_dai_dien'] ?>" width="30px" height="22px" class="user-image rounded-circle shadow"  alt="user_image">
-                                            <span style="padding-left: 15px;"><?= $_SESSION['user']['ho_ten'] ?></span>
+                                            <img src="<?= BASE_URL. $_SESSION['client_user']['anh_dai_dien'] ?>" width="30px" height="22px" class="user-image rounded-circle shadow"  alt="user_image">
+                                            <span style="padding-left: 15px;"><?= $_SESSION['client_user']['ho_ten'] ?></span>
                                         </a>
                                         <ul class="dropdown-menu">
                                             <li>

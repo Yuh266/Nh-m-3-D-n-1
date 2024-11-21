@@ -56,5 +56,8 @@ match ($act) {
     "form-register"=>(new TaiKhoanController())->post_Register(),
     
     "tai_khoan"=>(new TaiKhoanController())->tai_khoan(),
-    "form-tai-khoan"=>(new TaiKhoanController())->post_Tai_Khoan(),
+    "form-tai-khoan"=>(new TaiKhoanController())->post_update_Tai_Khoan(),
+
+    "doi_mat_khau"=>(new TaiKhoanController)->doi_mat_khau(),
+    "form-doi-mat-khau"=>(new TaiKhoanController)->post_doi_mat_khau(),
 };

@@ -74,7 +74,7 @@ class AdminTaiKhoanController{
         }
         deleteAlertSession();
         deleteSession('error');
-        deleteSession('slide_show');
+        deleteSession('tai_khoan');
     }
     public function formAddTaiKhoan() {
         $title = "Thêm Tài Khoản";
@@ -85,7 +85,7 @@ class AdminTaiKhoanController{
         ];
         require "./views/TaiKhoan/addTaiKhoan.php";
         deleteSession('error');
-        deleteSession('slide_show');
+        deleteSession('tai_khoan');
     }
     
     public function postAddTaiKhoan() {
@@ -99,6 +99,9 @@ class AdminTaiKhoanController{
             $chuc_vu = $_POST['chuc_vu'] ?? null;
             $mat_khau = $_POST['mat_khau'] ?? '';
             $trang_thai = $_POST['trang_thai'] ?? null;
+            if($trang_thai==null){
+                $trang_thai=1;
+            }
             $ngay_sinh = $_POST['ngay_sinh'] ?? '';
             $dia_chi = $_POST['dia_chi'] ?? null;
     
@@ -121,10 +124,10 @@ class AdminTaiKhoanController{
             } 
             $date = empty($ngay_sinh) ? NULL : $ngay_sinh;  
             $_SESSION['error'] = $errors;
-    
+            $hashed_password = password_hash($mat_khau, PASSWORD_DEFAULT);
             // Nếu không có lỗi thì thêm vào database
             if (empty($errors)) {
-                if ($id = $this->modelTaiKhoan->addTaiKhoan($ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email, $chuc_vu, $mat_khau, $trang_thai, $date, $dia_chi)) {
+                if ($id = $this->modelTaiKhoan->addTaiKhoan($ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email, $chuc_vu, $hashed_password, $trang_thai, $date, $dia_chi)) {
                     unset($_SESSION['error']);
                     $_SESSION['alert_success'] = 'Thêm tài khoản thành công!';
                     $_SESSION['id_active'] = $id;
@@ -143,7 +146,7 @@ class AdminTaiKhoanController{
                     'gioi_tinh' => $gioi_tinh,
                     'email' => $email,
                     'chuc_vu' => $chuc_vu,
-                    'mat_khau' => $mat_khau, 
+                    'mat_khau' => $hashed_password, 
                     'trang_thai' => $trang_thai,
                     'ngay_sinh' => $date,
                     'dia_chi' => $dia_chi
@@ -190,7 +193,7 @@ class AdminTaiKhoanController{
 
             require "./views/TaiKhoan/editTaiKhoan.php";
             deleteSession('error');
-            deleteSession('slide_show');
+            deleteSession('tai_khoan');
         }else{
             header("Location:".BASE_URL_ADMIN."?act=danh-sach-tai-khoan") ;
         }        
@@ -202,7 +205,7 @@ class AdminTaiKhoanController{
             $ho_ten = $_POST['ho_ten'] ?? "" ;
             $so_dien_thoai = $_POST['so_dien_thoai'] ?? "" ;
             $gioi_tinh = $_POST['gioi_tinh'] ?? null ;
-            $email  = $_POST['email'] ?? "" ;
+            $email= $_POST['email'] ?? "" ;
             $chuc_vu = $_POST['chuc_vu'] ?? null ;
             $mat_khau = $_POST['mat_khau'] ?? '' ;
             $trang_thai = $_POST['trang_thai']  ?? null  ;
@@ -259,7 +262,7 @@ class AdminTaiKhoanController{
                     'ho_ten'=>$ho_ten,
                     'so_dien_thoai'=>$so_dien_thoai,
                     'gioi_tinh'=>$gioi_tinh,
-                    'email '=>$email ,
+                    'email'=>$email,
                     'chuc_vu'=>$chuc_vu,
                     'mat_khau'=>$mat_khau,
                     'trang_thai'=>$trang_thai,
