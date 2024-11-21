@@ -40,6 +40,7 @@ if ( !isset($_SESSION['user'])  && !in_array($act,['form-dang-nhap','dang-nhap']
 match ($act) {
     // Trang chủ
     // '/' => (new AdminBaoCaoThongKeController())->home(),
+
     // Route Sản phẩm
     "danh-sach-san-pham"=>(new AdminProductController())->listProduct(),
 
@@ -51,6 +52,27 @@ match ($act) {
     'sua-album-anh-san-pham' => (new AdminProductController())->postEditAnhSanPham(),
     "xoa-san-pham"=>(new AdminProductController())->deleteSanPham(),
 
+    // Biến thể sản phẩm 
+    "danh-sach-thuoc-tinh-san-pham"=>(new AdminThuocTinhSanPhamController())->listThuocTinhSanPham(),
+
+    "form-them-thuoc-tinh-san-pham"=>(new AdminThuocTinhSanPhamController())->formAddThuocTinhSanPham(),
+    "them-thuoc-tinh-san-pham"=>(new AdminThuocTinhSanPhamController())->addThuocTinhSanPham(),
+
+    "form-sua-thuoc-tinh-san-pham"=>(new AdminThuocTinhSanPhamController())->formEditThuocTinhSanPham(),
+    "sua-thuoc-tinh-san-pham"=>(new AdminThuocTinhSanPhamController())->editThuocTinhSanPham(),
+    
+    "xoa-thuoc-tinh-san-pham"=>(new AdminThuocTinhSanPhamController())->deleteThuocTinhSanPham(),
+
+     // Biến thể sản phẩm 
+     "danh-sach-gia-tri-thuoc-tinh"=>(new AdminGiaTriThuocTinhController())->listGiaTriThuocTinh(),
+
+     "form-them-gia-tri-thuoc-tinh"=>(new AdminGiaTriThuocTinhController())->formAddGiaTriThuocTinh(),
+     "them-gia-tri-thuoc-tinh"=>(new AdminGiaTriThuocTinhController())->addGiaTriThuocTinh(),
+ 
+    //  "form-sua-gia-tri-thuoc-tinh"=>(new AdminGiaTriThuocTinhController())->formEditGiaTriThuocTinh(),
+    //  "sua-gia-tri-thuoc-tinh"=>(new AdminGiaTriThuocTinhController())->editGiaTriThuocTinh(),
+     
+     "xoa-gia-tri-thuoc-tinh"=>(new AdminGiaTriThuocTinhController())->deleteGiaTriThuocTinh(),
 
     // Route danh mục
     "danh-sach-danh-muc"=>(new AdminDanhMucController())->listDanhMuc(),
@@ -96,7 +118,7 @@ match ($act) {
     
     "xoa-dia-chi-nhan-hang"=>(new AdminDiaChiNhanHangController())->deleteDiaChi(),
 
-    // Địa chỉ nhận hàng
+    // Trạng thái đơn hàng
     "danh-sach-trang-thai-don-hang"=>(new AdminTrangThaiDonHangController())->listTrangThai(),
     
     "form-them-trang-thai-don-hang"=>(new AdminTrangThaiDonHangController())->formAddTrangThai(),
