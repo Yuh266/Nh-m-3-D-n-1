@@ -113,26 +113,44 @@
                     <div class="cr-login" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                         <div class="form-logo">
                             <img src="assets/img/logo/logo2.png" width="180px" height="150px" alt="logo">
-                        </div>
-                        <div class="form-text text-danger">
-                            <?php 
-                            if(isset($_SESSION['check-false'])){
-                              echo "<p>".$_SESSION['check-false']."</p>";
-                              unset($_SESSION['check-false']);
-                            }
-                              ?>
-                        </div>
-                      
+                        </div>                    
                         <form   class="cr-content-form" method="POST" action="<?= BASE_URL."?act=form-login"?>"  >
                             <div class="form-group">
                                 <label>Email*</label>
                                 <input type="email" placeholder="Nhập Email" class="cr-form-control" name="email">
-                                <div class="form-text text-danger"><?= $_SESSION['error']['email'] ?? "" ?></div>
+                                <div class="form-text text-danger"><?
+                                
+                                if(isset ($_SESSION['error_client_login']['email']) ) {
+                                    echo $_SESSION['error_client_login']['email'];
+                                    unset($_SESSION['error_client_login']['email']);
+
+                                }
+                                
+                                
+                                ?></div>
                             </div>
                             <div class="form-group">
                                 <label>Mật khẩu*</label>
                                 <input type="password" placeholder="Nhập mật khẩu" class="cr-form-control" name="mat_khau">
-                                <div class="form-text text-danger"><?= $_SESSION['error']['mat_khau'] ?? "" ?></div>
+                                <div class="form-text text-danger"><?
+                                
+                                if(isset ($_SESSION['error_client_login']['mat_khau']) ) {
+                                    echo $_SESSION['error_client_login']['mat_khau'];
+                                    unset($_SESSION['error_client_login']['mat_khau']);
+
+                                }
+                                
+                                
+                                
+                                ?></div>
+                            </div>
+                            <div class="form-text text-danger mb-5">
+                            <?php 
+                            if(isset($_SESSION['check-false'])){
+                              echo $_SESSION['check-false'];
+                              unset($_SESSION['check-false']);
+                            }
+                              ?>
                             </div>
                             <div class="remember">
                                 <span class="form-group custom">
@@ -143,6 +161,7 @@
                             </div><br>
                             <div class="login-buttons">
                                 <button type="submit" class="cr-button">Đăng nhập</button>
+                           
                                 <a href="<?= BASE_URL . "?act=register" ?>" class="link">
                                      Đăng kí?
                                 </a>

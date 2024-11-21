@@ -225,7 +225,7 @@
                 <h6>Giỏ hàng của bạn</h6>
                 <button type="button" class="close-cart">×</button>
             </div>
-            <?php if (isset($_SESSION['user']['id'])) { ?>
+            <?php if (isset($_SESSION['client_user']['id'])) { ?>
                 <ul class="crcart-pro-items">
                     <!-- <li>
                             <a href="product-left-sidebar.html" class="crside_pro_img"><img src="assets/img/product/4.jpg"

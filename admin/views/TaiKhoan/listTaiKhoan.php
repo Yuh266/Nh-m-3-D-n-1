@@ -39,7 +39,7 @@
                 <th>Giới tính</th>
                 <th>Email</th>
                 <th>Chức vụ</th>
-                <th>Mật khẩu</th>
+               
                 <th>Trạng thái</th>
                 <th>Ngày sinh</th>
                 <th>Địa chỉ</th>
@@ -64,9 +64,8 @@
                     <td><?= $taiKhoan['so_dien_thoai'] ?></td>
                     <td><?= $taiKhoan['gioi_tinh'] === 1 ? "Nam" : ($taiKhoan['gioi_tinh'] === 0 ? "Nữ" : ($taiKhoan['gioi_tinh'] === 2 ? "Khác" : ""))?></td>
                     <td><?= $taiKhoan['email'] ?></td>
-                    <td><?= $taiKhoan['chuc_vu'] === 1 ? "Quản trị" : ($taiKhoan['chuc_vu'] === 2 ? "Thành viên" : ($taiKhoan['chuc_vu'] === 3 ? "Nhân viên" : "")) ?></td>
-                    <td><?= $taiKhoan['mat_khau'] ?></td>
-                    <td><?= $taiKhoan['trang_thai'] === 0 ? "Kích hoạt" :($taiKhoan['trang_thai'] === 2 ? "Vô hiệu" : "") ?></td>
+                    <td><?= $taiKhoan['chuc_vu'] === 1 ? "Quản trị" : ($taiKhoan['chuc_vu'] === 2 ? "Thành viên" : ($taiKhoan['chuc_vu'] === 3 ? "Nhân viên" : "")) ?></td>              
+                    <td><?= $taiKhoan['trang_thai'] === 1 ? "Kích hoạt" : "Vô hiệu" ?></td>
                     <td><?= $taiKhoan['ngay_sinh'] ?></td>
                     <td><?= $taiKhoan['dia_chi'] ?></td>
                     <td>

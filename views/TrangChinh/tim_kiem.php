@@ -107,65 +107,42 @@
             </div>
             <div class="row">
                 <div class="col-lg-3 col-12 md-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                    <div class="cr-shop-sideview">
+                <form class="price-range-slider" action="<?= BASE_URL ?>" method="GET" >
+                <input type="text" name="act" value="tim-kiem" hidden >
+                <input type="text" name="keyword" value="<?= $keyword ?>" hidden >
+                <div class="cr-shop-sideview">
                         <div class="cr-shop-categories">
                             <h4 class="cr-shop-sub-title">Danh mục</h4>
                             <div class="cr-checkbox">
                                 <?php foreach ($list_danh_muc as $key => $value):?>
                                 <div>
-                                    <input type="checkbox" name="id[]" value="<?= $value['id']?>"  >
+                                    <input type="checkbox" name="id[]" value="<?= $value['id']?>" <?php 
+                                        //  var_dump($_GET['id[]']);die();
+                                        if (isset($_GET['id'])) {
+                                            // var_dump($_GET['id[]']);die();
+                                            foreach ($_GET['id'] as $key => $id) {
+                                                echo $value['id']==$id?"checked":""; 
+                                            }
+                                        }
+                                    ?>  >
                                     <label><?= $value['ten_danh_muc'] ?></label>
-                                    <!-- <span>[20]</span> -->
                                 </div>
                                 <?php endforeach;?>
                             </div>
                         </div>
-                        
                         <div class="cr-shop-price">
                             <h4 class="cr-shop-sub-title">Giá tiền</h4>
-                            <form class="price-range-slider" action="<?= BASE_URL ?>" method="GET" >
-                                <input type="text" name="act" value="tim-kiem" hidden >
-                                <input type="text" name="keyword" value="<?= $keyword ?>" hidden >
-                                <div class=" d-flex align-items-center gap-3 ">
-                                    <input class="form-control" type="number" name="minPrice" > 
+                                <div class=" d-flex align-items-center gap-3 mt-3">
+                                    <input class="form-control" type="number" name="minPrice" value="<?= $_GET['minPrice']??""  ?>" > 
                                     <p>đến</p>
-                                    <input class="form-control" type="number" name="maxPrice" required >
+                                    <input class="form-control" type="number" name="maxPrice" value="<?= $_GET['maxPrice']??""  ?>"  >
                                 </div>
                                 <div class="m-auto mt-3">
                                     <button type="submit" class="cr-button">Lọc</button>
                                 </div>
-                            </form>
                         </div>
-                        <div class="cr-shop-weight">
-                            <h4 class="cr-shop-sub-title">Weight</h4>
-                            <div class="cr-checkbox">
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="2kg">
-                                    <label for="2kg">2kg Pack</label>
-                                </div>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="20kg">
-                                    <label for="20kg">20kg Pack</label>
-                                </div>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="30kg">
-                                    <label for="30kg">30kg pack</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cr-shop-tags">
-                            <h4 class="cr-shop-sub-title">Tages</h4>
-                            <div class="cr-shop-tags-inner">
-                                <ul class="cr-tags">
-                                    <li><a href="javascript:void(0)">Vegetables</a></li>
-                                    <li><a href="javascript:void(0)">juice</a></li>
-                                    <li><a href="javascript:void(0)">Food</a></li>
-                                    <li><a href="javascript:void(0)">Dry Fruits</a></li>
-                                    <li><a href="javascript:void(0)">Vegetables</a></li>
-                                    <li><a href="javascript:void(0)">juice</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                    </form>
+
                     </div>
                 </div>
                 <div class="col-lg-9 col-12 md-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="600">
@@ -183,17 +160,6 @@
                                 <div class="center-content">
                                     <span>Kết quả cho tìm kiếm của bạn</span>
                                 </div>
-                                <!-- <div class="cr-select">
-                                    <label>Sort By :</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Featured</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                        <option value="4">Four</option>
-                                        <option value="5">Five</option>
-                                    </select>
-                                </div> -->
                             </div>
                         </div>
                     </div>

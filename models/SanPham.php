@@ -116,6 +116,46 @@ class SanPham
             echo "".$th->getMessage();
         }
     }
+    public function getSanPhamByInformationSearch($keyword,$id,$price_max,$price_min){
+        try {
+            // var_dump($keyword);
+            // var_dump(empty($id));
+            // var_dump($price_max);
+            // var_dump($price_min);die();
+            $sql_id = "";
+            if (!empty($id)) {
+                foreach ($id as $key => $value) {
+                    $sql_id .= " OR id_danh_muc = ".$value;
+                }
+                $sql_id = substr($sql_id, 3);
+                $sql_id = "AND ($sql_id)";
+            }
+            
+            $sql_price = "";
+            if (!empty($price_max)) {
+                $sql_price .= " AND gia_khuyen_mai < ".$price_max." " ;
+            }
+            if (!empty($price_min)) {
+                $sql_price .= " AND gia_khuyen_mai > ".$price_min ;
+            }
+            
+            $sql=" SELECT *  
+                   FROM san_phams 
+                   JOIN danh_mucs ON san_phams.id_danh_muc = danh_mucs.id
+                   WHERE (ten_san_pham LIKE :keyword
+                    OR ten_danh_muc LIKE :keyword  )
+                    $sql_id $sql_price";
+            // var_dump($sql);die();
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ":keyword"=> "%".$keyword."%" ,
+            ]);
+
+            return $stmt->fetchAll();
+        } catch (Exception $th) {
+            echo "".$th->getMessage();
+        }
+    }
     
     public function insertSanPham($ten_san_pham, $gia_san_pham, $gia_khuyen_mai, 
     $so_luong, $ngay_nhap, $id_danh_muc, $trang_thai, $mo_ta, $hinh_anh){
@@ -143,6 +183,8 @@ class SanPham
             echo "Lỗi".$e->getMessage();
         }
     }
+
+
 
 }
 

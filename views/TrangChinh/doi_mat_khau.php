@@ -1,5 +1,7 @@
-<?php include "./views/layout/header.php" ?>
 
+<?php
+ include './views/layout/header.php';
+ ?>
 <main>
     <!-- Mobile menu -->
     <div class="cr-sidebar-overlay"></div>
@@ -12,7 +14,7 @@
             <div class="cr-menu-content">
                 <ul>
                     <li class="dropdown drop-list">
-                        <a href="index.html">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li class="dropdown drop-list">
                         <span class="menu-toggle"></span>
@@ -74,15 +76,15 @@
         </div>
     </div>
 
-    <!-- Breadcrumb -->
-    <section class="section-breadcrumb">
+       <!-- Breadcrumb -->
+       <section class="section-breadcrumb">
         <div class="cr-breadcrumb-image">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="cr-breadcrumb-title">
-                            <h2>Đơn Hàng</h2>
-                            <span> <a href="<?= BASE_URL ?>">Trang chủ</a> / <a href="<?= BASE_URL ."/?act=don-hang" ?>">Đơn hàng</a> / Chi tiết đơn hàng </span>
+                            <h2>Đổi mật khẩu</h2>
+                            <span> <a href="index.php">Trang chủ</a> - Đổi mật khẩu</span>
                         </div>
                     </div>
                 </div>
@@ -90,14 +92,14 @@
         </div>
     </section>
 
-    <!-- Cart -->
-    <section class="section-cart padding-t-100">
+   <!-- Change pass -->
+   <section class="section-login padding-tb-100">
         <div class="container">
             <div class="row d-none">
                 <div class="col-lg-12">
                     <div class="mb-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                         <div class="cr-banner">
-                            <h2>Cart</h2>
+                            <h2>Forgot Password</h2>
                         </div>
                         <div class="cr-banner-sub-title">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -108,50 +110,40 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                        <div class="row">
-                            <form action="#">
-                                <div>
-                                <div class="container my-4">
-                                    <h2 class="text-center text-primary">Chi Tiết Đơn Hàng</h2>
-                                    <ul class="list-group">
-                                        <?php foreach ($list_don_hang as $key => $value): ?>
-                                        <!-- Đơn hàng 1 -->
-                                        <ul class="list-group">
-                                            <h5 class="list-group-item mb-1 text-primary">Đơn hàng HH<?= $value['id_don_hang'] ?></h5>
-                                            <li class="list-group-item  mb-1"><strong>Khách hàng: </strong> <?= $value['ho_ten'] ?></li>
-                                            <li class="list-group-item  mb-1"><strong>Ngày đặt: </strong><?= $value['ngay_dat'] ?></li>
-                                            <li class="list-group-item mb-1 text-danger" ><strong>Trạng thái: </strong><?= $value['ten_trang_thai'] ?></li>
-                                            <?php foreach ($list_don_hang as $key => $value): ?>
-                                                <li class="list-group-item mb-1"> <img style="width: 100px; " src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="<?= $value['ten_san_pham'] ?>"> <?= $value['ten_san_pham'] ?></li>
-                                                <li class="list-group-item mb-1"><strong>Mô tả: </strong> <?= $value['mo_ta'] ?></li>
-                                            <ul class="list-group-item"><strong>Số lượng:</strong> <?= $value['so_luong'] ?> | <strong>Giá:</strong> <?= $value['gia_khuyen_mai'] ?> VND | <strong>Tổng:</strong> <?= $value['thanh_tien'] ?> VND</ul>
-                                            <?php endforeach ?>
-                                            <ul class="list-group-item"><strong class="text-danger" >Tổng tiền:</strong> <?= $value['tong_tien'] ?> VND<strong></strong>
-                                        </ul>
-                                        <ul class="list-group">
-                                            <h5 class="list-group-item mb-1 text-primary">Thông tin nhận hàng </h5>
-                                            <li class="list-group-item mb-1"><strong>Tên người nhận: </strong> <?= $value['ten_nguoi_nhan'] ?></li>
-                                            <li class="list-group-item mb-1"><strong>Số điện thoại: </strong><?= $value['sdt_nguoi_nhan'] ?></li>
-                                            <li class="list-group-item mb-1"><strong>Địa chỉ: </strong> <?= $value['dia_chi_nguoi_nhan'] ?></li>
-                                            <li class="list-group-item mb-1"><strong>Ghi chú: </strong> <?= $value['ghi_chu'] ?></li>
-                                        </u>
-                                    
-                                        <?php break ; ?>
-                                        <?php endforeach ?>
-                                    </u>
-                                </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="cr-cart-update-bottom mb-4">
-                                            <a href="<?= BASE_URL ?>" class="cr-links">Tiếp tục mua sắm</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                    <div class="cr-login" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+                        <div class="form-logo">
+                            <img src="assets/img/logo/logo2.png"  width="180px" height="150px" alt="logo">
                         </div>
+                        <form class="cr-content-form" action="<?= BASE_URL."?act=form-doi-mat-khau"?>" method="POST">
+                            <div class="form-group">
+                                <label>Mật khẩu cũ*</label>
+                                <input type="password" name="mat_khau"  class="cr-form-control">
+                                <div class="form-text text-danger"><?= $_SESSION['error']['mat_khau'] ?? "" ?></div>
+                            </div>
+                            <div class="form-group">
+                                <label>Mật khẩu mới*</label>
+                                <input type="password" name="mat_khau_moi1"  class="cr-form-control">
+                                <div class="form-text text-danger"><?= $_SESSION['error']['mat_khau_moi1'] ?? "" ?></div>
+                            </div>
+                            <div class="form-group">
+                                <label>Nhập lại mật khẩu mới*</label>
+                                <input type="password" name="mat_khau_moi2"  class="cr-form-control">
+                                <div class="form-text text-danger"><?= $_SESSION['error']['mat_khau_moi2'] ?? "" ?></div>
+                            </div>
+                            <div class="login-buttons">
+                                <button type="submit" class="cr-button">Đổi</button>
+                                <div>
+                                <?php if (isset($_SESSION['success'])): ?>
+                                        <div class="alert alert-success">
+                                            <?= $_SESSION['success']; unset($_SESSION['success']); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <a href="<?= BASE_URL . "?act=login" ?>" class="link">
+                                    Đăng nhập?
+                                </a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -160,4 +152,5 @@
 
 </main>
 
-<?php include "./views/layout/footer.php" ?>
+<?php include './views/layout/footer.php' ?>
+
