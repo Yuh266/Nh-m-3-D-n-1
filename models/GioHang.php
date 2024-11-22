@@ -6,10 +6,6 @@ class GioHang{
     public function __construct(){
         $this->conn = connectDB();
     }
-
-    public function getDonHang(){
-
-    }
     
     public function getChiTietGioHang($id_gio_hang) {
         try {
@@ -41,6 +37,31 @@ class GioHang{
         }
     }
 
+    public function insertID($id){
+        try{
+                $sql="INSERT INTO  gio_hangs (id_tai_khoan) VALUES (:id)";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute([':id' => $id]);
+                return $this->conn->lastInsertId();
+        } catch (Exception $e){
+            echo "Lỗi insert id tk vo gio hang: ".$e->getMessage();
+        }
+    }
+    public function insertGioHang($id_san_pham, $id_gio_hang, $so_luong){
+        try{
+            $sql="INSERT INTO chi_tiet_gio_hangs(id_san_pham, id_gio_hang, so_luong) VALUES (:id_san_pham,:id_gio_hang,:so_luong)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':id_san_pham' => $id_san_pham,
+                ':id_gio_hang' => $id_gio_hang,
+                ':so_luong' => $so_luong,
+            ]);
+            return $this->conn->lastInsertId();
+        } catch (Exception $e){
+            echo "Lỗi insert id tk vo gio hang: ".$e->getMessage();
+        }
+    }
+
     public function getChiTietGioHangByID($id){
         try {
             $sql = 'SELECT * FROM chi_tiet_gio_hangs
@@ -68,8 +89,10 @@ class GioHang{
     }
     
 
-
-
 }
+  
+
+
+
 
 
