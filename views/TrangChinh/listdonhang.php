@@ -110,7 +110,10 @@
                 <div class="col-12">
                     <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                         <div class="row">
-                            
+                                <?php if (isset($_SESSION['alert_success'])):?>
+                                    <div class="alert-success alert">Đơn hàng đã được xử lí thành công.</div>
+                                <?php endif ?>
+
                                 <div>
                                     <table class="table">
                                         <thead>
