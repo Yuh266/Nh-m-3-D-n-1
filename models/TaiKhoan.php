@@ -14,7 +14,6 @@ class TaiKhoan{
         return $stmt->fetch();
     }
     
-    
     public function check_login($email) {
         try {
             $sql = "SELECT * FROM tai_khoans WHERE email = :email AND chuc_vu = 2 AND trang_thai = 1";
@@ -38,7 +37,6 @@ class TaiKhoan{
         } catch (Exception $th) {
             echo"Lôi". $th->getMessage();
         }
-
     }
     public function updateTaikhoan($id,$ho_ten, $anh_dai_dien, $so_dien_thoai, $gioi_tinh, $email,$ngay_sinh,$dia_chi){
         try {
