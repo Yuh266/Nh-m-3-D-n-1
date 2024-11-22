@@ -40,9 +40,22 @@ class GioHang{
             echo "Lỗi: " . $e->getMessage();
         }
     }
+     public function insertID($id){
+        try{
+                $sql="INSERT INTO  gio_hangs (id_tai_khoan) VALUES (:id)";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute([':id' => $id]);
+                return $this->conn->lastInsertId();
+        } catch (Exception $e){
+            echo "Lỗi insert id tk vo gio hang: ".$e->getMessage();
 
         }
-    }
+     }
+
+        }
+
+
     
-}
+    
+
 

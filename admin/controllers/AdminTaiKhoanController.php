@@ -58,7 +58,7 @@ class AdminTaiKhoanController{
     }
 
     public function logout(){
-        unset($_SESSION['user']);// dùng unset để tránh logout luôn bên client
+         session_destroy();
 
         header('Location:'.BASE_URL_ADMIN."/?act=form-dang-nhap");
     }
