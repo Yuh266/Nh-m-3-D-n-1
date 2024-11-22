@@ -130,7 +130,7 @@ include './views/layout/header.php';
 
                                                             <label>Tên người dùng</label>
                                                             <input type="text" name="ho_ten" 
-                                                                    value="<?= isset($_SESSION['tai_khoan_error']['ho_ten']) ? $_SESSION['tai_khoan_error']['ho_ten'] : ($_SESSION['client_user']['ho_ten'] ?? "") ?>" 
+                                                                  value="<?= isset($_SESSION['tai_khoan_error']['ho_ten']) ? $_SESSION['tai_khoan_error']['ho_ten'] : ($_SESSION['client_user']['ho_ten'] ?? "") ?>"
                                                                     class="form-control">
 
                                                                 <div class="form-text text-danger">
