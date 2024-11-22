@@ -178,6 +178,7 @@ class TaiKhoanController
     
     public function tai_khoan(){
         $list_danh_muc=$this->modelDanhMuc->getAllDanhMuc();
+        $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
 
         require './views/TrangChinh/tai_khoan.php' ;
               
@@ -274,6 +275,8 @@ class TaiKhoanController
     //  end
     public function doi_mat_khau(){
         $list_danh_muc=$this->modelDanhMuc->getAllDanhMuc();
+        
+
         require './views/TrangChinh/doi_mat_khau.php' ;
               
     }

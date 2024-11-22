@@ -2,7 +2,7 @@
 
 <main>
     <!-- Mobile menu -->
-    <!-- <div class="cr-sidebar-overlay"></div>
+    <div class="cr-sidebar-overlay"></div>
     <div id="cr_mobile_menu" class="cr-side-cart cr-mobile-menu">
         <div class="cr-menu-title">
             <span class="menu-title">My Menu</span>
@@ -72,7 +72,7 @@
                 </ul>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <!-- Breadcrumb -->
     <section class="section-breadcrumb">
@@ -109,11 +109,12 @@
             <div class="col-12">
                 <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                     <div class="row">
-                        <form action="#">
+                    <form action="<?= BASE_URL . "?act=form-thanh-toan" ?>" method="POST" >
                             <div class="cr-table-content">
                                 <table>
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             <th>Sản phẩm</th>
                                             <th>Giá</th>
                                             <th class="text-center">Số lượng</th>
@@ -122,8 +123,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($chi_tiet_gio_hangs as $key => $chi_tiet_gio_hang): ?>
+
+                                        <?php foreach ($chi_tiet_gio_hangs as $key => $chi_tiet_gio_hang): ?>
                                         <tr>
+                                            <td>
+                                                <input type="checkbox" name="id_gio_hang[]" value="<?= $chi_tiet_gio_hang['id'] ?>"  >
+                                            </td>
                                             <td class="cr-cart-name">
                                                 <a href="javascript:void(0)">
                                                     <img src="<?= $chi_tiet_gio_hang['hinh_anh']?>" alt=""
@@ -149,81 +154,6 @@
                                             </td>
                                         </tr>
                                         <?php endforeach ?>
-                                        <!-- <tr>
-                                            <td class="cr-cart-name">
-                                                <a href="javascript:void(0)">
-                                                    <img src="assets/img/product/2.jpg" alt="Cây Lưỡi Hổ"
-                                                        class="cr-cart-img">
-                                                    Cây Lưỡi Hổ
-                                                </a>
-                                            </td>
-                                            <td class="cr-cart-price">
-                                                <span class="amount">250,000 VNĐ</span>
-                                            </td>
-                                            <td class="cr-cart-qty">
-                                                <div class="cart-qty-plus-minus">
-                                                    <button type="button" class="plus">+</button>
-                                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20" class="quantity">
-                                                    <button type="button" class="minus">-</button>
-                                                </div>
-                                            </td>
-                                            <td class="cr-cart-subtotal">250,000 VNĐ</td>
-                                            <td class="cr-cart-remove">
-                                                <a href="javascript:void(0)">
-                                                    <i class="ri-delete-bin-line"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="cr-cart-name">
-                                                <a href="javascript:void(0)">
-                                                    <img src="assets/img/product/3.jpg" alt="Cây Bàng Singapore"
-                                                        class="cr-cart-img">
-                                                    Cây Bàng Singapore
-                                                </a>
-                                            </td>
-                                            <td class="cr-cart-price">
-                                                <span class="amount">1,200,000 VNĐ</span>
-                                            </td>
-                                            <td class="cr-cart-qty">
-                                                <div class="cart-qty-plus-minus">
-                                                    <button type="button" class="plus">+</button>
-                                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20" class="quantity">
-                                                    <button type="button" class="minus">-</button>
-                                                </div>
-                                            </td>
-                                            <td class="cr-cart-subtotal">1,200,000 VNĐ</td>
-                                            <td class="cr-cart-remove">
-                                                <a href="javascript:void(0)">
-                                                    <i class="ri-delete-bin-line"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="cr-cart-name">
-                                                <a href="javascript:void(0)">
-                                                    <img src="assets/img/product/4.jpg" alt="Cây Trầu Bà"
-                                                        class="cr-cart-img">
-                                                    Cây Trầu Bà
-                                                </a>
-                                            </td>
-                                            <td class="cr-cart-price">
-                                                <span class="amount">180,000 VNĐ</span>
-                                            </td>
-                                            <td class="cr-cart-qty">
-                                                <div class="cart-qty-plus-minus">
-                                                    <button type="button" class="plus">+</button>
-                                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20" class="quantity">
-                                                    <button type="button" class="minus">-</button>
-                                                </div>
-                                            </td>
-                                            <td class="cr-cart-subtotal">180,000 VNĐ</td>
-                                            <td class="cr-cart-remove">
-                                                <a href="javascript:void(0)">
-                                                    <i class="ri-delete-bin-line"></i>
-                                                </a>
-                                            </td>
-                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -231,9 +161,9 @@
                                 <div class="col-lg-12">
                                     <div class="cr-cart-update-bottom">
                                         <a href="javascript:void(0)" class="cr-links">Tiếp tục mua sắm</a>
-                                        <a href="checkout.html" class="cr-button">
+                                        <button type="submit" class="cr-button">
                                             Thanh toán
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -309,46 +239,6 @@
                                 </div>
                             </div>
                         <?php endforeach ?>
-
-                        <!-- <div class="slick-slide">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/3.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Sweet snakes crunchy nut
-                                        mix 250gm
-                                        pack</a>
-                                    <p class="cr-price"><span class="new-price">$100.00</span> <span
-                                            class="old-price">$110.00</span></p>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -367,7 +257,7 @@
     </a>
 
     <!-- Model -->
-    <!-- <div class="modal fade quickview-modal" id="quickview" aria-hidden="true" tabindex="-1">
+    <div class="modal fade quickview-modal" id="quickview" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered cr-modal-dialog">
             <div class="modal-content">
                 <button type="button" class="cr-close-model btn-close" data-bs-dismiss="modal"
@@ -429,7 +319,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
 </main>
 

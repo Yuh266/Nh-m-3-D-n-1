@@ -39,7 +39,7 @@ if (isset($_GET['act'])) {
 
 match ($act) {
     // Trang chủclgur
-    "/"=>(new SanPhamController() )->Trangchu(),
+    "/"=>(new TrangChinhController() )->Trangchu(),
     "tim-kiem"=>(new TrangChinhController() )->timKiem(),
 
 

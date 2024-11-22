@@ -13,7 +13,7 @@ class GioHang{
     
     public function getChiTietGioHang($id_gio_hang) {
         try {
-            $sql = 'SELECT san_phams.id, san_phams.gia_san_pham, san_phams.ten_san_pham, san_phams.hinh_anh, 
+            $sql = 'SELECT san_phams.id, san_phams.gia_san_pham, san_phams.ten_san_pham, san_phams.hinh_anh, chi_tiet_gio_hangs.id AS id,
                         chi_tiet_gio_hangs.so_luong,(san_phams.gia_san_pham * chi_tiet_gio_hangs.so_luong) AS thanh_tien
                     FROM chi_tiet_gio_hangs
                     JOIN san_phams ON chi_tiet_gio_hangs.id_san_pham = san_phams.id
@@ -41,6 +41,31 @@ class GioHang{
         }
     }
 
+    public function getChiTietGioHangByID($id){
+        try {
+            $sql = 'SELECT * FROM chi_tiet_gio_hangs
+            WHERE  id = '.$id ;
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetch();
+        } catch (Exception $th) {
+            echo ''. $th->getMessage();
+        }
+    }
+    public function deleteChiTietGioHang($id){
+        try {
+            $sql = 'DELETE FROM `chi_tiet_gio_hangs` WHERE id= '.$id ;
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            return true;
+        } catch (Exception $th) {
+            echo ''. $th->getMessage();
+        }
+    }
     
 
 
