@@ -105,6 +105,7 @@ class TrangChinhController
         // echo "<pre>";
         // var_dump($list_don_hang);die();
         require "./views/TrangChinh/listdonhang.php";
+        deleteSession("alert_success");
     }
     public function chiTietDonHang(){
         if (isset($_GET['id'])) {
