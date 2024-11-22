@@ -324,10 +324,10 @@
                             <div class="cr-product-tabs">
                                 <ul>
                                     <li class="active" data-filter="all">Tất cả</li>
-                                    <li data-filter=".snack">Sen Đá</li>
-                                    <li data-filter=".vegetable">Hoa</li>
-                                    <li data-filter=".fruit">Lan</li>
-                                    <li data-filter=".ten1">Lan Đột Biến</li>
+                                    <?php foreach ($list_danh_muc as $key => $value):?>
+                                    <li data-filter=".dm<?= $value['id'] ?>"><?= $value['ten_danh_muc'] ?></li>
+                                    
+                                    <?php endforeach ?>
                                 </ul>
                             </div>
                         </div>
@@ -348,40 +348,19 @@
                     <div class="row mb-minus-24">
                         <!-- Begin Thẻ sản phẩm  -->
                         <?php foreach ($list_san_pham_hot as $key => $value): ?>
-                            <div class="mix vegetable col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
+                            <div class="mix <?= 'dm'.$value['id_danh_muc'] ?> col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
                                 <div class="cr-product-card">
                                     <div class="cr-product-image">
                                         <div class="cr-image-inner zoom-image-hover">
                                             <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
                                                 alt="<?= $value['ten_san_pham'] ?> ">
                                         </div>
-                                        <div class="cr-side-view">
-                                            <a href="javascript:void(0)" class="wishlist">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                                role="button">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </div>
                                         <a class="cr-shopping-bag" href="javascript:void(0)" data-id="<?= $value['id'] ?>">
                                             <i class="ri-shopping-bag-line"></i>
                                         </a>
-
                                     </div>
                                     <div class="cr-product-details">
-                                        <!-- <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Vegetables</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-line"></i>
-                                            <p>(4.5)</p>
-                                        </div>
-                                    </div> -->
-                                        <a href="product-left-sidebar.html" class="title"> <?= $value['ten_san_pham'] ?>
+                                        <a href="<?= BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=".$value['id'] ?>" class="title"> <?= $value['ten_san_pham'] ?>
                                         </a>
                                         <p class="cr-price"><span
                                                 class="new-price"><?= number_format($value['gia_khuyen_mai']) . "đ" ?></span>
@@ -393,82 +372,6 @@
                             </div>
                         <?php endforeach ?>
                         <!-- End Thẻ sản phẩm  -->
-                        <div class="mix vegetable col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/1.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Vegetables</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-line"></i>
-                                            <p>(4.5)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Fresh organic villa farm lomon
-                                        500gm pack</a>
-                                    <p class="cr-price"><span class="new-price">$120.25</span> <span
-                                            class="old-price">$123.25</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mix ten1 col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/9.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Best snakes with hazel nut pack
-                                        200gm</a>
-                                    <p class="cr-price"><span class="new-price">$145</span> <span
-                                            class="old-price">$150</span></p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
