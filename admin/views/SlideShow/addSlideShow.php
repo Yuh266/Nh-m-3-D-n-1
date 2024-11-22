@@ -9,7 +9,7 @@
             <!-- Hiển thị thông báo thêm thành công  -->
             <?php if (isset($_SESSION['alert_success'])): ?>
                 <div class="alert alert-success w-100" role="alert">
-                    Thêm thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-dia-chi-nhan-hang" ?>" class="alert-link">Đi đến trang danh sách.</a>
+                    Thêm thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>" class="alert-link">Đi đến trang danh sách.</a>
                 </div>
             <?php elseif (isset($_SESSION['alert_error'])):?>
                 <div class="alert alert-danger w-100" role="alert">
@@ -19,7 +19,7 @@
             <?php deleteAlertSession(); ?>
             <!-- </div> -->
         </div> <!--end::Header--> <!--begin::Form-->
-        <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL_ADMIN . "/?act=them-dia-chi-nhan-hang" ?>"  > <!--begin::Body-->
+        <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL_ADMIN . "/?act=them-slide-show" ?>"  > <!--begin::Body-->
             <div class="card-body">
                 <div class="row">
                     <div class="mb-3 col-md-6 "> 
@@ -39,13 +39,22 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="mb-3 col-md-6"> 
-                        <label for="exampleInputEmail1" class="form-label">Thời gian tồn tại</label> 
-                        <input value="<?= $_SESSION['slide_show']['thoi_gian_ton_tai']??"" ?>" name="thoi_gian_ton_tai" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div class="mb-3 col-md-6"> 
+                        <label for="exampleInputEmail1" class="form-label">Mô tả</label> 
+                        <input value="<?= $_SESSION['slide_show']['mo_ta']??"" ?>" name="mo_ta" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text text-danger">
-                            <?= $_SESSION['error']['thoi_gian_ton_tai']??"" ?>
+                            <?= $_SESSION['error']['mo_ta']??"" ?>
                         </div>
                     </div>
+                    <div class="mb-3 col-md-6"> 
+                        <label for="exampleInputEmail1" class="form-label">Tiêu đề</label> 
+                        <input value="<?= $_SESSION['slide_show']['tieu_de']??"" ?>" name="tieu_de" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text text-danger">
+                            <?= $_SESSION['error']['tieu_de']??"" ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="mb-3 col-md-6"> 
                         <label for="exampleInputEmail1" class="form-label">Link chuyển hướng</label> 
                         <input value="<?= $_SESSION['slide_show']['link_chuyen_huong']??"" ?>" name="link_chuyen_huong" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -53,8 +62,16 @@
                             <?= $_SESSION['error']['link_chuyen_huong']??"" ?>
                         </div>
                     </div>
+                    <div class="mb-3 col-md-6"> 
+                        <label for="exampleInputEmail1" class="form-label">Ảnh</label> 
+                        <input name="file_anh" type="file" class="form-control" id="inputGroupFile02"> 
+                        <!-- <label class="input-group-text" for="inputGroupFile02">Ảnh</label>  -->
+                        <div class="form-text text-danger">
+                            <?= $_SESSION['error']['link_anh'] ?? "" ?>
+                        </div>
+                    </div>
                 </div>
-                <div class=" d-flex">
+                <div class="d-flex col-md-6">
                     <label for="">Trạng thái :</label>
                     <div class="form-check mx-3 mb-3 ">
                         <input class="form-check-input" <?= isset($_SESSION['slide_show']['trang_thai'])?($_SESSION['slide_show']['trang_thai']==1?"checked":""):"" ?> type="radio" name="trang_thai" value="1" > 
@@ -68,13 +85,7 @@
                         <?= $_SESSION['error']['trang_thai']??"" ?>
                     </div>
                 </div>
-                <div class="input-group mb-3 col-md-12"> 
-                    <input name="file_anh" type="file" class="form-control" id="inputGroupFile02"> 
-                    <label class="input-group-text" for="inputGroupFile02">Ảnh</label> 
-                </div>
-                <div class="form-text text-danger">
-                    <?= $_SESSION['error']['link_anh'] ?? "" ?>
-                </div>
+                
                 
                 <!-- <div class="mb-3 form-check"> <input type="checkbox" class="form-check-input" id="exampleCheck1"> <label class="form-check-label" for="exampleCheck1">Check me out</label> </div> -->
             </div> <!--end::Body--> <!--begin::Footer-->
@@ -85,7 +96,7 @@
         </form> <!--end::Form-->
 
     </div> <!--end::Quick Example--> <!--begin::Input Group-->
-    <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-dia-chi-nhan-hang" ?>"><button class="btn btn-success">Trang danh sách</button></a>
+    <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-slide-show" ?>"><button class="btn btn-success">Trang danh sách</button></a>
 
 </div>
 

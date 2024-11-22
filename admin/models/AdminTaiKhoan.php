@@ -6,7 +6,6 @@ class AdminTaiKhoan{
     public function __construct() {
         $this->conn = connectDB();
     }
-
     
     public function getTaiKhoanByID($id){
         $sql = "SELECT * FROM tai_khoans WHERE id=".$id;
@@ -24,14 +23,14 @@ class AdminTaiKhoan{
     }
 
 
-    public function addTaiKhoan($ho_ten, $anh_dai_dien, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$mat_khau,$trang_thai,$ngay_sinh,$dia_chi){
+    public function addTaiKhoan($ho_ten, $anh_dai_dien, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$hashed_password,$trang_thai,$ngay_sinh,$dia_chi){
         try {
             $sql = "INSERT INTO tai_khoans(ho_ten, anh_dai_dien, so_dien_thoai, gioi_tinh, email,chuc_vu,mat_khau,trang_thai,ngay_sinh,dia_chi) 
             VALUES(:ho_ten, :anh_dai_dien, :so_dien_thoai, :gioi_tinh, :email,:chuc_vu,:mat_khau,:trang_thai,:ngay_sinh,:dia_chi)";
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute([":ho_ten"=>$ho_ten,":anh_dai_dien"=>$anh_dai_dien,":so_dien_thoai"=>$so_dien_thoai,":gioi_tinh"=>$gioi_tinh,":email"=>$email,":chuc_vu"=>$chuc_vu,":mat_khau"=>$mat_khau,":trang_thai"=>$trang_thai,":ngay_sinh"=>$ngay_sinh,":dia_chi"=>$dia_chi]);
+            $stmt->execute([":ho_ten"=>$ho_ten,":anh_dai_dien"=>$anh_dai_dien,":so_dien_thoai"=>$so_dien_thoai,":gioi_tinh"=>$gioi_tinh,":email"=>$email,":chuc_vu"=>$chuc_vu,":mat_khau"=>$hashed_password,":trang_thai"=>$trang_thai,":ngay_sinh"=>$ngay_sinh,":dia_chi"=>$dia_chi]);
 
-            return true;
+            return $this->conn->lastInsertId();
         } catch (Exception $th) {
             echo"Lôi". $th->getMessage();
         }
@@ -63,5 +62,24 @@ class AdminTaiKhoan{
         
     }
 
+    public function checkLoginAdmin($email){
+        try {
+            $sql = " SELECT * FROM tai_khoans 
+                    WHERE email=:email  
+                    AND (chuc_vu = 1 OR chuc_vu = 3) 
+                    AND trang_thai = 1";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':email'=>$email,
+               
+            ]);
+            
+            return $stmt->fetch() ;
+        }catch (Exception $th) {
+            echo $th->getMessage();           
+        }
+    }
+
+   
 }
 

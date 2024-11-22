@@ -1,6 +1,6 @@
 <?php 
 // Require toàn bộ các file khai báo môi trường, thực thi,...(không require view)
-
+session_start();
 // Require file Common
 require_once './commons/env.php'; // Khai báo biến môi trường
 require_once './commons/function.php'; // Hàm hỗ trợ
@@ -16,7 +16,6 @@ spl_autoload_register(function ($class) {
     }elseif (is_readable($fileController)) {
         require_once $fileController ;
     }
-
 });
 
 // var_dump($_GET);die();
@@ -40,6 +39,34 @@ if (isset($_GET['act'])) {
 
 match ($act) {
     // Trang chủclgur
-    "/"=>(header("Location:".BASE_URL_ADMIN)),
+    "/"=>(new SanPhamController() )->Trangchu(),
+    "tim-kiem"=>(new TrangChinhController() )->timKiem(),
+
+
+    "san-pham-chi-tiet"=>(new SanPhamController() )->chiTietSanPham(),
+    "gio-hang-chi-tiet"=>(new TrangChinhController() )->chiTietGioHang(),
+    "them-gio-hang"=>(new SanPhamController() )->themGioHang(),
+    "don-hang"=>(new TrangChinhController() )->listDonHang(),
+
+    "chi-tiet-don-hang"=>(new TrangChinhController() )->chiTietDonHang(),
+
+    "login"=>(new TaiKhoanController())->Login(),
+    "logout"=>(new TaiKhoanController())->Logout(),
+    "form-login"=>(new TaiKhoanController())->post_Login(),
+
+    "register"=>(new TaiKhoanController())->register(),
+    "form-register"=>(new TaiKhoanController())->post_Register(),
+    
+    "tai_khoan"=>(new TaiKhoanController())->tai_khoan(),
+    "form-tai-khoan"=>(new TaiKhoanController())->post_update_Tai_Khoan(),
+
+    "doi_mat_khau"=>(new TaiKhoanController)->doi_mat_khau(),
+    "form-doi-mat-khau"=>(new TaiKhoanController)->post_doi_mat_khau(),
+    
+    
+    "form-thanh-toan"=>(new TrangChinhController())->trangThanhToan(),
+    "thanh-toan"=>(new TrangChinhController())->thanhToan(),
+
+
 
 };

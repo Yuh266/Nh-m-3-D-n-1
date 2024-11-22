@@ -8,9 +8,10 @@
             <!-- Hiển thị thông báo thêm thành công  -->
             <?php if (isset($_SESSION['alert_success'])): ?>
                 <div class="alert alert-success w-100" role="alert">
-                    Thêm thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-tai-khoan" ?>" class="alert-link">Đi đến trang danh sách.</a>
+                    Sửa thành công. <a href="<?= BASE_URL_ADMIN . "/?act=danh-sach-tai-khoan" ?>" class="alert-link">Đi đến trang danh sách.</a>
                 </div>
-            <?php elseif (isset($_SESSION['alert_error'])):?>
+            <?php elseif (isset($_SESSION['alert_error'])): 
+                    unset($_SESSION['alert_error']); ?>
                 <div class="alert alert-danger w-100" role="alert">
                    Sửa thất bại. 
                 </div>
@@ -25,14 +26,14 @@
                     <div class="mb-3 col-md-6 "> 
                         <label for="exampleInputEmail1" class="form-label">Họ tên</label> 
                         <input value="<?= $_SESSION['tai_khoan']['ho_ten']??"" ?>" name="ho_ten" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
+                        <div id="emailHelp" class="form-text text-danger">
                             <?= $_SESSION['error']['ho_ten']??"" ?>
                         </div>
                     </div>
                     <div class="mb-3 col-md-6"> 
                         <label for="exampleInputEmail1" class="form-label">Số điện thoại</label> 
                         <input value="<?= $_SESSION['tai_khoan']['so_dien_thoai']??"" ?>" name="so_dien_thoai" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
+                        <div id="emailHelp" class="form-text text-danger">
                             <?= $_SESSION['error']['so_dien_thoai']??"" ?>
                             
                         </div>
@@ -42,14 +43,14 @@
                     <div class="mb-3 col-md-6"> 
                         <label for="exampleInputEmail1" class="form-label">Email</label> 
                         <input value="<?= $_SESSION['tai_khoan']['email']??"" ?>" name="email" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
+                        <div id="emailHelp" class="form-text text-danger">
                             <?= $_SESSION['error']['email']??"" ?>
                         </div>
                     </div>
                     <div class="mb-3 col-md-6"> 
                         <label for="exampleInputEmail1" class="form-label">Mật khẩu</label> 
                         <input value="<?= $_SESSION['tai_khoan']['mat_khau']??"" ?>" name="mat_khau" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
+                        <div id="emailHelp" class="form-text text-danger">
                             <?= $_SESSION['error']['mat_khau']??"" ?>
                         </div>
                     </div>
@@ -70,7 +71,7 @@
                             <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['gioi_tinh'])?($_SESSION['tai_khoan']['gioi_tinh']==2?"checked":""):"" ?> type="radio" name="gioi_tinh" value="2" > 
                             <label class="form-check-label" for="gridRadios1">Khác</label> 
                         </div>
-                        <div id="emailHelp" class="form-text">
+                        <div id="emailHelp" class="form-text text-danger">
                             <?= $_SESSION['error']['gioi_tinh']??"" ?>
                         </div>
                     </div>
@@ -78,13 +79,17 @@
                     <label for="">Chức vụ :</label>
                     <div class="form-check mx-3 mb-3 ">
                         <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['chuc_vu'])?($_SESSION['tai_khoan']['chuc_vu']==1?"checked":""):"" ?> type="radio" name="chuc_vu" value="1" > 
-                        <label class="form-check-label" for="gridRadios1">Admin</label> 
+                        <label class="form-check-label" for="gridRadios1">Quản trị</label> 
                     </div>
                     <div class="form-check mx-3 mb-3 ">
-                        <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['chuc_vu'])?($_SESSION['tai_khoan']['chuc_vu']==0?"checked":""):"" ?> type="radio" name="chuc_vu" value="0" > 
+                        <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['chuc_vu'])?($_SESSION['tai_khoan']['chuc_vu']==2?"checked":""):"" ?> type="radio" name="chuc_vu" value="2" > 
                         <label class="form-check-label" for="gridRadios1">Thành viên</label> 
                     </div>
-                    <div id="emailHelp" class="form-text">
+                    <div class="form-check mx-3 mb-3 ">
+                        <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['chuc_vu'])?($_SESSION['tai_khoan']['chuc_vu']==3?"checked":""):"" ?> type="radio" name="chuc_vu" value="3" > 
+                        <label class="form-check-label" for="gridRadios1">Nhân viên</label> 
+                    </div>
+                    <div id="emailHelp" class="form-text text-danger">
                         <?= $_SESSION['error']['chuc_vu']??"" ?>
                     </div>
                     </div>
@@ -92,15 +97,15 @@
                 <div class="row">
                     <div class="mb-3 col-md-6"> 
                         <label for="exampleInputEmail1" class="form-label">Ngày sinh</label> 
-                        <input value="<?= $_SESSION['tai_khoan']['ngay_sinh']??"" ?>" name="ngay_sinh" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
+                        <input value="<?= $_SESSION['tai_khoan']['ngay_sinh']??"" ?>" name="ngay_sinh" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text text-danger">
                             <?= $_SESSION['error']['ngay_sinh']??"" ?>
                         </div>
                     </div>
                     <div class="mb-3 col-md-6"> 
                         <label for="exampleInputEmail1" class="form-label">Địa chỉ</label> 
                         <input value="<?= $_SESSION['tai_khoan']['dia_chi']??"" ?>" name="dia_chi" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">
+                        <div id="emailHelp" class="form-text text-danger">
                             <?= $_SESSION['error']['dia_chi']??"" ?>
                         </div>
                     </div>
@@ -108,13 +113,13 @@
                     <label for="">Trạng thái :</label>
                     <div class="form-check mx-3 mb-3 ">
                         <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['trang_thai'])?($_SESSION['tai_khoan']['trang_thai']==1?"checked":""):"" ?> type="radio" name="trang_thai" value="1" > 
-                        <label class="form-check-label" for="gridRadios1">Hoạt dộng</label> 
+                        <label class="form-check-label" for="gridRadios1">Kích hoạt</label> 
                     </div>
                     <div class="form-check mx-3 mb-3 ">
                         <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['trang_thai'])?($_SESSION['tai_khoan']['trang_thai']==0?"checked":""):"" ?> type="radio" name="trang_thai" value="0" > 
                         <label class="form-check-label" for="gridRadios1">Vô hiệu</label> 
                     </div>
-                    <div id="emailHelp" class="form-text">
+                    <div id="emailHelp" class="form-text text-danger">
                         <?= $_SESSION['error']['trang_thai']??"" ?>
                     </div>
                     </div>

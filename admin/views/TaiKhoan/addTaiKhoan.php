@@ -67,11 +67,15 @@
                         <label>Chức vụ:</label>
                         <div class="form-check mx-3">
                             <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['chuc_vu']) && $_SESSION['tai_khoan']['chuc_vu'] == 1 ? "checked" : "" ?> type="radio" name="chuc_vu" value="1">
-                            <label class="form-check-label">Admin</label>
+                            <label class="form-check-label">Quản trị</label>
                         </div>
                         <div class="form-check mx-3">
-                            <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['chuc_vu']) && $_SESSION['tai_khoan']['chuc_vu'] == 0 ? "checked" : "" ?> type="radio" name="chuc_vu" value="0">
+                            <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['chuc_vu']) && $_SESSION['tai_khoan']['chuc_vu'] == 2 ? "checked" : "" ?> type="radio" name="chuc_vu" value="2">
                             <label class="form-check-label">Khách hàng</label>
+                        </div>
+                        <div class="form-check mx-3">
+                            <input class="form-check-input" <?= isset($_SESSION['tai_khoan']['chuc_vu']) && $_SESSION['tai_khoan']['chuc_vu'] == 3 ? "checked" : "" ?> type="radio" name="chuc_vu" value="3">
+                            <label class="form-check-label">Nhân viên</label>
                         </div>
                         <div class="form-text text-danger"><?= $_SESSION['error']['chuc_vu'] ?? "" ?></div>
                     </div>
