@@ -67,6 +67,20 @@
                             <p>Quản trị sản phẩm</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-thuoc-tinh-san-pham' ?>" 
+                        class="nav-link <?= (isset($_GET['act']) && in_array($_GET['act'], ['danh-sach-thuoc-tinh-san-pham', 'them-thuoc-tinh-san-pham', 'sua-thuoc-tinh-san-pham'])) ? 'active' : '' ?>">
+                            <i class="nav-icon bi bi-box-seam"></i>
+                            <p>Quản trị thuộc tính sản phẩm</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-gia-tri-thuoc-tinh' ?>" 
+                        class="nav-link <?= (isset($_GET['act']) && in_array($_GET['act'], ['danh-sach-gia-tri-thuoc-tinh', 'them-gia-tri-thuoc-tinh', 'sua-gia-tri-thuoc-tinh'])) ? 'active' : '' ?>">
+                            <i class="nav-icon bi bi-box-seam"></i>
+                            <p>Quản trị giá trị thuộc tính</p>
+                        </a>
+                    </li>
 
                     <!-- Quản trị slide shows -->
                     <li class="nav-item">
