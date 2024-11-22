@@ -41,19 +41,6 @@ class GioHang{
         }
     }
 
-    public function insertGioHang($id_san_pham, $id_gio_hang, $so_luong){
-        try{
-            $sql = 'INSERT INTO chi_tiet_gio_hangs (id_san_pham, id_gio_hang, so_luong)
-            VALUE (:id_san_pham, :id_gio_hang, :so_luong)';
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute([
-                ':id_san_pham'=>$id_san_pham, 
-                ':id_gio_hang'=>$id_gio_hang, 
-                ':so_luong'=>$so_luong
-            ]);
-            return true;
-        }catch(Exception $e){
-            echo "Lỗi".$e->getMessage();
         }
     }
     
