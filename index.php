@@ -62,4 +62,11 @@ match ($act) {
 
     "doi_mat_khau"=>(new TaiKhoanController)->doi_mat_khau(),
     "form-doi-mat-khau"=>(new TaiKhoanController)->post_doi_mat_khau(),
+    
+    
+    "form-thanh-toan"=>(new TrangChinhController())->trangThanhToan(),
+    "thanh-toan"=>(new TrangChinhController())->thanhToan(),
+
+
+
 };
