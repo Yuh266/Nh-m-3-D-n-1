@@ -49,13 +49,12 @@ class GioHang{
         } catch (Exception $e){
             echo "Lỗi insert id tk vo gio hang: ".$e->getMessage();
 
+
         }
      }
 
-        }
 
+}
 
-    
-    
 
 

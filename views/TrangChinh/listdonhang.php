@@ -191,7 +191,6 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-
                     <div class="cr-popular-product">
                         <?php foreach ($list_san_pham as $key => $value): ?>
                             <div class="slick-slide">

@@ -22,107 +22,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-12 md-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                    <!-- <div class="cr-shop-sideview">
-                        <div class="cr-shop-categories">
-                            <h4 class="cr-shop-sub-title">Danh mục</h4>
-                            <div class="cr-checkbox">
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="office-plants">
-                                    <label for="office-plants">Cây văn phòng</label>
-                                    <span>[15]</span>
-                                </div>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="indoor-plants">
-                                    <label for="indoor-plants">Cây nội thất</label>
-                                    <span>[22]</span>
-                                </div>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="outdoor-plants">
-                                    <label for="outdoor-plants">Cây ngoài trời</label>
-                                    <span>[30]</span>
-                                </div>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="hanging-plants">
-                                    <label for="hanging-plants">Cây treo tường</label>
-                                    <span>[8]</span>
-                                </div>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="fruit-trees">
-                                    <label for="fruit-trees">Cây ăn quả</label>
-                                    <span>[20]</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="cr-shop-price">
-                            <h4 class="cr-shop-sub-title">Khoảng giá</h4>
-                            <div class="price-range-slider">
-                                <div id="slider-range" class="range-bar"></div>
-                                <p class="range-value">
-                                    <label>Giá :</label>
-                                    <input type="text" id="amount" placeholder="0 VNĐ - 5,000,000 VNĐ" readonly>
-                                </p>
-                                <button type="button" class="cr-button">Lọc</button>
-                            </div>
-                        </div>
-                        
-                        <div class="cr-shop-color">
-                            <h4 class="cr-shop-sub-title">Màu sắc lá</h4>
-                            <div class="cr-checkbox">
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="green-leaf">
-                                    <label for="green-leaf">Xanh lá</label>
-                                    <span class="green"></span>
-                                </div>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="red-leaf">
-                                    <label for="red-leaf">Đỏ</label>
-                                    <span class="red"></span>
-                                </div>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="yellow-leaf">
-                                    <label for="yellow-leaf">Vàng</label>
-                                    <span class="yellow"></span>
-                                </div>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="variegated-leaf">
-                                    <label for="variegated-leaf">Lá loang màu</label>
-                                    <span class="mixed"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cr-shop-weight">
-                            <h4 class="cr-shop-sub-title">Kích thước cây</h4>
-                            <div class="cr-checkbox">
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="small-size">
-                                    <label for="small-size">Nhỏ (dưới 50cm)</label>
-                                </div>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="medium-size">
-                                    <label for="medium-size">Trung bình (50cm - 1m)</label>
-                                </div>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="large-size">
-                                    <label for="large-size">Lớn (trên 1m)</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cr-shop-tags">
-                            <h4 class="cr-shop-sub-title">Tags</h4>
-                            <div class="cr-shop-tags-inner">
-                                <ul class="cr-tags">
-                                    <li><a href="javascript:void(0)">Cây văn phòng</a></li>
-                                    <li><a href="javascript:void(0)">Cây nội thất</a></li>
-                                    <li><a href="javascript:void(0)">Cây ngoài trời</a></li>
-                                    <li><a href="javascript:void(0)">Cây treo tường</a></li>
-                                    <li><a href="javascript:void(0)">Cây bonsai</a></li>
-                                    <li><a href="javascript:void(0)">Chậu cây</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="col-lg-8 col-12 md-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="600">
                     <div class="row mb-minus-24">
@@ -204,25 +103,27 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL . "/?act=san-pham-chi-tiet" ?>">
+                                <form method="POST" action="<?= BASE_URL . "/?act=form-thanh-toan" ?>">
                                     <div class="cr-add-card">
+                                        <input type="text" value="<?= $sanphan_ct['id'] ?>" hidden name="id[]"  >
                                         <div class="cr-qty-main">
-                                            <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
+                                            <input name="so_luong[]" type="text" placeholder="." value="1" minlength="1" maxlength="20"
                                                 class="quantity" style="width: 80px">
                                             <button type="button" id="add" class="plus" style="width: 40px; height: 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">+</button>
                                             <button type="button" id="sub" class="minus" style="width: 40px; height: 20px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">-</button>
                                         </div>
-                                        <div class="cr-add-button">
-                                            <button type="button" class="cr-button cr-shopping-bag"><a href="?act=them-gio-hang&id_gio_hang=<?= $gio_hang['id'] ?>&id_san_pham=<?= $sanphan_ct['id'] ?>">Thêm vào giỏ hàng</a></button>
+                                        <div class="cr-add-button d-flex">
+                                            <button type="button" class="cr-button text-white me-4 cr-shopping-bag"><a href="?act=them-gio-hang&id_gio_hang=<?= $gio_hang['id'] ?>&id_san_pham=<?= $sanphan_ct['id'] ?>">Thêm giỏ hàng</a></button>
+                                            <button type="submit" name="btn_submit" class="cr-button text-white cr-shopping-bag">Mua ngay</button>
                                         </div>
-                                        <div class="cr-card-icon">
+                                        <!-- <div class="cr-card-icon">
                                             <a href="javascript:void(0)" class="wishlist">
                                                 <i class="ri-heart-line"></i>
                                             </a>
                                             <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview" role="button">
                                                 <i class="ri-eye-line"></i>
                                             </a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </form>
                             </div>
@@ -401,17 +302,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Tab to top -->
-    <!-- <a href="#Top" class="back-to-top result-placeholder">
-        <i class="ri-arrow-up-line"></i>
-        <div class="back-to-top-wrap">
-            <svg viewBox="-1 -1 102 102">
-                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
-            </svg>
-        </div>
-    </a> -->
-
     <!-- Model -->
     <!-- <div class="modal fade quickview-modal" id="quickview" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered cr-modal-dialog">
