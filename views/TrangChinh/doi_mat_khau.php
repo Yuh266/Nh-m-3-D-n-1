@@ -114,33 +114,45 @@
                         <div class="form-logo">
                             <img src="assets/img/logo/logo2.png"  width="180px" height="150px" alt="logo">
                         </div>
+                            
                         <form class="cr-content-form" action="<?= BASE_URL."?act=form-doi-mat-khau"?>" method="POST">
                             <div class="form-group">
                                 <label>Mật khẩu cũ*</label>
                                 <input type="password" name="mat_khau"  class="cr-form-control">
-                                <div class="form-text text-danger"><?= $_SESSION['error']['mat_khau'] ?? "" ?></div>
+
+                                <div class="form-text text-danger"><?php 
+                                                if(isset($_SESSION['error_doi_mat_khau']['mat_khau'])){
+                                                echo $_SESSION['error_doi_mat_khau']['mat_khau'];
+                                                unset($_SESSION['error_doi_mat_khau']['mat_khau']);
+                                                }
+                                        ?></div>
                             </div>
                             <div class="form-group">
                                 <label>Mật khẩu mới*</label>
                                 <input type="password" name="mat_khau_moi1"  class="cr-form-control">
-                                <div class="form-text text-danger"><?= $_SESSION['error']['mat_khau_moi1'] ?? "" ?></div>
+                              
+                                <div class="form-text text-danger"><?php 
+                                                if(isset($_SESSION['error_doi_mat_khau']['mat_khau_moi1'])){
+                                                echo $_SESSION['error_doi_mat_khau']['mat_khau_moi1'];
+                                                unset($_SESSION['error_doi_mat_khau']['mat_khau_moi1']);
+                                                }
+                                        ?></div>
                             </div>
                             <div class="form-group">
                                 <label>Nhập lại mật khẩu mới*</label>
                                 <input type="password" name="mat_khau_moi2"  class="cr-form-control">
-                                <div class="form-text text-danger"><?= $_SESSION['error']['mat_khau_moi2'] ?? "" ?></div>
+                                <div class="form-text text-danger"><?php 
+                                                if(isset($_SESSION['error_doi_mat_khau']['mat_khau_moi2'])){
+                                                echo $_SESSION['error_doi_mat_khau']['mat_khau_moi2'];
+                                                unset($_SESSION['error_doi_mat_khau']['mat_khau_moi2']);
+                                                }
+                                        ?></div>
                             </div>
                             <div class="login-buttons">
                                 <button type="submit" class="cr-button">Đổi</button>
-                                <div>
-                                <?php if (isset($_SESSION['success'])): ?>
-                                        <div class="alert alert-success">
-                                            <?= $_SESSION['success']; unset($_SESSION['success']); ?>
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                                <a href="<?= BASE_URL . "?act=login" ?>" class="link">
-                                    Đăng nhập?
+                                
+                                <a href="#" class="link">
+                                    Quên mật khẩu
                                 </a>
                             </div>
                         </form>

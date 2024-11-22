@@ -4,10 +4,12 @@ class TaiKhoanController
 {
     public $modelTaiKhoan;
     public $modelDanhMuc;
+    public $modelGioHang;
  
     public function __construct() {
         $this->modelTaiKhoan = new TaiKhoan();
         $this->modelDanhMuc=new DanhMuc();
+        $this->modelGioHang=new GioHang();
      
     }
     
@@ -19,7 +21,7 @@ class TaiKhoanController
     }
     
     public function Logout(){
-        session_destroy();
+        unset($_SESSION['client_user']);
         header('Location:'.BASE_URL."?act=login");
     }
     
@@ -35,21 +37,23 @@ class TaiKhoanController
             if (empty($mat_khau)) { 
                 $errors['mat_khau'] = 'Mật khẩu không được để trống';
             } 
-
+           
             $_SESSION['error_client_login'] = $errors;
 
             if (empty($errors)) {
-                $user = $this->modelTaiKhoan->check_login( $email,$mat_khau );
-              
-                if($user){
-                    $_SESSION['client_user']=$user;
-        
-                    header('Location:'.BASE_URL."");           
-                } else{
-                    $_SESSION['check-false']="Mật khẩu hoặc Email không đúng";
-                    header('Location:'.BASE_URL. "?act=login");
-                    exit();
-                }
+               $user = $this->modelTaiKhoan->check_login($email);
+
+            if ($user && password_verify($mat_khau, $user['mat_khau'])) {
+                // Đăng nhập thành công
+                $_SESSION['client_user'] = $user;
+                header('Location: ' . BASE_URL . "");
+                exit();
+            } else {
+                // Sai email hoặc mật khẩu
+                $_SESSION['check-false'] = "Mật khẩu hoặc Email không đúng.";
+                header('Location: ' . BASE_URL . "?act=login");
+                exit();
+            }
                 
             
             } else {
@@ -63,7 +67,7 @@ class TaiKhoanController
             }
        }
 
-        }
+    }
     
 
       
@@ -77,28 +81,30 @@ class TaiKhoanController
     public function post_Register(){
       
             // Lấy dữ liệu từ form
-            $ho_ten = $_POST['ho_ten'] ?? '';
+            $ho_ten = 'user'.time();
             $anh_dai_dien = $_FILES['file_anh'] ?? '';
             $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
-            $gioi_tinh = $_POST['gioi_tinh'] ?? null;
+            $gioi_tinh = $_POST['gioi_tinh'] ?? '2';
             $email = $_POST['email'] ?? '';
-            $chuc_vu = $_POST['chuc_vu'] ?? null;
+            $chuc_vu = 2;
             $mat_khau = $_POST['mat_khau'] ?? '';
-            $trang_thai = $_POST['trang_thai'] ?? null;
+            $mat_khau_nhap_lai = $_POST['mat_khau_nhap_lai'] ?? '';
+            $trang_thai =1;
             $ngay_sinh = $_POST['ngay_sinh'] ?? '';
             $dia_chi = $_POST['dia_chi'] ?? '';
-    
+            $link_anh=null;
             // Kiểm tra và xử lý file ảnh đại diện
-            $link_anh = null;
-            if ($anh_dai_dien && $anh_dai_dien['error'] == 0) {
-                $link_anh = upLoadFile($anh_dai_dien, "./uploads/");
-            }
+
+            // if ($anh_dai_dien && $anh_dai_dien['error'] == 0) {
+            //     $link_anh = upLoadFile($anh_dai_dien, "./uploads/");
+            // }
     
             // Kiểm tra lỗi
             $errors = [];
-            if (empty($ho_ten)) {
-                $errors['ho_ten'] = 'Họ tên không được để trống';
-            }
+            // if (empty($ho_ten)) {
+            //     $errors['ho_ten'] = 'Họ tên không được để trống';
+            // }
+    
             if (empty($email)) {
                 $errors['email'] = 'Email không được để trống';
             }
@@ -111,48 +117,55 @@ class TaiKhoanController
             elseif (strlen($mat_khau) <= 6) {
                 $errors['mat_khau'] = 'Mật khẩu phải lớn hơn 6 ký tự';
             }
-            if (empty($dia_chi)) { 
-                $errors['dia_chi'] = 'Địa chỉ không được để trống';
+            if (empty($mat_khau_nhap_lai)) { 
+                $errors['mat_khau_nhap_lai'] = 'Nhập lại mật khẩu';
             } 
-            if (empty($so_dien_thoai)) { 
-                $errors['so_dien_thoai'] = 'Số điện thoại không được để trống';      
+            elseif($mat_khau_nhap_lai !== $mat_khau){
+                $errors['mat_khau_nhap_lai'] = 'Mật khẩu không trùng khớp';
             }
-            elseif (!is_numeric($so_dien_thoai)) {
-                $errors['so_dien_thoai'] = 'Số điện thoại phải là số';
-            } elseif (strlen($so_dien_thoai) > 11  || strlen($so_dien_thoai) < 10 ) {
-                $errors['so_dien_thoai'] = 'Vui lòng nhập lại số điện thoại';
-            }
-             if (!isset($anh_dai_dien) || $anh_dai_dien['error'] != 0) {
-                $errors['file_anh'] = 'Ảnh đại diện không được để trống';
-            }
+            // if (empty($dia_chi)) { 
+            //     $errors['dia_chi'] = 'Địa chỉ không được để trống';
+            // } 
+            // if (empty($so_dien_thoai)) { 
+            //     $errors['so_dien_thoai'] = 'Số điện thoại không được để trống';      
+            // }
+            // elseif (!is_numeric($so_dien_thoai)) {
+            //     $errors['so_dien_thoai'] = 'Số điện thoại phải là số';
+            // } elseif (strlen($so_dien_thoai) > 11  || strlen($so_dien_thoai) < 10 ) {
+            //     $errors['so_dien_thoai'] = 'Vui lòng nhập lại số điện thoại';
+            // }
+            //  if (!isset($anh_dai_dien) || $anh_dai_dien['error'] != 0) {
+            //     $errors['file_anh'] = 'Ảnh đại diện không được để trống';
+            // }
             
             $date = empty($ngay_sinh) ? NULL : $ngay_sinh;  
             $_SESSION['error_register'] = $errors;
-    
+            
             // Nếu không có lỗi thì thêm vào database
             if (empty($errors)) {
-                if ($id = $this->modelTaiKhoan->register($ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email, $chuc_vu, $mat_khau, $trang_thai, $date, $dia_chi)) {
+                $hashed_password = password_hash($mat_khau, PASSWORD_DEFAULT);
+                if ($id = $this->modelTaiKhoan->register($ho_ten, $anh_dai_dien, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$hashed_password,$trang_thai,$date,$dia_chi) ){
                     unset($_SESSION['error_register']);
                     // $_SESSION['success'] = 'Đăng kí tài khoản thành công!';
                     echo "<script>alert('Đăng kí thành công!');</script>";
+                     $this->modelGioHang->insertID($id);
                     header('Refresh: 0.5; ' . BASE_URL . '?act=login'); // Tự động chuyển hướng sau 2 giây
                     exit();
                     
                     // exit;
-                }  
+                } 
             } else {
                 // Lưu dữ liệu vào session để giữ lại dữ liệu khi có lỗi
                 $_SESSION['tai_khoan_error_register'] = [
                     'ho_ten' => $ho_ten,
                     'anh_dai_dien' => $link_anh,
-                    'so_dien_thoai' => $so_dien_thoai,
-                    'gioi_tinh' => $gioi_tinh,
+                    'so_dien_thoai'=> $so_dien_thoai,
                     'email' => $email,
                     'chuc_vu' => $chuc_vu,
                     'mat_khau' => $mat_khau, 
                     'trang_thai' => $trang_thai,
                     'ngay_sinh' => $date,
-                    'dia_chi' => $dia_chi
+                   
                 ];
                 $_SESSION['alert_error_register'] = 'Có lỗi trong quá trình đăng kí';
                 header('Location: ' . BASE_URL . '?act=register');
@@ -220,7 +233,7 @@ class TaiKhoanController
 
                     $_SESSION['client_user'] = [
                         'id' => $id,
-                        'ho_ten' => $ho_ten,
+                        'ho_ten'=> $ho_ten,
                         'so_dien_thoai' => $so_dien_thoai,
                         'gioi_tinh' => $gioi_tinh,
                         'email' => $email,
@@ -265,58 +278,16 @@ class TaiKhoanController
               
     }
     
-    // public function post_doi_mat_khau(){
-    //         $password = $_POST['mat_khau'] ?? '';
-    //         $repassword1 = $_POST['mat_khau_moi1'] ??'' ;
-    //         $repassword2 = $_POST['mat_khau_moi2'] ?? '';
-    //         $errors = [];
-    //         if (empty($password)) {
-    //             $errors['mat_khau'] = 'Mật khẩu không được để trống';
-    //         }
-    //         if (empty($repassword1)) {
-    //             $errors['mat_khau_moi1'] = 'Mật khẩu mới không được bỏ trống';
-    //         }
-    //         if (empty($repassword2)) { 
-    //             $errors['mat_khau_moi2'] = 'Nhập lại mật khẩu mới';
-    //         } 
-    //         if ($repassword1 !== $repassword2) {
-    //             $errors['mat_khau_moi2'] = 'Mật khẩu mới không trùng khớp.';
-    //         }
-    //         $_SESSION['error'] = $errors;
-    //         
-    //         if (empty($errors)) {
-    //             if ($password !== $_SESSION['client_user']['mat_khau']) {
-    //                 $errors['mat_khau'] = 'Mật khẩu cũ không chính xác.';
-    //                 $_SESSION['error'] = $errors;
-    //                 header("Location: " . BASE_URL . "?act=form-doi-mat-khau");
-    //                 exit();
-    //             }
-                
-    //             $hashedPassword = password_hash($repassword1, PASSWORD_BCRYPT); // Mã hóa mật khẩu mới
-    //             $userEmail = $_SESSION['client_user']['email']; 
-
-                
-    //                 $isUpdated = $this->modelTaiKhoan->updateMatKhau($userEmail, $hashedPassword);
-
-    //             if ($isUpdated) {
-    //                 $_SESSION['success'] = 'Đổi mật khẩu thành công.';
-    //                 header("Location: " . BASE_URL . "?act=login");
-    //                 exit();
-    //             } else {
-    //                 $errors['mat_khau'] = 'Có lỗi xảy ra khi đổi mật khẩu. Vui lòng thử lại.';
-    //                 $_SESSION['error'] = $errors;
-    //             }
-    //         }
-            
-    // }
+    
     public function post_doi_mat_khau(){
-      // Đảm bảo session đã được khởi tạo
+        // Lấy dữ liệu từ form
         $password = $_POST['mat_khau'] ?? '';
         $repassword1 = $_POST['mat_khau_moi1'] ?? '';
         $repassword2 = $_POST['mat_khau_moi2'] ?? '';
         $userId = $_SESSION['client_user']['id'];
         $errors = [];
     
+        // Kiểm tra đầu vào
         if (empty($password)) {
             $errors['mat_khau'] = 'Mật khẩu không được để trống';
         }
@@ -328,46 +299,45 @@ class TaiKhoanController
         } 
         if ($repassword1 !== $repassword2) {
             $errors['mat_khau_moi2'] = 'Mật khẩu mới không trùng khớp.';
+        }
+    
+        // Lưu lỗi vào session nếu có
+        $_SESSION['error_doi_mat_khau'] = $errors;
+    
+        // Nếu có lỗi, chuyển hướng về trang đổi mật khẩu
+        if (!empty($errors)) {
             header("Location: " . BASE_URL . "?act=doi_mat_khau");
             exit();
         }
-        $_SESSION['error'] = $errors;
     
-   
-    
-        // Kiểm tra mật khẩu cũ chính xác
-        if (empty($errors)) {
-            if ($password !== $_SESSION['client_user']['mat_khau']) {
-                echo( 'Mật khẩu cũ không chính xác.');
-                header("Location: " . BASE_URL . "?act=doi_mat_khau");
-                exit();
-            }
-    
-            // Mã hóa mật khẩu mới
-            // $hashedPassword = password_hash($repassword1, PASSWORD_BCRYPT);
-            
-            // var_dump($_SESSION['client_user']['id']);
-            // die();
-            // Cập nhật mật khẩu mới vào CSDL
-            $isUpdated = $this->modelTaiKhoan->updateMatKhau($userId, $password);
-            
-            if ($isUpdated) {
-                echo('Đổi mật khẩu thành công.');
-                var_dump($_SESSION['client_user']['id']);
-                die();
-                $_SESSION['success'] = 'Đổi mật khẩu thành công.';
-                // header("Location: " . BASE_URL . "?act=login");
-                // exit();
-               
-            } else {
-                $errors['mat_khau'] = 'Có lỗi xảy ra khi đổi mật khẩu. Vui lòng thử lại.';
-                echo('Có lỗi xảy ra khi đổi mật khẩu. Vui lòng thử lại.');
-                $_SESSION['error'] = $errors;
-                header("Location: " . BASE_URL . "?act=form-doi-mat-khau");             
-                exit();
-            }
+        // Kiểm tra mật khẩu cũ khớp với hash trong cơ sở dữ liệu
+        $currentHashedPassword = $_SESSION['client_user']['mat_khau']; // Lấy hash từ session
+        if (!password_verify($password, $currentHashedPassword)) {
+            $_SESSION['error']['mat_khau'] = 'Mật khẩu cũ không chính xác.';
+            header("Location: " . BASE_URL . "?act=doi_mat_khau");
+            exit();
         }
-        
-       
+    
+        // Mã hóa mật khẩu mới
+        $hashedPassword = password_hash($repassword1, PASSWORD_BCRYPT);
+    
+        // Cập nhật mật khẩu mới vào cơ sở dữ liệu
+        $isUpdated = $this->modelTaiKhoan->updateMatKhau($userId, $hashedPassword);
+    
+        if ($isUpdated) {
+            // Cập nhật lại session với hash mới
+            $_SESSION['client_user']['mat_khau'] = $hashedPassword;
+            unset($_SESSION['error_doi_mat_khau']);
+            
+            // Thông báo thành công
+            echo "<script>alert('Đổi mật khẩu thành công !');</script>";
+             header('Refresh:0.5;' . BASE_URL . '?act=login'); // Tự động chuyển hướng sau 2 giây
+            exit();
+        } else {
+            // Nếu cập nhật thất bại
+            $_SESSION['error']['mat_khau'] = 'Có lỗi xảy ra khi đổi mật khẩu. Vui lòng thử lại.';
+            header("Location: " . BASE_URL . "?act=doi_mat_khau");
+            exit();
+        }
     }
 }
