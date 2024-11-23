@@ -48,11 +48,9 @@
                         </div>
                     </div>
                     <div class="mb-3 col-md-6"> 
-                        <label for="exampleInputEmail1" class="form-label">Mật khẩu</label> 
-                        <input value="<?= $_SESSION['tai_khoan']['mat_khau']??"" ?>" name="mat_khau" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text text-danger">
-                            <?= $_SESSION['error']['mat_khau']??"" ?>
-                        </div>
+                        <label for="exampleInputEmail1" class="form-label">Nhập mật khẩu mới</label> 
+                        <input value="" name="mat_khau" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        
                     </div>
                     
                 </div>
