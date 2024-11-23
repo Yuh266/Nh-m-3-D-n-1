@@ -75,6 +75,7 @@
                     value="<?= isset($sanPham['hinh_anh']) ? $sanPham['hinh_anh'] : ($_SESSION['san_pham']['hinh_anh'] ?? '') ?>"
                     name="hinh_anh" type="file" class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp" placeholder="Nhập giá phẩm">
+                    <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" style="width: 200px; height: 200px" alt="">
                   <div id="emailHelp" class="form-text">
                     <?php if (isset($_SESSION['error']['hinh_anh'])) { ?>
                       <p class="text-danger"><?= $_SESSION['error']['hinh_anh'] ?></p>
@@ -198,11 +199,7 @@
                         <input type="hidden" name="current_img_ids[]" value="<?= $value['id'] ?>">
                         <td><img src="<?= BASE_URL . $value['link_anh'] ?>" style="width: 50px; height: 50px" alt=""></td>
                         <td><input type="file" name="img_array[]" class="form-control"></td>
-                        <td class="mt-10">
-                          <button class="btn btn-danger" type="button"
-                            onclick="removeRow(<?= $key ?>, <?= $value['id'] ?>)">
-                            <i class="fa fa-trash"></i>Delete
-                          </button>
+                        <td class="mt-10"><button class="btn btn-danger" type="button" onclick="removeRow(<?= $key ?>, <?= $value['id'] ?>)"><i class="fa fa-trash"></i> Delete</button>
                         </td>
                       </tr>
                     <?php endforeach ?>
