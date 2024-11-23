@@ -103,7 +103,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <form method="POST" action="<?= BASE_URL . "/?act=form-thanh-toan" ?>">
+                                <form method="POST" action="<?= BASE_URL . "/?act=form-dia-chi-nhan-hang" ?>">
                                     <div class="cr-add-card">
                                         <input type="text" value="<?= $sanphan_ct['id'] ?>" hidden name="id[]"  >
                                         <div class="cr-qty-main">
