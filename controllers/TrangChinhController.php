@@ -124,7 +124,7 @@ class TrangChinhController
         }
     }
 
-    public function trangThanhToan(){
+    public function trangDiaChiNhanHang(){
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
         $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
 
@@ -162,7 +162,7 @@ class TrangChinhController
             // var_dump($array_san_pham);die();
             $list_dia_chi_nhan_hang = $this->modelDiaChiNhanHang->getAllDiaChiByIDTaiKhoan($_SESSION['client_user']['id']);
 
-            require "./views/TrangChinh/thanh_toan.php";
+            require "./views/TrangChinh/dia_chi_nhan_hang.php";
             deleteSession( 'id');
             deleteSession('so_luong');
             deleteSession('dia_chi');
@@ -171,8 +171,41 @@ class TrangChinhController
             header("Location:".BASE_URL);
         }
     }
-    public function thanhToan(){
+    public function trangThanhToan(){
+        $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
+        $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
 
+        // echo "<pre>";
+        // var_dump($_POST);die();
+
+        if (isset($_SESSION['id']) && isset( $_SESSION['so_luong']) && isset( $_SESSION['id_don_hang'] ) ) {
+            $id =  $_SESSION['id'] ;
+            $so_luong =  $_SESSION['so_luong'] ;
+            $id_don_hang =  $_SESSION['id_don_hang'] ;
+            
+            // var_dump($_POST);die();
+            
+            $tong_tien = 0;
+            // echo "<pre>";
+            // var_dump($_POST);die();
+            $array_san_pham = [];
+            
+            foreach ($id as $key => $value) {
+                $array_san_pham[$key] = $this->modelSanPham->getDetailSanPham($value) ;
+                $array_san_pham[$key]['so_luong'] = $so_luong[$key] ;
+            }
+
+            require './views/TrangChinh/thanh_toan.php';
+            // var_dump($tong_tien);die();
+
+            deleteSession( 'id');
+            deleteSession('so_luong');
+        }else{
+            header(''.BASE_URL);
+        }
+
+    }
+    public function thanhToan(){
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             // var_dump($_POST);die();
             $id = $_POST['id'] ?? "";
@@ -180,6 +213,7 @@ class TrangChinhController
             $tong_tien = $_POST['tong_tien'] ?? "";
             $ghi_chu = $_POST['ghi_chu'] ?? "";
             $ngay_dat = date('Y-m-d');
+            $error = [];
 
             $array_san_pham = [];
             foreach ($id as $key => $value) {
@@ -189,6 +223,27 @@ class TrangChinhController
 
             if(isset($_POST['btn_old'])){
                 $id_dia_chi_nhan_hang = $_POST['id_dia_chi_nhan_hang'] ??'';
+                
+                if (empty($id_dia_chi_nhan_hang)) {
+                    $error['id_dia_chi_nhan_hang'] = "Không được để trống, Bạn chưa có thông tin nhận hàng vui lòng thêm.";
+                }
+                // var_dump($error);die();
+                $_SESSION['error'] = $error;
+
+                if (empty($error)) {
+
+                }else {
+                    $dia_chi = [
+                        "id_dia_chi_nhan_hang"=>$id_dia_chi_nhan_hang,
+                    ];
+                    $_SESSION['dia_chi'] = $dia_chi;
+                    $_SESSION['id'] = $id;
+                    $_SESSION['so_luong'] = $so_luong;
+                    
+                    header("Location: " . BASE_URL ."?act=form-dia-chi-nhan-hang");
+                    exit();
+                }
+
             }else {
                 $ten_nguoi_nhan = $_POST['ten_nguoi_nhan']??"";
                 $sdt_nguoi_nhan = $_POST['sdt_nguoi_nhan']??"";
@@ -196,7 +251,6 @@ class TrangChinhController
 
                 // var_dump($_POST);
                 // die();
-                $error = [];
                 
                 if (empty($ten_nguoi_nhan)) {
                     $error['ten_nguoi_nhan'] = "Không được để trống";
@@ -227,7 +281,7 @@ class TrangChinhController
                 }
             }
 
-            if ($id_don_hang=$this->modelDonHang->insertDonHang($_SESSION['client_user']['id'],$ngay_dat,$tong_tien,$ghi_chu,2,$id_dia_chi_nhan_hang)) {
+            if ($id_don_hang=$this->modelDonHang->insertDonHang($_SESSION['client_user']['id'],$ngay_dat,$tong_tien,$ghi_chu,1,$id_dia_chi_nhan_hang)) {
                 foreach ($array_san_pham as $key => $value) {
                     $this->modelDonHang->insertChiTietDonHang($id_don_hang,$value['id'],$value['gia_khuyen_mai'],$value['so_luong'],$value['gia_khuyen_mai']*$value['so_luong']);
                 }
@@ -239,10 +293,47 @@ class TrangChinhController
                 }
                 deleteSession('id_chi_tiet_gio_hang');
             }
+            $_SESSION['id'] = $id ;
+            $_SESSION['so_luong'] = $so_luong ;
+            $_SESSION['id_don_hang'] = $id_don_hang ;
 
-            header("Location:".BASE_URL."?act=don-hang");
+            
+            header("Location: " . BASE_URL ."?act=form-thanh-toan") ;
         }
     }
     
+    public function xuLiThanhToanMoMo(){
+
+        require "./views/TrangChinh/xu_li_thanh_toan_momo.php" ;
+    }
+    public function xuLiThanhToanMoMoATM(){
+
+        require "./views/TrangChinh/xu_li_thanh_toan_momo_atm.php" ;
+    }
+
+    public function xuLiThanhToan(){
+        if ($_SERVER['REQUEST_METHOD']=="POST" || isset($_GET['resultCode']) ) {
+
+            if (isset($_GET['resultCode'])) {
+                if ($_GET['resultCode'] == 0 ) {
+                    $id_don_hang = $_GET["id_don_hang"];
+                    if ($this->modelDonHang->updateId_trang_thaiByID($id_don_hang,2)) {
+                        header("Location:". BASE_URL ."?act=don-hang") ;
+                    }
+                }else {
+                    $_SESSION['alert_error'] = 1 ;
+                    header("Location:". BASE_URL ."?act=don-hang") ;
+                }
+            }else {
+                $id_don_hang = $_POST["id_don_hang"];
+                if ($this->modelDonHang->updateId_trang_thaiByID($id_don_hang,2)) {
+                    header("Location:". BASE_URL ."?act=don-hang") ;
+                }
+            }
+
+            
+        }
+    }
+
 
 }
