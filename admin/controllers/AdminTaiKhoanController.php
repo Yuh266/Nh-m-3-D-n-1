@@ -25,28 +25,31 @@ class AdminTaiKhoanController{
             } 
 
             $_SESSION['error'] = $errors;
-
             if (empty($errors)) {
-                $user = $this->modelTaiKhoan->checkLoginAdmin( $email,$mat_khau );
-                // var_dump($user);die();
-                if (empty($user)) {
-                    $_SESSION['alert_error'] = 'Tài khoản , mật khẩu không tồn tại';
-                    header('Location: ' . BASE_URL_ADMIN . '/?act=form-login');
-                }else {
+                // Lấy thông tin người dùng từ cơ sở dữ liệu dựa trên email
+                $user = $this->modelTaiKhoan->checkLoginAdmin($email); 
+                
+                if ($user  && password_verify($mat_khau, $user['mat_khau'])) {
+                    // Nếu mật khẩu hợp lệ, lưu thông tin người dùng vào session
                     $_SESSION['user'] = $user;
-                    // var_dump($_SESSION['user']);die();
-                    header("Location:".BASE_URL_ADMIN);
+                    // Điều hướng đến trang admin
+                    header("Location:" . BASE_URL_ADMIN);
+                    
+                } 
+               
+                else {
+                    // var_dump(password_verify($mat_khau, $user['mat_khau']));
+                    // die();
+                    // Sai tài khoản hoặc mật khẩu
+                    $_SESSION['alert_error'] = 'Tài khoản hoặc mật khẩu không tồn tại';
+                    header('Location: ' . BASE_URL_ADMIN . '/?act=form-login');
                 }
-                // header('Location: ' . BASE_URL_ADMIN ) ;
-            
             } else {
                 // Lưu dữ liệu vào session để giữ lại dữ liệu khi có lỗi
                 $_SESSION['tai_khoan'] = [
                     'email' => $email,
-                    'mat_khau' => $mat_khau, 
+                    'mat_khau' => $mat_khau,
                 ];
-                // var_dump($errors);die();
-                // $_SESSION['alert_error'] = 'Có lỗi trong quá trình thêm tài khoản';
                 header('Location: ' . BASE_URL_ADMIN . '/?act=form-login');
                 exit;
             }
@@ -55,7 +58,7 @@ class AdminTaiKhoanController{
     }
 
     public function logout(){
-        session_destroy();
+         session_destroy();
 
         header('Location:'.BASE_URL_ADMIN."/?act=form-dang-nhap");
     }
@@ -146,7 +149,7 @@ class AdminTaiKhoanController{
                     'gioi_tinh' => $gioi_tinh,
                     'email' => $email,
                     'chuc_vu' => $chuc_vu,
-                    'mat_khau' => $hashed_password, 
+                    'mat_khau' => $mat_khau, 
                     'trang_thai' => $trang_thai,
                     'ngay_sinh' => $date,
                     'dia_chi' => $dia_chi
@@ -222,16 +225,19 @@ class AdminTaiKhoanController{
             if(empty($email)){
                 $error['email'] = "Không được bỏ trống";
             }
-            if(empty($mat_khau)){
-                $error['mat_khau'] = "Không được bỏ trống";
+            elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = 'Email không hợp lệ';
             }
+            
             $date = empty($ngay_sinh) ? NULL : $ngay_sinh;  
             // End validate
+         
             
             $_SESSION['error'] = $error;
             // var_dump($error);die();
 
             if (empty($error)) {
+                $hashed_password = password_hash($mat_khau, PASSWORD_DEFAULT);
                 // var_dump(444);die();
                 // Xử lí ảnh
                 if(isset($file_anh) && $file_anh["error"] == UPLOAD_ERR_OK  ){
@@ -243,11 +249,12 @@ class AdminTaiKhoanController{
                     $link_anh = $old_image;
                 }
                 
-                if ($this->modelTaiKhoan->updateTaikhoan($id,$ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$mat_khau,$trang_thai,$date,$dia_chi)){
+                if ($this->modelTaiKhoan->updateTaikhoan($id,$ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$hashed_password,$trang_thai,$date,$dia_chi)){
 
                     
                     $_SESSION['alert_success'] = 1 ;
                     $_SESSION['id_active'] = $id ;
+                    
                     
                     // var_dump($_SESSION['id_active']);die();
                     header('Location:'.BASE_URL_ADMIN.'/?act=form-sua-tai-khoan&id='.$id) ;

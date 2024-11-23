@@ -97,13 +97,13 @@ include './views/layout/header.php';
             <div class="row">
             <?php if (isset($_SESSION['alert_success_tk_client'])):  unset($_SESSION['alert_success_tk_client']);?>
                 <div class="alert alert-success w-100" role="alert">
-                    Sửa thành công. 
+                Thông tin tài khoản đã được cập nhật thành công!
                 </div>
                 
             <?php elseif (isset($_SESSION['alert_error_tk_client'])):
                  unset($_SESSION['alert_error_tk_client']);?>
                 <div class="alert alert-danger w-100" role="alert">
-                   Sửa thất bại. 
+                   Cập nhật thất bại!
                 </div>
             <?php endif ?>
                 <form enctype="multipart/form-data" action="<?= BASE_URL . "?act=form-tai-khoan" ?>" method="post" autocomplete="off">
@@ -130,7 +130,8 @@ include './views/layout/header.php';
 
                                                             <label>Tên người dùng</label>
                                                             <input type="text" name="ho_ten" 
-                                                                    value="<?= isset($_SESSION['tai_khoan_error']['ho_ten']) ? $_SESSION['tai_khoan_error']['ho_ten'] : ($_SESSION['client_user']['ho_ten'] ?? "") ?>" 
+                                                                  value="<?= 
+                                                                  isset($_SESSION['tai_khoan_error']['ho_ten']) ? $_SESSION['tai_khoan_error']['ho_ten'] : ($_SESSION['client_user']['ho_ten'] ?? "") ?>"
                                                                     class="form-control">
 
                                                                 <div class="form-text text-danger">

@@ -117,7 +117,7 @@
                         <form   class="cr-content-form" method="POST" action="<?= BASE_URL."?act=form-login"?>"  >
                             <div class="form-group">
                                 <label>Email*</label>
-                                <input type="email" placeholder="Nhập Email" class="cr-form-control" name="email">
+                                <input type="email" placeholder="Nhập Email" class="cr-form-control" name="email" value="<?= $_COOKIE['email'] ?? '' ?>"  >
                                 <div class="form-text text-danger"><?
                                 
                                 if(isset ($_SESSION['error_client_login']['email']) ) {
@@ -131,7 +131,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Mật khẩu*</label>
-                                <input type="password" placeholder="Nhập mật khẩu" class="cr-form-control" name="mat_khau">
+                                <input type="password" placeholder="Nhập mật khẩu" class="cr-form-control" name="mat_khau" value="<?= $_COOKIE['mat_khau'] ?? '' ?>">
                                 <div class="form-text text-danger"><?
                                 
                                 if(isset ($_SESSION['error_client_login']['mat_khau']) ) {
@@ -154,8 +154,8 @@
                             </div>
                             <div class="remember">
                                 <span class="form-group custom">
-                                    <input type="checkbox" id="html">
-                                    <label for="html">Ghi nhớ tôi</label>
+                                    <input type="checkbox" id="ghi_nho" name="ghi_nho" <?= isset($_COOKIE['email']) ? 'checked' : '' ?>>
+                                    <label for="ghi_nho">Ghi nhớ tôi</label>
                                 </span>
                                 <a class="link" href="forgot.html">Quên mật khẩu?</a>
                             </div><br>
