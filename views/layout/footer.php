@@ -254,7 +254,7 @@
                                 <a href="product-left-sidebar.html"
                                     class="cart_pro_title"><?= $chi_tiet_gio_hang['ten_san_pham'] ?></a>
                                 <span
-                                    class="cart-price"><span><?= number_format($chi_tiet_gio_hang['gia_san_pham'], 0, ',', '.') ?></span>
+                                    class="cart-price"><span><?= number_format($chi_tiet_gio_hang['gia_khuyen_mai'], 0, ',', '.') ?></span>
                                     x <?= $chi_tiet_gio_hang['so_luong'] ?> cây</span>
                                 <div class="cr-cart-qty">
                                     <div class="cart-qty-plus-minus">

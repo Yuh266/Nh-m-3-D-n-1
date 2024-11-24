@@ -93,86 +93,116 @@
     <!-- Cart -->
     <section class="section-cart padding-t-100">
         <div class="container">
-        <div class="row d-none">
-            <div class="col-lg-12">
-                <div class="mb-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                    <div class="cr-banner">
-                        <h2>Giỏ hàng</h2>
-                    </div>
-                    <div class="cr-banner-sub-title">
-                        <p>Kiểm tra các sản phẩm cây cảnh bạn đã chọn và hoàn tất đơn hàng.</p>
+            <div class="row d-none">
+                <div class="col-lg-12">
+                    <div class="mb-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+                        <div class="cr-banner">
+                            <h2>Giỏ hàng</h2>
+                        </div>
+                        <div class="cr-banner-sub-title">
+                            <p>Kiểm tra các sản phẩm cây cảnh bạn đã chọn và hoàn tất đơn hàng.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                    <div class="row">
-                    <form action="<?= BASE_URL . "?act=form-thanh-toan" ?>" method="POST" >
-                            <div class="cr-table-content">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Sản phẩm</th>
-                                            <th>Giá</th>
-                                            <th class="text-center">Số lượng</th>
-                                            <th>Tổng cộng</th>
-                                            <th>Thao tác</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+            <div class="row">
+                <div class="col-12">
+                    <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+                        <div class="row">
+                            <form action="<?= BASE_URL . "?act=form-thanh-toan" ?>" method="POST">
+                                <div class="cr-table-content">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Sản phẩm</th>
+                                                <th>Giá</th>
+                                                <th class="text-center">Số lượng</th>
+                                                <th>Tổng cộng</th>
+                                                <th>Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
-                                        <?php foreach ($chi_tiet_gio_hangs as $key => $chi_tiet_gio_hang): ?>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" name="id_gio_hang[]" value="<?= $chi_tiet_gio_hang['id'] ?>"  >
-                                            </td>
-                                            <td class="cr-cart-name">
-                                                <a href="javascript:void(0)">
-                                                    <img src="<?= $chi_tiet_gio_hang['hinh_anh']?>" alt=""
-                                                        class="cr-cart-img">
-                                                </a>
-                                            </td>
-                                            <td class="cr-cart-price">
-                                                <span class="text-center"><?= $chi_tiet_gio_hang['gia_san_pham']?></span>
-                                            </td>
-                                            <td class="cr-cart-qty">
-                                            <div class="cart-qty-plus-minus">
-                                                <button type="button" class="plus" data-id="<?= $chi_tiet_gio_hang['id'] ?>">+</button>
-                                                <input type="text" value="<?= $chi_tiet_gio_hang['so_luong'] ?>" class="quantity"
-                                                    data-id="<?= $chi_tiet_gio_hang['id'] ?>" readonly>
-                                                <button type="button" class="minus" data-id="<?= $chi_tiet_gio_hang['id'] ?>">-</button>
-                                            </div>
-                                            </td>
-                                            <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien']?></td>
-                                            <td class="cr-cart-remove">
-                                                <a href="javascript:void(0)">
+                                            <?php foreach ($chi_tiet_gio_hangs as $key => $chi_tiet_gio_hang): ?>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox" name="id_gio_hang[]"
+                                                            value="<?= $chi_tiet_gio_hang['id'] ?>">
+                                                    </td>
+                                                    <td class="cr-cart-name">
+                                                        <a href="javascript:void(0)">
+                                                            <img src="<?= $chi_tiet_gio_hang['hinh_anh'] ?>" alt=""
+                                                                class="cr-cart-img">
+                                                        </a>
+                                                    </td>
+                                                    <td class="cr-cart-price">
+                                                        <span
+                                                            class="text-center"><?= $chi_tiet_gio_hang['gia_khuyen_mai'] ?></span>
+                                                    </td>
+                                                    <td class="cr-cart-qty">
+                                                        <div class="cart-qty-plus-minus">
+                                                            <button type="button" class="plus"
+                                                                data-id="<?= $chi_tiet_gio_hang['id'] ?>">+</button>
+                                                            <input type="text" value="<?= $chi_tiet_gio_hang['so_luong'] ?>"
+                                                                class="quantity" data-id="<?= $chi_tiet_gio_hang['id'] ?>"
+                                                                readonly>
+                                                            <button type="button" class="minus"
+                                                                data-id="<?= $chi_tiet_gio_hang['id'] ?>">-</button>
+                                                        </div>
+                                                    </td>
+                                                    <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien'] ?></td>
+                                                    <td class="cr-cart-remove">
+                                                    <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có đồng ý xóa hay không')">
+                                                        <button type="button" class="btn btn-danger">Xóa</button></a>
+                                                
+                                                        <!-- <a href="javascript:void(0)">
                                                     <i class="ri-delete-bin-line"></i> 
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="cr-cart-update-bottom">
-                                        <a href="javascript:void(0)" class="cr-links">Tiếp tục mua sắm</a>
-                                        <button type="submit" class="cr-button">
-                                            Thanh toán
-                                        </button>
+                                                </a> -->
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="cr-cart-update-bottom">
+                                            <a href="javascript:void(0)" class="cr-links">Tiếp tục mua sắm</a>
+                                            <button type="submit" class="cr-button">
+                                                Thanh toán
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                            <!-- Modal Xác Nhận Xóa -->
+                            <!-- <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Bạn sẽ không thể khôi phục lại nội dung đã xóa.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Đóng</button>
+                                            <a href="#" id="modalLink"><button type="button" class="btn btn-primary"
+                                                    onclick="showToast()">Xác nhận xóa</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </section>
 
     <!-- Popular products -->
@@ -186,8 +216,8 @@
                             <h2>Sản Phẩm Cây Cảnh Nổi Bật</h2>
                         </div>
                         <div class="cr-banner-sub-title">
-                            <p>Khám phá những loại cây cảnh đẹp, dễ chăm sóc và phù hợp với mọi không gian sống của bạn. 
-                            Mang thiên nhiên gần gũi hơn với cuộc sống hàng ngày.</p>
+                            <p>Khám phá những loại cây cảnh đẹp, dễ chăm sóc và phù hợp với mọi không gian sống của bạn.
+                                Mang thiên nhiên gần gũi hơn với cuộc sống hàng ngày.</p>
                         </div>
                     </div>
                 </div>
@@ -327,3 +357,9 @@
 <script src="<?= BASE_URL ?>assets/js/script.js"></script>
 
 <?php include './views/layout/footer.php' ?>
+
+<!-- // Kiểm tra phát hiện thông báo đã xóa  -->
+<?php if (isset($_SESSION["alert_delete_success"])): ?>
+    <script>showToast()</script>
+    <?php unset($_SESSION["alert_delete_success"]); ?>
+<?php endif ?>

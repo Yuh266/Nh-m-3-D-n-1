@@ -340,6 +340,7 @@ class AdminProductController
             foreach ($listAnhSanPhamCurrent as $anhSP) {
                 $anh_id = $anhSP['id'];
                 if (in_array($anh_id, $img_delete)) {
+                        
                     $this->modelProduct->destroyAnhSanPham($anh_id);
 
                     //Xóa file

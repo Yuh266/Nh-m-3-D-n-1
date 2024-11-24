@@ -149,7 +149,7 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review"
                                     type="button" role="tab" aria-controls="review"
-                                    aria-selected="false">Đánh giá</button>
+                                    aria-selected="false">Bình luận</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -157,8 +157,7 @@
                             <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                                 <div class="cr-tab-content">
                                     <div class="cr-description">
-                                        <p>Cây sen đá là loại cây cảnh nhỏ gọn, thích hợp để trang trí bàn làm việc, kệ sách hoặc góc học tập. 
-                                        Cây có khả năng chịu hạn tốt, không cần tưới nước nhiều và rất dễ chăm sóc.</p>
+                                        <p><?= $sanphan_ct['mo_ta']?></p>
                                     </div>
                                     <h4 class="heading">Quy cách đóng gói & Giao hàng</h4>
                                     <div class="cr-description">
@@ -212,14 +211,14 @@
                                         <p><?= $value['noi_dung']?></p>
                                     </div>
                                     <?php endforeach; ?>
-                                    <h4 class="heading">Viết đánh giá</h4>
+                                    <h4 class="heading">Viết bình luận</h4>
                                     <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL . "/?act=them-binh-luan" ?>">
                                         
                                         <div class="cr-ratting-input form-submit">
                                             <input type="hidden" name="id_san_pham" value="<?= $sanphan_ct['id'] ?>" id="" >
                                             <textarea name="binh_luan" placeholder="Nhập nhận xét của bạn"></textarea>
        
-                                            <button class="cr-button" type="submit" value="Submit">Thêm</button>
+                                            <button class="cr-button" type="submit" value="Submit">Gửi bình luận</button>
                                         </div>
                                     </form>
                                 </div>

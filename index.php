@@ -43,8 +43,11 @@ match ($act) {
     "tim-kiem"=>(new TrangChinhController() )->timKiem(),
 
     "san-pham-chi-tiet"=>(new SanPhamController() )->chiTietSanPham(),
+    
     "gio-hang-chi-tiet"=>(new TrangChinhController() )->chiTietGioHang(),
     "them-gio-hang"=>(new SanPhamController() )->themGioHang(),
+    "xoa-gio-hang"=>(new SanPhamController() )->xoaGioHang(),
+
     "them-binh-luan"=>(new SanPhamController() )->binhLuan(),
     
 

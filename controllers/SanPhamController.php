@@ -40,7 +40,7 @@ class SanPhamController
             
             $danh_sach_anh = $this->modelSanPham->getListAnhSanPham($id);
             
-            $chi_tiet_binh_luans = $this->modelSanPham->getBinhLuan( $id);
+            $chi_tiet_binh_luans = $this->modelBinhLuan->getBinhLuan( $id);
 
         }else{
             
@@ -98,7 +98,7 @@ class SanPhamController
             $id_san_pham = $_POST['id_san_pham'] ?? '';
 
             // var_dump($noi_dung, $id_tai_khoan, $id_san_pham, $ngay_dang);die();
-            if($this->modelSanPham->insertBinhLuan($id_san_pham, $id_tai_khoan, $noi_dung, $ngay_dang)){
+            if($this->modelBinhLuan->insertBinhLuan($id_san_pham, $id_tai_khoan, $noi_dung, $ngay_dang)){
                 header("Location:" . BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=" . $id_san_pham );
                 exit();
             }           
@@ -125,5 +125,37 @@ class SanPhamController
     //     // Gửi dữ liệu đến view (trang chi tiết sản phẩm)
     //     include 'views/sanPham/sanphamchitiet.php';
     // }
+
+    public function xoaGioHang(){
+        if ($_GET['id_gio_hang'] || $_POST["id"]) {
+            // var_dump();die($_POST)//;
+
+            $id = $_GET['id_gio_hang'] ?? $_POST["id"];
+            // var_dump();die($id);
+            if (is_array($id)) {
+                foreach ($id as $value) {
+                    $gio_hang = $this->modelGioHang->getChiTietGioHangByID($value);
+                    if ($gio_hang) {
+                        $this->modelGioHang->deleteChiTietGioHang($value);
+                    }
+                }
+            } else {
+                $gio_hang = $this->modelGioHang->getChiTietGioHangByID($id);
+                // var_dump($gio_hang);die();
+                $this->modelGioHang->deleteChiTietGioHang($id);
+
+                
+            }
+            
+            $_SESSION['alert_delete_success'] = 1;  
+            header('Location:' . BASE_URL . '/?act=gio-hang-chi-tiet' );
+            exit();
+        } else {
+            header('Location:' . BASE_URL . '/?act=gio-hang-chi-tiet' );
+            exit();
+        }
+    }
+
+    
 
 }
