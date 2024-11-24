@@ -81,16 +81,16 @@ class DonHang{
     public function updateDonHang($id,$id_tai_khoan,$ten_nguoi_nhan,$sdt_nguoi_nhan,$ngay_dat,$tong_tien,$ghi_chu,$dia_chi_nguoi_nhan,$id_trang_thai){
         try {
             $sql = "UPDATE don_hangs 
-            SET 
-                id_tai_khoan=:id_tai_khoan',
-                ten_nguoi_nhan=:ten_nguoi_nhan',
-                sdt_nguoi_nhan=:sdt_nguoi_nhan',
-                ngay_dat=:ngay_dat',
-                tong_tien=:tong_tien',
-                ghi_chu=:ghi_chu',
-                dia_chi_nguoi_nhan=:dia_chi_nguoi_nhan',
-                id_trang_thai=:id_trang_thai' 
-            WHERE id=".$id ;
+                    SET 
+                        id_tai_khoan=:id_tai_khoan',
+                        ten_nguoi_nhan=:ten_nguoi_nhan',
+                        sdt_nguoi_nhan=:sdt_nguoi_nhan',
+                        ngay_dat=:ngay_dat',
+                        tong_tien=:tong_tien',
+                        ghi_chu=:ghi_chu',
+                        dia_chi_nguoi_nhan=:dia_chi_nguoi_nhan',
+                        id_trang_thai=:id_trang_thai' 
+                    WHERE id=".$id ;
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
                 ':id_tai_khoan'=>$id_tai_khoan,
@@ -107,6 +107,21 @@ class DonHang{
             echo $th->getMessage();
         }
     }
+
+    public function updateId_trang_thaiByID($id,$id_trang_thai){
+        try {
+            $sql = "UPDATE don_hangs 
+                    SET id_trang_thai = :id_trang_thai
+                    WHERE id=".$id ;
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id_trang_thai'=>$id_trang_thai]);
+
+            return true;    
+        } catch (Exception $th) {
+            echo $th->getMessage();
+        }
+    }
+
     public function updateChiTietDonHang($id,$id_don_hang,$id_san_pham,$don_gia,$so_luong,$thanh_tien){
         $sql = "UPDATE chi_tiet_don_hangs 
                 SET 

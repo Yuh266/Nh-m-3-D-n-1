@@ -28,8 +28,10 @@ class SanPhamController
 
     public function chiTietSanPham(){
         $id = $_GET['id_san_pham'];
-        
+
+          
         if(isset($_GET['id_san_pham'])){
+            $list_danh_gias=$this->modelSanPham->getReviewSanPham($id);
             $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
 
             $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
@@ -105,6 +107,24 @@ class SanPhamController
             exit();
         }     
     }
+    // public function showReviewForm()
+    // {
+    //     // Lấy ID sản phẩm từ URL
+    //     $id_san_pham = $_GET['id_san_pham'] ?? '';
+    
+    
+    //     // Gọi model để lấy danh sách đánh giá
+    //     $danh_gias = $this->modelSanPham->getReviewSanPham($id_san_pham);
+    
+    //     // Kiểm tra nếu có lỗi khi lấy dữ liệu
+    //     if ($danh_gias === false) {
+    //         $danh_gias = [];
+    //         echo "Không thể lấy danh sách đánh giá.";
+    //     }
+    
+    //     // Gửi dữ liệu đến view (trang chi tiết sản phẩm)
+    //     include 'views/sanPham/sanphamchitiet.php';
+    // }
 
     public function xoaGioHang(){
         if ($_GET['id_gio_hang'] || $_POST["id"]) {
