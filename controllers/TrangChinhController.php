@@ -83,9 +83,9 @@ class TrangChinhController
     }
 
     public function chiTietGioHang(){
-        $id_gio_hang = $_GET['id_gio_hang'];
+        // $id_gio_hang = $_GET['id_gio_hang'];
         $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
-
+        $id_gio_hang = $gio_hang['id'];
         // $id = $_GET['id'];var
         // var_dump($id_gio_hang);
         $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
