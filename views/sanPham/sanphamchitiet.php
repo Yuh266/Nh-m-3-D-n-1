@@ -142,6 +142,11 @@
                                     aria-selected="false">Thông tin bổ sung</button>
                             </li>
                             <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="comment-tab" data-bs-toggle="tab" data-bs-target="#comment"
+                                    type="button" role="tab" aria-controls="comment"
+                                    aria-selected="false">Bình luận</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review"
                                     type="button" role="tab" aria-controls="review"
                                     aria-selected="false">Đánh giá</button>
@@ -179,16 +184,16 @@
                             </div>
 
                             <!-- Đánh giá -->
-                            <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                            <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">
                                 <div class="cr-tab-content-from">
                                     <div class="post">
                                         <div class="content">
-                                            <img src="assets/img/review/1.jpg" alt="review">
+                                            <img src="assets/img/review/1.jpg" alt="comment">
                                             <div class="details">
                                                 <span class="date">15 Tháng 10, 2024</span>
-                                                <span class="name">Nguyễn Thảo</span>
+                                                <span class="name">Anh Minh</span>
                                             </div>
-                                            <div class="cr-t-review-rating">
+                                            <div class="cr-t-comment-rating">
                                                 <i class="ri-star-s-fill"></i>
                                                 <i class="ri-star-s-fill"></i>
                                                 <i class="ri-star-s-fill"></i>
@@ -219,6 +224,66 @@
                                         </div>
                                         <div class="cr-ratting-input form-submit">
                                             <textarea name="your-commemt" placeholder="Nhập nhận xét của bạn"></textarea>
+                                            <button class="cr-button" type="submit" value="Submit">Gửi đánh giá</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                <div class="cr-tab-content-from">
+                                <ul>
+                          
+                                    <?php 
+                                     if (!empty($list_danh_gias) && is_array($list_danh_gias)): ?>
+                                        <ul>
+                                            <?php foreach ($list_danh_gias as $key => $danh_gia): ?>
+                                                <li>
+                                                <div class="details">
+                                                    <div class="row"><img width="50px" height="80px" src="<?= BASE_URL. $danh_gia['anh_dai_dien']?> " alt="image_review">
+                                                    <span><?=($danh_gia['ho_ten']) ?></span>
+                                                    </div>
+                                                
+                                                <span class="date"><?=($danh_gia['ngay_danh_gia']) ?></span>
+                                                   <?= ($danh_gia['danh_gia']) ?>
+                                                    <p><?= ($danh_gia['noi_dung']) ?></p>
+                                             
+                                                </div>
+
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php else: ?>
+                                        <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+                                    <?php endif; ?>
+                                                                        
+                                </ul>
+
+                                    <h4 class="heading">Viết đánh giá</h4>
+                                    <form name="form-danh-gia">
+                                    <div class="cr-ratting-star">
+                                    <span>Đánh giá của bạn :</span>
+                                    <div class="cr-t-review-rating">
+                                        <input type="number" name="danh_gia" min="1" max="5" placeholder="Nhập số sao (1-5)">
+                                    </div>
+                                </div>
+                                        <div class="cr-ratting-star">
+                                            <span>Đánh giá của bạn :</span>
+                                            <div class="cr-t-review-rating">
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-line"></i>
+                                                <i class="ri-star-s-line"></i>
+                                                <i class="ri-star-s-line"></i>
+                                            </div>
+                                        </div>
+
+                                       
+                                        <div>
+                                        <input type="hidden" name="id_san_pham" value="<?=$sanphan_ct['id'] ?>">
+                                        </div>
+                                       
+                                        <div class="cr-ratting-input form-submit">
+                                            <textarea name="noi_dung" placeholder="Nhập nhận xét của bạn"></textarea>
                                             <button class="cr-button" type="submit" value="Submit">Gửi đánh giá</button>
                                         </div>
                                     </form>

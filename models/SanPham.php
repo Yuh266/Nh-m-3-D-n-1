@@ -183,6 +183,40 @@ class SanPham
             echo "Lỗi".$e->getMessage();
         }
     }
+    
+    public function getReviewSanPham($id_san_pham){
+        try{
+            $sql = 'SELECT * FROM danh_gias 
+            join tai_khoans on danh_gias.id_tai_khoan=tai_khoans.id
+             WHERE id_san_pham=:id_san_pham';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':id_san_pham' => $id_san_pham
+            ]);
+            return $stmt->fetchAll();
+        }catch(Exception $e){
+            echo "Lỗi sql lấy danh gia sp".$e->getMessage();
+            return false;
+        }
+    }
+    public function insertReviewSanPham($id_san_pham ,$id_tai_khoan,$danh_gia,$ngay_danh_gia,$noi_dung ){
+        try{
+            $sql = ' INSERT Into danh_gias(id_san_pham, id_tai_khoan, danh_gia, noi_dung) value (:id_san_pham, :id_tai_khoan, :danh_gia, :noi_dung)';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':id_san_pham' => $id_san_pham,
+                ':id_tai_khoan' => $id_tai_khoan,
+                ':danh_gia' => $danh_gia,
+                ':ngay_danh_gia' => $ngay_danh_gia,
+                ':noi_dung' => $noi_dung
+            ]);
+            return $stmt->fetch();
+        }catch(Exception $e){
+            echo "Lỗi sql insert danh gia".$e->getMessage();
+            return false;
+        }
+    }
+
 
 
 
