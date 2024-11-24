@@ -151,12 +151,12 @@ class AdminProduct{
         }
     }
 
-    public function destroyAnhSanPham($id){
+    public function destroyAnhSanPham($id){  
         try{
-            $sql =  'DELETE FROM hinh_anh_san_phams WHERE id_san_pham=:id_san_pham';
+            $sql =  'DELETE FROM hinh_anh_san_phams WHERE id=:id_san_pham';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
-                ':id_san_pham' => $id,
+                ':id_san_pham' => $id
             ]);
             return true;
         }catch(Exception $e){

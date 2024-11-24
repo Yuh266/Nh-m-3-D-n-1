@@ -208,7 +208,7 @@
               </div>
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Sửa</button>
-                <button type="reset" class="btn btn-primary">Nhập lại</button>
+                <!-- <button type="reset" class="btn btn-primary">Nhập lại</button> -->
               </div>
             </form>
           </div>
