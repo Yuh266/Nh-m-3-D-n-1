@@ -109,7 +109,7 @@
                 <div class="col-12">
                     <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                         <div class="row">
-                            <form action="<?= BASE_URL . "?act=form-thanh-toan" ?>" method="POST">
+                            <form action="<?= BASE_URL . "?act=form-dia-chi-nhan-hang" ?>" method="POST">
                                 <div class="cr-table-content">
                                     <table>
                                         <thead>
@@ -155,10 +155,6 @@
                                                     <td class="cr-cart-remove">
                                                     <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có đồng ý xóa hay không')">
                                                         <button type="button" class="btn btn-danger">Xóa</button></a>
-                                                
-                                                        <!-- <a href="javascript:void(0)">
-                                                    <i class="ri-delete-bin-line"></i> 
-                                                </a> -->
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
@@ -176,28 +172,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <!-- Modal Xác Nhận Xóa -->
-                            <!-- <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa?</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Bạn sẽ không thể khôi phục lại nội dung đã xóa.
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Đóng</button>
-                                            <a href="#" id="modalLink"><button type="button" class="btn btn-primary"
-                                                    onclick="showToast()">Xác nhận xóa</button></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+                           
                         </div>
                     </div>
                 </div>
@@ -357,9 +332,3 @@
 <script src="<?= BASE_URL ?>assets/js/script.js"></script>
 
 <?php include './views/layout/footer.php' ?>
-
-<!-- // Kiểm tra phát hiện thông báo đã xóa  -->
-<?php if (isset($_SESSION["alert_delete_success"])): ?>
-    <script>showToast()</script>
-    <?php unset($_SESSION["alert_delete_success"]); ?>
-<?php endif ?>
