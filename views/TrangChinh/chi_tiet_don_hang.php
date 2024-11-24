@@ -119,6 +119,7 @@
                                         <!-- Đơn hàng 1 -->
                                         <ul class="list-group">
                                             <h5 class="list-group-item mb-1 text-primary">Đơn hàng HH<?= $value['id_don_hang'] ?></h5>
+                                            <li class="list-group-item  mb-1"><strong>Hình thức thanh toán: </strong> <?= $value['hinh_thuc_thanh_toan'] ?></li>
                                             <li class="list-group-item  mb-1"><strong>Khách hàng: </strong> <?= $value['ho_ten'] ?></li>
                                             <li class="list-group-item  mb-1"><strong>Ngày đặt: </strong><?= $value['ngay_dat'] ?></li>
                                             <li class="list-group-item mb-1 text-danger" ><strong>Trạng thái: </strong><?= $value['ten_trang_thai'] ?></li>

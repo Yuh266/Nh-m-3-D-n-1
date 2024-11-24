@@ -152,9 +152,20 @@
                                                     <td class="cr-cart-price">
                                                         <span><?= $value['ten_trang_thai'] ?></span>
                                                     </td>
-                                                    <td><?= $value['tong_tien'] ?></td>
+                                                    <td><?= number_format($value['tong_tien']) ?></td>
                                                     <td><?= $value['ngay_dat'] ?></td>
                                                     <td>
+                                                        <?php if ($value['id_trang_thai'] ==1):?>
+                                                            <a href="<?= BASE_URL . "/?act=chi-tiet-don-hang&id=".$value['id_don_hang'] ?>">
+                                                                <button type="submit" class="btn btn-primary">Hủy đơn</button>
+                                                            </a>
+                                                            <form action="<?= BASE_URL . "/?act=form-thanh-toan" ?>" method="post">
+                                                                <input type="text" name="id_don_hang" value="<?= $value['id_don_hang'] ?>" hidden >
+                                                                <button type="submit" name="btn_thanh_toan" class="btn btn-primary">Thanh toán</button>
+                                                            </form>
+                                                            
+                                                        <?php  endif ?>
+
                                                         <a href="<?= BASE_URL . "/?act=chi-tiet-don-hang&id=".$value['id_don_hang'] ?>">
                                                             <button type="submit" class="btn btn-primary">Xem</button>
                                                         </a>

@@ -178,6 +178,25 @@ class TrangChinhController
         // echo "<pre>";
         // var_dump($_POST);die();
 
+        if (isset($_POST['btn_thanh_toan']) &&  isset($_POST['id_don_hang'])) {
+            $id_don_hang = $_POST['id_don_hang'];
+
+            $don_hang = $this->modelDonHang->getIDSanPhamAndSoLuongByIDDonHang($id_don_hang);
+
+            // var_dump($don_hang);die();
+            $id = [];
+            $so_luong = [];
+
+            foreach ($don_hang as $key => $value) {
+                $id[] = $value['id_san_pham'] ;
+                $so_luong[] = $value['so_luong'] ;
+            }
+            
+            $_SESSION['id'] =  $id  ;
+            $_SESSION['so_luong'] = $so_luong  ;
+            $_SESSION['id_don_hang'] = $id_don_hang  ;
+        }
+
         if (isset($_SESSION['id']) && isset( $_SESSION['so_luong']) && isset( $_SESSION['id_don_hang'] ) ) {
             $id =  $_SESSION['id'] ;
             $so_luong =  $_SESSION['so_luong'] ;
@@ -213,6 +232,7 @@ class TrangChinhController
             $tong_tien = $_POST['tong_tien'] ?? "";
             $ghi_chu = $_POST['ghi_chu'] ?? "";
             $ngay_dat = date('Y-m-d');
+            $hinh_thuc_thanh_toan = "Chưa thanh toán";
             $error = [];
 
             $array_san_pham = [];
@@ -281,7 +301,7 @@ class TrangChinhController
                 }
             }
 
-            if ($id_don_hang=$this->modelDonHang->insertDonHang($_SESSION['client_user']['id'],$ngay_dat,$tong_tien,$ghi_chu,1,$id_dia_chi_nhan_hang)) {
+            if ($id_don_hang=$this->modelDonHang->insertDonHang($_SESSION['client_user']['id'],$ngay_dat,$tong_tien,$ghi_chu,$hinh_thuc_thanh_toan,1,$id_dia_chi_nhan_hang)) {
                 foreach ($array_san_pham as $key => $value) {
                     $this->modelDonHang->insertChiTietDonHang($id_don_hang,$value['id'],$value['gia_khuyen_mai'],$value['so_luong'],$value['gia_khuyen_mai']*$value['so_luong']);
                 }
@@ -293,6 +313,9 @@ class TrangChinhController
                 }
                 deleteSession('id_chi_tiet_gio_hang');
             }
+
+            // var_dump($id_don_hang);die();
+
             $_SESSION['id'] = $id ;
             $_SESSION['so_luong'] = $so_luong ;
             $_SESSION['id_don_hang'] = $id_don_hang ;
@@ -317,7 +340,7 @@ class TrangChinhController
             if (isset($_GET['resultCode'])) {
                 if ($_GET['resultCode'] == 0 ) {
                     $id_don_hang = $_GET["id_don_hang"];
-                    if ($this->modelDonHang->updateId_trang_thaiByID($id_don_hang,2)) {
+                    if ($this->modelDonHang->updateHinhThucThanhToanByID($id_don_hang,2,"Thanh toán bằng momo")) {
                         header("Location:". BASE_URL ."?act=don-hang") ;
                     }
                 }else {
@@ -326,7 +349,7 @@ class TrangChinhController
                 }
             }else {
                 $id_don_hang = $_POST["id_don_hang"];
-                if ($this->modelDonHang->updateId_trang_thaiByID($id_don_hang,2)) {
+                if ($this->modelDonHang->updateHinhThucThanhToanByID($id_don_hang,2,"Thanh toán khi nhận hàng")) {
                     header("Location:". BASE_URL ."?act=don-hang") ;
                 }
             }
