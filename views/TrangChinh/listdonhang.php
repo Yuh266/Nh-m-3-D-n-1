@@ -111,7 +111,10 @@
                     <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                         <div class="row">
                                 <?php if (isset($_SESSION['alert_success'])):?>
-                                    <div class="alert-success alert">Đơn hàng đã được xử lí thành công.</div>
+                                    <div class="alert-success alert"><?=$_SESSION['alert_success']?></div>
+                                <?php endif ?>
+                                <?php if (isset($_SESSION['alert_error'])):?>
+                                    <div class="alert-danger alert"><?=$_SESSION['alert_error']?></div>
                                 <?php endif ?>
 
                                 <div>
@@ -128,17 +131,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $bg = "bg-success" ?>
-                                            <?php $id_don_hang = null ?>
                                             <?php foreach ($list_don_hang as $key => $value): ?>
-                                                <?php if ($id_don_hang != $value['id_don_hang']) {
-                                                    if ($bg == "bg-success") {
-                                                        $bg = "bg-info";
-                                                    } else {
-                                                        $bg = "bg-success";
-                                                    }
-                                                } ?>
-                                                <tr class="<?= $bg ?>">
+                                                <tr >
                                                     <td><?= $value['id_don_hang'] ?></td>
                                                     <td class="cr-cart-name">
                                                         <a
@@ -156,8 +150,8 @@
                                                     <td><?= $value['ngay_dat'] ?></td>
                                                     <td>
                                                         <?php if ($value['id_trang_thai'] ==1):?>
-                                                            <a href="<?= BASE_URL . "/?act=chi-tiet-don-hang&id=".$value['id_don_hang'] ?>">
-                                                                <button type="submit" class="btn btn-primary">Hủy đơn</button>
+                                                            <a onclick="return confirm('Bạn chắc chắn muốn hủy chứ?') " href="<?= BASE_URL . "?act=huy-don-hang&id_don_hang=".$value['id_don_hang'] ?>">
+                                                                <button class="btn btn-primary">Hủy đơn</button>
                                                             </a>
                                                             <form action="<?= BASE_URL . "/?act=form-thanh-toan" ?>" method="post">
                                                                 <input type="text" name="id_don_hang" value="<?= $value['id_don_hang'] ?>" hidden >

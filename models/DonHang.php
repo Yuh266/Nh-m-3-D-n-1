@@ -46,7 +46,7 @@ class DonHang{
             echo $th->getMessage();
         }
     }
- public function getIDSanPhamAndSoLuongByIDDonHang($id){
+    public function getIDSanPhamAndSoLuongByIDDonHang($id){
         try {
             $sql = "SELECT `id_san_pham`,`so_luong` 
                     FROM `chi_tiet_don_hangs` 
@@ -55,6 +55,19 @@ class DonHang{
             $stmt->execute();
             
             return $stmt->fetchAll();
+        } catch (Exception $th) {
+            echo $th->getMessage();
+        }
+    }
+    public function huyDonHang($id_don_hang){
+        try {
+            $sql = "UPDATE `don_hangs` 
+                    SET `id_trang_thai`= 5
+                    WHERE id = ".$id_don_hang ;
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            
+            return true ;
         } catch (Exception $th) {
             echo $th->getMessage();
         }

@@ -33,7 +33,7 @@ class TrangChinhController
         }else{
             echo"";
         }
-    // var_dump($gio_hang);die();
+        // var_dump($gio_hang);die();
         require './views/TrangChinh/trangchu.php';
     }
     public function Login(){
@@ -106,6 +106,7 @@ class TrangChinhController
         // var_dump($list_don_hang);die();
         require "./views/TrangChinh/listdonhang.php";
         deleteSession("alert_success");
+        deleteSession("alert_error");
     }
     public function chiTietDonHang(){
         if (isset($_GET['id'])) {
@@ -137,7 +138,6 @@ class TrangChinhController
                 $_SESSION["id_chi_tiet_gio_hang"] = $id_chi_tiet_gio_hang;
                 $id = [];
                 $so_luong = [];
-
                 foreach ($id_chi_tiet_gio_hang as $key => $value) {
                     $chi_tiet_gio_hang = $this->modelGioHang->getChiTietGioHangByID($value);
                     $id[] = $chi_tiet_gio_hang['id_san_pham'] ; 
@@ -146,6 +146,10 @@ class TrangChinhController
             }else {
                 $id = $_POST['id'] ?? $_SESSION['id'] ?? "";
                 $so_luong = $_POST['so_luong'] ?? $_SESSION['so_luong'] ?? "";
+            }
+
+            if(empty($id)) {
+                header("Location:".BASE_URL."?act=gio-hang-chi-tiet");
             }
             // var_dump($_POST);die();
             
@@ -325,6 +329,19 @@ class TrangChinhController
         }
     }
     
+    public function huyDonHang(){
+        if (isset($_GET['id_don_hang'])) {
+            $id_don_hang = $_GET['id_don_hang'] ;
+
+            if ($this->modelDonHang->huyDonHang($id_don_hang)) {
+                $_SESSION['alert_success'] = "Hủy đơn hàng thành công";
+            }else {
+                $_SESSION['alert_error'] = "Hủy đơn hàng thất bại. Vui lòng thử lại";
+            }
+        }
+        header('Location:'. BASE_URL .'?act=don-hang') ;
+    }
+
     public function xuLiThanhToanMoMo(){
 
         require "./views/TrangChinh/xu_li_thanh_toan_momo.php" ;
@@ -341,20 +358,20 @@ class TrangChinhController
                 if ($_GET['resultCode'] == 0 ) {
                     $id_don_hang = $_GET["id_don_hang"];
                     if ($this->modelDonHang->updateHinhThucThanhToanByID($id_don_hang,2,"Thanh toán bằng momo")) {
+                        $_SESSION['alert_success'] = "Thanh toán thành công." ;
                         header("Location:". BASE_URL ."?act=don-hang") ;
                     }
                 }else {
-                    $_SESSION['alert_error'] = 1 ;
+                    $_SESSION['alert_error'] = "Thanh toán không thành công." ;
                     header("Location:". BASE_URL ."?act=don-hang") ;
                 }
             }else {
                 $id_don_hang = $_POST["id_don_hang"];
                 if ($this->modelDonHang->updateHinhThucThanhToanByID($id_don_hang,2,"Thanh toán khi nhận hàng")) {
+                    $_SESSION['alert_success'] = "Đơn hàng được xử lí thành công." ;
                     header("Location:". BASE_URL ."?act=don-hang") ;
                 }
             }
-
-            
         }
     }
 

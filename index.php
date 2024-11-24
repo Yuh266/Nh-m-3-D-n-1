@@ -72,6 +72,7 @@ match ($act) {
     "form-dia-chi-nhan-hang"=>(new TrangChinhController())->trangDiaChiNhanHang(),
     "form-thanh-toan"=>(new TrangChinhController())->trangThanhToan(),
     "thanh-toan"=>(new TrangChinhController())->thanhToan(),
+    "huy-don-hang"=>(new TrangChinhController())->huyDonHang(),
 
     "xu-li-thanh-toan"=>(new TrangChinhController())->xuLiThanhToan(),
     "xu-li-thanh-toan-momo"=>(new TrangChinhController())->xuLiThanhToanMoMo(),
