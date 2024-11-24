@@ -79,12 +79,12 @@
                                 <div class="list">
                                     <ul>
                                         <li><label>Thương hiệu <span>:</span></label>GreenGarden Co</li>
-                                        <li><label>Loại cây <span>:</span></label>Sen đá</li>
+                                        <li><label>Loại cây <span>:</span></label><?= $sanphan_ct['ten_san_pham'] ?></li>
                                         <li><label>Chế độ chăm sóc <span>:</span></label>Dễ chăm sóc</li>
-                                        <li><label>Kích thước <span>:</span></label>Cao 15 cm</li>
-                                        <li><label>Đặc điểm <span>:</span></label>Lọc không khí, Phù hợp nội thất</li>
-                                        <li><label>Thông tin khác <span>:</span></label>Không cần nhiều ánh sáng, Tặng kèm chậu</li>
-                                        <li><label>Số lượng <span>:</span></label>1 cây</li>
+                                        <!-- <li><label>Kích thước <span>:</span></label>Cao 15 cm</li> -->
+                                        <!-- <li><label>Đặc điểm <span>:</span></label>Lọc không khí, Phù hợp nội thất</li> -->
+                                        <!-- <li><label>Thông tin khác <span>:</span></label>Không cần nhiều ánh sáng, Tặng kèm chậu</li> -->
+                                        <li><label>Số lượng <span>:</span></label>Còn <?= $sanphan_ct['so_luong']?> cây</li>
                                     </ul>
                                 </div>
                                 <div class="cr-product-price">
@@ -103,7 +103,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <form method="POST" action="<?= BASE_URL . "/?act=form-thanh-toan" ?>">
+                                <form method="POST" action="<?= BASE_URL . "/?act=form-dia-chi-nhan-hang" ?>">
                                     <div class="cr-add-card">
                                         <input type="text" value="<?= $sanphan_ct['id'] ?>" hidden name="id[]"  >
                                         <div class="cr-qty-main">
@@ -173,7 +173,7 @@
                                 <div class="cr-tab-content">
                                     <div class="list">
                                         <ul>
-                                            <li><label>Loại cây <span>:</span></label> Sen đá</li>
+                                            <li><label>Loại cây <span>:</span></label><?= $sanphan_ct['ten_san_pham'] ?></li>
                                             <li><label>Kích thước <span>:</span></label> Cao 10-15 cm</li>
                                             <li><label>Màu sắc <span>:</span></label> Xanh lá cây</li>
                                             <li><label>Điều kiện sống <span>:</span></label> Ánh sáng vừa, không cần tưới nhiều</li>
@@ -186,8 +186,10 @@
                             <!-- Đánh giá -->
                             <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">
                                 <div class="cr-tab-content-from">
+                                    <?php foreach ($chi_tiet_binh_luans as $key=>$value): ?>
                                     <div class="post">
                                         <div class="content">
+
                                             <img src="assets/img/review/1.jpg" alt="comment">
                                             <div class="details">
                                                 <span class="date">15 Tháng 10, 2024</span>
@@ -199,32 +201,25 @@
                                                 <i class="ri-star-s-fill"></i>
                                                 <i class="ri-star-s-fill"></i>
                                                 <i class="ri-star-s-fill"></i>
-                                            </div>
-                                        </div>
-                                        <p>Cây sen đá rất đẹp, được gói kỹ càng khi giao đến. Rất hài lòng!</p>
-                                    </div>
 
-                                    <h4 class="heading">Viết đánh giá</h4>
-                                    <form action="javascript:void(0)">
-                                        <div class="cr-ratting-star">
-                                            <span>Đánh giá của bạn :</span>
-                                            <div class="cr-t-review-rating">
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-line"></i>
-                                                <i class="ri-star-s-line"></i>
-                                                <i class="ri-star-s-line"></i>
+                                            <img src="<?= BASE_URL . $value['anh_dai_dien']?>" alt="not image">
+                                            <div class="details">
+                                                <span class="date"><?= $value['ngay_dang']?></span>
+                                                <span class="name"><?= $value['ho_ten']?></span>
+
                                             </div>
                                         </div>
-                                        <div class="cr-ratting-input">
-                                            <input name="your-name" placeholder="Họ tên" type="text">
-                                        </div>
-                                        <div class="cr-ratting-input">
-                                            <input name="your-email" placeholder="Email*" type="email" required="">
-                                        </div>
+                                        <p><?= $value['noi_dung']?></p>
+                                    </div>
+                                    <?php endforeach; ?>
+                                    <h4 class="heading">Viết đánh giá</h4>
+                                    <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL . "/?act=them-binh-luan" ?>">
+                                        
                                         <div class="cr-ratting-input form-submit">
-                                            <textarea name="your-commemt" placeholder="Nhập nhận xét của bạn"></textarea>
-                                            <button class="cr-button" type="submit" value="Submit">Gửi đánh giá</button>
+                                            <input type="hidden" name="id_san_pham" value="<?= $sanphan_ct['id'] ?>" id="" >
+                                            <textarea name="binh_luan" placeholder="Nhập nhận xét của bạn"></textarea>
+       
+                                            <button class="cr-button" type="submit" value="Submit">Thêm</button>
                                         </div>
                                     </form>
                                 </div>

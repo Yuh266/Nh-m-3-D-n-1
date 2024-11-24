@@ -225,16 +225,19 @@ class AdminTaiKhoanController{
             if(empty($email)){
                 $error['email'] = "Không được bỏ trống";
             }
-            if(empty($mat_khau)){
-                $error['mat_khau'] = "Không được bỏ trống";
+            elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = 'Email không hợp lệ';
             }
+            
             $date = empty($ngay_sinh) ? NULL : $ngay_sinh;  
             // End validate
+         
             
             $_SESSION['error'] = $error;
             // var_dump($error);die();
 
             if (empty($error)) {
+                $hashed_password = password_hash($mat_khau, PASSWORD_DEFAULT);
                 // var_dump(444);die();
                 // Xử lí ảnh
                 if(isset($file_anh) && $file_anh["error"] == UPLOAD_ERR_OK  ){
@@ -246,7 +249,7 @@ class AdminTaiKhoanController{
                     $link_anh = $old_image;
                 }
                 
-                if ($this->modelTaiKhoan->updateTaikhoan($id,$ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$mat_khau,$trang_thai,$date,$dia_chi)){
+                if ($this->modelTaiKhoan->updateTaikhoan($id,$ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$hashed_password,$trang_thai,$date,$dia_chi)){
 
                     
                     $_SESSION['alert_success'] = 1 ;

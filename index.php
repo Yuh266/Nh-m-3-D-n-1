@@ -42,10 +42,12 @@ match ($act) {
     "/"=>(new TrangChinhController() )->Trangchu(),
     "tim-kiem"=>(new TrangChinhController() )->timKiem(),
 
-
     "san-pham-chi-tiet"=>(new SanPhamController() )->chiTietSanPham(),
     "gio-hang-chi-tiet"=>(new TrangChinhController() )->chiTietGioHang(),
     "them-gio-hang"=>(new SanPhamController() )->themGioHang(),
+    "them-binh-luan"=>(new SanPhamController() )->binhLuan(),
+    
+
     "don-hang"=>(new TrangChinhController() )->listDonHang(),
 
     "chi-tiet-don-hang"=>(new TrangChinhController() )->chiTietDonHang(),
@@ -64,8 +66,13 @@ match ($act) {
     "form-doi-mat-khau"=>(new TaiKhoanController)->post_doi_mat_khau(),
     
     
+    "form-dia-chi-nhan-hang"=>(new TrangChinhController())->trangDiaChiNhanHang(),
     "form-thanh-toan"=>(new TrangChinhController())->trangThanhToan(),
     "thanh-toan"=>(new TrangChinhController())->thanhToan(),
+
+    "xu-li-thanh-toan"=>(new TrangChinhController())->xuLiThanhToan(),
+    "xu-li-thanh-toan-momo"=>(new TrangChinhController())->xuLiThanhToanMoMo(),
+    "xu-li-thanh-toan-momo-atm"=>(new TrangChinhController())->xuLiThanhToanMoMoATM(),
 
 
 

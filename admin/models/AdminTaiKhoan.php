@@ -37,11 +37,11 @@ class AdminTaiKhoan{
 
     }
     
-    public function updateTaikhoan($id,$ho_ten, $anh_dai_dien, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$mat_khau,$trang_thai,$ngay_sinh,$dia_chi){
+    public function updateTaikhoan($id,$ho_ten, $anh_dai_dien, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$hashed_password,$trang_thai,$ngay_sinh,$dia_chi){
         try {
             $sql = "UPDATE tai_khoans SET ho_ten = :ho_ten , anh_dai_dien = :anh_dai_dien, so_dien_thoai= :so_dien_thoai,gioi_tinh=:gioi_tinh, email=:email , chuc_vu=:chuc_vu , mat_khau=:mat_khau , trang_thai=:trang_thai , ngay_sinh=:ngay_sinh , dia_chi=:dia_chi WHERE id =".$id;
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute([":ho_ten"=>$ho_ten,":anh_dai_dien"=>$anh_dai_dien,":so_dien_thoai"=>$so_dien_thoai,":gioi_tinh"=>$gioi_tinh,":email"=>$email,":chuc_vu"=>$chuc_vu,":mat_khau"=>$mat_khau,":trang_thai"=>$trang_thai,":ngay_sinh"=>$ngay_sinh,":dia_chi"=>$dia_chi]);
+            $stmt->execute([":ho_ten"=>$ho_ten,":anh_dai_dien"=>$anh_dai_dien,":so_dien_thoai"=>$so_dien_thoai,":gioi_tinh"=>$gioi_tinh,":email"=>$email,":chuc_vu"=>$chuc_vu,":mat_khau"=>$hashed_password,":trang_thai"=>$trang_thai,":ngay_sinh"=>$ngay_sinh,":dia_chi"=>$dia_chi]);
             
             return true;
         }catch (Exception $th) {
