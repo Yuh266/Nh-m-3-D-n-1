@@ -29,11 +29,22 @@
                             <div class="vehicle-detail-banner banner-content clearfix">
                                 <div class="banner-slider">
                                     <div class="slider slider-for">
+                                       
                                         <div class="slider-banner-image">
-                                                <div class="zoom-image-hover">
+                                            <div class="zoom-image-hover">
                                                 <img src="<?= BASE_URL . $sanphan_ct['hinh_anh'] ?>" alt="" class="product-image" >
                                             </div>
                                         </div>
+                                        <?php if(!empty($gia_tri_bien_the)):?>
+                                        <?php foreach ($san_pham_bien_the as $key => $value):?>
+                                        <div class="slider-banner-image">
+                                                <div class="zoom-image-hover">
+                                                <img src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="" class="product-image" >
+                                            </div>
+                                        </div>
+                                        <?php endforeach; ?>
+                                        <?php endif ?>
+                                        
                                         <?php foreach ($danh_sach_anh as $key => $value): ?>
                                             <div class="slider-banner-image">
                                                 <div class="zoom-image-hover">
@@ -49,6 +60,15 @@
                                                 <img src="<?= BASE_URL . $sanphan_ct['hinh_anh'] ?>" alt="">
                                             </div>
                                         </div>
+                                        <?php if(!empty($gia_tri_bien_the)):?>
+                                        <?php foreach ($san_pham_bien_the as $key => $value):?>
+                                        <div class="thumbnail-image">
+                                                <div class="thumbImg">
+                                                <img src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="" class="product-image" >
+                                            </div>
+                                        </div>
+                                        <?php endforeach; ?>
+                                        <?php endif; ?>
                                         <?php foreach ($danh_sach_anh as $key => $value): ?>
                                             <div class="thumbnail-image">
                                                 <div class="thumbImg">
@@ -91,21 +111,32 @@
                                     <span class="new-price"><?= number_format($sanphan_ct['gia_khuyen_mai'])." vnđ"  ?></span>
                                     <span class="old-price"><?= number_format($sanphan_ct['gia_san_pham'])." vnđ"  ?></span>
                                 </div>
+                                <?php if(!empty($gia_tri_bien_the)): ?>
+                                <?php foreach ($thuoc_tinh as $value):?>
                                 <div class="cr-size-weight">
-                                    <h5><span>Kích thước và</span>
-                                    <span>trọng lượng</span> :</h5>
+                                    <h5><span><?= $value ?></span>:</h5>
                                     <div class="cr-kg">
                                         <ul>
-                                            <li class="active-color">Nhỏ (10cm)</li>
-                                            <li>Trung bình (20cm)</li>
-                                            <li>Lớn (30cm)</li>
-                                            <li>Rất lớn (50cm)</li>
+                                            <?php foreach ($gia_tri_bien_the as $key => $value):?>
+                                            <form action="<?= BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=".$id ?>" method="post">
+                                                <input name="id_bien_the" value="<?= $value['id'] ?>" type="text" hidden >
+                                                <button class="btn p-0 m-0" type="submit" ><li 
+                                                <?php if (isset($id_bien_the)){  
+                                                   echo $id_bien_the==$value['id']? "class='active-color'" : "" ;
+                                                } ?> ><?= $value['gia_tri'] ?></li></button>
+                                            </form>
+                                            <?php endforeach ?>
+                                            <!-- class="active-color" -->
                                         </ul>
                                     </div>
                                 </div>
+                                <?php endforeach ?>
+                                <?php endif ?>
+
                                 <form method="POST" action="<?= BASE_URL . "/?act=form-dia-chi-nhan-hang" ?>">
                                     <div class="cr-add-card">
-                                        <input type="text" value="<?= $sanphan_ct['id'] ?>" hidden name="id[]"  >
+                                        <input type="text" value="<?= $sanphan_ct['id']  ?>" hidden name="id[]"  >
+                                        <input type="text" value="<?= $id_bien_the??"" ?>" hidden name="id_bien_the[]" >
                                         <div class="cr-qty-main">
                                             <input name="so_luong[]" type="text" placeholder="." value="1" minlength="1" maxlength="20"
                                                 class="quantity" style="width: 80px">
@@ -113,17 +144,15 @@
                                             <button type="button" id="sub" class="minus" style="width: 40px; height: 20px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">-</button>
                                         </div>
                                         <div class="cr-add-button d-flex">
-                                            <button type="button" class="cr-button text-white me-4 cr-shopping-bag"><a href="?act=them-gio-hang&id_gio_hang=<?= $gio_hang['id'] ?>&id_san_pham=<?= $sanphan_ct['id'] ?>">Thêm giỏ hàng</a></button>
+                                            <?php 
+                                                $text ="";
+                                                if (isset($id_bien_the)) {
+                                                    $text = "&id_bien_the=".$id_bien_the ;                                            
+                                                } 
+                                            ?>
+                                            <button type="button" class="cr-button text-white me-4 cr-shopping-bag"><a href="?act=them-gio-hang&id_gio_hang=<?= $gio_hang['id'] ?>&id_san_pham=<?= $sanphan_ct['id'].$text ?>">Thêm giỏ hàng</a></button>
                                             <button type="submit" name="btn_submit" class="cr-button text-white cr-shopping-bag">Mua ngay</button>
                                         </div>
-                                        <!-- <div class="cr-card-icon">
-                                            <a href="javascript:void(0)" class="wishlist">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview" role="button">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </div> -->
                                     </div>
                                 </form>
                             </div>

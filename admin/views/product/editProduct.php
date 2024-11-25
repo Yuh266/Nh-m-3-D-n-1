@@ -213,6 +213,9 @@
             </form>
           </div>
         </div>
+        <a href="<?= BASE_URL_ADMIN . "?act=form-them-san-pham-bien-the&id_san_pham=".$sanPham['id'] ?>">
+          <button class="btn btn-primary" >Thêm sản phẩm biến thể </button>
+        </a>
       </div>
     </div>
   </section>
