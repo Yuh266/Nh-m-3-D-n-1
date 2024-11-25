@@ -7,7 +7,8 @@ class TrangChinhController
     public $modelSlideShow;
     public $modelGioHang;
     public $modelDonHang;
-    public$modelDiaChiNhanHang;
+    public $modelDiaChiNhanHang;
+    public $modelSanPhamBienThe;
 
     public function __construct() {
         $this->modelSanPham = new SanPham();
@@ -16,6 +17,8 @@ class TrangChinhController
         $this->modelGioHang = new GioHang();
         $this->modelDonHang = new DonHang();
         $this->modelDiaChiNhanHang = new DiaChiNhanHang();
+        $this->modelSanPhamBienThe = new SanPhamBienThe();
+
 
     }
     public function Trangchu() {
@@ -79,7 +82,7 @@ class TrangChinhController
         $list_san_pham = $this->modelSanPham->getSanPhamByInformationSearch($keyword,$id,$maxPrice,$minPrice);
 
         // var_dump($list_san_pham);die();
-        require './views/TrangChinh/tim_kiem.php' ;
+        require './views/TrangChinh/tim_kiem.php';
     }
 
     public function chiTietGioHang(){
@@ -90,8 +93,12 @@ class TrangChinhController
         // var_dump($id_gio_hang);
         $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
+
         $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
-        // var_dump($chi_tiet_gio_hang);die();
+        $chi_tiet_gio_hang2s = $this->modelGioHang->getChiTietGioHang2($id_gio_hang);
+
+        // echo "<pre>" ;
+        // var_dump($chi_tiet_gio_hang2s);die();
         // $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
 
         require "./views/gioHang/giohang.php";
@@ -136,16 +143,22 @@ class TrangChinhController
             if (isset($_POST['id_gio_hang'])) {
                 $id_chi_tiet_gio_hang = $_POST['id_gio_hang'] ?? "";
                 $_SESSION["id_chi_tiet_gio_hang"] = $id_chi_tiet_gio_hang;
+
                 $id = [];
                 $so_luong = [];
+                $id_bien_the = [];
+
                 foreach ($id_chi_tiet_gio_hang as $key => $value) {
                     $chi_tiet_gio_hang = $this->modelGioHang->getChiTietGioHangByID($value);
                     $id[] = $chi_tiet_gio_hang['id_san_pham'] ; 
                     $so_luong[] = $chi_tiet_gio_hang['so_luong'] ; 
+                    $id_bien_the[] = $chi_tiet_gio_hang['id_bien_the_san_pham'] ; 
                 }
+
             }else {
                 $id = $_POST['id'] ?? $_SESSION['id'] ?? "";
                 $so_luong = $_POST['so_luong'] ?? $_SESSION['so_luong'] ?? "";
+                $id_bien_the = $_POST['id_bien_the'] ?? $_SESSION['id_bien_the'] ?? "";
             }
 
             if(empty($id)) {
@@ -161,6 +174,18 @@ class TrangChinhController
             foreach ($id as $key => $value) {
                 $array_san_pham[$key] = $this->modelSanPham->getDetailSanPham($value) ;
                 $array_san_pham[$key]['so_luong'] = $so_luong[$key] ;
+
+                if($id_bien_the[$key] != "" && $id_bien_the[$key] != NULL ){
+                    $san_pham_bien_the_id = $this->modelSanPhamBienThe->getSanPhamBienTheByID($id_bien_the[$key]);
+                    $gia_tri_thuoc_tinh = $this->modelSanPhamBienThe->getGiaTri($san_pham_bien_the_id['id_gia_tri_thuoc_tinh']);
+
+                    $array_san_pham[$key]['ten_san_pham'] = $array_san_pham[$key]['ten_san_pham']. " => ".$gia_tri_thuoc_tinh['gia_tri']  ;  
+                    $array_san_pham[$key]['hinh_anh'] = $san_pham_bien_the_id['hinh_anh'];  
+                      
+                    $array_san_pham[$key]['gia_khuyen_mai'] = $san_pham_bien_the_id['gia_khuyen_mai'];  
+                    $array_san_pham[$key]['gia_san_pham'] = $san_pham_bien_the_id['gia'];  
+                }
+
             }
             // echo "<pre>";
             // var_dump($array_san_pham);die();
@@ -205,6 +230,7 @@ class TrangChinhController
             $id =  $_SESSION['id'] ;
             $so_luong =  $_SESSION['so_luong'] ;
             $id_don_hang =  $_SESSION['id_don_hang'] ;
+            $id_bien_the =  $_SESSION['id_bien_the'] ;
             
             // var_dump($_POST);die();
             
@@ -216,6 +242,17 @@ class TrangChinhController
             foreach ($id as $key => $value) {
                 $array_san_pham[$key] = $this->modelSanPham->getDetailSanPham($value) ;
                 $array_san_pham[$key]['so_luong'] = $so_luong[$key] ;
+
+                if($id_bien_the[$key] != ""){
+                    $san_pham_bien_the_id = $this->modelSanPhamBienThe->getSanPhamBienTheByID($id_bien_the[$key]);
+                    $gia_tri_thuoc_tinh = $this->modelSanPhamBienThe->getGiaTri($san_pham_bien_the_id['id_gia_tri_thuoc_tinh']);
+
+                    $array_san_pham[$key]['ten_san_pham'] = $array_san_pham[$key]['ten_san_pham']. " => ".$gia_tri_thuoc_tinh['gia_tri']  ;  
+                    $array_san_pham[$key]['hinh_anh'] = $san_pham_bien_the_id['hinh_anh'];  
+                    
+                    $array_san_pham[$key]['gia_khuyen_mai'] = $san_pham_bien_the_id['gia_khuyen_mai'];  
+                    $array_san_pham[$key]['gia_san_pham'] = $san_pham_bien_the_id['gia'];  
+                }
             }
 
             require './views/TrangChinh/thanh_toan.php';
@@ -233,6 +270,8 @@ class TrangChinhController
             // var_dump($_POST);die();
             $id = $_POST['id'] ?? "";
             $so_luong = $_POST['so_luong'] ?? "";
+            $id_bien_the = $_POST['id_bien_the'] ?? "";
+            
             $tong_tien = $_POST['tong_tien'] ?? "";
             $ghi_chu = $_POST['ghi_chu'] ?? "";
             $ngay_dat = date('Y-m-d');
@@ -243,7 +282,23 @@ class TrangChinhController
             foreach ($id as $key => $value) {
                 $array_san_pham[$key] = $this->modelSanPham->getDetailSanPham($value) ;
                 $array_san_pham[$key]['so_luong'] = $so_luong[$key] ;
+
+                if($id_bien_the[$key] != ""){
+                    $san_pham_bien_the_id = $this->modelSanPhamBienThe->getSanPhamBienTheByID($id_bien_the[$key]);
+                    $gia_tri_thuoc_tinh = $this->modelSanPhamBienThe->getGiaTri($san_pham_bien_the_id['id_gia_tri_thuoc_tinh']);
+
+                    $array_san_pham[$key]['ten_san_pham'] = $array_san_pham[$key]['ten_san_pham']. " => ".$gia_tri_thuoc_tinh['gia_tri']  ;  
+                    $array_san_pham[$key]['hinh_anh'] = $san_pham_bien_the_id['hinh_anh'] ;
+                    
+                    // Lưu tên biến thể vô ghi chú
+                    $ghi_chu .= '( '.$array_san_pham[$key]["ten_san_pham"].' )' ;
+
+                    $array_san_pham[$key]['gia_khuyen_mai'] = $san_pham_bien_the_id['gia_khuyen_mai'];  
+                    $array_san_pham[$key]['gia_san_pham'] = $san_pham_bien_the_id['gia'];  
+                }
             }
+
+
 
             if(isset($_POST['btn_old'])){
                 $id_dia_chi_nhan_hang = $_POST['id_dia_chi_nhan_hang'] ??'';
@@ -262,6 +317,7 @@ class TrangChinhController
                     ];
                     $_SESSION['dia_chi'] = $dia_chi;
                     $_SESSION['id'] = $id;
+                    $_SESSION['id_bien_the'] = $id_bien_the;
                     $_SESSION['so_luong'] = $so_luong;
                     
                     header("Location: " . BASE_URL ."?act=form-dia-chi-nhan-hang");
@@ -298,6 +354,7 @@ class TrangChinhController
                     ];
                     $_SESSION['dia_chi'] = $dia_chi;
                     $_SESSION['id'] = $id;
+                    $_SESSION['id_bien_the'] = $id_bien_the;
                     $_SESSION['so_luong'] = $so_luong;
                     
                     header("Location: " . BASE_URL ."?act=form-thanh-toan");
@@ -323,7 +380,7 @@ class TrangChinhController
             $_SESSION['id'] = $id ;
             $_SESSION['so_luong'] = $so_luong ;
             $_SESSION['id_don_hang'] = $id_don_hang ;
-
+            $_SESSION['id_bien_the'] = $id_bien_the;
             
             header("Location: " . BASE_URL ."?act=form-thanh-toan") ;
         }
@@ -359,20 +416,18 @@ class TrangChinhController
                     $id_don_hang = $_GET["id_don_hang"];
                     if ($this->modelDonHang->updateHinhThucThanhToanByID($id_don_hang,2,"Thanh toán bằng momo")) {
                         $_SESSION['alert_success'] = "Thanh toán thành công." ;
-                        header("Location:". BASE_URL ."?act=don-hang") ;
                     }
                 }else {
                     $_SESSION['alert_error'] = "Thanh toán không thành công." ;
-                    header("Location:". BASE_URL ."?act=don-hang") ;
                 }
             }else {
                 $id_don_hang = $_POST["id_don_hang"];
                 if ($this->modelDonHang->updateHinhThucThanhToanByID($id_don_hang,2,"Thanh toán khi nhận hàng")) {
                     $_SESSION['alert_success'] = "Đơn hàng được xử lí thành công." ;
-                    header("Location:". BASE_URL ."?act=don-hang") ;
                 }
             }
         }
+        header("Location:". BASE_URL ."?act=don-hang") ;
     }
 
 

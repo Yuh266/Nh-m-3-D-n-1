@@ -123,8 +123,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-
-                                            <?php foreach ($chi_tiet_gio_hangs as $key => $chi_tiet_gio_hang): ?>
+                                        <?php foreach ($chi_tiet_gio_hang2s as $key => $chi_tiet_gio_hang): ?>
                                                 <tr>
                                                     <td>
                                                         <input type="checkbox" name="id_gio_hang[]"
@@ -132,8 +131,9 @@
                                                     </td>
                                                     <td class="cr-cart-name">
                                                         <a href="javascript:void(0)">
-                                                            <img src="<?= $chi_tiet_gio_hang['hinh_anh'] ?>" alt=""
+                                                            <img src="<?= BASE_URL. $chi_tiet_gio_hang['hinh_anh'] ?>" alt=""
                                                                 class="cr-cart-img">
+                                                            <h5><?= $chi_tiet_gio_hang['ten_san_pham']." => ".$chi_tiet_gio_hang['gia_tri'] ?></h5>
                                                         </a>
                                                     </td>
                                                     <td class="cr-cart-price">
@@ -158,6 +158,43 @@
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
+
+                                            <?php foreach ($chi_tiet_gio_hangs as $key => $chi_tiet_gio_hang): ?>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox" name="id_gio_hang[]"
+                                                            value="<?= $chi_tiet_gio_hang['id'] ?>">
+                                                    </td>
+                                                    <td class="cr-cart-name">
+                                                        <a href="javascript:void(0)">
+                                                            <img src="<?= $chi_tiet_gio_hang['hinh_anh'] ?>" alt=""
+                                                                class="cr-cart-img">
+                                                            <h5><?= $chi_tiet_gio_hang['ten_san_pham'] ?></h5>
+                                                        </a>
+                                                    </td>
+                                                    <td class="cr-cart-price">
+                                                        <span
+                                                            class="text-center"><?= $chi_tiet_gio_hang['gia_khuyen_mai'] ?></span>
+                                                    </td>
+                                                    <td class="cr-cart-qty">
+                                                        <div class="cart-qty-plus-minus">
+                                                            <button type="button" class="plus"
+                                                                data-id="<?= $chi_tiet_gio_hang['id'] ?>">+</button>
+                                                            <input type="text" value="<?= $chi_tiet_gio_hang['so_luong'] ?>"
+                                                                class="quantity" data-id="<?= $chi_tiet_gio_hang['id'] ?>"
+                                                                readonly>
+                                                            <button type="button" class="minus"
+                                                                data-id="<?= $chi_tiet_gio_hang['id'] ?>">-</button>
+                                                        </div>
+                                                    </td>
+                                                    <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien'] ?></td>
+                                                    <td class="cr-cart-remove">
+                                                    <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có đồng ý xóa hay không')">
+                                                        <button type="button" class="btn btn-danger">Xóa</button></a>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach ?>
+                                            
                                         </tbody>
                                     </table>
                                 </div>

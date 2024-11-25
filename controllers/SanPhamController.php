@@ -6,8 +6,9 @@ class SanPhamController
     public $modelDanhMuc;
     public $modelSlideShow;
     public $modelGioHang;
-    
     public $modelBinhLuan;
+    public $modelSanPhamBienThe;
+
 
     public function __construct() {
         $this->modelSanPham = new SanPham();
@@ -15,8 +16,7 @@ class SanPhamController
         $this->modelSlideShow = new SlideShow();
         $this->modelGioHang = new GioHang();
         $this->modelBinhLuan = new BinhLuan();
-
-
+        $this->modelSanPhamBienThe = new SanPhamBienThe();
     }
     
     public function Login(){
@@ -27,10 +27,11 @@ class SanPhamController
 
 
     public function chiTietSanPham(){
-        $id = $_GET['id_san_pham'];
 
           
         if(isset($_GET['id_san_pham'])){
+            $id = $_GET['id_san_pham'];
+
             $list_danh_gias=$this->modelSanPham->getReviewSanPham($id);
             $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
 
@@ -41,6 +42,36 @@ class SanPhamController
             $danh_sach_anh = $this->modelSanPham->getListAnhSanPham($id);
             
             $chi_tiet_binh_luans = $this->modelBinhLuan->getBinhLuan( $id);
+
+            // Xử lí sản phẩm biến thể
+
+            $gia_tri_bien_the = $this->modelSanPhamBienThe->getSanPhamBienTheByIDSanPham($id);
+            if(!empty($gia_tri_bien_the)){
+                $thuoc_tinh = $this->modelSanPhamBienThe->getThuocTinhByIDSanPham($id);
+                $san_pham_bien_the = [];
+                foreach ($gia_tri_bien_the as $key => $value) {
+                    $san_pham_bien_the[] = $this->modelSanPhamBienThe->getSanPhamBienTheByID($value['id']);
+                }
+                $id_bien_the = $gia_tri_bien_the[0]['id'];
+            }
+
+            if (isset($_POST['id_bien_the'])) {
+                $id_bien_the = $_POST['id_bien_the'] ;   
+
+            }
+           
+            if (isset($id_bien_the)) {
+                $san_pham_bien_the_id = $this->modelSanPhamBienThe->getSanPhamBienTheByID($id_bien_the);
+
+                $sanphan_ct['hinh_anh'] = $san_pham_bien_the_id['hinh_anh'];  
+                $sanphan_ct['so_luong'] = $san_pham_bien_the_id['so_luong'];  
+                $sanphan_ct['gia_khuyen_mai'] = $san_pham_bien_the_id['gia_khuyen_mai'];  
+                $sanphan_ct['gia_san_pham'] = $san_pham_bien_the_id['gia'];  
+            }
+            
+            // echo '<pre>';
+            // var_dump($san_pham_bien_the);die();
+            
 
         }else{
             
@@ -78,9 +109,10 @@ class SanPhamController
             $so_luong = 1;
             $id_gio_hang = $_GET['id_gio_hang'] ?? '';
             $id_san_pham = $_GET['id_san_pham'] ?? '';
+            $id_bien_the = $_GET['id_bien_the'] ?? NULL ;
             // var_dump($_GET);
             // var_dump($this->modelGioHang->insertGioHang($id_gio_hang, $id_san_pham, $so_luong));die();
-            if($this->modelGioHang->insertGioHang($id_san_pham, $id_gio_hang, $so_luong)){
+            if($this->modelGioHang->insertGioHang($id_san_pham, $id_gio_hang, $so_luong,$id_bien_the)){
                 header("Location:" . BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=" . $id_san_pham );
                 exit();
             }           

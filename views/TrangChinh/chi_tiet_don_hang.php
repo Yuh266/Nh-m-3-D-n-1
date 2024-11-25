@@ -126,7 +126,8 @@
                                             <?php foreach ($list_don_hang as $key => $value): ?>
                                                 <li class="list-group-item mb-1"> <img style="width: 100px; " src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="<?= $value['ten_san_pham'] ?>"> <?= $value['ten_san_pham'] ?></li>
                                                 <li class="list-group-item mb-1"><strong>Mô tả: </strong> <?= $value['mo_ta'] ?></li>
-                                            <ul class="list-group-item"><strong>Số lượng:</strong> <?= $value['so_luong'] ?> | <strong>Giá:</strong> <?= $value['gia_khuyen_mai'] ?> VND | <strong>Tổng:</strong> <?= $value['thanh_tien'] ?> VND</ul>
+                                            
+                                            
                                             <?php endforeach ?>
                                             <ul class="list-group-item"><strong class="text-danger" >Tổng tiền:</strong> <?= $value['tong_tien'] ?> VND<strong></strong>
                                         </ul>

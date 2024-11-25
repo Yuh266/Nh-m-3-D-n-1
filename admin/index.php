@@ -51,6 +51,16 @@ match ($act) {
     "sua-san-pham"=>(new AdminProductController())->postEditSanPham(),
     'sua-album-anh-san-pham' => (new AdminProductController())->postEditAnhSanPham(),
     "xoa-san-pham"=>(new AdminProductController())->deleteSanPham(),
+    // Route sản phẩm biến thể
+    "danh-sach-san-pham-bien-the"=>(new AdminProductController())->listProduct(),
+
+    "form-them-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->formAddSanPhamBienThe(),
+    "them-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->postAddSanPhamBienThe(),
+
+    "form-sua-san-pham-bien-the"=>(new AdminProductController())->formEditSanPham(),
+    "sua-san-pham-bien-the"=>(new AdminProductController())->postEditSanPham(),
+    'sua-album-anh-san-pham-bien-the' => (new AdminProductController())->postEditAnhSanPham(),
+    "xoa-san-pham-bien-the"=>(new AdminProductController())->deleteSanPham(),
 
     // Biến thể sản phẩm 
     "danh-sach-thuoc-tinh-san-pham"=>(new AdminThuocTinhSanPhamController())->listThuocTinhSanPham(),
