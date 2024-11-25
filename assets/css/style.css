@@ -5554,14 +5554,27 @@ ul.navbar-nav .dropdown:hover .dropdown-menu {
 .cr-tab-content-from .cr-ratting-star .cr-t-review-rating {
   margin-bottom: 20px;
 }
+.cr-tab-content-from .cr-ratting-star .cr-t-review-rating-2 {
+  margin-bottom: 20px;
+}
 .cr-tab-content-from .cr-ratting-star .cr-t-review-rating i {
+  font-size: 19px;
+  letter-spacing: -5px;
+}
+.cr-tab-content-from .cr-ratting-star .cr-t-review-rating-2 i {
   font-size: 19px;
   letter-spacing: -5px;
 }
 .cr-tab-content-from .cr-ratting-star .cr-t-review-rating .ri-star-s-fill {
   color: #f5885f;
 }
+.cr-tab-content-from .cr-ratting-star .cr-t-review-rating-2 .ri-star-s-fill {
+  color: #f5885f;
+}
 .cr-tab-content-from .cr-ratting-star .cr-t-review-rating .ri-star-s-line {
+  color: #999;
+}
+.cr-tab-content-from .cr-ratting-star .cr-t-review-rating-2 .ri-star-s-line {
   color: #999;
 }
 .cr-tab-content-from .cr-ratting-input:not(:last-child) {
