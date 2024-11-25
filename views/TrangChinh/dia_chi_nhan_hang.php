@@ -50,9 +50,11 @@
                                                     <h5 class="cr-pro-title"><a
                                                             href="<?= BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=" . $value['id'] ?>"><?= $value['ten_san_pham'] ?></a>
                                                         x <?= $value['so_luong'] ?></h5>
-                                                    <p class="cr-price"><span
-                                                            class="new-price"><?= $value['gia_khuyen_mai'] ?></span> <span
-                                                            class="old-price"><?= $value['gia_san_pham'] ?></span></p>
+                                                    <p class="cr-price">
+                                                        <span class="new-price"><?= $value['gia_khuyen_mai'] ?></span> 
+                                                        <span class="old-price"><?= $value['gia_san_pham'] ?></span>
+                                                    </p>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -88,9 +90,13 @@
                     <form enctype="multipart/form-data" action="<?= BASE_URL . "?act=thanh-toan" ?>" method="POST">
                         <!-- checkout content Start -->
                         <input type="text" name="tong_tien" value="<?= $tong_tien ?>" hidden>
+
+                        
+                        
                         <?php foreach ($id as $key => $value): ?>
                             <input type="text" name="id[]" value="<?= $value ?>" hidden>
                             <input type="text" name="so_luong[]" hidden value="<?= $so_luong[$key] ?>">
+                            <input type="text" name="id_bien_the[]" hidden value="<?= $id_bien_the[$key] ?>">
                         <?php endforeach ?>
                         <div class="cr-checkout-content">
                             <div class="cr-checkout-inner">

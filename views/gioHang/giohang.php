@@ -154,7 +154,7 @@
                                                     </td>
                                                     <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien'] ?></td>
                                                     <td class="cr-cart-remove">
-                                                    <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có đồng ý xóa hay không')">
+                                                    <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có muốn xóa sản phẩm này không?')">
                                                         <button type="button" class="btn btn-danger"><i class="ri-delete-bin-line"></i></button></a>
                                                     </td>
                                                 </tr>

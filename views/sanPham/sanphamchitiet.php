@@ -146,11 +146,7 @@
                                     type="button" role="tab" aria-controls="comment"
                                     aria-selected="false">Bình luận</button>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review"
-                                    type="button" role="tab" aria-controls="review"
-                                    aria-selected="false">Bình luận</button>
-                            </li>
+                           
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <!-- Mô tả -->
@@ -182,30 +178,16 @@
                                 </div>
                             </div>
 
-                            <!-- Đánh giá -->
+                            <!-- Bình luận -->
                             <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">
-                                <div class="cr-tab-content-from">
+                            <div class="cr-tab-content-from">
                                     <?php foreach ($chi_tiet_binh_luans as $key=>$value): ?>
                                     <div class="post">
                                         <div class="content">
-
-                                            <img src="assets/img/review/1.jpg" alt="comment">
-                                            <div class="details">
-                                                <span class="date">15 Tháng 10, 2024</span>
-                                                <span class="name">Anh Minh</span>
-                                            </div>
-                                            <div class="cr-t-comment-rating">
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-
                                             <img src="<?= BASE_URL . $value['anh_dai_dien']?>" alt="not image">
                                             <div class="details">
                                                 <span class="date"><?= $value['ngay_dang']?></span>
                                                 <span class="name"><?= $value['ho_ten']?></span>
-
                                             </div>
                                         </div>
                                         <p><?= $value['noi_dung']?></p>
@@ -222,76 +204,20 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-                                <div class="cr-tab-content-from">
-                                <ul>
-                          
-                                    <?php 
-                                     if (!empty($list_danh_gias) && is_array($list_danh_gias)): ?>
-                                        <ul>
-                                            <?php foreach ($list_danh_gias as $key => $danh_gia): ?>
-                                                <li>
-                                                <div class="details">
-                                                    <div class="row"><img width="50px" height="80px" src="<?= BASE_URL. $danh_gia['anh_dai_dien']?> " alt="image_review">
-                                                    <span><?=($danh_gia['ho_ten']) ?></span>
-                                                    </div>
-                                                
-                                                <span class="date"><?=($danh_gia['ngay_danh_gia']) ?></span>
-                                                   <?= ($danh_gia['danh_gia']) ?>
-                                                    <p><?= ($danh_gia['noi_dung']) ?></p>
-                                             
-                                                </div>
-
-                                                </li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    <?php else: ?>
-                                        <p>Chưa có đánh giá nào cho sản phẩm này.</p>
-                                    <?php endif; ?>
-                                                                        
-                                </ul>
-
-                                    <h4 class="heading">Viết đánh giá</h4>
-                                    <form name="form-danh-gia">
-                                    <div class="cr-ratting-star">
-                                    <span>Đánh giá của bạn :</span>
-                                    <div class="cr-t-review-rating">
-                                        <input type="number" name="danh_gia" min="1" max="5" placeholder="Nhập số sao (1-5)">
-                                    </div>
-                                </div>
-                                        <div class="cr-ratting-star">
-                                            <span>Đánh giá của bạn :</span>
-                                            <div class="cr-t-review-rating">
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-line"></i>
-                                                <i class="ri-star-s-line"></i>
-                                                <i class="ri-star-s-line"></i>
-                                            </div>
-                                        </div>
-
-                                       
-                                        <div>
-                                        <input type="hidden" name="id_san_pham" value="<?=$sanphan_ct['id'] ?>">
-                                        </div>
-                                       
-                                        <div class="cr-ratting-input form-submit">
-                                            <textarea name="noi_dung" placeholder="Nhập nhận xét của bạn"></textarea>
-                                            <button class="cr-button" type="submit" value="Submit">Gửi đánh giá</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
+                    
                 </div>
+                                
                 <div class="col-lg-2 col-12 md-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                 </div>
             </div>
+            
         </div>
+        
     </section>
-
+                         
     <!-- Popular products -->
     <section class="section-popular-products padding-tb-100" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
         <div class="container">
@@ -421,9 +347,45 @@
             </div>
         </div>
     </div> -->
+    
 </main>
+
  
 <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
 <script src="<?= BASE_URL ?>assets/js/script.js"></script>
+<script>
+const stars = document.querySelectorAll('.cr-t-review-rating-2 i');
+const ratingInput = document.getElementById('rating_value');
 
+// Lặp qua từng sao và thêm sự kiện click
+stars.forEach(star => {
+    star.addEventListener('click', function() {
+        // Kiểm tra xem sao đã được đánh giá chưa
+        if (star.classList.contains('rated')) return;  // Nếu sao đã đánh giá, không thay đổi gì
+
+        const rating = parseInt(this.getAttribute('data-value')); // Lấy giá trị sao người dùng chọn
+
+        // Cập nhật giao diện sao
+        stars.forEach(star => {
+            if (parseInt(star.getAttribute('data-value')) <= rating) {
+                star.classList.remove('ri-star-s-line');
+                star.classList.add('ri-star-s-fill');  // Sao đầy
+            } else {
+                star.classList.remove('ri-star-s-fill');
+                star.classList.add('ri-star-s-line');  // Sao rỗng
+            }
+        });
+
+        // Lưu giá trị vào trường ẩn để gửi khi submit form
+        ratingInput.value = rating;
+    });
+});
+
+// Đánh dấu sao đã đánh giá khi trang được tải
+const ratedStars = document.querySelectorAll('.cr-t-review-rating-2 i.rated');
+ratedStars.forEach(star => {
+    star.classList.remove('ri-star-s-line');
+    star.classList.add('ri-star-s-fill');  // Hiển thị sao đầy cho những sao đã đánh giá
+});
+</script>
 <?php include './views/layout/footer.php' ?>
