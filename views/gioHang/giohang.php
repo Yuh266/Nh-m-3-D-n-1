@@ -142,23 +142,20 @@
                                                     </td>
                                                     <td class="cr-cart-qty">
                                                         <div class="cart-qty-plus-minus">
-                                                            <button type="button" class="plus"
-                                                                data-id="<?= $chi_tiet_gio_hang['id'] ?>">+</button>
-                                                            <input type="text" value="<?= $chi_tiet_gio_hang['so_luong'] ?>"
-                                                                class="quantity" data-id="<?= $chi_tiet_gio_hang['id'] ?>"
-                                                                readonly>
-                                                            <button type="button" class="minus"
-                                                                data-id="<?= $chi_tiet_gio_hang['id'] ?>">-</button>
+                                                            <a href="<?= BASE_URL . "?act=tang-so-luong&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>">
+                                                                <button type="button" >+</button>
+                                                            </a>
+                                                            <input type="text" value="<?= $chi_tiet_gio_hang['so_luong'] ?>" 
+                                                                class="quantity" data-id="<?= $chi_tiet_gio_hang['id'] ?>" readonly>
+                                                            <a href="<?= BASE_URL . "?act=giam-so-luong&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>">
+                                                                <button type="button" >-</button>
+                                                            </a>
                                                         </div>
                                                     </td>
                                                     <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien'] ?></td>
                                                     <td class="cr-cart-remove">
                                                     <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có đồng ý xóa hay không')">
-                                                        <button type="button" class="btn btn-danger">Xóa</button></a>
-                                                
-                                                        <!-- <a href="javascript:void(0)">
-                                                    <i class="ri-delete-bin-line"></i> 
-                                                </a> -->
+                                                        <button type="button" class="btn btn-danger"><i class="ri-delete-bin-line"></i></button></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
