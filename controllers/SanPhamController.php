@@ -8,6 +8,7 @@ class SanPhamController
     public $modelGioHang;
     public $modelBinhLuan;
     public $modelSanPhamBienThe;
+    public $modelDanhGia;
 
 
     public function __construct() {
@@ -17,6 +18,7 @@ class SanPhamController
         $this->modelGioHang = new GioHang();
         $this->modelBinhLuan = new BinhLuan();
         $this->modelSanPhamBienThe = new SanPhamBienThe();
+        $this->modelDanhGia= new DanhGia();
     }
     
     public function Login(){
@@ -32,7 +34,7 @@ class SanPhamController
         if(isset($_GET['id_san_pham'])){
             $id = $_GET['id_san_pham'];
 
-            $list_danh_gias=$this->modelSanPham->getReviewSanPham($id);
+            $list_danh_gias=$this->modelDanhGia->getReviewSanPham($id);
             $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
 
             $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
@@ -139,24 +141,30 @@ class SanPhamController
             exit();
         }     
     }
-    // public function showReviewForm()
-    // {
-    //     // Lấy ID sản phẩm từ URL
-    //     $id_san_pham = $_GET['id_san_pham'] ?? '';
-    
-    
-    //     // Gọi model để lấy danh sách đánh giá
-    //     $danh_gias = $this->modelSanPham->getReviewSanPham($id_san_pham);
-    
-    //     // Kiểm tra nếu có lỗi khi lấy dữ liệu
-    //     if ($danh_gias === false) {
-    //         $danh_gias = [];
-    //         echo "Không thể lấy danh sách đánh giá.";
-    //     }
-    
-    //     // Gửi dữ liệu đến view (trang chi tiết sản phẩm)
-    //     include 'views/sanPham/sanphamchitiet.php';
-    // }
+    public function danhGia(){
+        if(isset($_SESSION['client_user'])){
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $noi_dung = $_POST['danh_gia']?? '';
+                $danh_gia=5;
+                $ngay_danh_gia = date('Y-m-d H:i:s');
+                $id_tai_khoan = $_SESSION['client_user']['id'] ?? '';
+                $id_san_pham = $_POST['id_san_pham'] ?? '';
+                $checkdanhgia= $this->modelDanhGia->insertReviewSanPham($id_san_pham, $id_tai_khoan,$danh_gia,$ngay_danh_gia,$noi_dung);
+                if($checkdanhgia){
+                    header("Location: " . BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=" . $id_san_pham);
+                    exit();
+                }           
+            }else{     
+                header('Location' . BASE_URL . '/');
+                exit();
+            } 
+        }
+        else{
+            header('Location:' . BASE_URL . "?act=login");
+                exit();
+        }
+       
+    }
 
     public function xoaGioHang(){
         if ($_GET['id_gio_hang'] || $_POST["id"]) {

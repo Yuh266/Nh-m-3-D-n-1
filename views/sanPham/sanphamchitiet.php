@@ -29,22 +29,11 @@
                             <div class="vehicle-detail-banner banner-content clearfix">
                                 <div class="banner-slider">
                                     <div class="slider slider-for">
-                                       
                                         <div class="slider-banner-image">
-                                            <div class="zoom-image-hover">
+                                                <div class="zoom-image-hover">
                                                 <img src="<?= BASE_URL . $sanphan_ct['hinh_anh'] ?>" alt="" class="product-image" >
                                             </div>
                                         </div>
-                                        <?php if(!empty($gia_tri_bien_the)):?>
-                                        <?php foreach ($san_pham_bien_the as $key => $value):?>
-                                        <div class="slider-banner-image">
-                                                <div class="zoom-image-hover">
-                                                <img src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="" class="product-image" >
-                                            </div>
-                                        </div>
-                                        <?php endforeach; ?>
-                                        <?php endif ?>
-                                        
                                         <?php foreach ($danh_sach_anh as $key => $value): ?>
                                             <div class="slider-banner-image">
                                                 <div class="zoom-image-hover">
@@ -60,15 +49,6 @@
                                                 <img src="<?= BASE_URL . $sanphan_ct['hinh_anh'] ?>" alt="">
                                             </div>
                                         </div>
-                                        <?php if(!empty($gia_tri_bien_the)):?>
-                                        <?php foreach ($san_pham_bien_the as $key => $value):?>
-                                        <div class="thumbnail-image">
-                                                <div class="thumbImg">
-                                                <img src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="" class="product-image" >
-                                            </div>
-                                        </div>
-                                        <?php endforeach; ?>
-                                        <?php endif; ?>
                                         <?php foreach ($danh_sach_anh as $key => $value): ?>
                                             <div class="thumbnail-image">
                                                 <div class="thumbImg">
@@ -111,32 +91,21 @@
                                     <span class="new-price"><?= number_format($sanphan_ct['gia_khuyen_mai'])." vnđ"  ?></span>
                                     <span class="old-price"><?= number_format($sanphan_ct['gia_san_pham'])." vnđ"  ?></span>
                                 </div>
-                                <?php if(!empty($gia_tri_bien_the)): ?>
-                                <?php foreach ($thuoc_tinh as $value):?>
                                 <div class="cr-size-weight">
-                                    <h5><span><?= $value ?></span>:</h5>
+                                    <h5><span>Kích thước và</span>
+                                    <span>trọng lượng</span> :</h5>
                                     <div class="cr-kg">
                                         <ul>
-                                            <?php foreach ($gia_tri_bien_the as $key => $value):?>
-                                            <form action="<?= BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=".$id ?>" method="post">
-                                                <input name="id_bien_the" value="<?= $value['id'] ?>" type="text" hidden >
-                                                <button class="btn p-0 m-0" type="submit" ><li 
-                                                <?php if (isset($id_bien_the)){  
-                                                   echo $id_bien_the==$value['id']? "class='active-color'" : "" ;
-                                                } ?> ><?= $value['gia_tri'] ?></li></button>
-                                            </form>
-                                            <?php endforeach ?>
-                                            <!-- class="active-color" -->
+                                            <li class="active-color">Nhỏ (10cm)</li>
+                                            <li>Trung bình (20cm)</li>
+                                            <li>Lớn (30cm)</li>
+                                            <li>Rất lớn (50cm)</li>
                                         </ul>
                                     </div>
                                 </div>
-                                <?php endforeach ?>
-                                <?php endif ?>
-
                                 <form method="POST" action="<?= BASE_URL . "/?act=form-dia-chi-nhan-hang" ?>">
                                     <div class="cr-add-card">
-                                        <input type="text" value="<?= $sanphan_ct['id']  ?>" hidden name="id[]"  >
-                                        <input type="text" value="<?= $id_bien_the??"" ?>" hidden name="id_bien_the[]" >
+                                        <input type="text" value="<?= $sanphan_ct['id'] ?>" hidden name="id[]"  >
                                         <div class="cr-qty-main">
                                             <input name="so_luong[]" type="text" placeholder="." value="1" minlength="1" maxlength="20"
                                                 class="quantity" style="width: 80px">
@@ -144,15 +113,17 @@
                                             <button type="button" id="sub" class="minus" style="width: 40px; height: 20px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">-</button>
                                         </div>
                                         <div class="cr-add-button d-flex">
-                                            <?php 
-                                                $text ="";
-                                                if (isset($id_bien_the)) {
-                                                    $text = "&id_bien_the=".$id_bien_the ;                                            
-                                                } 
-                                            ?>
-                                            <button type="button" class="cr-button text-white me-4 cr-shopping-bag"><a href="?act=them-gio-hang&id_gio_hang=<?= $gio_hang['id'] ?>&id_san_pham=<?= $sanphan_ct['id'].$text ?>">Thêm giỏ hàng</a></button>
+                                            <button type="button" class="cr-button text-white me-4 cr-shopping-bag"><a href="?act=them-gio-hang&id_gio_hang=<?= $gio_hang['id'] ?>&id_san_pham=<?= $sanphan_ct['id'] ?>">Thêm giỏ hàng</a></button>
                                             <button type="submit" name="btn_submit" class="cr-button text-white cr-shopping-bag">Mua ngay</button>
                                         </div>
+                                        <!-- <div class="cr-card-icon">
+                                            <a href="javascript:void(0)" class="wishlist">
+                                                <i class="ri-heart-line"></i>
+                                            </a>
+                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview" role="button">
+                                                <i class="ri-eye-line"></i>
+                                            </a>
+                                        </div> -->
                                     </div>
                                 </form>
                             </div>
@@ -175,11 +146,7 @@
                                     type="button" role="tab" aria-controls="comment"
                                     aria-selected="false">Bình luận</button>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review"
-                                    type="button" role="tab" aria-controls="review"
-                                    aria-selected="false">Bình luận</button>
-                            </li>
+                           
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <!-- Mô tả -->
@@ -211,30 +178,16 @@
                                 </div>
                             </div>
 
-                            <!-- Đánh giá -->
+                            <!-- Bình luận -->
                             <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">
-                                <div class="cr-tab-content-from">
+                            <div class="cr-tab-content-from">
                                     <?php foreach ($chi_tiet_binh_luans as $key=>$value): ?>
                                     <div class="post">
                                         <div class="content">
-
-                                            <img src="assets/img/review/1.jpg" alt="comment">
-                                            <div class="details">
-                                                <span class="date">15 Tháng 10, 2024</span>
-                                                <span class="name">Anh Minh</span>
-                                            </div>
-                                            <div class="cr-t-comment-rating">
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-
                                             <img src="<?= BASE_URL . $value['anh_dai_dien']?>" alt="not image">
                                             <div class="details">
                                                 <span class="date"><?= $value['ngay_dang']?></span>
                                                 <span class="name"><?= $value['ho_ten']?></span>
-
                                             </div>
                                         </div>
                                         <p><?= $value['noi_dung']?></p>
@@ -251,76 +204,63 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-                                <div class="cr-tab-content-from">
-                                <ul>
-                          
-                                    <?php 
-                                     if (!empty($list_danh_gias) && is_array($list_danh_gias)): ?>
-                                        <ul>
-                                            <?php foreach ($list_danh_gias as $key => $danh_gia): ?>
-                                                <li>
-                                                <div class="details">
-                                                    <div class="row"><img width="50px" height="80px" src="<?= BASE_URL. $danh_gia['anh_dai_dien']?> " alt="image_review">
-                                                    <span><?=($danh_gia['ho_ten']) ?></span>
-                                                    </div>
-                                                
-                                                <span class="date"><?=($danh_gia['ngay_danh_gia']) ?></span>
-                                                   <?= ($danh_gia['danh_gia']) ?>
-                                                    <p><?= ($danh_gia['noi_dung']) ?></p>
-                                             
-                                                </div>
-
-                                                </li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    <?php else: ?>
-                                        <p>Chưa có đánh giá nào cho sản phẩm này.</p>
-                                    <?php endif; ?>
-                                                                        
-                                </ul>
-
-                                    <h4 class="heading">Viết đánh giá</h4>
-                                    <form name="form-danh-gia">
-                                    <div class="cr-ratting-star">
-                                    <span>Đánh giá của bạn :</span>
-                                    <div class="cr-t-review-rating">
-                                        <input type="number" name="danh_gia" min="1" max="5" placeholder="Nhập số sao (1-5)">
-                                    </div>
-                                </div>
-                                        <div class="cr-ratting-star">
-                                            <span>Đánh giá của bạn :</span>
-                                            <div class="cr-t-review-rating">
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-line"></i>
-                                                <i class="ri-star-s-line"></i>
-                                                <i class="ri-star-s-line"></i>
-                                            </div>
-                                        </div>
-
-                                       
-                                        <div>
-                                        <input type="hidden" name="id_san_pham" value="<?=$sanphan_ct['id'] ?>">
-                                        </div>
-                                       
-                                        <div class="cr-ratting-input form-submit">
-                                            <textarea name="noi_dung" placeholder="Nhập nhận xét của bạn"></textarea>
-                                            <button class="cr-button" type="submit" value="Submit">Gửi đánh giá</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
+                    
                 </div>
+                                <div class="cr-paking-delivery">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                            <li class="nav-item" role="presentation">
+                                                  <h5 class="heading">Đánh giá</h5>
+                                </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <!-- Đánh giá -->
+                                    <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                        <div class="cr-tab-content-from">
+                                            <?php foreach ($list_danh_gias as $key => $value): ?>
+                                            <div class="post">
+                                                <div class="content">
+                                                    <img src="<?= BASE_URL . $value['anh_dai_dien'] ?>" alt="not image">
+                                                    <div class="details">
+                                                        <span class="date"><?= $value['ngay_danh_gia'] ?></span>
+                                                        <span class="name"><?= $value['ho_ten'] ?></span>
+                                                    </div>
+                                                </div>
+                                                <p><?= $value['noi_dung'] ?></p>
+                                            </div>
+                                            <?php endforeach; ?>
+                                            <h4 class="heading">Viết đánh giá</h4>
+                                            <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL . "?act=them-danh-gia" ?>">
+                                                <div class="cr-ratting-input form-submit">
+                                                    <input type="hidden" name="id_san_pham" value="<?=$sanphan_ct['id'] ?>">
+                                                    <div class="cr-ratting-star">
+                                                        <span>Đánh giá của bạn :</span>
+                                                        <div class="cr-t-review-rating">
+                                                            <i class="ri-star-s-fill"></i>
+                                                            <i class="ri-star-s-fill"></i>
+                                                            <i class="ri-star-s-line"></i>
+                                                            <i class="ri-star-s-line"></i>
+                                                            <i class="ri-star-s-line"></i>
+                                                        </div>
+                                                    </div>
+                                                    <textarea name="danh_gia" placeholder="Nhập đánh giá của bạn"></textarea>
+                                                    <button class="cr-button" type="submit" value="Submit">Gửi đánh giá</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                 <div class="col-lg-2 col-12 md-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                 </div>
             </div>
+            
         </div>
+        
     </section>
-
+                         
     <!-- Popular products -->
     <section class="section-popular-products padding-tb-100" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
         <div class="container">
@@ -450,7 +390,9 @@
             </div>
         </div>
     </div> -->
+    
 </main>
+
  
 <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
 <script src="<?= BASE_URL ?>assets/js/script.js"></script>
