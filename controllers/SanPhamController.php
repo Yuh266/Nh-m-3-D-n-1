@@ -144,11 +144,22 @@ class SanPhamController
     public function danhGia(){
         if(isset($_SESSION['client_user'])){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $noi_dung = $_POST['danh_gia']?? '';
-                $danh_gia=5;
+                $noi_dung = $_POST['noi_dung']?? '';
+                $danh_gia=$_POST['danh_gia'] ?? 0;
                 $ngay_danh_gia = date('Y-m-d H:i:s');
                 $id_tai_khoan = $_SESSION['client_user']['id'] ?? '';
                 $id_san_pham = $_POST['id_san_pham'] ?? '';
+           
+                $check = $this->modelDanhGia->checkDanhGia($id_san_pham, $id_tai_khoan);
+               
+                if ($check) {
+                    echo "<script>
+                    alert('Bạn chỉ được phép đánh giá sản phẩm này một lần');
+                    window.location.href = '" . BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=" . $id_san_pham . "';
+                </script>";
+                exit();
+                }
+                   
                 $checkdanhgia= $this->modelDanhGia->insertReviewSanPham($id_san_pham, $id_tai_khoan,$danh_gia,$ngay_danh_gia,$noi_dung);
                 if($checkdanhgia){
                     header("Location: " . BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=" . $id_san_pham);
