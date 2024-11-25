@@ -217,24 +217,10 @@
                                     <?php foreach ($chi_tiet_binh_luans as $key=>$value): ?>
                                     <div class="post">
                                         <div class="content">
-
-                                            <img src="assets/img/review/1.jpg" alt="comment">
-                                            <div class="details">
-                                                <span class="date">15 Tháng 10, 2024</span>
-                                                <span class="name">Anh Minh</span>
-                                            </div>
-                                            <div class="cr-t-comment-rating">
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-                                                <i class="ri-star-s-fill"></i>
-
                                             <img src="<?= BASE_URL . $value['anh_dai_dien']?>" alt="not image">
                                             <div class="details">
                                                 <span class="date"><?= $value['ngay_dang']?></span>
                                                 <span class="name"><?= $value['ho_ten']?></span>
-
                                             </div>
                                         </div>
                                         <p><?= $value['noi_dung']?></p>
