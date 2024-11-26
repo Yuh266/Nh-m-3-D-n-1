@@ -110,7 +110,13 @@
                 <div class="col-12">
                     <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                         <div class="row">
-                            
+                                <?php if (isset($_SESSION['alert_success'])):?>
+                                    <div class="alert-success alert"><?=$_SESSION['alert_success']?></div>
+                                <?php endif ?>
+                                <?php if (isset($_SESSION['alert_error'])):?>
+                                    <div class="alert-danger alert"><?=$_SESSION['alert_error']?></div>
+                                <?php endif ?>
+
                                 <div>
                                     <table class="table">
                                         <thead>
@@ -125,17 +131,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $bg = "bg-success" ?>
-                                            <?php $id_don_hang = null ?>
                                             <?php foreach ($list_don_hang as $key => $value): ?>
-                                                <?php if ($id_don_hang != $value['id_don_hang']) {
-                                                    if ($bg == "bg-success") {
-                                                        $bg = "bg-info";
-                                                    } else {
-                                                        $bg = "bg-success";
-                                                    }
-                                                } ?>
-                                                <tr class="<?= $bg ?>">
+                                                <tr >
                                                     <td><?= $value['id_don_hang'] ?></td>
                                                     <td class="cr-cart-name">
                                                         <a
@@ -149,9 +146,20 @@
                                                     <td class="cr-cart-price">
                                                         <span><?= $value['ten_trang_thai'] ?></span>
                                                     </td>
-                                                    <td><?= $value['tong_tien'] ?></td>
+                                                    <td><?= number_format($value['tong_tien']) ?></td>
                                                     <td><?= $value['ngay_dat'] ?></td>
                                                     <td>
+                                                        <?php if ($value['id_trang_thai'] ==1):?>
+                                                            <a onclick="return confirm('Bạn chắc chắn muốn hủy chứ?') " href="<?= BASE_URL . "?act=huy-don-hang&id_don_hang=".$value['id_don_hang'] ?>">
+                                                                <button class="btn btn-primary">Hủy đơn</button>
+                                                            </a>
+                                                            <form action="<?= BASE_URL . "/?act=form-thanh-toan" ?>" method="post">
+                                                                <input type="text" name="id_don_hang" value="<?= $value['id_don_hang'] ?>" hidden >
+                                                                <button type="submit" name="btn_thanh_toan" class="btn btn-primary">Thanh toán</button>
+                                                            </form>
+                                                            
+                                                        <?php  endif ?>
+
                                                         <a href="<?= BASE_URL . "/?act=chi-tiet-don-hang&id=".$value['id_don_hang'] ?>">
                                                             <button type="submit" class="btn btn-primary">Xem</button>
                                                         </a>
