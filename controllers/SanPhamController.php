@@ -207,6 +207,18 @@ class SanPhamController
         }
     }
 
+    public function tangSoLuong(){
+        $id = $_GET['id_gio_hang'] ?? $_POST["id"];
+        $this->modelGioHang->updateQuantity($id, 1); // +1
+        header("Location: " . BASE_URL . "?act=gio-hang-chi-tiet");
+        exit;
+    }
     
+    public function giamSoLuong(){
+        $id = $_GET['id_gio_hang'] ?? $_POST["id"];
+        $this->modelGioHang->updateQuantity($id, -1); // -1
+        header("Location: " . BASE_URL . "?act=gio-hang-chi-tiet");
+        exit;
+    }
 
 }

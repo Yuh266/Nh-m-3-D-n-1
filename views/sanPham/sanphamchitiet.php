@@ -40,6 +40,8 @@
                                                 <div class="zoom-image-hover">
                                                 <img src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="" class="product-image" >                                            </div>
                                         </div>
+                                        <?php endforeach; ?>
+                                            
                                         <?php foreach ($danh_sach_anh as $key => $value): ?>
                                             <div class="slider-banner-image">
                                                 <div class="zoom-image-hover">
@@ -55,7 +57,6 @@
                                                 <img src="<?= BASE_URL . $sanphan_ct['hinh_anh'] ?>" alt="">
                                             </div>
                                         </div>
-                                        <?php endforeach; ?>
                                         <?php endif ?>
                                         <?php if(!empty($gia_tri_bien_the)):?>
                                         <?php foreach ($san_pham_bien_the as $key => $value):?>
@@ -67,8 +68,7 @@
                                         <?php endforeach; ?>
                                         <?php endif; ?>
                                         <?php foreach ($danh_sach_anh as $key => $value): ?>
-                                            <div class="thumbnail-image">
-                                                <div class="thumbImg">
+                                            <div class="thumbnail-image"><div class="thumbImg">
                                                     <img src="<?= BASE_URL . $value['link_anh'] ?>" alt="<?= $key + 1 ?>">
                                                 </div>
                                             </div>
@@ -113,7 +113,7 @@
                                 <?php if(!empty($gia_tri_bien_the)): ?>
                                     <?php foreach ($thuoc_tinh as $value):?>
                                 <div class="cr-size-weight">
-                                 
+
                                     <div class="cr-kg">
                                         <ul>
                                         <?php foreach ($gia_tri_bien_the as $key => $value):?>
@@ -165,8 +165,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
-                    <div class="cr-paking-delivery">
+                    </div><div class="cr-paking-delivery">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
@@ -206,8 +205,7 @@
                                     <div class="list">
                                         <ul>
                                             <li><label>Loại cây <span>:</span></label><?= $sanphan_ct['ten_san_pham'] ?></li>
-                                            <li><label>Kích thước <span>:</span></label> Cao 10-15 cm</li>
-                                            <li><label>Màu sắc <span>:</span></label> Xanh lá cây</li>
+                                            <li><label>Kích thước <span>:</span></label> Cao 10-15 cm</li><li><label>Màu sắc <span>:</span></label> Xanh lá cây</li>
                                             <li><label>Điều kiện sống <span>:</span></label> Ánh sáng vừa, không cần tưới nhiều</li>
                                             <li><label>Đặc tính <span>:</span></label> Lọc không khí, dễ chăm sóc</li>
                                         </ul>
@@ -251,8 +249,7 @@
                                                             <li class="nav-item" role="presentation">
                                                   <h5 class="heading">Đánh giá</h5>
                                 </li>
-                                </ul>
-                                <div class="tab-content" id="myTabContent">
+                                </ul><div class="tab-content" id="myTabContent">
                                     <!-- Đánh giá -->
                                     <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
                                         <div class="cr-tab-content-from">
@@ -287,8 +284,7 @@
                                                 <div class="cr-ratting-input form-submit">
                                                     <input type="hidden" name="id_san_pham" value="<?=$sanphan_ct['id'] ?>">
                                                     <div class="cr-ratting-star">
-                                                        <span>Đánh giá của bạn :</span>
-                                                        <div class="cr-t-review-rating-2" >
+                                                        <span>Đánh giá của bạn :</span><div class="cr-t-review-rating-2" >
                                                         <i class="ri-star-s-line" data-value="1"></i>
                                                         <i class="ri-star-s-line" data-value="2"></i>
                                                         <i class="ri-star-s-line" data-value="3"></i>
@@ -338,8 +334,7 @@
                             <div class="slick-slide">
                                 <div class="cr-product-card">
                                     <div class="cr-product-image">
-                                        <div class="cr-image-inner zoom-image-hover">
-                                            <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
+                                        <div class="cr-image-inner zoom-image-hover"><img src="<?= BASE_URL . $value['hinh_anh'] ?>"
                                                 alt="<?= $value['ten_san_pham'] ?> ">
                                         </div>
                                         <div class="cr-side-view">
@@ -384,8 +379,7 @@
         </div>
     </section>
     <!-- Model -->
-    <!-- <div class="modal fade quickview-modal" id="quickview" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered cr-modal-dialog">
+    <!-- <div class="modal fade quickview-modal" id="quickview" aria-hidden="true" tabindex="-1"><div class="modal-dialog modal-dialog-centered cr-modal-dialog">
             <div class="modal-content">
                 <button type="button" class="cr-close-model btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body">
@@ -427,8 +421,7 @@
                                     </div>
                                 </div>
                                 <div class="cr-add-card">
-                                    <div class="cr-qty-main">
-                                        <input type="text" placeholder="1" value="1" minlength="1" maxlength="20" class="quantity">
+                                    <div class="cr-qty-main"><input type="text" placeholder="1" value="1" minlength="1" maxlength="20" class="quantity">
                                         <button type="button" id="add_model" class="plus">+</button>
                                         <button type="button" id="sub_model" class="minus">-</button>
                                     </div>
