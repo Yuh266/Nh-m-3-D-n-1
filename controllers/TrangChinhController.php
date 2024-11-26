@@ -357,7 +357,7 @@ class TrangChinhController
                     $_SESSION['id_bien_the'] = $id_bien_the;
                     $_SESSION['so_luong'] = $so_luong;
                     
-                    header("Location: " . BASE_URL ."?act=form-thanh-toan");
+                    header("Location: " . BASE_URL ."?act=form-dia-chi-nhan-hang");
                     exit();
                 }
             }
