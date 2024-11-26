@@ -50,8 +50,7 @@
                                             </div>
                                         </div>
                                         <?php foreach ($danh_sach_anh as $key => $value): ?>
-                                            <div class="thumbnail-image">
-                                                <div class="thumbImg">
+                                            <div class="thumbnail-image"><div class="thumbImg">
                                                     <img src="<?= BASE_URL . $value['link_anh'] ?>" alt="<?= $key + 1 ?>">
                                                 </div>
                                             </div>
@@ -92,8 +91,7 @@
                                     <span class="old-price"><?= number_format($sanphan_ct['gia_san_pham'])." vnđ"  ?></span>
                                 </div>
                                 <div class="cr-size-weight">
-                                    <h5><span>Kích thước và</span>
-                                    <span>trọng lượng</span> :</h5>
+                                    <h5><span>Kích thước và</span><span>trọng lượng</span> :</h5>
                                     <div class="cr-kg">
                                         <ul>
                                             <li class="active-color">Nhỏ (10cm)</li>
@@ -128,8 +126,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
-                    <div class="cr-paking-delivery">
+                    </div><div class="cr-paking-delivery">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
@@ -169,8 +166,7 @@
                                     <div class="list">
                                         <ul>
                                             <li><label>Loại cây <span>:</span></label><?= $sanphan_ct['ten_san_pham'] ?></li>
-                                            <li><label>Kích thước <span>:</span></label> Cao 10-15 cm</li>
-                                            <li><label>Màu sắc <span>:</span></label> Xanh lá cây</li>
+                                            <li><label>Kích thước <span>:</span></label> Cao 10-15 cm</li><li><label>Màu sắc <span>:</span></label> Xanh lá cây</li>
                                             <li><label>Điều kiện sống <span>:</span></label> Ánh sáng vừa, không cần tưới nhiều</li>
                                             <li><label>Đặc tính <span>:</span></label> Lọc không khí, dễ chăm sóc</li>
                                         </ul>
@@ -209,7 +205,64 @@
                     </div>
                     
                 </div>
-                                
+                                <div class="cr-paking-delivery">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                            <li class="nav-item" role="presentation">
+                                                  <h5 class="heading">Đánh giá</h5>
+                                </li>
+                                </ul><div class="tab-content" id="myTabContent">
+                                    <!-- Đánh giá -->
+                                    <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                        <div class="cr-tab-content-from">
+                                            <?php foreach ($list_danh_gias as $key => $value): ?>
+                                            <div class="post">
+                                                <div class="content">
+                                                    <img src="<?= BASE_URL . $value['anh_dai_dien'] ?>" alt="not image">
+                                                    <div class="details">
+                                                        <span class="date"><?= $value['ngay_danh_gia'] ?></span>
+                                                        <span class="name"><?= $value['ho_ten'] ?></span>
+                                                    </div>
+                                                    <div class="cr-t-review-rating">
+                                                        <?php
+                                                        $rating = $value['danh_gia']; 
+                                                        for ($i = 1; $i <= 5; $i++) {
+                                                            if ($i <= $rating) {
+                                                                echo '<i style="margin-right: 5px;"  class=" ri-star-s-fill rated "></i>'; 
+                                                            } else {
+                                                                echo '<i style="margin-right: 5px;" class=" ri-star-s-line"></i>'; 
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                </div>
+                                                <p><?= $value['noi_dung'] ?></p>
+                                            </div>
+                                            <?php endforeach; ?>
+                                            <h4 class="heading">Viết đánh giá</h4>
+                                           
+                                            <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL . "?act=them-danh-gia" ?>">
+                                           
+                                                <div class="cr-ratting-input form-submit">
+                                                    <input type="hidden" name="id_san_pham" value="<?=$sanphan_ct['id'] ?>">
+                                                    <div class="cr-ratting-star">
+                                                        <span>Đánh giá của bạn :</span><div class="cr-t-review-rating-2" >
+                                                        <i class="ri-star-s-line" data-value="1"></i>
+                                                        <i class="ri-star-s-line" data-value="2"></i>
+                                                        <i class="ri-star-s-line" data-value="3"></i>
+                                                        <i class="ri-star-s-line" data-value="4"></i>
+                                                        <i class="ri-star-s-line" data-value="5"></i>
+                                                        </div>
+                                                        <input type="hidden" name="danh_gia" id="rating_value" value="">
+                                                    </div>
+                                                    <textarea name="noi_dung" placeholder="Nhập đánh giá của bạn"></textarea>
+                                                    <button class="cr-button" type="submit" value="Submit">Gửi đánh giá</button>
+                                                </div>
+                                            </form>
+                                         
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                 <div class="col-lg-2 col-12 md-30" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                 </div>
             </div>
@@ -242,8 +295,7 @@
                             <div class="slick-slide">
                                 <div class="cr-product-card">
                                     <div class="cr-product-image">
-                                        <div class="cr-image-inner zoom-image-hover">
-                                            <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
+                                        <div class="cr-image-inner zoom-image-hover"><img src="<?= BASE_URL . $value['hinh_anh'] ?>"
                                                 alt="<?= $value['ten_san_pham'] ?> ">
                                         </div>
                                         <div class="cr-side-view">
@@ -288,8 +340,7 @@
         </div>
     </section>
     <!-- Model -->
-    <!-- <div class="modal fade quickview-modal" id="quickview" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered cr-modal-dialog">
+    <!-- <div class="modal fade quickview-modal" id="quickview" aria-hidden="true" tabindex="-1"><div class="modal-dialog modal-dialog-centered cr-modal-dialog">
             <div class="modal-content">
                 <button type="button" class="cr-close-model btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body">
@@ -331,8 +382,7 @@
                                     </div>
                                 </div>
                                 <div class="cr-add-card">
-                                    <div class="cr-qty-main">
-                                        <input type="text" placeholder="1" value="1" minlength="1" maxlength="20" class="quantity">
+                                    <div class="cr-qty-main"><input type="text" placeholder="1" value="1" minlength="1" maxlength="20" class="quantity">
                                         <button type="button" id="add_model" class="plus">+</button>
                                         <button type="button" id="sub_model" class="minus">-</button>
                                     </div>
