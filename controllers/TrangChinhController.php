@@ -135,7 +135,14 @@ class TrangChinhController
     public function trangDiaChiNhanHang(){
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
         $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
-
+        if(isset($_SESSION['client_user']['id'])){
+            $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
+            $id_gio_hang = $gio_hang['id'];
+            $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
+            // var_dump($chi_tiet_gio_hangs);die();       
+        }else{
+            echo"";
+        }
         // echo "<pre>";
         // var_dump($_POST);die();
         if ($_SERVER['REQUEST_METHOD'] == "POST" || isset($_SESSION['dia_chi']) ) {
@@ -203,7 +210,14 @@ class TrangChinhController
     public function trangThanhToan(){
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
         $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
-
+        if(isset($_SESSION['client_user']['id'])){
+            $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
+            $id_gio_hang = $gio_hang['id'];
+            $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
+            // var_dump($chi_tiet_gio_hangs);die();       
+        }else{
+            echo"";
+        }
         // echo "<pre>";
         // var_dump($_POST);die();
 
@@ -357,7 +371,7 @@ class TrangChinhController
                     $_SESSION['id_bien_the'] = $id_bien_the;
                     $_SESSION['so_luong'] = $so_luong;
                     
-                    header("Location: " . BASE_URL ."?act=form-thanh-toan");
+                    header("Location: " . BASE_URL ."?act=form-dia-chi-nhan-hang");
                     exit();
                 }
             }
