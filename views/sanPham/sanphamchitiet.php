@@ -40,6 +40,8 @@
                                                 <div class="zoom-image-hover">
                                                 <img src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="" class="product-image" >                                            </div>
                                         </div>
+                                        <?php endforeach; ?>
+                                            
                                         <?php foreach ($danh_sach_anh as $key => $value): ?>
                                             <div class="slider-banner-image">
                                                 <div class="zoom-image-hover">
@@ -55,7 +57,6 @@
                                                 <img src="<?= BASE_URL . $sanphan_ct['hinh_anh'] ?>" alt="">
                                             </div>
                                         </div>
-                                        <?php endforeach; ?>
                                         <?php endif ?>
                                         <?php if(!empty($gia_tri_bien_the)):?>
                                         <?php foreach ($san_pham_bien_the as $key => $value):?>
