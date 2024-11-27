@@ -14,7 +14,7 @@ class BinhLuan{
                     FROM binh_luans
                     JOIN tai_khoans ON binh_luans.id_tai_khoan = tai_khoans.id
                     JOIN san_phams ON binh_luans.id_san_pham = san_phams.id
-                    WHERE binh_luans.id_san_pham = :id_san_pham AND binh_luans.trang_thai = 1
+                    WHERE binh_luans.id_san_pham = :id_san_pham AND binh_luans.trang_thai = 0
                     ORDER BY binh_luans.ngay_dang DESC';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
