@@ -140,4 +140,8 @@ match ($act) {
     
     "xoa-trang-thai-don-hang"=>(new AdminTrangThaiDonHangController())->deleteTrangThai(),
     
+    // Bình luận
+    "danh-sach-binh-luan"=>(new AdminBinhLuanController())->listBinhLuan(),
+    "xoa-binh-luan"=>(new AdminBinhLuanController())->deleteBinhLuan(),
+    "sua-binh-luan"=>(new AdminBinhLuanController())->updateBinhLuan(),
 };
