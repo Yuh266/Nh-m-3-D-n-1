@@ -4,10 +4,12 @@ class AdminProductController
 
     public $modelProduct;
     public $modelDanhMuc;
+    public $modelSanPhamBienThe;
 
     public function __construct()
     {
         $this->modelProduct = new AdminProduct();
+        $this->modelSanPhamBienThe = new AdminSanPhamBienThe();
         $this->modelDanhMuc = new AdminDanhMuc();
     }
 
@@ -158,6 +160,8 @@ class AdminProductController
         $sanPham = $this->modelProduct->getDetailSanPham($id);
         $listAnhSanPham = $this->modelProduct->getListAnhSanPham($id);
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
+        $listSanPhamBienThe = $this->modelSanPhamBienThe->getSanPhamBienTheByIDSanPham($id);
+
         $title = "Sửa thông tin sản phẩm " . $sanPham['ten_san_pham'];
         $link_navs = [
             ["link" => 'href="' . BASE_URL_ADMIN . '"', "ten" => "Trang Chủ"],
