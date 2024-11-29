@@ -56,9 +56,10 @@ match ($act) {
 
     "form-them-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->formAddSanPhamBienThe(),
     "them-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->postAddSanPhamBienThe(),
+    "form-sua-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->formEditSanPhamBienThe(),
+    "sua-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->postEditSanPhamBienThe(),
+    "xoa-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->deleteSanPhamBienThe(),
 
-    "form-sua-san-pham-bien-the"=>(new AdminProductController())->formEditSanPham(),
-    "sua-san-pham-bien-the"=>(new AdminProductController())->postEditSanPham(),
     'sua-album-anh-san-pham-bien-the' => (new AdminProductController())->postEditAnhSanPham(),
     "xoa-san-pham-bien-the"=>(new AdminProductController())->deleteSanPham(),
 
@@ -139,4 +140,8 @@ match ($act) {
     
     "xoa-trang-thai-don-hang"=>(new AdminTrangThaiDonHangController())->deleteTrangThai(),
     
+    // Bình luận
+    "danh-sach-binh-luan"=>(new AdminBinhLuanController())->listBinhLuan(),
+    "xoa-binh-luan"=>(new AdminBinhLuanController())->deleteBinhLuan(),
+    "sua-binh-luan"=>(new AdminBinhLuanController())->updateBinhLuan(),
 };
