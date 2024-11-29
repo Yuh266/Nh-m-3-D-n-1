@@ -176,4 +176,21 @@ class AdminProduct{
             echo "Lỗi".$e->getMessage();
         }
     }
+
+    public function top5SanPhams() {
+        try {
+            // Truy vấn SQL lấy top 5 sản phẩm bán chạy nhất
+            $sql = 'SELECT id_san_pham, SUM(so_luong) AS tong_so_luong
+                    FROM chi_tiet_gio_hangs
+                    GROUP BY id_san_pham
+                    ORDER BY tong_so_luong DESC
+                    LIMIT 5';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "Lỗi".$e->getMessage();
+        }
+    }
+
 }

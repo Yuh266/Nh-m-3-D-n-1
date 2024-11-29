@@ -24,7 +24,7 @@ spl_autoload_register(function ($class) {
 if (isset($_GET['act'])) {
     $act = $_GET['act'] ;
 }else{
-    $act = 'danh-sach-danh-muc';
+    $act = '/';
 }
 
 if ( !isset($_SESSION['user'])  && !in_array($act,['form-dang-nhap','dang-nhap'])  ) {
@@ -39,7 +39,7 @@ if ( !isset($_SESSION['user'])  && !in_array($act,['form-dang-nhap','dang-nhap']
 
 match ($act) {
     // Trang chủ
-    // '/' => (new AdminBaoCaoThongKeController())->home(),
+    '/' => (new AdminThongKeController())->home(),
 
     // Route Sản phẩm
     "danh-sach-san-pham"=>(new AdminProductController())->listProduct(),

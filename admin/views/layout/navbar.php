@@ -39,7 +39,7 @@
                     <li class="nav-item">
                         <a href="<?= BASE_URL_ADMIN ?>" class="nav-link <?= (!isset($_GET['act'])) ? 'active' : '' ?>">
                             <i class="nav-icon bi bi-speedometer2"></i>
-                            <p>Dashboard</p>
+                            <p>Thống kê</p>
                         </a>
                     </li>
 
