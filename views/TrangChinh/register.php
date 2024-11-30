@@ -140,7 +140,7 @@
                                     </div>
                                 </div> -->
                                 <div class="cr-register-buttons">
-                                    <button type="submit" class="cr-button">Đăng kí</button>
+                                    <button style=" background-color: #64b496;" type="submit" class="cr-button">Đăng kí</button>
                                     <a href="<?= BASE_URL."?act=login"?>" class="link">
                                         Đã có tài khoản?
                                     </a>
