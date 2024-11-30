@@ -144,4 +144,9 @@ match ($act) {
     "danh-sach-binh-luan"=>(new AdminBinhLuanController())->listBinhLuan(),
     "xoa-binh-luan"=>(new AdminBinhLuanController())->deleteBinhLuan(),
     "sua-binh-luan"=>(new AdminBinhLuanController())->updateBinhLuan(),
+    // Giỏ hàng
+    "gio-hang"=>(new AdminGioHangController())->listGioHang(),
+    "xoa-gio-hang"=>(new AdminGioHangController())->deleteGioHang(),
+    "form-them-gio-hang"=>(new AdminGioHangController())->formAddGioHang(),
+    "them-gio-hang"=>(new AdminGioHangController())->addGioHang(),
 };
