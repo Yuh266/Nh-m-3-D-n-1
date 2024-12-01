@@ -250,7 +250,7 @@ include './views/layout/header.php';
                                     </div>
                                 </div>
                                 <span class="cr-check-order-btn">
-                                    <button style="background-color: #64b496;" type="submit" class="cr-button mt-30">Lưu thay đổi</button>
+                                    <button type="submit" class="cr-button mt-30">Lưu thay đổi</button>
 
                                 </span>
                             </div>
