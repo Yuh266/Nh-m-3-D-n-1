@@ -56,10 +56,9 @@ match ($act) {
 
     "form-them-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->formAddSanPhamBienThe(),
     "them-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->postAddSanPhamBienThe(),
-    "form-sua-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->formEditSanPhamBienThe(),
-    "sua-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->postEditSanPhamBienThe(),
-    "xoa-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->deleteSanPhamBienThe(),
 
+    "form-sua-san-pham-bien-the"=>(new AdminProductController())->formEditSanPham(),
+    "sua-san-pham-bien-the"=>(new AdminProductController())->postEditSanPham(),
     'sua-album-anh-san-pham-bien-the' => (new AdminProductController())->postEditAnhSanPham(),
     "xoa-san-pham-bien-the"=>(new AdminProductController())->deleteSanPham(),
 

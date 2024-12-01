@@ -213,33 +213,9 @@
             </form>
           </div>
         </div>
-
-        <a class="d-flex w-100 my-4" href="<?= BASE_URL_ADMIN . "?act=form-them-san-pham-bien-the&id_san_pham=".$sanPham['id'] ?>">
+        <a href="<?= BASE_URL_ADMIN . "?act=form-them-san-pham-bien-the&id_san_pham=".$sanPham['id'] ?>">
           <button class="btn btn-primary" >Thêm sản phẩm biến thể </button>
         </a>
-
-        <table class="table border-4">
-          <thead>
-            <tr>
-              <th>Biến Thể</th>
-              <th>Giá khuyến mãi</th>
-              <th>Hành động</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($listSanPhamBienThe as $key => $value):?>
-            <tr>
-              <td><?= $value['gia_tri'] ?></td>
-              <td><?= number_format($value['gia_khuyen_mai'])."đ" ?></td>
-              <td>
-                <a class="btn btn-warning" href="<?= BASE_URL_ADMIN . "/?act=form-sua-san-pham-bien-the&id=".$value['id'] ?>">Sửa</a>
-                <a class="btn btn-danger" href="<?= BASE_URL_ADMIN . "/?act=xoa-san-pham-bien-the&id=".$value['id'] ?>">Xóa</a>
-              </td>
-            </tr>
-            <?php endforeach ?>
-          </tbody>
-        </table>
-        
       </div>
     </div>
   </section>
