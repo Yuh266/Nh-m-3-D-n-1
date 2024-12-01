@@ -160,7 +160,7 @@
                                 <a class="link" href="forgot.html">Quên mật khẩu?</a>
                             </div><br>
                             <div class="login-buttons">
-                                <button style=" background-color: #64b496;" type="submit" class="cr-button">Đăng nhập</button>
+                                <button type="submit" class="cr-button">Đăng nhập</button>
                            
                                 <a href="<?= BASE_URL . "?act=register" ?>" class="link">
                                      Đăng kí?

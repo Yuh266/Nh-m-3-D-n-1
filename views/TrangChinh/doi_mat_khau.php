@@ -149,7 +149,7 @@
                                         ?></div>
                             </div>
                             <div class="login-buttons">
-                                <button style=" background-color: #64b496;" type="submit" class="cr-button">Đổi</button>
+                                <button type="submit" class="cr-button">Đổi</button>
                                 
                                 <a href="#" class="link">
                                     Quên mật khẩu
