@@ -1,8 +1,10 @@
 <!-- header  -->
 <?php include './views/layout/header.php'; ?>
 
+
 <!-- Navbar -->
 <?php include './views/layout/navbar.php'; ?>
+
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -43,6 +45,7 @@
                   </div>
                 </div>
 
+
                 <div class="mb-3 col-md-6">
                   <label for="exampleInputEmail1" class="form-label">Giá sản phẩm</label>
                   <input
@@ -56,6 +59,7 @@
                   </div>
                 </div>
 
+
                 <div class="mb-3 col-md-6">
                   <label for="exampleInputEmail1" class="form-label">Giá khuyến mãi</label>
                   <input
@@ -68,6 +72,7 @@
                     <?php } ?>
                   </div>
                 </div>
+
 
                 <div class="mb-3 col-md-6">
                   <label for="exampleInputEmail1" class="form-label">Hình ảnh</label>
@@ -83,6 +88,7 @@
                   </div>
                 </div>
 
+
                 <div class="mb-3 col-md-6">
                   <label for="exampleInputEmail1" class="form-label">Số lượng</label>
                   <input
@@ -96,6 +102,7 @@
                   </div>
                 </div>
 
+
                 <div class="mb-3 col-md-6">
                   <label for="exampleInputEmail1" class="form-label">Ngày nhập sản phẩm</label>
                   <input
@@ -108,6 +115,7 @@
                     <?php } ?>
                   </div>
                 </div>
+
 
                 <div class="mb-3 col-md-6">
                   <label for="exampleInputEmail1" class="form-label">Danh mục sản phẩm</label>
@@ -124,6 +132,7 @@
                     <?php } ?>
                   </div>
                 </div>
+
 
                 <div class="mb-3 col-md-6 ">
                   <label for="exampleInputEmail1" class="form-label">Trạng thái</label>
@@ -152,6 +161,7 @@
                   <?php } ?>
                 </div>
 
+
               </div>
             </div>
             <!-- /.card-body -->
@@ -160,9 +170,11 @@
               <button type="reset" class="btn btn-primary">Nhập lại</button>
             </div>
 
+
           </form>
         </div>
       </div>
+
 
       <div class="col-md-4">
         <div class="card card-info">
@@ -213,21 +225,51 @@
             </form>
           </div>
         </div>
-        <a href="<?= BASE_URL_ADMIN . "?act=form-them-san-pham-bien-the&id_san_pham=".$sanPham['id'] ?>">
+
+
+        <a class="d-flex w-100 my-4" href="<?= BASE_URL_ADMIN . "?act=form-them-san-pham-bien-the&id_san_pham=".$sanPham['id'] ?>">
           <button class="btn btn-primary" >Thêm sản phẩm biến thể </button>
         </a>
+
+
+        <table class="table border-4">
+          <thead>
+            <tr>
+              <th>Biến Thể</th>
+              <th>Giá khuyến mãi</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($listSanPhamBienThe as $key => $value):?>
+            <tr>
+              <td><?= $value['gia_tri'] ?></td>
+              <td><?= number_format($value['gia_khuyen_mai'])."đ" ?></td>
+              <td>
+                <a class="btn btn-warning" href="<?= BASE_URL_ADMIN . "/?act=form-sua-san-pham-bien-the&id=".$value['id'] ?>">Sửa</a>
+                <a class="btn btn-danger" href="<?= BASE_URL_ADMIN . "/?act=xoa-san-pham-bien-the&id=".$value['id'] ?>">Xóa</a>
+              </td>
+            </tr>
+            <?php endforeach ?>
+          </tbody>
+        </table>
+       
       </div>
     </div>
   </section>
 </div>
 
+
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
+
 <!-- Footer  -->
 <?php include './views/layout/footer.php'; ?>
 <!-- End Footer  -->
+
+
 
 
 </body>
@@ -238,16 +280,20 @@
   function addfaqs() {
     // console.log("111");
 
+
     html = '<tr id="faqs-row-' + faqs_row + '">';
     html += '<td></td>';
     html += '<td><input type="file" name="img_array[]" class="form-control"></td>';
     html += '<td class="mt-10"><button type="button" class="btn btn-danger" onclick="removeRow(' + faqs_row + ', null)"><i class="fa fa-trash"></i> Delete</button></td>';
     html += '</tr>';
 
+
     $('#faqs tbody').append(html);
+
 
     faqs_row++;
   }
+
 
   function removeRow(rowId, imgId) {
     $('#faqs-row-' + rowId).remove();
@@ -259,4 +305,6 @@
   }
 </script>
 
+
 </html>
+

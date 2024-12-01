@@ -1,4 +1,4 @@
-<?
+<?php
  class AdminBinhLuan{
     public $conn;
 

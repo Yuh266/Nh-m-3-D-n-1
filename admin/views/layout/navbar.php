@@ -98,6 +98,13 @@
                             <p>Quản trị slide shows</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-danh-gia' ?>" 
+                        class="nav-link <?= (isset($_GET['act']) && in_array($_GET['act'], ['danh-sach-danh-gia', 'them-slide-show', 'sua-slide-show'])) ? 'active' : '' ?>">
+                            <i class="nav-icon bi bi-images"></i>
+                            <p>Quản trị đánh giá</p>
+                        </a>
+                    </li>
                    
                     <!-- Quản trị đơn hàng -->
                     <li class="nav-item <?= (isset($_GET['act']) && (strpos($_GET['act'], 'don-hang') !== false || strpos($_GET['act'], 'dia-chi-nhan-hang') !== false)) ? 'menu-open' : '' ?>">
