@@ -109,7 +109,7 @@
                 <div class="col-12">
                     <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                         <div class="row">
-                            <form action="<?= BASE_URL . "?act=form-dia-chi-nhan-hang" ?>" method="POST">
+                        <form action="<?= BASE_URL . "?act=form-dia-chi-nhan-hang" ?>" method="POST">
                                 <div class="cr-table-content">
                                     <table>
                                         <thead>
@@ -169,7 +169,6 @@
                                                         <a href="javascript:void(0)">
                                                             <img src="<?= $chi_tiet_gio_hang['hinh_anh'] ?>" alt=""
                                                                 class="cr-cart-img">
-                                                            <h5><?= $chi_tiet_gio_hang['ten_san_pham'] ?></h5>
                                                         </a>
                                                     </td>
                                                     <td class="cr-cart-price">
@@ -178,23 +177,23 @@
                                                     </td>
                                                     <td class="cr-cart-qty">
                                                         <div class="cart-qty-plus-minus">
-                                                            <button type="button" class="plus"
-                                                                data-id="<?= $chi_tiet_gio_hang['id'] ?>">+</button>
-                                                            <input type="text" value="<?= $chi_tiet_gio_hang['so_luong'] ?>"
-                                                                class="quantity" data-id="<?= $chi_tiet_gio_hang['id'] ?>"
-                                                                readonly>
-                                                            <button type="button" class="minus"
-                                                                data-id="<?= $chi_tiet_gio_hang['id'] ?>">-</button>
+                                                            <a href="<?= BASE_URL . "?act=tang-so-luong&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>">
+                                                                <button type="button" >+</button>
+                                                            </a>
+                                                            <input type="text" value="<?= $chi_tiet_gio_hang['so_luong'] ?>" 
+                                                                class="quantity" data-id="<?= $chi_tiet_gio_hang['id'] ?>" readonly>
+                                                            <a href="<?= BASE_URL . "?act=giam-so-luong&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>">
+                                                                <button type="button" >-</button>
+                                                            </a>
                                                         </div>
                                                     </td>
                                                     <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien'] ?></td>
                                                     <td class="cr-cart-remove">
-                                                    <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có đồng ý xóa hay không')">
-                                                        <button type="button" class="btn btn-danger">Xóa</button></a>
+                                                    <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có muốn xóa sản phẩm này không?')">
+                                                        <button type="button" class="btn btn-danger"><i class="ri-delete-bin-line"></i></button></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
-                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -209,7 +208,28 @@
                                     </div>
                                 </div>
                             </form>
-                           
+                            <!-- Modal Xác Nhận Xóa -->
+                            <!-- <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Bạn sẽ không thể khôi phục lại nội dung đã xóa.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Đóng</button>
+                                            <a href="#" id="modalLink"><button type="button" class="btn btn-primary"
+                                                    onclick="showToast()">Xác nhận xóa</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -369,3 +389,9 @@
 <script src="<?= BASE_URL ?>assets/js/script.js"></script>
 
 <?php include './views/layout/footer.php' ?>
+
+<!-- // Kiểm tra phát hiện thông báo đã xóa  -->
+<?php if (isset($_SESSION["alert_delete_success"])): ?>
+    <script>showToast()</script>
+    <?php unset($_SESSION["alert_delete_success"]); ?>
+<?php endif ?>

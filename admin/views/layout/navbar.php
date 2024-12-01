@@ -81,6 +81,14 @@
                             <p>Quản trị giá trị thuộc tính</p>
                         </a>
                     </li>
+                     <!-- Quản trị bình luận -->
+                     <li class="nav-item">
+                        <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-binh-luan' ?>" 
+                        class="nav-link <?= (isset($_GET['act']) && in_array($_GET['act'], ['danh-sach-binh-luan'])) ? 'active' : '' ?>">
+                            <i class="nav-icon bi bi-box-seam"></i>
+                            <p>Quản trị bình luận</p>
+                        </a>
+                    </li>
 
                     <!-- Quản trị slide shows -->
                     <li class="nav-item">
@@ -90,7 +98,7 @@
                             <p>Quản trị slide shows</p>
                         </a>
                     </li>
-
+                   
                     <!-- Quản trị đơn hàng -->
                     <li class="nav-item <?= (isset($_GET['act']) && (strpos($_GET['act'], 'don-hang') !== false || strpos($_GET['act'], 'dia-chi-nhan-hang') !== false)) ? 'menu-open' : '' ?>">
                         <a href="#" 
