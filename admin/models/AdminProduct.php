@@ -2,9 +2,11 @@
 class AdminProduct{
     public $conn;
 
+
     public function __construct(){
         $this->conn = connectDB();
     }
+
 
     public function getAllProduct(){
         try{
@@ -18,25 +20,27 @@ class AdminProduct{
         }
     }
 
-    public function insertSanPham($ten_san_pham, $gia_san_pham, $gia_khuyen_mai, 
+
+    public function insertSanPham($ten_san_pham, $gia_san_pham, $gia_khuyen_mai,
     $so_luong, $ngay_nhap, $id_danh_muc, $trang_thai, $mo_ta, $hinh_anh){
         try{
-            $sql =  'INSERT INTO san_phams (ten_san_pham, gia_san_pham, gia_khuyen_mai, 
+            $sql =  'INSERT INTO san_phams (ten_san_pham, gia_san_pham, gia_khuyen_mai,
             so_luong, ngay_nhap, id_danh_muc,trang_thai, mo_ta, hinh_anh)
-            VALUE (:ten_san_pham, :gia_san_pham, :gia_khuyen_mai, :so_luong, 
+            VALUE (:ten_san_pham, :gia_san_pham, :gia_khuyen_mai, :so_luong,
             :ngay_nhap, :id_danh_muc, :trang_thai, :mo_ta, :hinh_anh)';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
                 ':ten_san_pham'=>$ten_san_pham,
-                ':gia_san_pham'=>$gia_san_pham, 
-                ':gia_khuyen_mai'=>$gia_khuyen_mai, 
-                ':so_luong'=>$so_luong, 
-                ':ngay_nhap'=>$ngay_nhap, 
-                ':id_danh_muc'=>$id_danh_muc, 
-                ':trang_thai'=>$trang_thai, 
-                ':mo_ta'=>$mo_ta, 
+                ':gia_san_pham'=>$gia_san_pham,
+                ':gia_khuyen_mai'=>$gia_khuyen_mai,
+                ':so_luong'=>$so_luong,
+                ':ngay_nhap'=>$ngay_nhap,
+                ':id_danh_muc'=>$id_danh_muc,
+                ':trang_thai'=>$trang_thai,
+                ':mo_ta'=>$mo_ta,
                 ':hinh_anh'=>$hinh_anh,
             ]);
+
 
             // Lấy id sản phẩm vừa thêm
             return $this->conn->lastInsertId();
@@ -45,6 +49,7 @@ class AdminProduct{
         }
     }
 
+
     public function insertAlbumSanPham($id_san_pham, $link_anh){
         try{
             $sql =  'INSERT INTO hinh_anh_san_phams (id_san_pham, link_anh)
@@ -52,13 +57,14 @@ class AdminProduct{
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
                 ':id_san_pham'=>$id_san_pham,
-                ':link_anh'=>$link_anh, 
+                ':link_anh'=>$link_anh,
             ]);
             return true;
         }catch(Exception $e){
             echo "Lỗi".$e->getMessage();
         }
     }
+
 
     public function getDetailSanPham($id){
         try{
@@ -73,6 +79,7 @@ class AdminProduct{
         }
     }
 
+
     public function getListAnhSanPham($id){
         try{
             $sql =  'SELECT * FROM hinh_anh_san_phams WHERE id_san_pham=:id';
@@ -86,7 +93,8 @@ class AdminProduct{
         }
     }
 
-    public function updateSanPham($id_san_pham, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai, 
+
+    public function updateSanPham($id_san_pham, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai,
     $so_luong, $ngay_nhap, $id_danh_muc, $trang_thai, $mo_ta, $hinh_anh){
         try{
             $sql =  'UPDATE san_phams
@@ -104,16 +112,17 @@ class AdminProduct{
             // var_dump($trang_thai);die;
             $stmt->execute([
                 ':ten_san_pham'=>$ten_san_pham,
-                ':gia_san_pham'=>$gia_san_pham, 
-                ':gia_khuyen_mai'=>$gia_khuyen_mai, 
-                ':so_luong'=>$so_luong, 
-                ':ngay_nhap'=>$ngay_nhap, 
-                ':id_danh_muc'=>$id_danh_muc, 
-                ':trang_thai'=>$trang_thai, 
-                ':mo_ta'=>$mo_ta, 
+                ':gia_san_pham'=>$gia_san_pham,
+                ':gia_khuyen_mai'=>$gia_khuyen_mai,
+                ':so_luong'=>$so_luong,
+                ':ngay_nhap'=>$ngay_nhap,
+                ':id_danh_muc'=>$id_danh_muc,
+                ':trang_thai'=>$trang_thai,
+                ':mo_ta'=>$mo_ta,
                 ':hinh_anh'=>$hinh_anh,
                 ':id'=>$id_san_pham
             ]);
+
 
             // Lấy id sản phẩm vừa thêm
             return true;
@@ -121,6 +130,7 @@ class AdminProduct{
             echo "Lỗi".$e->getMessage();
         }
     }
+
 
     public function getDetailAnhSanPham($id){
         try{
@@ -135,6 +145,7 @@ class AdminProduct{
         }
     }
 
+
     public function updateAnhSanPham($id, $new_file){
         try{
             $sql =  'UPDATE hinh_anh_san_phams SET link_anh = :new_file WHERE id=:id';
@@ -142,7 +153,7 @@ class AdminProduct{
             // var_dump($trang_thai);die;
             $stmt->execute([
                 ':new_file'=>$new_file,
-                ':id'=>$id, 
+                ':id'=>$id,
             ]);
             // Lấy id sản phẩm vừa thêm
             return true;
@@ -150,6 +161,7 @@ class AdminProduct{
             echo "Lỗi".$e->getMessage();
         }
     }
+
 
     public function destroyAnhSanPham($id){  
         try{
@@ -163,6 +175,7 @@ class AdminProduct{
             echo "Lỗi".$e->getMessage();
         }
     }
+
 
     public function destroySanPham($id){
         try{
@@ -192,5 +205,4 @@ class AdminProduct{
             echo "Lỗi".$e->getMessage();
         }
     }
-
 }

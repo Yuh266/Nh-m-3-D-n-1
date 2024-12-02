@@ -72,7 +72,9 @@
                                                     <img src="<?= BASE_URL . $value['link_anh'] ?>" alt="<?= $key + 1 ?>">
                                                 </div>
                                             </div>
+
                                         <?php endforeach; ?>
+
                                     </div>
                                 </div>
                             </div>

@@ -2,9 +2,11 @@
 class AdminProductController
 {
 
+
     public $modelProduct;
     public $modelDanhMuc;
     public $modelSanPhamBienThe;
+
 
     public function __construct()
     {
@@ -12,6 +14,7 @@ class AdminProductController
         $this->modelSanPhamBienThe = new AdminSanPhamBienThe();
         $this->modelDanhMuc = new AdminDanhMuc();
     }
+
 
     public function listProduct()
     {
@@ -30,6 +33,7 @@ class AdminProductController
         deleteSession('san_pham');
     }
 
+
     public function formAddSanPham()
     {
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
@@ -45,6 +49,7 @@ class AdminProductController
         deleteSession('san_pham');
         deleteAlertSession();
     }
+
 
     public function postAddSanPham()
     {
@@ -62,11 +67,14 @@ class AdminProductController
             // var_dump($_POST);die();
             $hinh_anh = $_FILES['hinh_anh'] ?? null;
 
+
             //Lưu hình ảnh
             $file_thumb = uploadFile($hinh_anh, './uploads/');
             // var_dump($file_thumb);die();
 
+
             $img_array = $_FILES['img_array']; //Mảng hình ảnh
+
 
             // Tạo mảng trống để chứa dữ liệu
             $errors = [];
@@ -92,7 +100,9 @@ class AdminProductController
                 $errors['trang_thai'] = 'Trạng thái bắt buộc phải chọn';
             }
 
+
             $_SESSION['error'] = $errors;
+
 
             if (empty($errors)) {
                 //Nếu không có lỗi thì tiến hành thêm sản phẩm
@@ -110,7 +120,8 @@ class AdminProductController
                 );
                 // var_dump($id_san_pham);die();
 
-                // Xử lý thêm album ảnh sản phẩm img_array 
+
+                // Xử lý thêm album ảnh sản phẩm img_array
                 if (!empty($img_array['name'])) {
                     foreach ($img_array['name'] as $key => $value) {
                         $file = [
@@ -120,6 +131,7 @@ class AdminProductController
                             'error' => $img_array['error'][$key],
                             'size' => $img_array['size'][$key],
                         ];
+
 
                         $link_anh = uploadFile($file, './uploads/');
                         $this->modelProduct->insertAlbumSanPham($id_san_pham, $link_anh);
@@ -152,6 +164,7 @@ class AdminProductController
         }
     }
 
+
     public function formEditSanPham()
     {
         //Hàm này dùng để hiển thì form nhập
@@ -161,6 +174,7 @@ class AdminProductController
         $listAnhSanPham = $this->modelProduct->getListAnhSanPham($id);
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
         $listSanPhamBienThe = $this->modelSanPhamBienThe->getSanPhamBienTheByIDSanPham($id);
+
 
         $title = "Sửa thông tin sản phẩm " . $sanPham['ten_san_pham'];
         $link_navs = [
@@ -179,15 +193,17 @@ class AdminProductController
         }
     }
 
+
     public function postEditSanPham()
     {
         // var_dump($_POST);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Lấy dữ liệu cũ của sản phẩm
             $id_san_pham = $_POST['id_san_pham'] ?? '';
-            // Truy vấn 
+            // Truy vấn
             $sanPhamOld = $this->modelProduct->getDetailSanPham($id_san_pham);
             $old_file = $sanPhamOld['hinh_anh']; // Lấy ảnh cũ để phục vụ sửa ảnh
+
 
             $ten_san_pham = $_POST['ten_san_pham'] ?? '';
             $gia_san_pham = $_POST['gia_san_pham'] ?? '';
@@ -198,7 +214,9 @@ class AdminProductController
             $trang_thai = $_POST['trang_thai'] ?? '';
             $mo_ta = $_POST['mo_ta'] ?? '';
 
+
             $hinh_anh = $_FILES['hinh_anh'] ?? null;
+
 
             //Tạo mảng trống để chứa dữ liệu
             $errors = [];
@@ -224,9 +242,11 @@ class AdminProductController
                 $errors['trang_thai'] = 'Trạng thái bắt buộc phải chọn';
             }
 
+
             $_SESSION['error'] = $errors;
 
-            // Logic sửa ảnh 
+
+            // Logic sửa ảnh
             if (isset($hinh_anh) && $hinh_anh['error'] == UPLOAD_ERR_OK) {
                 // Upload ảnh mới lên
                 $new_file = uploadFile($hinh_anh, './uploads/');
@@ -236,6 +256,7 @@ class AdminProductController
             } else {
                 $new_file = $old_file;
             }
+
 
             // Nếu không có lỗi thì tiến hành thêm sản phẩm
             if (empty($errors)) {
@@ -282,6 +303,7 @@ class AdminProductController
         }
     }
 
+
     // Sửa album ảnh
     // - Sửa ảnh cũ
     //  + Thêm ảnh mới
@@ -293,12 +315,14 @@ class AdminProductController
     //  + Thêm ảnh mới
     //  + Không thêm ảnh mới
 
+
     public function postEditAnhSanPham()
     {
         // var_dump($_POST);die();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // var_dump(1);die();
             $id_san_pham = $_POST['id_san_pham'] ?? '';
+
 
             // Lấy danh sách sản phẩm hiên tại của sản phẩm
             $listAnhSanPhamCurrent = $this->modelProduct->getListAnhSanPham($id_san_pham);
@@ -307,8 +331,10 @@ class AdminProductController
             $img_delete = isset($_POST['img_delete']) ? explode(',', $_POST['img_delete']) : [];
             $current_img_ids = $_POST['current_img_ids'] ?? [];
 
-            // Khai báo mảng để lưu ảnh thêm mới hoặc thay thế ảnh cữ 
+
+            // Khai báo mảng để lưu ảnh thêm mới hoặc thay thế ảnh cữ
             $upload_file = [];
+
 
             // upload ảnh mới hoặc thay thế ảnh cũ
             foreach ($img_array['name'] as $key => $value) {
@@ -324,28 +350,33 @@ class AdminProductController
                 }
             }
 
+
             // Lưu ảnh mới vào db và xóa ảnh cũ
             foreach ($upload_file as $file_info) {
                 if ($file_info['id']) {
                     $old_file = $this->modelProduct->getDetailAnhSanPham($file_info['id'])['link_anh'];
 
+
                     // Cập nhật ảnh cũ
                     $this->modelProduct->updateAnhSanPham($file_info['id'], $file_info['file']);
+
 
                     // Xóa ảnh cũ
                     deleteFile($old_file);
                 } else {
-                    // Thêm ảnh mới 
+                    // Thêm ảnh mới
                     $this->modelProduct->insertAlbumSanPham($id_san_pham, $file_info['file']);
                 }
             }
 
-            // Xử lý xóa ảnh 
+
+            // Xử lý xóa ảnh
             foreach ($listAnhSanPhamCurrent as $anhSP) {
                 $anh_id = $anhSP['id'];
                 if (in_array($anh_id, $img_delete)) {
-                        
+                       
                     $this->modelProduct->destroyAnhSanPham($anh_id);
+
 
                     //Xóa file
                     deleteFile($anhSP['link_anh']);
@@ -357,9 +388,10 @@ class AdminProductController
         }
     }
 
+
     public function deleteSanPham(){
         if (isset($_GET['id_san_pham']) || isset($_POST["id"])) {
-            $id = $_GET['id_san_pham'] ?? $_POST["id"]; 
+            $id = $_GET['id_san_pham'] ?? $_POST["id"];
             // var_dump(1111);die();
             if (is_array($id)) {
                 foreach ($id as $value) {
@@ -384,7 +416,7 @@ class AdminProductController
                     if (!empty($sanPham['hinh_anh'])) {
                         deleteFile($sanPham['hinh_anh']);
                     }
-                    
+                   
                     $listAnhSanPham = $this->modelProduct->getListAnhSanPham($id);
                     if ($listAnhSanPham) {
                         foreach ($listAnhSanPham as $anhSP) {
@@ -397,7 +429,7 @@ class AdminProductController
                     $this->modelProduct->destroyAnhSanPham($id);
                 }
             }
-            
+           
             $_SESSION['alert_delete_success'] = 1;
             header('Location:' . BASE_URL_ADMIN . '/?act=danh-sach-san-pham');
             exit();
@@ -406,14 +438,4 @@ class AdminProductController
             exit();
         }
     }
-
-    // public function top5SanPham() {
-    //     // Lấy dữ liệu top 5 sản phẩm
-    //     $top5SanPham = $this->modelProduct->top5SanPhams();
-    
-    //     // Kiểm tra dữ liệu
-    //     // var_dump($top5SanPham);die();
-    
-    //     require_once './views/ThongKe.php';
-    // }
 }
