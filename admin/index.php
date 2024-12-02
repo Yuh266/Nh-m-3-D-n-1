@@ -144,4 +144,11 @@ match ($act) {
     "danh-sach-binh-luan"=>(new AdminBinhLuanController())->listBinhLuan(),
     "xoa-binh-luan"=>(new AdminBinhLuanController())->deleteBinhLuan(),
     "sua-binh-luan"=>(new AdminBinhLuanController())->updateBinhLuan(),
+
+    // Đơn hàng chi tiết
+    "danh-sach-don-hang"=>(new AdminDonHangController())->listDonHang(),
+    "xoa-danh-sach-don-hang"=>(new AdminDonHangController())->deleteDonHangByID(),
+    "chi-tiet-don-hang"=>(new AdminDonHangController())->formChiTietDonHang(),
+    "sua-chi-tiet-don-hang"=>(new AdminDonHangController())->postChiTietDonHang(),
+    
 };

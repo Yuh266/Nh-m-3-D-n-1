@@ -160,7 +160,7 @@ class AdminGiaTriThuocTinhController{
     public function deleteGiaTriThuocTinh(){
         $title_url = "gia-tri-thuoc-tinh";
         if ($_GET["id"] || $_POST['id']) {
-            $id = $_GET['id'] ?? $_POST['id'] ;
+            $id = $_GET['id'] ?? $_POST['id'];
             if (is_array($id)) {
                 foreach ($id as $key => $value) {
                     if ($this->modelGiaTriThuocTinh->deleteGiaTriThuocTinh($value)) {

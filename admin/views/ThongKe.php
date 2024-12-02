@@ -33,11 +33,8 @@
                     <?php
                     function tongSanPham($listProduct)
                     {
-                      $total = 0;
-                      foreach ($listProduct as $product) {
-                        $total += $product['so_luong'];
-                      }
-                      return $total;
+                      return count($listProduct);
+
                     }
                     ?>
                     <h1 class="font"><?= $allSanPham = tongSanPham($listProduct); ?></h1>
