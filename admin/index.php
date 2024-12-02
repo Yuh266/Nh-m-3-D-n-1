@@ -184,5 +184,10 @@ match ($act) {
     "chi-tiet-don-hang"=>(new AdminDonHangController())->formChiTietDonHang(),
     "sua-chi-tiet-don-hang"=>(new AdminDonHangController())->postChiTietDonHang(),
     
+    //Giỏ hàng
+    "danh-sach-gio-hang"=>(new AdminGioHangController())->listGiohang(),
+    "danh-sach-gio-hang-chi-tiet"=>(new AdminGioHangController())->listGioHangChiTiet(),
+    "xoa-gio-hang"=>(new AdminGioHangController())->deleteGioHang(),
+    
 };
 
