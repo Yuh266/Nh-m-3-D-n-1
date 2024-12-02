@@ -169,8 +169,9 @@ match ($act) {
     
     // Bình luận
     "danh-sach-binh-luan"=>(new AdminBinhLuanController())->listBinhLuan(),
+    "danh-sach-binh-luan-chi-tiet"=>(new AdminBinhLuanController())->listBinhLuanByIDSanPham(),
     "xoa-binh-luan"=>(new AdminBinhLuanController())->deleteBinhLuan(),
-    "sua-binh-luan"=>(new AdminBinhLuanController())->updateBinhLuan(),
+    // "sua-binh-luan"=>(new AdminBinhLuanController())->updateBinhLuan(),
 
     // Đánh Giá
     "danh-sach-danh-gia"=>(new AdminDanhGiaController())->listDanhGia() ,
