@@ -19,13 +19,28 @@
 
         <!-- Hiển thị chi tiết đơn hàng -->
         <div class="card-body">
-            <h5>Thông tin đơn hàng:</h5>
+            <h2 class="text-center text-primary">Thông tin đơn hàng:</h2>
             <?php if ($donHang): ?>
-                <p><strong>Tên khách hàng:</strong> <?= $donHang['ho_ten'] ?></p>
-                <p><strong>Email:</strong> <?= $donHang['email'] ?></p>
-                <p><strong>Địa Chỉ:</strong> <?= $donHang['dia_chi_nguoi_nhan'] ?></p>
-                <p><strong>Số điện thoại:</strong> <?= $donHang['so_dien_thoai'] ?></p>
-                <p><strong>Ngày đặt hàng:</strong> <?= date('d/m/Y', strtotime($donHang['ngay_dat'])) ?></p>
+                <ul class="list-group">
+                    <h5 class="text-primary">Đơn hàng: <?= $donHang['id_don_hang'] ?></h5>
+                    <li class="list-group-item  mb-1"><strong>Người đặt hàng:</strong> <?= $donHang['ho_ten'] ?></li>
+                    <li class="list-group-item  mb-1"><strong>Hình thức thanh toán:</strong> <?= $donHang['hinh_thuc_thanh_toan'] ?></li>
+                    <li class="list-group-item  mb-1"><strong>Email:</strong> <?= $donHang['email'] ?></li>
+                    <li class="list-group-item  mb-1"><strong>Số điện thoại:</strong> <?= $donHang['so_dien_thoai'] ?></li>
+                    <li class="list-group-item mb-1"> 
+                        <strong>Tên sản phẩm: </strong><?= $donHang['ten_san_pham'] ?>
+                    </li>
+
+                    <li class="list-group-item mb-1"><strong>Số lượng: </strong> <?= $donHang['so_luong'] ?></li>         
+                    <li class="list-group-item mb-1 text-danger"><strong>Đơn giá: </strong> <?= $donHang['thanh_tien'] ?></li>         
+                </ul> <br>
+                <ul class="list-group">
+                    <h5 class="text-primary">Địa chỉ người nhận:</h5>
+                    <li class="list-group-item  mb-1"><strong>Người nhận:</strong> <?= $donHang['ten_nguoi_nhan'] ?></li>
+                    <li class="list-group-item  mb-1"><strong>Số điện thoại:</strong> <?= $donHang['sdt_nguoi_nhan'] ?></li>
+                    <li class="list-group-item  mb-1"><strong>Địa chỉ:</strong> <?= $donHang['dia_chi_nguoi_nhan'] ?></li>
+                    <li class="list-group-item  mb-1"><strong>Ghi chú:</strong> <?= $donHang['ghi_chu'] ?></li>
+                </ul>
             <?php else: ?>
                 <p>Không tìm thấy thông tin đơn hàng.</p>
             <?php endif; ?>
@@ -37,14 +52,18 @@
             <input type="hidden" name="id_trang_thai" value="<?= $donHang['id_trang_thai'] ?>">
 
             <div class="mb-3 col-md-6">
-                <label for="exampleInputEmail1" class="form-label"><strong>Trạng thái đơn hàng:</strong></label>
-                <select name="id_trang_thai" required>
-                    <option value="1" <?= $donHang['id_trang_thai'] == 1 ? 'selected' : '' ?>>Chưa thanh toán</option>
-                    <option value="2" <?= $donHang['id_trang_thai'] == 2 ? 'selected' : '' ?>>Đang chuẩn bị hàng</option>
-                    <option value="3" <?= $donHang['id_trang_thai'] == 3 ? 'selected' : '' ?>>Đang giao hàng</option>
-                    <option value="4" <?= $donHang['id_trang_thai'] == 4 ? 'selected' : '' ?>>Đã nhận hàng</option>
-                    <option value="5" <?= $donHang['id_trang_thai'] == 5 ? 'selected' : '' ?>>Đã hủy</option>
-                </select>
+                <ul>
+                    <li class="list-group-item mb-1 text-danger">
+                        <label><strong>Trạng thái đơn hàng:</strong></label>
+                        <select name="id_trang_thai" required>
+                        <option value="1" <?= $donHang['id_trang_thai'] == 1 ? 'selected' : '' ?>>Chưa thanh toán</option>
+                        <option value="2" <?= $donHang['id_trang_thai'] == 2 ? 'selected' : '' ?>>Đang chuẩn bị hàng</option>
+                        <option value="3" <?= $donHang['id_trang_thai'] == 3 ? 'selected' : '' ?>>Đang giao hàng</option>
+                        <option value="4" <?= $donHang['id_trang_thai'] == 4 ? 'selected' : '' ?>>Đã nhận hàng</option>
+                        <option value="5" <?= $donHang['id_trang_thai'] == 5 ? 'selected' : '' ?>>Đã hủy</option>
+                    </select>
+                    </li>
+                </ul>
             </div>
 
             <div class="card-footer">
