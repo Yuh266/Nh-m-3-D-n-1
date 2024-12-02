@@ -8,6 +8,12 @@ class AdminTrangThaiDonHangController{
     }
 
     public function listTrangThai(){
+        // Phân quyền
+        if ($_SESSION['user']['chuc_vu'] == 3){
+            header('Location:'.BASE_URL_ADMIN);
+            exit();
+        }
+        // end Phân quyền
         $title = "Danh sách trạng thái đơn hàng";
         $title_url = "trang-thai-don-hang";
         $link_navs = [
@@ -26,6 +32,12 @@ class AdminTrangThaiDonHangController{
     }
 
     public function formAddTrangThai(){
+        // Phân quyền
+        if ($_SESSION['user']['chuc_vu'] == 3){
+            header('Location:'.BASE_URL_ADMIN);
+            exit();
+        }
+        // end Phân quyền
         $title = "Thêm trạng thái đơn hàng";
         $title_url = "trang-thai-don-hang";
         $link_navs = [
@@ -40,6 +52,12 @@ class AdminTrangThaiDonHangController{
         deleteSession('trang_thai');
     }
     public function addTrangThai(){
+        // Phân quyền
+        if ($_SESSION['user']['chuc_vu'] == 3){
+            header('Location:'.BASE_URL_ADMIN);
+            exit();
+        }
+        // end Phân quyền
         $title_url = "trang-thai-don-hang";
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $ten_trang_thai = $_POST['ten_trang_thai'] ?? "";
@@ -79,6 +97,12 @@ class AdminTrangThaiDonHangController{
     }
   
     public function formEditTrangThai(){
+        // Phân quyền
+        if ($_SESSION['user']['chuc_vu'] == 3){
+            header('Location:'.BASE_URL_ADMIN);
+            exit();
+        }
+        // end Phân quyền
         // Khai báo biến đổ form
         $title = "Sửa trạng thái đơn hàng";
         $title_url = "trang-thai-don-hang";
@@ -110,6 +134,12 @@ class AdminTrangThaiDonHangController{
     }
 
     public function editTrangThai(){
+        // Phân quyền
+        if ($_SESSION['user']['chuc_vu'] == 3){
+            header('Location:'.BASE_URL_ADMIN);
+            exit();
+        }
+        // end Phân quyền
         $title_url = "trang-thai-don-hang";
 
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -148,6 +178,12 @@ class AdminTrangThaiDonHangController{
     }
 
     public function deleteTrangThai(){
+        // Phân quyền
+        if ($_SESSION['user']['chuc_vu'] == 3){
+            header('Location:'.BASE_URL_ADMIN);
+            exit();
+        }
+        // end Phân quyền
         $title_url = "trang-thai-don-hang";
         if ($_GET["id"] || $_POST['id']) {
             $id = $_GET['id'] ?? $_POST['id'] ;
