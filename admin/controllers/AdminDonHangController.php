@@ -78,9 +78,9 @@ class AdminDonHangController
             // var_dump($donHang['id_trang_thai']);
             // die();
             require_once './views/DonHang/chiTietDonHang.php';
-            // if (isset($_SESSION['id_active'])) {
-            //     unset($_SESSION['id_active']);
-            // }
+            if (isset($_SESSION['id_active'])) {
+                unset($_SESSION['id_active']);
+            }
             deleteAlertSession();
             deleteSession('error');
         } else {
