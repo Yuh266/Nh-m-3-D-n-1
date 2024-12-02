@@ -16,25 +16,6 @@ class AdminSanPhamBienTheController
        
     }
 
-
-    public function listProduct()
-    {
-        $listProduct = $this->modelProduct->getAllProduct();
-        $title = "Danh Sách Sản Phẩm";
-        $link_navs = [
-            ["link" => 'href=' . BASE_URL_ADMIN . '', "ten" => "Trang Chủ"],
-            ["link" => '', "ten" => $title],
-        ];
-        require_once './views/product/listProduct.php';
-        if (isset($_SESSION['id_active'])) {
-            unset($_SESSION['id_active']);
-        }
-        deleteAlertSession();
-        deleteSession('error');
-        deleteSession('san_pham_bien_the');
-    }
-
-
     public function formAddSanPhamBienThe()
     {  
         $list_gia_tri_thuoc_tinh = $this->modelGiaTriThuocTinh->getAllGiaTriThuocTinh();
