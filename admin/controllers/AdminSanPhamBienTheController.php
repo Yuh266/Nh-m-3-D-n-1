@@ -2,17 +2,20 @@
 class AdminSanPhamBienTheController
 {
 
+
     public $modelSanPhamBienThe;
     public $modelGiaTriThuocTinh;
     public $modelSanPham;
+
 
     public function __construct()
     {
         $this->modelSanPhamBienThe = new AdminSanPhamBienThe();
         $this->modelGiaTriThuocTinh = new AdminGiaTriThuocTinh();
         $this->modelSanPham = new AdminProduct();
-        
+       
     }
+
 
     public function listProduct()
     {
@@ -31,12 +34,15 @@ class AdminSanPhamBienTheController
         deleteSession('san_pham_bien_the');
     }
 
+
     public function formAddSanPhamBienThe()
-    {   
+    {  
         $list_gia_tri_thuoc_tinh = $this->modelGiaTriThuocTinh->getAllGiaTriThuocTinh();
+
 
         // $id_san_pham = $_GET['id_san_pham'];
         // $san_pham = $this->modelSanPham->getDetailSanPham($id_san_pham);
+
 
         $title = "Thêm Sản Phẩm Biến Thể";
         $link_navs = [
@@ -45,14 +51,16 @@ class AdminSanPhamBienTheController
             // ["link" => 'href="' . BASE_URL_ADMIN . '/?act=form-sua-san-pham"', "ten" => "Thêm Sản Phẩm"],
             ["link" => '', "ten" => $title],
         ];
-        
+       
         require_once './views/SanPhamBienThe/addSanPhamBienThe.php';
+
 
         // Xóa session sau khi load trang
         deleteSession('error');
         deleteSession('san_pham');
         deleteAlertSession();
     }
+
 
     public function postAddSanPhamBienThe()
     {
@@ -64,13 +72,15 @@ class AdminSanPhamBienTheController
             $gia_khuyen_mai = $_POST['gia_khuyen_mai'] ?? '';
             $so_luong = $_POST['so_luong'] ?? '';
             $id_gia_tri_thuoc_tinh = $_POST['id_gia_tri_thuoc_tinh'] ?? '';
-            
+           
             // var_dump($_POST);die();
             $hinh_anh = $_FILES['hinh_anh'] ?? null;
+
 
             //Lưu hình ảnh
             $file_thumb = uploadFile($hinh_anh, './uploads/');
             // var_dump($file_thumb);die();
+
 
             // Tạo mảng trống để chứa dữ liệu
             $errors = [];
@@ -87,7 +97,9 @@ class AdminSanPhamBienTheController
                 $errors['id_gia_tri_thuoc_tinh'] = 'Không được để trống';
             }
 
+
             $_SESSION['error'] = $errors;
+
 
             if (empty($errors)) {
                 //Nếu không có lỗi thì tiến hành thêm sản phẩm
@@ -96,7 +108,7 @@ class AdminSanPhamBienTheController
                 // var_dump($id_san_pham);die();
                
                 $_SESSION['alert_success'] = 1;
-                    
+                   
                 header('Location: ' . BASE_URL_ADMIN. '?act=form-them-san-pham-bien-the&id_san_pham='.$id_san_pham);
                 exit();
             } else {
@@ -109,6 +121,7 @@ class AdminSanPhamBienTheController
                     'id_gia_tri_thuoc_tinh' => $id_gia_tri_thuoc_tinh,
                 ];
 
+
                 $_SESSION['san_pham'] = $san_pham;
                 // var_dump($san_pham);die();
                 $_SESSION['alert_error'] = 1;
@@ -117,6 +130,7 @@ class AdminSanPhamBienTheController
             }
         }
     }
+
 
     public function formEditSanPhamBienThe()
     {
@@ -131,6 +145,7 @@ class AdminSanPhamBienTheController
             $_SESSION['san_pham']= $san_pham_bien_the;
         }
 
+
         $title = "Sửa thông tin biến thể sản phẩm ";
         $link_navs = [
             ["link" => 'href="' . BASE_URL_ADMIN . '"', "ten" => "Trang Chủ"],
@@ -139,7 +154,9 @@ class AdminSanPhamBienTheController
         ];
         if ($san_pham_bien_the) {
 
+
             require_once './views/SanPhamBienThe/editSanPhamBienThe.php';
+
 
             deleteSession('error');
             deleteSession('san_pham');
@@ -152,9 +169,9 @@ class AdminSanPhamBienTheController
     public function postEditSanPhamBienThe()
     {
         // var_dump($_SERVER);die();
-        
+       
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
+           
             $id = $_POST['id'] ?? '';
             $id_san_pham = $_POST['id_san_pham'] ?? '';
             $gia = $_POST['gia'] ?? '';
@@ -162,11 +179,13 @@ class AdminSanPhamBienTheController
             $so_luong = $_POST['so_luong'] ?? '';
             $id_gia_tri_thuoc_tinh = $_POST['id_gia_tri_thuoc_tinh'] ?? '';
 
+
             $hinh_anh = $_FILES['hinh_anh'] ?? null;
             $old_file = $_POST['hinh_anh_old'] ?? '';
 
+
             //Tạo mảng trống để chứa dữ liệu
-            
+           
             $errors = [];
             if (empty($gia)) {
                 $errors['gia'] = 'Không được để trống';
@@ -181,9 +200,11 @@ class AdminSanPhamBienTheController
                 $errors['id_gia_tri_thuoc_tinh'] = 'Không được để trống';
             }
 
+
             $_SESSION['error'] = $errors;
 
-            // Logic sửa ảnh 
+
+            // Logic sửa ảnh
             if (isset($hinh_anh) && $hinh_anh['error'] == UPLOAD_ERR_OK) {
                 // Upload ảnh mới lên
                 $new_file = uploadFile($hinh_anh, './uploads/');
@@ -194,9 +215,10 @@ class AdminSanPhamBienTheController
                 $new_file = $old_file;
             }
 
+
             // Nếu không có lỗi thì tiến hành thêm sản phẩm
             if (empty($errors)) {
-                
+               
                 $this->modelSanPhamBienThe->updateBienTheSanPham($id,$id_san_pham, $gia, $gia_khuyen_mai, $so_luong,$new_file,$id_gia_tri_thuoc_tinh);
                
                 $_SESSION['alert_success'] = 1;
@@ -204,7 +226,7 @@ class AdminSanPhamBienTheController
                 header('Location: ' . BASE_URL_ADMIN . '/?act=form-sua-san-pham-bien-the&id=' . $id);
                 exit();
             } else {
-                
+               
                 $san_pham = [
                     'gia' => $gia,
                     'gia_khuyen_mai' => $gia_khuyen_mai,
@@ -219,6 +241,7 @@ class AdminSanPhamBienTheController
                 $_SESSION['alert_error'] = 1;
                 // var_dump($id);die();
 
+
                 header('Location: ' . BASE_URL_ADMIN . '/?act=form-sua-san-pham-bien-the&id=' . $id);
                 exit();
             }
@@ -228,6 +251,7 @@ class AdminSanPhamBienTheController
         }
     }
 
+
     public function deleteSanPhamBienThe(){
         if(isset($_GET['id'])){
             $id = $_GET['id'];
@@ -236,8 +260,10 @@ class AdminSanPhamBienTheController
             $san_pham_bien_the = $this->modelSanPhamBienThe->getSanPhamBienTheByID( $id );
             $id_san_pham = $san_pham_bien_the['id_san_pham'];
 
+
             deleteFile($san_pham_bien_the['hinh_anh']);
             $this->modelSanPhamBienThe->deleteBienTheSanPham( $id );
+
 
             header('Location:'.BASE_URL_ADMIN.'/?act=form-sua-san-pham&id_san_pham='.$id_san_pham) ;
         }else {
@@ -245,4 +271,8 @@ class AdminSanPhamBienTheController
         }
     }
 
+
 }
+
+
+

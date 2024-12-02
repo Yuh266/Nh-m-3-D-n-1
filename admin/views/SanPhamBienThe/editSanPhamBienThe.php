@@ -42,7 +42,7 @@
                             <p class="text-danger"><?= $_SESSION['error']['gia_khuyen_mai'] ?></p>
                           <?php } ?>
                         </div>
-                    </div>
+</div>
                     <div class="mb-3 col-md-4 "> 
                         <label for="exampleInputEmail1" class="form-label">Hình ảnh</label> 
                         <input value="<?= $_SESSION['san_pham']['hinh_anh'] ?? '' ?>" name="hinh_anh" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -80,8 +80,8 @@
                     </div>
             </div> <!--end::Body--> <!--begin::Footer-->
             <div class="card-footer"> 
-                <button type="submit" class="btn btn-primary">Sửa</button> 
-                <button type="reset" class="btn btn-primary">Nhập lại</button> 
+                <button type="submit" class="btn btn-primary">Sửa</button>
+<button type="reset" class="btn btn-primary">Nhập lại</button> 
             </div> <!--end::Footer-->
         </form> <!--end::Form-->
 
