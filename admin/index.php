@@ -49,7 +49,6 @@ match ($act) {
     // Trang chủ
     '/' => (new AdminThongKeController())->home(),
 
-
     // Route Sản phẩm
     "danh-sach-san-pham"=>(new AdminProductController())->listProduct(),
 
@@ -178,13 +177,11 @@ match ($act) {
     "xoa-danh-gia"=>(new AdminDanhGiaController())->deleteDanhGia() ,
     "danh-sach-danh-gia-chi-tiet"=>(new AdminDanhGiaController())->listDanhGiaByIDSanPham() ,
 
-
     // Đơn hàng chi tiết
     "danh-sach-don-hang"=>(new AdminDonHangController())->listDonHang(),
     "xoa-danh-sach-don-hang"=>(new AdminDonHangController())->deleteDonHangByID(),
     "chi-tiet-don-hang"=>(new AdminDonHangController())->formChiTietDonHang(),
+    "sua-chi-tiet-don-hang"=>(new AdminDonHangController())->postChiTietDonHang(),
     
-    
-
 };
 
