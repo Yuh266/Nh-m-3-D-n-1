@@ -222,6 +222,9 @@ class AdminTaiKhoanController{
             if(empty($ho_ten)){
                 $error['ho_ten'] = "Không được bỏ trống";
             }
+            if (empty($mat_khau)) { 
+                $error['mat_khau'] = 'Kkhông được để trống';
+            }
             if(empty($email)){
                 $error['email'] = "Không được bỏ trống";
             }

@@ -24,24 +24,53 @@ class AdminGioHangController{
         deleteSession('error');
         deleteSession('gio_hang');
     }
+
+    public function listGioHangChiTiet(){
+        if (!isset($_GET['id'])) {
+            header('Location:'.BASE_URL_ADMIN.'');
+        }
+        $id = $_GET['id'] ;
+
+        $listGioHang = $this->modelGioHang->getGioHangByIDTaiKhoan($id) ;
+        // var_dump($listGioHang);
+        $title = "Danh Sách Giỏ Hàng Chi Tiết";
+        
+        $link_navs = [
+            ["link"=> 'href='.BASE_URL_ADMIN.'',"ten"=> "Trang Chủ"],
+            ["link"=> '',"ten"=> $title ],
+        ];
+        
+        require_once './views/GioHang/listGioHangChiTiet.php';
+        
+        if (isset($_SESSION['id_active'])) {
+            unset($_SESSION['id_active']);
+        }
+
+        deleteAlertSession();
+        deleteSession('error');
+        deleteSession('gio_hang');
+    }
     public function deleteGioHang(){
         if($_GET['id'] || $_POST["id"]){
             $id = $_GET['id']??$_POST["id"];
+            $id_tai_khoan = $_GET['id_tai_khoan']??"";
+            // var_dump( $id_tai_khoan);
+            // die;
+            // var_dump( $id);
+            // die();
             if(is_array($id)){
                 foreach($id as $key => $value){
-                    $this->modelGioHang->getGioHangbyID($id[$key]);
+                    // $this->modelGioHang->getGioHangbyID($id[$key]);
                     $this->modelGioHang->deleteGioHang($id[$key]);
                 }
             }else{
-                $this->modelGioHang->getGioHangbyID($id);
+                // $this->modelGioHang->getGioHangbyID($id);
            
                 $this->modelGioHang->deleteGioHang($id);
                 
             }
             $_SESSION['alert_delete_success']=1;
-            header('Location:'.BASE_URL_ADMIN.'/?act=gio-hang') ;
-        }else {
-            header('Location:'.BASE_URL_ADMIN.'/?act=gio-hang') ;
+            header('Location:'.BASE_URL_ADMIN.'/?act=danh-sach-gio-hang-chi-tiet&id='.$id_tai_khoan) ;
         }
     }
 
