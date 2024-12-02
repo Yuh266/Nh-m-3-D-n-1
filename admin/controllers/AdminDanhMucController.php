@@ -8,6 +8,13 @@ class AdminDanhMucController{
     }
 
     public function listDanhMuc(){
+        if ($_SESSION['user']['chuc_vu'] == 3){
+            header('Location:'.BASE_URL_ADMIN);
+            exit();
+        }
+
+
+
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
         $title = "Danh Sách Danh Mục";
         $link_navs = [
@@ -24,6 +31,10 @@ class AdminDanhMucController{
     }
 
     public function formAddDanhMuc(){
+        if ($_SESSION['user']['chuc_vu'] == 3){
+            header('Location:'.BASE_URL_ADMIN);
+            exit();
+        }
         $title = "Thêm Danh Mục";
         $link_navs = [
             ["link"=> 'href="'.BASE_URL_ADMIN.'"',"ten"=> "Trang Chủ"],
@@ -38,6 +49,10 @@ class AdminDanhMucController{
     }
 
     public function postAddDanhMuc(){
+        if ($_SESSION['user']['chuc_vu'] == 3){
+            header('Location:'.BASE_URL_ADMIN);
+            exit();
+        }
         // Kiểm tra xem dữ liệu có phải được submit lên không
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Lấy dữ liệu
@@ -73,6 +88,10 @@ class AdminDanhMucController{
     }
 
     public function formEditDanhMuc(){
+        if ($_SESSION['user']['chuc_vu'] == 3){
+            header('Location:'.BASE_URL_ADMIN);
+            exit();
+        }
         $id = $_GET['id_danh_muc'];
         $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);
         
@@ -94,6 +113,10 @@ class AdminDanhMucController{
     }
 
     public function postEditDanhMuc(){
+        if ($_SESSION['user']['chuc_vu'] == 3){
+            header('Location:'.BASE_URL_ADMIN);
+            exit();
+        }
         // Kiểm tra xem dữ liệu có phải được submit lên không
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Lấy dữ liệu
@@ -139,6 +162,12 @@ class AdminDanhMucController{
     }
 
     public function deleteDanhMuc(){
+        // Phân quyền 
+        if ($_SESSION['user']['chuc_vu'] == 3){
+            header('Location:'.BASE_URL_ADMIN);
+            exit();
+        }
+        // end phân quyền
         // $id = $_GET['id_danh_muc'];
         // $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);
         // if($danhMuc){

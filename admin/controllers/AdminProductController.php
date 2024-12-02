@@ -438,16 +438,4 @@ class AdminProductController
             exit();
         }
     }
-
-
-    // public function top5SanPham() {
-    //     // Lấy dữ liệu top 5 sản phẩm
-    //     $top5SanPham = $this->modelProduct->top5SanPhams();
-   
-    //     // Kiểm tra dữ liệu
-    //     // var_dump($top5SanPham);die();
-   
-    //     require_once './views/ThongKe.php';
-    // }
 }
-

@@ -190,7 +190,6 @@ class AdminProduct{
         }
     }
 
-
     public function top5SanPhams() {
         try {
             // Truy vấn SQL lấy top 5 sản phẩm bán chạy nhất
@@ -206,7 +205,4 @@ class AdminProduct{
             echo "Lỗi".$e->getMessage();
         }
     }
-
-
 }
-

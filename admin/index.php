@@ -38,8 +38,9 @@ if ( !isset($_SESSION['user'])  && !in_array($act,['form-dang-nhap','dang-nhap']
 }elseif (isset($_SESSION['user']) && $_SESSION['user']['chuc_vu'] == 2 && !in_array($act,['form-dang-nhap','dang-nhap'])) {
     header('Location:'.BASE_URL_ADMIN.'/?act=form-dang-nhap');
 }
- 
+
 // var_dump($_SESSION['user']['chuc_vu']);die();
+
 
 
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
@@ -49,14 +50,12 @@ match ($act) {
     // Trang chủ
     '/' => (new AdminThongKeController())->home(),
 
-
     // Route Sản phẩm
     "danh-sach-san-pham"=>(new AdminProductController())->listProduct(),
 
 
     "form-them-san-pham"=>(new AdminProductController())->formAddSanPham(),
     "them-san-pham"=>(new AdminProductController())->postAddSanPham(),
-
 
     "form-sua-san-pham"=>(new AdminProductController())->formEditSanPham(),
     "sua-san-pham"=>(new AdminProductController())->postEditSanPham(),
@@ -72,9 +71,8 @@ match ($act) {
     "sua-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->postEditSanPhamBienThe(),
     "xoa-san-pham-bien-the"=>(new AdminSanPhamBienTheController())->deleteSanPhamBienThe(),
 
-
     'sua-album-anh-san-pham-bien-the' => (new AdminProductController())->postEditAnhSanPham(),
-    "xoa-san-pham-bien-the"=>(new AdminProductController())->deleteSanPham(),
+    // "xoa-san-pham-bien-the"=>(new AdminProductController())->deleteSanPham(),
 
 
     // Biến thể sản phẩm
@@ -143,6 +141,7 @@ match ($act) {
     "sua-slide-show"=>(new AdminSlideShowController())->postEditSlideShow(),
    
     "xoa-slide-show"=>(new AdminSlideShowController())->deleteSlideShow(),
+    
     // Địa chỉ nhận hàng
     "danh-sach-dia-chi-nhan-hang"=>(new AdminDiaChiNhanHangController())->listDiaChi(),
    
@@ -167,7 +166,7 @@ match ($act) {
     "sua-trang-thai-don-hang"=>(new AdminTrangThaiDonHangController())->editTrangThai(),
    
     "xoa-trang-thai-don-hang"=>(new AdminTrangThaiDonHangController())->deleteTrangThai(),
-   
+    
     // Bình luận
     "danh-sach-binh-luan"=>(new AdminBinhLuanController())->listBinhLuan(),
     "xoa-binh-luan"=>(new AdminBinhLuanController())->deleteBinhLuan(),
@@ -178,13 +177,11 @@ match ($act) {
     "xoa-danh-gia"=>(new AdminDanhGiaController())->deleteDanhGia() ,
     "danh-sach-danh-gia-chi-tiet"=>(new AdminDanhGiaController())->listDanhGiaByIDSanPham() ,
 
-
     // Đơn hàng chi tiết
     "danh-sach-don-hang"=>(new AdminDonHangController())->listDonHang(),
     "xoa-danh-sach-don-hang"=>(new AdminDonHangController())->deleteDonHangByID(),
     "chi-tiet-don-hang"=>(new AdminDonHangController())->formChiTietDonHang(),
+    "sua-chi-tiet-don-hang"=>(new AdminDonHangController())->postChiTietDonHang(),
     
-    
-
 };
 

@@ -39,18 +39,20 @@
                     <li class="nav-item">
                         <a href="<?= BASE_URL_ADMIN ?>" class="nav-link <?= (!isset($_GET['act'])) ? 'active' : '' ?>">
                             <i class="nav-icon bi bi-speedometer2"></i>
-                            <p>Dashboard</p>
+                            <p>Thống kê</p>
                         </a>
                     </li>
 
                     <!-- Quản trị danh mục -->
-                    <li class="nav-item">
-                        <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-danh-muc' ?>" 
-                        class="nav-link <?= (isset($_GET['act']) && in_array($_GET['act'], ['danh-sach-danh-muc', 'them-danh-muc', 'sua-danh-muc'])) ? 'active' : '' ?>">
-                            <i class="nav-icon bi bi-list-check"></i>
-                            <p>Quản trị danh mục</p>
-                        </a>
-                    </li>
+                    <?php if ($_SESSION['user']['chuc_vu'] == 1):  ?>
+                        <li class="nav-item">
+                            <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-danh-muc' ?>" 
+                            class="nav-link <?= (isset($_GET['act']) && in_array($_GET['act'], ['danh-sach-danh-muc', 'them-danh-muc', 'sua-danh-muc'])) ? 'active' : '' ?>">
+                                <i class="nav-icon bi bi-list-check"></i>
+                                <p>Quản trị danh mục</p>
+                            </a>
+                        </li>
+                    <?php endif ?>
                     <!-- Quản trị tài khoản  -->
                     <li class="nav-item">
                         <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-tai-khoan' ?>" 
@@ -131,6 +133,7 @@
                                     <p>Địa chỉ nhận hàng</p>
                                 </a>
                             </li>
+                            <?php if ($_SESSION['user']['chuc_vu'] == 1): ?>
                             <li class="nav-item">
                                 <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-trang-thai-don-hang' ?>" 
                                 class="nav-link <?= (isset($_GET['act']) && $_GET['act'] == 'danh-sach-trang-thai-don-hang') ? 'active' : '' ?>">
@@ -138,6 +141,7 @@
                                     <p>Trạng Thái Đơn Hàng</p>
                                 </a>
                             </li>
+                            <?php endif ?>
                         </ul>
                     </li>
 
