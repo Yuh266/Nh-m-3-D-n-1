@@ -154,10 +154,10 @@
                                                     <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien'] ?></td>
                                                     <td class="cr-cart-remove">
                                                     <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có đồng ý xóa hay không')">
-                                                        <button type="button" class="btn btn-danger">Xóa</button></a>
+                                                        <button type="button" class="btn btn-danger"><i class="ri-delete-bin-line"></i></button></a>
                                                     </td>
                                                 </tr>
-                                            <?php endforeach ?>
+                                        <?php endforeach ?>
 
                                             <?php foreach ($chi_tiet_gio_hangs as $key => $chi_tiet_gio_hang): ?>
                                                 <tr>

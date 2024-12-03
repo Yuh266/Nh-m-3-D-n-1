@@ -1,4 +1,4 @@
-<?
+<?php 
  class AdminGioHang{
     public $conn;
 

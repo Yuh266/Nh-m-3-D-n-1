@@ -54,11 +54,10 @@
                     <td><input name="id[]" type="checkbox" value="<?= $gioHang['id'] ?>"></td>
                     <td><?= $key + 1 ?></td>
                     <td><?= $gioHang['ten_san_pham'] ?></td>
-                    <td><?= formatCurrency($gioHang['gia_san_pham'] ) ?> VND</td>
+                    <td><?= number_format($gioHang['gia_san_pham'] ) ?> VND</td>
                     <td><?= $gioHang['tong_so_luong']?></td>
-                    <td><?= formatCurrency($gioHang['tong_so_luong'] *  $gioHang['gia_san_pham']) ?> VND</td>
+                    <td><?= number_format($gioHang['tong_so_luong'] *  $gioHang['gia_san_pham']) ?> VND</td>
                     <td>
-                    
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" 
                                 data-bs-target="#myModal" data-link="<?= BASE_URL_ADMIN . "/?act=xoa-gio-hang&id=".$gioHang['id']."&id_tai_khoan=".$_GET['id'] ?>">
                                 Xóa
@@ -111,9 +110,7 @@
     </div>
 </div>
 <!-- Hàm format tiền tệ -->
-<? function formatCurrency($number) {
-    return number_format($number, 0, ',', '.');
-}?>
+
 <?php include './views/layout/footer.php' ?>
 <!-- // Kiểm tra phát hiện thông báo đã xóa  -->
 <?php if(isset($_SESSION["alert_delete_success"]) ):?>
