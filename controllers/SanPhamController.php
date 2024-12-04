@@ -152,7 +152,7 @@ class SanPhamController
         if(isset($_SESSION['client_user'])){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $noi_dung = $_POST['noi_dung']?? '';
-                $danh_gia=$_POST['danh_gia'] ?? 0;
+                $danh_gia=$_POST['danh_gia'] ?? 5;
                 $ngay_danh_gia = date('Y-m-d H:i:s');
                 $id_tai_khoan = $_SESSION['client_user']['id'] ?? '';
                 $id_san_pham = $_POST['id_san_pham'] ?? '';

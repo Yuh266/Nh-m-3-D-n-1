@@ -125,6 +125,11 @@ class AdminTaiKhoanController{
             if (empty($mat_khau)) { 
                 $errors['mat_khau'] = 'Mật khẩu không được để trống';
             } 
+            elseif (!is_numeric($so_dien_thoai)) {
+                    $errors['so_dien_thoai'] = 'Số điện thoại phải là số';
+                } elseif (strlen($so_dien_thoai) > 11  || strlen($so_dien_thoai) < 10 ) {
+                    $errors['so_dien_thoai'] = 'Vui lòng nhập lại số điện thoại';
+                }
             $date = empty($ngay_sinh) ? NULL : $ngay_sinh;  
             $_SESSION['error'] = $errors;
             $hashed_password = password_hash($mat_khau, PASSWORD_DEFAULT);
@@ -229,7 +234,12 @@ class AdminTaiKhoanController{
                 $error['email'] = "Không được bỏ trống";
             }
             elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors['email'] = 'Email không hợp lệ';
+                $error['email'] = 'Email không hợp lệ';
+            }
+            if (!is_numeric($so_dien_thoai)) {
+                $error['so_dien_thoai'] = 'Số điện thoại phải là số';
+            } elseif (strlen($so_dien_thoai) > 11  || strlen($so_dien_thoai) < 10 ) {
+                $error['so_dien_thoai'] = 'Vui lòng nhập lại số điện thoại';
             }
             
             $date = empty($ngay_sinh) ? NULL : $ngay_sinh;  

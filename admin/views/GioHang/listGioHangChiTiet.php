@@ -31,6 +31,7 @@
                 <th>#</th>
                 <th>STT</th>
                 <th>Tên Sản Phẩm</th>
+                <th>Ảnh Sản Phẩm</th>
                 <th>Giá Sản Phẩm</th>
                 <th>Số lượng</th>
                 <th>Thành tiền</th>
@@ -54,6 +55,7 @@
                     <td><input name="id[]" type="checkbox" value="<?= $gioHang['id'] ?>"></td>
                     <td><?= $key + 1 ?></td>
                     <td><?= $gioHang['ten_san_pham'] ?></td>
+                    <td> <img src="<?=BASE_URL . $gioHang['hinh_anh']?> "  width="80px"alt=""></td>
                     <td><?= number_format($gioHang['gia_san_pham'] ) ?> VND</td>
                     <td><?= $gioHang['tong_so_luong']?></td>
                     <td><?= number_format($gioHang['tong_so_luong'] *  $gioHang['gia_san_pham']) ?> VND</td>
