@@ -63,7 +63,7 @@
                     function tongTaiKhoan($listTaiKhoan, $chucVu = null)
                     {
                       if ($chucVu !== null) {
-                        // Lọc các tài khoản có 'chuc_vu' bằng giá trị chỉ định
+                        // Lọc các tài khoản có chuc_vu bằng giá trị chỉ định
                         $filtered = array_filter($listTaiKhoan, function ($taiKhoan) use ($chucVu) {
                           return isset($taiKhoan['chuc_vu']) && $taiKhoan['chuc_vu'] == $chucVu;
                         });
@@ -77,10 +77,10 @@
 
                   <div class="card">
                     <div class="card-inner">
-                      <h3 class="font">Cảnh Báo</h3>
-                      <span class="material-icons-outlined">notification_important</span>
+                      <h3 class="font">Doanh thu 7 ngày vừa qua:</h3>
+                      <span class="material-icons-outlined"></span>
                     </div>
-                    <h1 class="font">0</h1>
+                    <h1 class="font"><?= number_format($tongDoanhThu, 0, ',', '.') . " đ" ?></h1>
                   </div>
 
                 </div>
@@ -100,7 +100,7 @@
               <!-- Biểu đồ 2 -->
               <div class="col-md-6">
                 <div class="chart-card">
-                  <canvas id="myChart2" style="width:100%;max-width:600px;"></canvas>
+                  <canvas id="myChart2" style="width:100%;max-width:700px"></canvas>
                 </div>
               </div>
 
@@ -115,6 +115,12 @@
               <div class="col-md-6">
                 <div class="chart-card">
                   <canvas id="myChart4" style="width:100%;max-width:700px"></canvas>
+                </div>
+              </div>
+              <!-- Biểu đồ 5 -->
+              <div class="col-md-6">
+                <div class="chart-card">
+                  <canvas id="myChart3" style="width:100%;max-width:700px"></canvas>
                 </div>
               </div>
             </div>
@@ -169,43 +175,42 @@
             });
           </script>
           <script>
-            let barColors2 = [];
-            const xSanPham2 = [];
-            const ySanPham2 = [];
-
-            <?php foreach ($listProduct as $key => $value) {
-              echo "xSanPham2.push('" . $value['ten_san_pham'] . "'); ";
-              echo "ySanPham2.push('" . $value['so_luong'] . "'); ";
-            } ?>
-
-            if (barColors2.length === 0) {
-              barColors2 = xSanPham2.map(() => getRandomColor());
+            const xDoanhThuThang = [];
+            const yDoanhThuThang = [];
+            <?php
+            foreach ($doanhThuThang as $key => $value) {
+              echo "xDoanhThuThang.push('" . $value['thang'] . '/' . $value['nam'] . "'); ";
+              echo "yDoanhThuThang.push(" . $value['doanh_thu'] . "); ";
             }
+            ?>
+            const barColors2 = ["red", "green", "blue", "orange", "brown", "purple"];
 
             new Chart("myChart2", {
-              type: "pie",
+              type: "bar",
               data: {
-                labels: xSanPham2,
+                labels: xDoanhThuThang,
                 datasets: [{
                   backgroundColor: barColors2,
-                  data: ySanPham2
+                  data: yDoanhThuThang
                 }]
               },
               options: {
+                legend: { display: false },
                 title: {
                   display: true,
-                  text: "Thống kê sản phẩm"
+                  text: "Doanh thu hàng tháng"
                 }
               }
             });
           </script>
+
           <script>
             const xValues = [];
             const yValues = [];
             // print_r($top5SanPham);
 
             <?php foreach ($top5SanPham as $key => $value) {
-              echo "xValues.push('" . $value['id_san_pham'] . "'); ";
+              echo "xValues.push('" . $value['ten_san_pham'] . "'); ";
               echo "yValues.push(" . $value['tong_so_luong'] . "); ";
             } ?>
 
@@ -233,7 +238,7 @@
             const xLuotXem = [];
             const yLuotXem = [];
 
-            <?php foreach ($listProduct as $key => $value) {
+            <?php foreach ($top5LuotXem as $key => $value) {
               echo "xLuotXem.push('" . $value['ten_san_pham'] . "'); ";
               echo "yLuotXem.push('" . $value['luot_xem'] . "'); ";
             } ?>
@@ -253,13 +258,40 @@
                 legend: { display: false },
                 title: {
                   display: true,
-                  text: "Thống kê lượt xem"
+                  text: "Top 5 sản phẩm có lượt xem nhiều nhất"
                 }
               }
             });
           </script>
+          <script>
+            const xDanhGia = [];
+            const yDanhGia = [];
 
+            <?php foreach ($top5DanhGia as $key => $value) {
+              echo "xDanhGia.push('" . $value['ten_san_pham'] . "'); ";
+              echo "yDanhGia.push('" . $value['diem_trung_binh'] . "'); ";
+            } ?>
 
+            const barColors3 = ["red", "green", "blue", "orange", "brown"];
+
+            new Chart("myChart3", {
+              type: "bar",
+              data: {
+                labels: xDanhGia,
+                datasets: [{
+                  backgroundColor: barColors3,
+                  data: yDanhGia
+                }]
+              },
+              options: {
+                legend: { display: false },
+                title: {
+                  display: true,
+                  text: "Top 5 sản phẩm có lượt đánh giá cao nhất"
+                }
+              }
+            });
+          </script>
         </div>
       </div>
     </div>

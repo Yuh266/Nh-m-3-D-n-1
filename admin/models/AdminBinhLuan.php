@@ -9,7 +9,16 @@
 
     public function getAllBinhLuan(){
         try{
-            $sql = 'SELECT * from binh_luans';
+            $sql = 'SELECT  binh_luans.id_san_pham ,
+                            san_phams.ten_san_pham,
+                            COUNT(*) AS so_luong ,
+                            MIN(binh_luans.ngay_dang) AS ngay_cu_nhat ,
+                            MAX(binh_luans.ngay_dang) AS ngay_moi_nhat
+                            
+                    FROM binh_luans 
+                    JOIN san_phams ON binh_luans.id_san_pham = san_phams.id
+                    GROUP BY san_phams.ten_san_pham , binh_luans.id_san_pham
+                    ';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -18,14 +27,25 @@
         }
     }
 
-    public function getBinhLuanByID($id){
+    public function getBinhLuanByIDSanPham($id){
        try{
          
-        $sql = "SELECT * FROM binh_luans WHERE id=".$id;
+        $sql = 'SELECT 	
+                            binh_luans.id,
+                            binh_luans.noi_dung,
+                            binh_luans.ngay_dang,
+                            tai_khoans.ho_ten,
+                            binh_luans.id_san_pham
+                    FROM binh_luans 
+                    JOIN san_phams ON binh_luans.id_san_pham = san_phams.id
+                    JOIN tai_khoans ON binh_luans.id_tai_khoan = tai_khoans.id
+                    WHERE binh_luans.id_san_pham = :id
+                    GROUP BY binh_luans.id_san_pham, binh_luans.noi_dung, binh_luans.ngay_dang, tai_khoans.ho_ten,binh_luans.id
+                    ';
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute();
+        $stmt->execute(['id'=>$id]);
     
-        return $stmt->fetch();
+        return $stmt->fetchAll();
        }
        catch (Exception $th) {
         echo "Lỗi". $th->getMessage();

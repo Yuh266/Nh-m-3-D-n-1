@@ -125,6 +125,7 @@ class SanPhamController
     }
 
     public function binhLuan(){
+        if(isset($_SESSION['client_user'])){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $noi_dung = $_POST['binh_luan']?? '';
             $ngay_dang = date('Y-m-d');
@@ -139,7 +140,13 @@ class SanPhamController
         }else{     
             header('Location' . BASE_URL . '/');
             exit();
-        }     
+        } 
+        
+    } 
+    else{
+        header('Location:' . BASE_URL . "?act=login");
+            exit();
+    }   
     }
     public function danhGia(){
         if(isset($_SESSION['client_user'])){

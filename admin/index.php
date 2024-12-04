@@ -169,8 +169,9 @@ match ($act) {
     
     // Bình luận
     "danh-sach-binh-luan"=>(new AdminBinhLuanController())->listBinhLuan(),
+    "danh-sach-binh-luan-chi-tiet"=>(new AdminBinhLuanController())->listBinhLuanByIDSanPham(),
     "xoa-binh-luan"=>(new AdminBinhLuanController())->deleteBinhLuan(),
-    "sua-binh-luan"=>(new AdminBinhLuanController())->updateBinhLuan(),
+    // "sua-binh-luan"=>(new AdminBinhLuanController())->updateBinhLuan(),
 
     // Đánh Giá
     "danh-sach-danh-gia"=>(new AdminDanhGiaController())->listDanhGia() ,
@@ -182,6 +183,11 @@ match ($act) {
     "xoa-danh-sach-don-hang"=>(new AdminDonHangController())->deleteDonHangByID(),
     "chi-tiet-don-hang"=>(new AdminDonHangController())->formChiTietDonHang(),
     "sua-chi-tiet-don-hang"=>(new AdminDonHangController())->postChiTietDonHang(),
+    
+    //Giỏ hàng
+    "danh-sach-gio-hang"=>(new AdminGioHangController())->listGiohang(),
+    "danh-sach-gio-hang-chi-tiet"=>(new AdminGioHangController())->listGioHangChiTiet(),
+    "xoa-gio-hang"=>(new AdminGioHangController())->deleteGioHang(),
     
 };
 

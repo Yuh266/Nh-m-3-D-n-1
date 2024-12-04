@@ -181,19 +181,23 @@ class AdminDonHang
         }
     }
 
-    public function getDonHangById($id){
+    public function getDonHangById($id)
+    {
         try {
-            $sql = "SELECT dh.id AS id_don_hang, tk.email, dh.ngay_dat, tk.ho_ten, 
-            dcnh.sdt_nguoi_nhan AS so_dien_thoai, dcnh.dia_chi_nguoi_nhan, ttdh.ten_trang_thai, 
-            ttdh.id AS id_trang_thai
-            FROM don_hangs dh
-            JOIN dia_chi_nhan_hangs dcnh ON dh.id_dia_chi_nhan_hang = dcnh.id
-            JOIN trang_thai_don_hangs ttdh ON dh.id_trang_thai = ttdh.id
-            JOIN tai_khoans tk ON dh.id_tai_khoan = tk.id
-            WHERE dh.id = :id";
+            $sql = "SELECT dh.id AS id_don_hang, dh.hinh_thuc_thanh_toan, tk.email, dh.ngay_dat, tk.ho_ten, 
+                dh.ghi_chu, dcnh.sdt_nguoi_nhan AS so_dien_thoai, dcnh.dia_chi_nguoi_nhan, ttdh.ten_trang_thai, 
+                dcnh.ten_nguoi_nhan, ttdh.id AS id_trang_thai, ctdh.id_san_pham, sp.ten_san_pham, ctdh.so_luong,
+                ctdh.thanh_tien, sp.hinh_anh, dcnh.sdt_nguoi_nhan, ctdh.thanh_tien
+                FROM don_hangs dh
+                JOIN dia_chi_nhan_hangs dcnh ON dh.id_dia_chi_nhan_hang = dcnh.id
+                JOIN trang_thai_don_hangs ttdh ON dh.id_trang_thai = ttdh.id
+                JOIN tai_khoans tk ON dh.id_tai_khoan = tk.id
+                JOIN chi_tiet_don_hangs ctdh ON dh.id = ctdh.id_don_hang
+                JOIN san_phams sp ON ctdh.id_san_pham = sp.id
+                WHERE dh.id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
-                ':id'=>$id
+                ':id' => $id
             ]);
             return $stmt->fetch();
         } catch (Exception $th) {
@@ -202,21 +206,60 @@ class AdminDonHang
     }
 
     public function updateTrangThaiDonHang($id, $id_trang_thai)
-{
-    try {
-        $sql = 'UPDATE don_hangs SET id_trang_thai = :id_trang_thai WHERE id = :id';
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([
-            ':id' => $id,
-            ':id_trang_thai' => $id_trang_thai
-        ]);
-        return true;
-    } catch (Exception $e) {
-        echo "Lỗi: " . $e->getMessage();
-        return false;
+    {
+        try {
+            $sql = 'UPDATE don_hangs SET id_trang_thai = :id_trang_thai WHERE id = :id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':id' => $id,
+                ':id_trang_thai' => $id_trang_thai
+            ]);
+            return true;
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+            return false;
+        }
     }
-}
 
+    public function doanhThuNgay()
+    {
+        try {
+            $sql = 'SELECT 
+                    DATE(ngay_dat) AS ngay,
+                    SUM(tong_tien) AS doanh_thu
+                    FROM don_hangs
+                    WHERE ngay_dat BETWEEN DATE_SUB(CURRENT_DATE, INTERVAL 7 DAY) AND CURRENT_DATE
+                    AND id_trang_thai = 4
+                    GROUP BY 
+                    DATE(ngay_dat)
+                    ORDER BY ngay ASC';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "Lỗi" . $e->getMessage();
+        }
+    }
+
+    public function doanhThuThang()
+    {
+        try {
+            $sql = 'SELECT 
+                    YEAR(ngay_dat) AS nam,
+                    MONTH(ngay_dat) AS thang,
+                    SUM(tong_tien) AS doanh_thu
+                    FROM don_hangs
+                    WHERE ngay_dat BETWEEN DATE_SUB(CURRENT_DATE, INTERVAL 6 MONTH) AND CURRENT_DATE
+                    AND id_trang_thai = 4
+                    GROUP BY YEAR(ngay_dat), MONTH(ngay_dat)
+                    ORDER BY nam DESC, thang DESC';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "Lỗi" . $e->getMessage();
+        }
+    }
 }
 
 

@@ -193,11 +193,41 @@ class AdminProduct{
     public function top5SanPhams() {
         try {
             // Truy vấn SQL lấy top 5 sản phẩm bán chạy nhất
-            $sql = 'SELECT id_san_pham, SUM(so_luong) AS tong_so_luong
-                    FROM chi_tiet_gio_hangs
-                    GROUP BY id_san_pham
-                    ORDER BY tong_so_luong DESC
-                    LIMIT 5';
+            $sql = 'SELECT sp.id, sp.ten_san_pham, SUM(ctdh.so_luong) AS tong_so_luong
+                FROM chi_tiet_don_hangs ctdh
+                JOIN san_phams sp ON ctdh.id_san_pham = sp.id
+                GROUP BY sp.id
+                ORDER BY tong_so_luong DESC
+                LIMIT 5';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "Lỗi".$e->getMessage();
+        }
+    }
+    public function top5LuotXem(){
+        try {
+            $sql = 'SELECT sp.id, sp.ten_san_pham, sp.luot_xem
+                FROM san_phams sp
+                ORDER BY sp.luot_xem DESC
+                LIMIT 5';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "Lỗi".$e->getMessage();
+        }
+    }
+
+    public function top5DanhGia(){
+        try {
+            $sql = 'SELECT sp.id, sp.ten_san_pham, AVG(dg.danh_gia) AS diem_trung_binh
+                FROM san_phams sp
+                JOIN danh_gias dg ON sp.id = dg.id_san_pham
+                GROUP BY sp.id
+                ORDER BY diem_trung_binh DESC
+                LIMIT 5';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
