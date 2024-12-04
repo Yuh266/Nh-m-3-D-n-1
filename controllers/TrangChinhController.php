@@ -31,7 +31,7 @@ class TrangChinhController
         if(isset($_SESSION['client_user']['id'])){
             $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
             $id_gio_hang = $gio_hang['id'];
-            $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
+            // $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
             // var_dump($chi_tiet_gio_hangs);die();       
         }else{
             echo"";

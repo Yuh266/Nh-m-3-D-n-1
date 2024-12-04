@@ -116,6 +116,7 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Sản phẩm</th>
+                                                <th>Tên sản phẩm</th>
                                                 <th>Giá</th>
                                                 <th class="text-center">Số lượng</th>
                                                 <th>Tổng cộng</th>
@@ -133,7 +134,11 @@
                                                         <a href="javascript:void(0)">
                                                             <img src="<?= BASE_URL. $chi_tiet_gio_hang['hinh_anh'] ?>" alt=""
                                                                 class="cr-cart-img">
-                                                            <h5><?= $chi_tiet_gio_hang['ten_san_pham']." => ".$chi_tiet_gio_hang['gia_tri'] ?></h5>
+                                                        </a>
+                                                    </td>
+                                                    <td class="cr-cart-name">
+                                                        <a href="javascript:void(0)">
+                                                            <span><?= $chi_tiet_gio_hang['ten_san_pham']. " ".$chi_tiet_gio_hang['gia_tri'] ?></span>
                                                         </a>
                                                     </td>
                                                     <td class="cr-cart-price">
@@ -153,8 +158,8 @@
                                                     </td>
                                                     <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien'] ?></td>
                                                     <td class="cr-cart-remove">
-                                                    <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có đồng ý xóa hay không')">
-                                                        <button type="button" class="btn btn-danger">Xóa</button></a>
+                                                    <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có muốn xóa sản phẩm này không?')">
+                                                        <button type="button" class="btn btn-danger"><i class="ri-delete-bin-line"></i></button></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
@@ -171,22 +176,23 @@
                                                                 class="cr-cart-img">
                                                         </a>
                                                     </td>
+                                                    <td class="cr-cart-name">
+                                                        <a href="javascript:void(0)">
+                                                            <span><?= $chi_tiet_gio_hang['ten_san_pham'] ?></span>
+                                                        </a>
+                                                    </td>
                                                     <td class="cr-cart-price">
                                                         <span
                                                             class="text-center"><?= $chi_tiet_gio_hang['gia_khuyen_mai'] ?></span>
                                                     </td>
                                                     <td class="cr-cart-qty">
                                                         <div class="cart-qty-plus-minus">
-                                                            <a href="<?= BASE_URL . "?act=tang-so-luong&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>">
-                                                                <button type="button" >+</button>
-                                                            </a>
-                                                            <input type="text" value="<?= $chi_tiet_gio_hang['so_luong'] ?>" 
-                                                                class="quantity" data-id="<?= $chi_tiet_gio_hang['id'] ?>" readonly>
-                                                            <a href="<?= BASE_URL . "?act=giam-so-luong&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>">
-                                                                <button type="button" >-</button>
-                                                            </a>
+                                                            <button type="button" class="plus" data-id="<?= $chi_tiet_gio_hang['id'] ?>">+</button>
+                                                            <input type="text" value="<?= $chi_tiet_gio_hang['so_luong'] ?>" class="quantity" data-id="<?= $chi_tiet_gio_hang['id'] ?>" readonly>
+                                                            <button type="button" class="minus" data-id="<?= $chi_tiet_gio_hang['id'] ?>">-</button>
                                                         </div>
                                                     </td>
+
                                                     <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien'] ?></td>
                                                     <td class="cr-cart-remove">
                                                     <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có muốn xóa sản phẩm này không?')">
@@ -200,7 +206,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="cr-cart-update-bottom">
-                                            <a href="javascript:void(0)" class="cr-links">Tiếp tục mua sắm</a>
+                                            <a href="<?= BASE_URL . "/" ?>" class="cr-links">Tiếp tục mua sắm</a>
                                             <button type="submit" class="cr-button">
                                                 Thanh toán
                                             </button>
@@ -395,3 +401,67 @@
     <script>showToast()</script>
     <?php unset($_SESSION["alert_delete_success"]); ?>
 <?php endif ?>
+
+<script>
+    $(document).ready(function() {
+    // Tăng số lượng
+    $('.plus').on('click', function() {
+        var productId = $(this).data('id');  // Lấy ID sản phẩm
+        var quantityInput = $(this).siblings('.quantity'); // Lấy input số lượng
+        var currentQuantity = parseInt(quantityInput.val());  // Lấy số lượng hiện tại
+        var newQuantity = currentQuantity + 1;  // Tăng số lượng lên 1
+
+        // Gửi yêu cầu AJAX để tăng số lượng
+        $.ajax({
+            url: '<?= BASE_URL ?>/?act=tang-so-luong',
+            type: 'POST',
+            data: {
+                id_gio_hang: productId
+            },
+            success: function(response) {
+                response = JSON.parse(response);
+                if (response.status === 'success') {
+                    quantityInput.val(response.new_quantity);  // Cập nhật số lượng mới
+                } else {
+                    alert('Có lỗi xảy ra khi tăng số lượng.');
+                }
+            },
+            error: function() {
+                alert('Có lỗi xảy ra khi gửi yêu cầu.');
+            }
+        });
+    });
+
+    // Giảm số lượng
+    $('.minus').on('click', function() {
+        var productId = $(this).data('id');  // Lấy ID sản phẩm
+        var quantityInput = $(this).siblings('.quantity'); // Lấy input số lượng
+        var currentQuantity = parseInt(quantityInput.val());  // Lấy số lượng hiện tại
+
+        if (currentQuantity > 1) {
+            var newQuantity = currentQuantity - 1;  // Giảm số lượng đi 1
+
+            // Gửi yêu cầu AJAX để giảm số lượng
+            $.ajax({
+                url: '<?= BASE_URL ?>/?act=giam-so-luong',
+                type: 'POST',
+                data: {
+                    id_gio_hang: productId
+                },
+                success: function(response) {
+                    response = JSON.parse(response);
+                    if (response.status === 'success') {
+                        quantityInput.val(response.new_quantity);  // Cập nhật số lượng mới
+                    } else {
+                        alert('Có lỗi xảy ra khi giảm số lượng.');
+                    }
+                },
+                error: function() {
+                    alert('Có lỗi xảy ra khi gửi yêu cầu.');
+                }
+            });
+        }
+    });
+});
+
+</script>

@@ -184,7 +184,18 @@ class SanPham
         }
     }
     
-   
+    // public function updateQuantity($id_gio_hang, $so_luong) {
+    //     // Truy vấn để cập nhật số lượng sản phẩm trong giỏ hàng
+    //     $query = "UPDATE chi_tiet_gio_hangs SET so_luong = :so_luong WHERE id_gio_hang = :id_gio_hang";
+    //     $stmt = $this->conn->prepare($query);
+    //     $stmt->execute([
+    //         ':so_luong'=>$so_luong,
+    //         ':id_gio_hang'=>$id_gio_hang
+    //     ]);    
+    //     return $stmt->fetch();
+
+    // }
+    
 
 }
 

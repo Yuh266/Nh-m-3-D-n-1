@@ -31,10 +31,9 @@
     <table class="table table-striped table-hover text-center">
         <thead>
             <th>#</th>
-            <th>STT</th>
             <th>Trạng Thái</th>
             <th>Họ và Tên</th>
-            <th>SĐT người nhận</th>
+            <th>Tổng tiền</th>
             <th>Email</th>
             <th>Ngày đặt</th>
             <th>Chức năng</th>
@@ -50,12 +49,11 @@
                     }
                     ?>>
                         <td><input name="id[]" value="<?= $donHang['id_don_hang'] ?>" type="checkbox"></td>
-                        <td><?= $key + 1 ?></td>
                         <td><?= $donHang['ten_trang_thai'] ?></td>
                         <td><?= $donHang['ho_ten'] ?></td>
-                        <td><?= $donHang['so_dien_thoai'] ?></td>
+                        <td class="text-danger"><?= number_format($donHang['tong_tien'], 0, ',', '.') . " vnđ" ?></td>
                         <td><?= $donHang['email'] ?></td>
-                        <td><?= $donHang['ngay_dat'] ?></td>
+                        <td><?= date('d/m/Y', strtotime($donHang['ngay_dat'])) ?></td>
                         <td>
                             <a href="<?= BASE_URL_ADMIN . "/?act=chi-tiet-don-hang&id=" . $donHang['id_don_hang'] ?>"><button
                                     type="button" class="btn btn-success">Chi tiết</button></a>

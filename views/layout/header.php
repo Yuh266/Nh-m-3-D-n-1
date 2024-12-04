@@ -104,11 +104,11 @@
                                 <i class="ri-heart-3-line"></i>
                                 <span>Wishlist</span>
                             </a> -->
-                            <a href="javascript:void(0)" class="cr-right-bar-item Shopping-toggle">
-                                <i class="ri-shopping-cart-line"></i>
-
-                            </a>
+                            <a href="<?= BASE_URL . "?act=gio-hang-chi-tiet&id_gio_hang=" . $gio_hang['id']?>" >
+                              <i class="ri-shopping-cart-line"></i>
+                            </a>    
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -285,7 +285,7 @@
                             <a href="wishlist.html" class="cr-right-bar-item">
                                 <i class="ri-heart-line"></i>
                             </a>
-                            <a href="javascript:void(0)" class="cr-right-bar-item Shopping-toggle">
+                            <a href="?act=gio-hang-chi-tiet&id_gio_hang=<?= $gio_hang['id'] ?>" class="cr-right-bar-item Shopping-toggle">
                                 <i class="ri-shopping-cart-line"></i>
                             </a>
                         </div>
@@ -309,66 +309,7 @@
                                     <?php endforeach ?>
                                     </ul>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)">
-                                        Sản phẩm
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="product-left-sidebar.html">product
-                                                Left
-                                                sidebar </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="product-right-sidebar.html">product
-                                                Right
-                                                sidebar </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="product-full-width.html">Product
-                                                Full
-                                                Width
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)">
-                                        Pages
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="about.html">About Us</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="contact-us.html">Contact Us</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="cart.html">Cart</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="checkout.php">Checkout</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="track-order.html">Track Order</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="wishlist.html">Wishlist</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="faq.html">Faq</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="login.php">Login</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="register.php">Register</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="policy.html">Policy</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                              
                             </ul>
                         </div>
                     </nav>

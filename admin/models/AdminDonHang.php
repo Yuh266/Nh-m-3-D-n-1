@@ -146,7 +146,7 @@ class AdminDonHang
     public function getAllDonHangVoiTrangThai()
     {
         try {
-            $sql = "SELECT dh.id AS id_don_hang, tk.email, dh.ngay_dat, tk.ho_ten, 
+            $sql = "SELECT dh.id AS id_don_hang, tk.email, dh.ngay_dat, tk.ho_ten, dh.tong_tien,
                     dcnh.sdt_nguoi_nhan AS so_dien_thoai, dcnh.dia_chi_nguoi_nhan, ttdh.ten_trang_thai, 
                     ttdh.id AS id_trang_thai
                     FROM don_hangs dh
@@ -181,13 +181,13 @@ class AdminDonHang
         }
     }
 
-    public function getDonHangById($id)
+    public function getDonHangById1($id)
     {
         try {
             $sql = "SELECT dh.id AS id_don_hang, dh.hinh_thuc_thanh_toan, tk.email, dh.ngay_dat, tk.ho_ten, 
                 dh.ghi_chu, dcnh.sdt_nguoi_nhan AS so_dien_thoai, dcnh.dia_chi_nguoi_nhan, ttdh.ten_trang_thai, 
                 dcnh.ten_nguoi_nhan, ttdh.id AS id_trang_thai, ctdh.id_san_pham, sp.ten_san_pham, ctdh.so_luong,
-                ctdh.thanh_tien, sp.hinh_anh, dcnh.sdt_nguoi_nhan, ctdh.thanh_tien
+                ctdh.thanh_tien, dcnh.sdt_nguoi_nhan, ctdh.thanh_tien
                 FROM don_hangs dh
                 JOIN dia_chi_nhan_hangs dcnh ON dh.id_dia_chi_nhan_hang = dcnh.id
                 JOIN trang_thai_don_hangs ttdh ON dh.id_trang_thai = ttdh.id
@@ -204,6 +204,25 @@ class AdminDonHang
             echo $th->getMessage();
         }
     }
+    public function getDonHangById($id){
+    try {
+        $sql = "SELECT dh.id AS id_don_hang, dh.hinh_thuc_thanh_toan, tk.email, tk.so_dien_thoai, dh.ngay_dat, 
+                tk.ho_ten, dh.ghi_chu, dcnh.sdt_nguoi_nhan, dcnh.dia_chi_nguoi_nhan, dcnh.ten_nguoi_nhan, 
+                ctdh.so_luong, ctdh.thanh_tien, sp.ten_san_pham, sp.hinh_anh, sp.mo_ta 
+                FROM don_hangs dh
+                JOIN dia_chi_nhan_hangs dcnh ON dh.id_dia_chi_nhan_hang = dcnh.id
+                JOIN tai_khoans tk ON dh.id_tai_khoan = tk.id
+                JOIN chi_tiet_don_hangs ctdh ON dh.id = ctdh.id_don_hang
+                JOIN san_phams sp ON ctdh.id_san_pham = sp.id
+                WHERE dh.id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetchAll();
+    } catch (Exception $th) {
+        echo $th->getMessage();
+    }
+}
+
 
     public function updateTrangThaiDonHang($id, $id_trang_thai)
     {

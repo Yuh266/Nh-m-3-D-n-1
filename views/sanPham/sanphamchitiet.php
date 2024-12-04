@@ -99,7 +99,7 @@
                                     <ul>
                                         <li><label>Thương hiệu <span>:</span></label>GreenGarden Co</li>
                                         <li><label>Loại cây <span>:</span></label><?= $sanphan_ct['ten_san_pham'] ?></li>
-                                        <li><label>Chế độ chăm sóc <span>:</span></label>Dễ chăm sóc</li>
+                                        <!-- <li><label>Chế độ chăm sóc <span>:</span></label>Dễ chăm sóc</li> -->
                                         <!-- <li><label>Kích thước <span>:</span></label>Cao 15 cm</li> -->
                                         <!-- <li><label>Đặc điểm <span>:</span></label>Lọc không khí, Phù hợp nội thất</li> -->
                                         <!-- <li><label>Thông tin khác <span>:</span></label>Không cần nhiều ánh sáng, Tặng kèm chậu</li> -->
@@ -132,37 +132,32 @@
                                 <?php endforeach ?>
                                 <?php endif ?>
                                 <form method="POST" action="<?= BASE_URL . "/?act=form-dia-chi-nhan-hang" ?>">
-                                    <div class="cr-add-card">
-                                    <input type="text" value="<?= $sanphan_ct['id']  ?>" hidden name="id[]"  >
-                                    <input type="text" value="<?= $id_bien_the??"" ?>" hidden name="id_bien_the[]" >
-                                        <div class="cr-qty-main">
-                                            <input name="so_luong[]" type="text" placeholder="." value="1" minlength="1" maxlength="20"
-                                                class="quantity" style="width: 80px">
-                                            <button type="button" id="add" class="plus" style="width: 40px; height: 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">+</button>
-                                            <button type="button" id="sub" class="minus" style="width: 40px; height: 20px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">-</button>
-                                        </div>
-                                        <div class="cr-add-button d-flex">
-                                        <?php 
-                                                $text ="";
-                                                if (isset($id_bien_the)) {
-                                                    $text = "&id_bien_the=".$id_bien_the ;                                            
-                                                } 
-                                            ?>
-                                            <button type="button" class="cr-button text-white me-4 cr-shopping-bag"><a href="?act=them-gio-hang&id_gio_hang=<?= $gio_hang['id'] ?>&id_san_pham=<?= $sanphan_ct['id'].$text ?>">Thêm giỏ hàng</a></button>
-                                            
-                                            <button type="submit" name="btn_submit" class="cr-button text-white cr-shopping-bag">Mua ngay</button>
+    <div class="cr-add-card">
+        <input type="text" value="<?= $sanphan_ct['id'] ?>" hidden name="id[]">
+        <input type="text" value="<?= $id_bien_the ?? "" ?>" hidden name="id_bien_the[]">
 
-                                        </div>
-                                        <!-- <div class="cr-card-icon">
-                                            <a href="javascript:void(0)" class="wishlist">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview" role="button">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </div> -->
-                                    </div>
-                                </form>
+        <div class="cr-qty-main">
+            <input id="quantity" name="so_luong[]" type="text" placeholder="." value="1" minlength="1" maxlength="20"
+                class="quantity" style="width: 80px">
+            <button type="button" id="add" class="plus" style="width: 40px; height: 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">+</button>
+            <button type="button" id="sub" class="minus" style="width: 40px; height: 20px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">-</button>
+        </div>
+
+        <div class="cr-add-button d-flex">
+            <?php 
+                $text = "";
+                if (isset($id_bien_the)) {
+                    $text = "&id_bien_the=" . $id_bien_the;                                            
+                } 
+            ?>
+            <button type="button" class="cr-button text-white me-4 cr-shopping-bag" id="addToCartButton">
+                Thêm giỏ hàng
+            </button>
+
+            <button type="submit" name="btn_submit" class="cr-button text-white cr-shopping-bag">Mua ngay</button>
+        </div>
+    </div>
+</form>
                             </div>
                         </div>
                     </div><div class="cr-paking-delivery">
@@ -378,65 +373,6 @@
             </div>
         </div>
     </section>
-    <!-- Model -->
-    <!-- <div class="modal fade quickview-modal" id="quickview" aria-hidden="true" tabindex="-1"><div class="modal-dialog modal-dialog-centered cr-modal-dialog">
-            <div class="modal-content">
-                <button type="button" class="cr-close-model btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-12 col-xs-12">
-                            <div class="zoom-image-hover modal-border-image">
-                                <img src="assets/img/product/tree-1.jpg" alt="beautiful-plant" class="product-image">
-                            </div>
-                        </div>
-                        <div class="col-md-7 col-sm-12 col-xs-12">
-                            <div class="cr-size-and-weight-contain">
-                                <h2 class="heading">Cây Sen Đá Xanh Lá</h2>
-                                <p>Cây sen đá là loại cây cảnh nhỏ gọn, mang lại không gian xanh mát và gần gũi với thiên nhiên. 
-                                Đặc biệt dễ chăm sóc, phù hợp để trang trí bàn làm việc hoặc góc học tập.</p>
-                            </div>
-                            <div class="cr-size-and-weight">
-                                <div class="cr-review-star">
-                                    <div class="cr-star">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-line"></i>
-                                    </div>
-                                    <p>( 50 đánh giá )</p>
-                                </div>
-                                <div class="cr-product-price">
-                                    <span class="new-price">120.000₫</span>
-                                    <span class="old-price">150.000₫</span>
-                                </div>
-                                <div class="cr-size-weight">
-                                    <h5><span>Kích thước</span>/<span>Trọng lượng</span> :</h5>
-                                    <div class="cr-kg">
-                                        <ul>
-                                            <li class="active-color">Nhỏ (10cm)</li>
-                                            <li>Trung bình (15cm)</li>
-                                            <li>Lớn (20cm)</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="cr-add-card">
-                                    <div class="cr-qty-main"><input type="text" placeholder="1" value="1" minlength="1" maxlength="20" class="quantity">
-                                        <button type="button" id="add_model" class="plus">+</button>
-                                        <button type="button" id="sub_model" class="minus">-</button>
-                                    </div>
-                                    <div class="cr-add-button">
-                                        <button type="button" class="cr-button cr-shopping-bag">Thêm vào giỏ hàng</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    
 </main>
 
  
@@ -477,4 +413,22 @@ ratedStars.forEach(star => {
     star.classList.add('ri-star-s-fill');  // Hiển thị sao đầy cho những sao đã đánh giá
 });
 </script>
+
+<!-- Cập nhật số lượng sản phẩm khi thêm sản phẩm vào giỏ hàng -->
+<script>
+const addToCartButton = document.getElementById('addToCartButton');
+const quantityInput = document.getElementById('quantity');
+const baseUrl = "<?= BASE_URL ?>"; // Lấy URL gốc từ PHP
+
+addToCartButton.addEventListener('click', function() {
+    const quantity = quantityInput.value; // Lấy số lượng từ input
+    const productId = "<?= $sanphan_ct['id'] ?>"; // Lấy ID sản phẩm từ PHP
+    const idBienThe = "<?= $id_bien_the ?? '' ?>"; // Lấy ID biến thể nếu có
+    const cartUrl = `${baseUrl}/?act=them-gio-hang&id_gio_hang=<?= $gio_hang['id'] ?>&id_san_pham=${productId}${idBienThe ? '&id_bien_the=' + idBienThe : ''}&so_luong=${quantity}`;
+
+    // Chuyển hướng đến URL để thêm sản phẩm vào giỏ hàng với số lượng đã chọn
+    window.location.href = cartUrl;
+});
+</script>
+
 <?php include './views/layout/footer.php' ?>
