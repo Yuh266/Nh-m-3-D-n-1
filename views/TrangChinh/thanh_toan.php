@@ -88,34 +88,30 @@
                                 <h3 class="cr-sidebar-title">Phương thức thanh toán</h3>
                             </div>
                             <div class="cr-sb-block-content">
-                                <div class="cr-checkout-pay">
-                                    <div class="cr-pay-desc">Vui lòng chọn phương thức thanh toán của bạn.</div>
-                                        <span class="cr-pay-option">
-                                            <span>
-                                                <form class="payment-options" method="POST" action="<?= BASE_URL . "?act=xu-li-thanh-toan" ?>">
-                                                    <input type="text" name="id_don_hang" hidden value="<?= $id_don_hang ?>" >
-                                                    <input class="btn btn-success m-4" type="submit"  value="Thanh toán khi nhận hàng" >
-                                                </form> 
-                                            </span>
+                                <div class=" cr-checkout-pay">
+                                    <div class=" cr-pay-desc">Vui lòng chọn phương thức thanh toán của bạn.</div>
+                                        <div class="row">
+                                        <span class="col-4 cr-pay-option">
+                                            <form class="payment-options" method="POST" action="<?= BASE_URL . "?act=xu-li-thanh-toan" ?>">
+                                                <input type="text" name="id_don_hang" hidden value="<?= $id_don_hang ?>" >
+                                                <input class="btn btn-success m-4" type="submit"  value="Thanh toán khi nhận hàng" >
+                                            </form> 
                                         </span>
-                                        <span class="cr-pay-option">
-                                            <span>
+                                        <span class="col-4 cr-pay-option">
                                                 <form class="payment-options" enctype="application/x-www-form-urlencoded" method="POST" action="<?= BASE_URL . "?act=xu-li-thanh-toan-momo" ?>">
                                                     <input type="text" name="id_don_hang" hidden value="<?= $id_don_hang ?>" >
                                                     <input type="text" name="tong_tien" value="<?= $tong_tien ?>" hidden >
                                                     <input class="btn btn-success m-4" type="submit" name="momo" value="Thanh toán momo mã QR" >
                                                 </form> 
-                                            </span>
                                         </span>
-                                        <span class="cr-pay-option">
-                                            <span>
-                                                <form class="payment-options" enctype="application/x-www-form-urlencoded" method="POST" action="<?= BASE_URL . "?act=xu-li-thanh-toan-momo-atm" ?>">
-                                                    <input type="text" name="id_don_hang" hidden value="<?= $id_don_hang ?>" >
-                                                    <input type="text" name="tong_tien" value="<?= $tong_tien ?>" hidden >
-                                                    <input class="btn btn-success m-4" type="submit" name="momo" value="Thanh toán momo ATM" >
-                                                </form> 
-                                            </span>
+                                        <span class="col-4 cr-pay-option">
+                                            <form class="payment-options" enctype="application/x-www-form-urlencoded" method="POST" action="<?= BASE_URL . "?act=xu-li-thanh-toan-momo-atm" ?>">
+                                                <input type="text" name="id_don_hang" hidden value="<?= $id_don_hang ?>" >
+                                                <input type="text" name="tong_tien" value="<?= $tong_tien ?>" hidden >
+                                                <input class="btn btn-success m-4" type="submit" name="momo" value="Thanh toán momo ATM" >
+                                            </form> 
                                         </span>
+                                        </div>
                                     
                                 </div>
                             </div>
