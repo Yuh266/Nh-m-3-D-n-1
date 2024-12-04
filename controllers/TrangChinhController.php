@@ -208,8 +208,10 @@ class TrangChinhController
         }
     }
     public function trangThanhToan(){
+        
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
         $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
+
         if(isset($_SESSION['client_user']['id'])){
             $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
             $id_gio_hang = $gio_hang['id'];
@@ -239,6 +241,7 @@ class TrangChinhController
             $_SESSION['so_luong'] = $so_luong  ;
             $_SESSION['id_don_hang'] = $id_don_hang  ;
         }
+        // Đẩy về dơn hàng khi tồn tại biến nào 
 
         if (isset($_SESSION['id']) && isset( $_SESSION['so_luong']) && isset( $_SESSION['id_don_hang'] ) ) {
             $id =  $_SESSION['id'] ;
@@ -275,11 +278,13 @@ class TrangChinhController
             deleteSession( 'id');
             deleteSession('so_luong');
         }else{
-            header(''.BASE_URL);
+            $_SESSION['alert_error'] = "Đơn hàng chưa được thanh toán";
+            header("Location:".BASE_URL."?act=don-hang");
+            exit();
         }
 
     }
-    public function thanhToan(){
+    public function luuDonHang(){
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             // var_dump($_POST);die();
             $id = $_POST['id'] ?? "";
