@@ -216,6 +216,7 @@
                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12" data-aos="fade-up" data-aos-duration="2000">
                     <div class="cr-twocolumns-product">
                         <?php foreach ($list_san_pham_hot as $key => $value): ?>
+                            <?php if ($value['trang_thai'] == 1): ?>
                             <div class="mix col-xxl-3 col-xl-3 col-6 cr-product-box mb-24">
                                 <div class="cr-product-card">
                                     <div class="cr-product-image">
@@ -223,18 +224,19 @@
                                             <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
                                                 alt="<?= $value['ten_san_pham'] ?> ">
                                         </div>
-                                        <div class="cr-side-view">
+                                        <!-- <div class="cr-side-view">
                                             <a href="javascript:void(0)" class="wishlist">
                                                 <i class="ri-heart-line"></i>
                                             </a>
-                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
+                                            <a  href="?act=san-pham-chi-tiet&id_san_pham=<?= $value['id'] ?>"
                                                 role="button">
                                                 <i class="ri-eye-line"></i>
                                             </a>
-                                        </div>
-                                        <a class="cr-shopping-bag" href="javascript:void(0)">
+                                        </div> -->
+                                        <!-- <a class="cr-shopping-bag"
+                                        id="addToCartButton">
                                             <i class="ri-shopping-bag-line"></i>
-                                        </a>
+                                        </a> -->
                                     </div>
                                     <div class="cr-product-details">
                                         <div class="cr-brand">
@@ -258,46 +260,8 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php endif; ?>
                         <?php endforeach ?>
-                        <div class="slick-slide">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/3.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Sweet snakes crunchy nut
-                                        mix 250gm
-                                        pack</a>
-                                    <p class="cr-price"><span class="new-price">$100.00</span> <span
-                                            class="old-price">$110.00</span></p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -348,6 +312,7 @@
                     <div class="row mb-minus-24">
                         <!-- Begin Thẻ sản phẩm  -->
                         <?php foreach ($list_san_pham_hot as $key => $value): ?>
+                            <?php if ($value['trang_thai'] == 1): ?>
                             <div class="mix <?= 'dm'.$value['id_danh_muc'] ?> col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
                                 <div class="cr-product-card">
                                     <div class="cr-product-image">
@@ -370,6 +335,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php endif; ?>
                         <?php endforeach ?>
                         <!-- End Thẻ sản phẩm  -->
                     </div>
@@ -440,47 +406,7 @@
         </div>
     </section>
 
-    <!-- Deal -->
-    <section class="section-deal padding-b-100">
-        <div class="bg-banner-deal">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="cr-deal-rightside">
-                            <div class="cr-deal-content" data-aos="fade-up" data-aos-duration="2000">
-                                <span><code>35%</code> OFF</span>
-                                <h4 class="cr-deal-title">Great deal on organic food.</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do maecenas accumsan
-                                    lacus
-                                    vel facilisis. </p>
-                                <div id="timer" class="cr-counter">
-                                    <div class="cr-counter-inner">
-                                        <h4>
-                                            <span id="days"></span>
-                                            Days
-                                        </h4>
-                                        <h4>
-                                            <span id="hours"></span>
-                                            Hrs
-                                        </h4>
-                                        <h4>
-                                            <span id="minutes"></span>
-                                            Min
-                                        </h4>
-                                        <h4>
-                                            <span id="seconds"></span>
-                                            Sec
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
 </main>
 <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
 <script src="<?= BASE_URL ?>assets/js/script.js"></script>

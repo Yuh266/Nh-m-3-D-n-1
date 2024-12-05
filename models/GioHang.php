@@ -113,16 +113,18 @@ class GioHang{
     }
     
     public function updateQuantity($id, $quantityChange) {
+        // Lấy số lượng hiện tại của sản phẩm trong giỏ hàng
         $sql = "SELECT so_luong FROM chi_tiet_gio_hangs WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([':id'=>$id]);
         $result = $stmt->fetch();
     
         if ($result) {
+            // Tính toán số lượng mới
             $newQuantity = $result['so_luong'] + $quantityChange;
-            // Đảm bảo số lượng không nhỏ hơn 1
-            $newQuantity = max(1, $newQuantity);
-            
+            $newQuantity = max(1, $newQuantity);  // Đảm bảo số lượng không nhỏ hơn 1
+    
+            // Cập nhật số lượng mới vào cơ sở dữ liệu
             $updateQuery = "UPDATE chi_tiet_gio_hangs SET so_luong = :so_luong WHERE id = :id";
             $updateStmt = $this->conn->prepare($updateQuery);
             $updateStmt->execute([
@@ -130,11 +132,12 @@ class GioHang{
                 ':id'=> $id
             ]);
     
-            return $newQuantity;
+            return $newQuantity;  // Trả về số lượng mới
         }
     
-        return false;
+        return false;  // Nếu không tìm thấy, trả về false
     }
+    
 }
   
 

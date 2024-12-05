@@ -109,13 +109,14 @@
                 <div class="col-12">
                     <div class="cr-cart-content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
                         <div class="row">
-                        <form action="<?= BASE_URL . "?act=form-dia-chi-nhan-hang" ?>" method="POST">
+                            <form action="<?= BASE_URL . "?act=form-dia-chi-nhan-hang" ?>" method="POST">
                                 <div class="cr-table-content">
                                     <table>
                                         <thead>
                                             <tr>
                                                 <th>#</th>
                                                 <th>Sản phẩm</th>
+                                                <th>Tên sản phẩm</th>
                                                 <th>Giá</th>
                                                 <th class="text-center">Số lượng</th>
                                                 <th>Tổng cộng</th>
@@ -123,7 +124,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($chi_tiet_gio_hang2s as $key => $chi_tiet_gio_hang): ?>
+                                            <?php foreach ($chi_tiet_gio_hang2s as $key => $chi_tiet_gio_hang): ?>
                                                 <tr>
                                                     <td>
                                                         <input type="checkbox" name="id_gio_hang[]"
@@ -131,14 +132,18 @@
                                                     </td>
                                                     <td class="cr-cart-name">
                                                         <a href="javascript:void(0)">
-                                                            <img src="<?= BASE_URL. $chi_tiet_gio_hang['hinh_anh'] ?>" alt=""
-                                                                class="cr-cart-img">
-                                                            <h5><?= $chi_tiet_gio_hang['ten_san_pham']." => ".$chi_tiet_gio_hang['gia_tri'] ?></h5>
+                                                            <img src="<?= BASE_URL . $chi_tiet_gio_hang['hinh_anh'] ?>"
+                                                                alt="" class="cr-cart-img">
+                                                        </a>
+                                                    </td>
+                                                    <td class="cr-cart-name">
+                                                        <a href="javascript:void(0)">
+                                                            <span><?= $chi_tiet_gio_hang['ten_san_pham'] . " " . $chi_tiet_gio_hang['gia_tri'] ?></span>
                                                         </a>
                                                     </td>
                                                     <td class="cr-cart-price">
                                                         <span
-                                                            class="text-center"><?= $chi_tiet_gio_hang['gia_khuyen_mai'] ?></span>
+                                                            class="text-center"><?= number_format($chi_tiet_gio_hang['gia_khuyen_mai'], 0, ',', '.') . " vnđ" ?></span>
                                                     </td>
                                                     <td class="cr-cart-qty">
                                                         <div class="cart-qty-plus-minus">
@@ -151,13 +156,18 @@
                                                                 data-id="<?= $chi_tiet_gio_hang['id'] ?>">-</button>
                                                         </div>
                                                     </td>
-                                                    <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien'] ?></td>
+                                                    <td class="cr-cart-subtotal">
+                                                        <?= number_format($chi_tiet_gio_hang['thanh_tien'], 0, ',', '.') . " vnđ" ?>
+                                                    </td>
                                                     <td class="cr-cart-remove">
-                                                    <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có đồng ý xóa hay không')">
-                                                        <button type="button" class="btn btn-danger"><i class="ri-delete-bin-line"></i></button></a>
+                                                        <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>"
+                                                            onclick="return confirm('Bạn có đồng ý xóa hay không')">
+
+                                                            <button type="button" class="btn btn-danger"><i
+                                                                    class="ri-delete-bin-line"></i></button></a>
                                                     </td>
                                                 </tr>
-                                        <?php endforeach ?>
+                                            <?php endforeach ?>
 
                                             <?php foreach ($chi_tiet_gio_hangs as $key => $chi_tiet_gio_hang): ?>
                                                 <tr>
@@ -171,26 +181,35 @@
                                                                 class="cr-cart-img">
                                                         </a>
                                                     </td>
+                                                    <td class="cr-cart-name">
+                                                        <a href="javascript:void(0)">
+                                                            <span><?= $chi_tiet_gio_hang['ten_san_pham'] ?></span>
+                                                        </a>
+                                                    </td>
                                                     <td class="cr-cart-price">
                                                         <span
-                                                            class="text-center"><?= $chi_tiet_gio_hang['gia_khuyen_mai'] ?></span>
+                                                            class="text-center"><?= number_format($chi_tiet_gio_hang['gia_khuyen_mai'], 0, ',', '.') . " vnđ" ?></span>
                                                     </td>
                                                     <td class="cr-cart-qty">
                                                         <div class="cart-qty-plus-minus">
-                                                            <a href="<?= BASE_URL . "?act=tang-so-luong&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>">
-                                                                <button type="button" >+</button>
-                                                            </a>
-                                                            <input type="text" value="<?= $chi_tiet_gio_hang['so_luong'] ?>" 
-                                                                class="quantity" data-id="<?= $chi_tiet_gio_hang['id'] ?>" readonly>
-                                                            <a href="<?= BASE_URL . "?act=giam-so-luong&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>">
-                                                                <button type="button" >-</button>
-                                                            </a>
+                                                            <button type="button" class="plus"
+                                                                data-id="<?= $chi_tiet_gio_hang['id'] ?>">+</button>
+                                                            <input type="text" value="<?= $chi_tiet_gio_hang['so_luong'] ?>"
+                                                                class="quantity" data-id="<?= $chi_tiet_gio_hang['id'] ?>"
+                                                                readonly>
+                                                            <button type="button" class="minus"
+                                                                data-id="<?= $chi_tiet_gio_hang['id'] ?>">-</button>
                                                         </div>
                                                     </td>
-                                                    <td class="cr-cart-subtotal"><?= $chi_tiet_gio_hang['thanh_tien'] ?></td>
+
+                                                    <td class="cr-cart-subtotal">
+                                                        <?= number_format($chi_tiet_gio_hang['thanh_tien'], 0, ',', '.') . " vnđ" ?>
+                                                    </td>
                                                     <td class="cr-cart-remove">
-                                                    <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>" onclick="return confirm('Bạn có muốn xóa sản phẩm này không?')">
-                                                        <button type="button" class="btn btn-danger"><i class="ri-delete-bin-line"></i></button></a>
+                                                        <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>"
+                                                            onclick="return confirm('Bạn có muốn xóa sản phẩm này không?')">
+                                                            <button type="button" class="btn btn-danger"><i
+                                                                    class="ri-delete-bin-line"></i></button></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
@@ -200,7 +219,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="cr-cart-update-bottom">
-                                            <a href="javascript:void(0)" class="cr-links">Tiếp tục mua sắm</a>
+                                            <a href="<?= BASE_URL . "/" ?>" class="cr-links">Tiếp tục mua sắm</a>
                                             <button type="submit" class="cr-button">
                                                 Thanh toán
                                             </button>
@@ -208,28 +227,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <!-- Modal Xác Nhận Xóa -->
-                            <!-- <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa?</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Bạn sẽ không thể khôi phục lại nội dung đã xóa.
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Đóng</button>
-                                            <a href="#" id="modalLink"><button type="button" class="btn btn-primary"
-                                                    onclick="showToast()">Xác nhận xóa</button></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+
                         </div>
                     </div>
                 </div>
@@ -260,6 +258,7 @@
                         <?php foreach ($list_san_pham_hot as $key => $value): ?>
                             <div class="slick-slide">
                                 <div class="cr-product-card">
+                                <?php if (isset($value['trang_thai']) && (int)$value['trang_thai'] === 1): ?>
                                     <div class="cr-product-image">
                                         <div class="cr-image-inner zoom-image-hover">
                                             <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
@@ -298,6 +297,10 @@
                                                 class="old-price"><?= number_format($value['gia_san_pham']) . "đ" ?></span>
                                         </p>
                                     </div>
+
+    <!-- Nội dung sản phẩm -->
+<?php endif; ?>
+
                                 </div>
                             </div>
                         <?php endforeach ?>
@@ -395,3 +398,67 @@
     <script>showToast()</script>
     <?php unset($_SESSION["alert_delete_success"]); ?>
 <?php endif ?>
+
+<script>
+    $(document).ready(function () {
+        // Tăng số lượng
+        $('.plus').on('click', function () {
+            var productId = $(this).data('id');  // Lấy ID sản phẩm
+            var quantityInput = $(this).siblings('.quantity'); // Lấy input số lượng
+            var currentQuantity = parseInt(quantityInput.val());  // Lấy số lượng hiện tại
+            var newQuantity = currentQuantity + 1;  // Tăng số lượng lên 1
+
+            // Gửi yêu cầu AJAX để tăng số lượng
+            $.ajax({
+                url: '<?= BASE_URL ?>/?act=tang-so-luong',
+                type: 'POST',
+                data: {
+                    id_gio_hang: productId
+                },
+                success: function (response) {
+                    response = JSON.parse(response);
+                    if (response.status === 'success') {
+                        quantityInput.val(response.new_quantity);  // Cập nhật số lượng mới
+                    } else {
+                        alert('Có lỗi xảy ra khi tăng số lượng.');
+                    }
+                },
+                error: function () {
+                    alert('Có lỗi xảy ra khi gửi yêu cầu.');
+                }
+            });
+        });
+
+        // Giảm số lượng
+        $('.minus').on('click', function () {
+            var productId = $(this).data('id');  // Lấy ID sản phẩm
+            var quantityInput = $(this).siblings('.quantity'); // Lấy input số lượng
+            var currentQuantity = parseInt(quantityInput.val());  // Lấy số lượng hiện tại
+
+            if (currentQuantity > 1) {
+                var newQuantity = currentQuantity - 1;  // Giảm số lượng đi 1
+
+                // Gửi yêu cầu AJAX để giảm số lượng
+                $.ajax({
+                    url: '<?= BASE_URL ?>/?act=giam-so-luong',
+                    type: 'POST',
+                    data: {
+                        id_gio_hang: productId
+                    },
+                    success: function (response) {
+                        response = JSON.parse(response);
+                        if (response.status === 'success') {
+                            quantityInput.val(response.new_quantity);  // Cập nhật số lượng mới
+                        } else {
+                            alert('Có lỗi xảy ra khi giảm số lượng.');
+                        }
+                    },
+                    error: function () {
+                        alert('Có lỗi xảy ra khi gửi yêu cầu.');
+                    }
+                });
+            }
+        });
+    });
+
+</script>
