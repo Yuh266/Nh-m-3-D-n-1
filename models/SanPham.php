@@ -139,7 +139,7 @@ class SanPham
                 $sql_price .= " AND gia_khuyen_mai >= ".$price_min ;
             }
             
-            $sql=" SELECT *  
+            $sql=" SELECT san_phams.id , san_phams.ten_san_pham, san_phams.gia_san_pham, san_phams.gia_khuyen_mai, san_phams.hinh_anh, san_phams.so_luong, san_phams.ngay_nhap, san_phams.mo_ta, san_phams.id_danh_muc, san_phams.trang_thai, san_phams.luot_xem ,danh_mucs.ten_danh_muc
                    FROM san_phams 
                    JOIN danh_mucs ON san_phams.id_danh_muc = danh_mucs.id
                    WHERE (ten_san_pham LIKE :keyword
