@@ -41,7 +41,8 @@
                     <td><?= $danhGia['ngay_danh_gia'] ?></td>
                     <td><?= $danhGia['ho_ten'] ?></td>
                     <td>
-                        <a class="btn btn-danger" href="<?= BASE_URL_ADMIN . "?act=xoa-danh-gia&id=".$danhGia['id']."&id_san_pham=".$_GET['id'] ?>" > Xóa </a>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal" data-link="<?= BASE_URL_ADMIN . "?act=xoa-danh-gia&id=".$danhGia['id']."&id_san_pham=".$_GET['id'] ?>">Xóa</button>
+
                     </td>
                 </tr>
             <?php endforeach; ?>

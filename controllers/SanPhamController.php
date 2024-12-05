@@ -44,6 +44,16 @@ class SanPhamController
             $danh_sach_anh = $this->modelSanPham->getListAnhSanPham($id);
             
             $chi_tiet_binh_luans = $this->modelBinhLuan->getBinhLuan( $id);
+            if(isset($_SESSION['client_user']['id'])){
+                $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
+                $id_gio_hang = $gio_hang['id'];
+                $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
+                $chi_tiet_gio_hang2s = $this->modelGioHang->getChiTietGioHang2($id_gio_hang);
+    
+                // var_dump($chi_tiet_gio_hangs);die();       
+            }else{
+                echo"";
+            }
 
             // Xử lí sản phẩm biến thể
 
@@ -108,7 +118,7 @@ class SanPhamController
     public function themGioHang(){
         // $id = $_GET['id'];
         if(isset($_GET['id_gio_hang']) && isset($_GET['id_san_pham'])){
-            $so_luong = 1;
+            $so_luong = $_GET['so_luong'];
             $id_gio_hang = $_GET['id_gio_hang'] ?? '';
             $id_san_pham = $_GET['id_san_pham'] ?? '';
             $id_bien_the = $_GET['id_bien_the'] ?? NULL ;
@@ -215,17 +225,28 @@ class SanPhamController
     }
 
     public function tangSoLuong(){
-        $id = $_GET['id_gio_hang'] ?? $_POST["id"];
-        $this->modelGioHang->updateQuantity($id, 1); // +1
-        header("Location: " . BASE_URL . "?act=gio-hang-chi-tiet");
+        $id = $_POST['id_gio_hang'] ?? null;
+        if ($id) {
+            // Tăng số lượng lên 1
+            $newQuantity = $this->modelGioHang->updateQuantity($id, 1);
+            echo json_encode(['status' => 'success', 'new_quantity' => $newQuantity]);  // Trả về JSON thông báo
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Missing id']);
+        }
         exit;
     }
     
     public function giamSoLuong(){
-        $id = $_GET['id_gio_hang'] ?? $_POST["id"];
-        $this->modelGioHang->updateQuantity($id, -1); // -1
-        header("Location: " . BASE_URL . "?act=gio-hang-chi-tiet");
+        $id = $_POST['id_gio_hang'] ?? null;
+        if ($id) {
+            // Giảm số lượng đi 1
+            $newQuantity = $this->modelGioHang->updateQuantity($id, -1);
+            echo json_encode(['status' => 'success', 'new_quantity' => $newQuantity]);  // Trả về JSON thông báo
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Missing id']);
+        }
         exit;
     }
+    
 
 }

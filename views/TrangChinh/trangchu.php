@@ -161,7 +161,7 @@
                                                 <!-- <h5>Cây</h5> -->
                                             </div>
                                             <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">Mua ngay</a>
+                                                <a href="<?= BASE_URL . '?act=tim-kiem' ?>" class="cr-button">Mua ngay</a>
                                             </div>
                                         </div>
                                         <img style=" height: 600px; "
@@ -184,7 +184,7 @@
                                                 <!-- <h5>Cây để bàn</h5> -->
                                             </div>
                                             <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">Mua ngay</a>
+                                                <a href="<?= BASE_URL . '?act=tim-kiem' ?>" class="cr-button">Mua ngay</a>
                                             </div>
                                         </div>
                                         <img style=" height: 600px; "
@@ -216,6 +216,7 @@
                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12" data-aos="fade-up" data-aos-duration="2000">
                     <div class="cr-twocolumns-product">
                         <?php foreach ($list_san_pham_hot as $key => $value): ?>
+                            <?php if ($value['trang_thai'] == 1): ?>
                             <div class="mix col-xxl-3 col-xl-3 col-6 cr-product-box mb-24">
                                 <div class="cr-product-card">
                                     <div class="cr-product-image">
@@ -223,30 +224,10 @@
                                             <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
                                                 alt="<?= $value['ten_san_pham'] ?> ">
                                         </div>
-                                        <div class="cr-side-view">
-                                            <a href="javascript:void(0)" class="wishlist">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                                role="button">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </div>
-                                        <a class="cr-shopping-bag" href="javascript:void(0)">
-                                            <i class="ri-shopping-bag-line"></i>
-                                        </a>
                                     </div>
                                     <div class="cr-product-details">
                                         <div class="cr-brand">
                                             <!-- <a href="shop-left-sidebar.html"><?= $value['ten_danh_muc'] ?></a> -->
-                                            <div class="cr-star">
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-line"></i>
-                                                <p>(4.5)</p>
-                                            </div>
                                         </div>
                                         <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $value['id'] ?>" class="title">
                                             <?= $value['ten_san_pham'] ?> </a>
@@ -258,46 +239,8 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php endif; ?>
                         <?php endforeach ?>
-                        <div class="slick-slide">
-                            <div class="cr-product-card">
-                                <div class="cr-product-image">
-                                    <div class="cr-image-inner zoom-image-hover">
-                                        <img src="assets/img/product/3.jpg" alt="product-1">
-                                    </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html">Snacks</a>
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <p>(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title">Sweet snakes crunchy nut
-                                        mix 250gm
-                                        pack</a>
-                                    <p class="cr-price"><span class="new-price">$100.00</span> <span
-                                            class="old-price">$110.00</span></p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -331,23 +274,14 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-sm-6 col-6 cr-product-box banner-480 mb-24">
-                            <div class="cr-ice-cubes">
-                                <img src="assets/img/product/product-banner.jpg" alt="product banner">
-                                <div class="cr-ice-cubes-contain">
-                                    <h4 class="title">Juicy </h4>
-                                    <h5 class="sub-title">Fruits</h5>
-                                    <span>100% Natural</span>
-                                    <a href="shop-left-sidebar.html" class="cr-button">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-8 col-12 mb-24">
                     <div class="row mb-minus-24">
                         <!-- Begin Thẻ sản phẩm  -->
                         <?php foreach ($list_san_pham_hot as $key => $value): ?>
+                            <?php if ($value['trang_thai'] == 1): ?>
                             <div class="mix <?= 'dm'.$value['id_danh_muc'] ?> col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
                                 <div class="cr-product-card">
                                     <div class="cr-product-image">
@@ -355,9 +289,7 @@
                                             <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
                                                 alt="<?= $value['ten_san_pham'] ?> ">
                                         </div>
-                                        <a class="cr-shopping-bag" href="javascript:void(0)" data-id="<?= $value['id'] ?>">
-                                            <i class="ri-shopping-bag-line"></i>
-                                        </a>
+                                       
                                     </div>
                                     <div class="cr-product-details">
                                         <a href="<?= BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=".$value['id'] ?>" class="title"> <?= $value['ten_san_pham'] ?>
@@ -370,6 +302,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php endif; ?>
                         <?php endforeach ?>
                         <!-- End Thẻ sản phẩm  -->
                     </div>
@@ -440,47 +373,7 @@
         </div>
     </section>
 
-    <!-- Deal -->
-    <section class="section-deal padding-b-100">
-        <div class="bg-banner-deal">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="cr-deal-rightside">
-                            <div class="cr-deal-content" data-aos="fade-up" data-aos-duration="2000">
-                                <span><code>35%</code> OFF</span>
-                                <h4 class="cr-deal-title">Great deal on organic food.</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do maecenas accumsan
-                                    lacus
-                                    vel facilisis. </p>
-                                <div id="timer" class="cr-counter">
-                                    <div class="cr-counter-inner">
-                                        <h4>
-                                            <span id="days"></span>
-                                            Days
-                                        </h4>
-                                        <h4>
-                                            <span id="hours"></span>
-                                            Hrs
-                                        </h4>
-                                        <h4>
-                                            <span id="minutes"></span>
-                                            Min
-                                        </h4>
-                                        <h4>
-                                            <span id="seconds"></span>
-                                            Sec
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
 </main>
 <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
 <script src="<?= BASE_URL ?>assets/js/script.js"></script>
