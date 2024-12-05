@@ -46,7 +46,7 @@
                         $tongTien += $sanPham['thanh_tien']; // Cộng dồn giá trị thanh_tien
                     ?>
                         <li class="list-group-item mb-1">
-                            <img style="width: 100px;" src="<?= BASE_URL_ADMIN . $sanPham['hinh_anh'] ?>" alt="<?= $sanPham['ten_san_pham'] ?>">
+                            <img style="width: 100px;" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="<?= $sanPham['ten_san_pham'] ?>">
                             <strong>Tên sản phẩm:</strong> <?= $sanPham['ten_san_pham'] ?>
                         </li>
                         <li class="list-group-item mb-1"><strong>Mô tả:</strong> <?= $sanPham['mo_ta'] ?></li>

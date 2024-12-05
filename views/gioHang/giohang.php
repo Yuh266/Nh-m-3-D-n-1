@@ -258,6 +258,7 @@
                         <?php foreach ($list_san_pham_hot as $key => $value): ?>
                             <div class="slick-slide">
                                 <div class="cr-product-card">
+                                <?php if (isset($value['trang_thai']) && (int)$value['trang_thai'] === 1): ?>
                                     <div class="cr-product-image">
                                         <div class="cr-image-inner zoom-image-hover">
                                             <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
@@ -296,6 +297,10 @@
                                                 class="old-price"><?= number_format($value['gia_san_pham']) . "đ" ?></span>
                                         </p>
                                     </div>
+
+    <!-- Nội dung sản phẩm -->
+<?php endif; ?>
+
                                 </div>
                             </div>
                         <?php endforeach ?>
