@@ -41,7 +41,14 @@ class TrangChinhController
     }
     public function Login(){
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
-
+        if(isset($_SESSION['client_user']['id'])){
+            $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
+            $id_gio_hang = $gio_hang['id'];
+            // $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
+            // var_dump($chi_tiet_gio_hangs);die();       
+        }else{
+            echo"";
+        }
         require './views/TrangChinh/login.php' ;
     }
 
@@ -49,7 +56,14 @@ class TrangChinhController
     public function chiTietSanPham(){
         $id = $_GET['id_san_pham'];
         $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
-
+        if(isset($_SESSION['client_user']['id'])){
+            $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
+            $id_gio_hang = $gio_hang['id'];
+            // $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
+            // var_dump($chi_tiet_gio_hangs);die();       
+        }else{
+            echo"";
+        }
         if(isset($_GET['id_san_pham'])){
             $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
 
@@ -74,6 +88,14 @@ class TrangChinhController
     public function timKiem(){
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
         // var_dump($_GET['id']);die();
+        if(isset($_SESSION['client_user']['id'])){
+            $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
+            $id_gio_hang = $gio_hang['id'];
+            // $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
+            // var_dump($chi_tiet_gio_hangs);die();       
+        }else{
+            echo"";
+        }
         $keyword = $_GET['keyword']??"";
         $maxPrice = $_GET['maxPrice']??"";
         $minPrice = $_GET['minPrice']??"";
@@ -106,6 +128,15 @@ class TrangChinhController
     }
 
     public function listDonHang(){
+        if(isset($_SESSION['client_user']['id'])){
+            $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
+            $id_gio_hang = $gio_hang['id'];
+            // $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
+            // var_dump($chi_tiet_gio_hangs);die();       
+        }else{
+            echo"";
+        }
+
         $list_san_pham = $this->modelSanPham->getAllSanPham();
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
         $list_don_hang = $this->modelDonHang->getDonHangByID($_SESSION['client_user']['id']);
@@ -133,6 +164,8 @@ class TrangChinhController
     }
 
     public function trangDiaChiNhanHang(){
+        
+
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
         $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
         if(isset($_SESSION['client_user']['id'])){
