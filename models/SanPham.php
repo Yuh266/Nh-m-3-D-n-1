@@ -133,10 +133,10 @@ class SanPham
             
             $sql_price = "";
             if (!empty($price_max)) {
-                $sql_price .= " AND gia_khuyen_mai < ".$price_max." " ;
+                $sql_price .= " AND gia_khuyen_mai <= ".$price_max." " ;
             }
             if (!empty($price_min)) {
-                $sql_price .= " AND gia_khuyen_mai > ".$price_min ;
+                $sql_price .= " AND gia_khuyen_mai >= ".$price_min ;
             }
             
             $sql=" SELECT *  
