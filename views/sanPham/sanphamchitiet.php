@@ -297,7 +297,32 @@
                                                     ?>
                                                 </div>
                                             </div>
+<<<<<<< HEAD
                                             <p><?= $value['noi_dung'] ?></p>
+=======
+                                            <?php endforeach; ?>
+                                            <h4 class="heading">Viết đánh giá</h4>
+                                           
+                                            <form method="POST" enctype="multipart/form-data" action="<?= BASE_URL . "?act=them-danh-gia" ?>">
+                                           
+                                                <div class="cr-ratting-input form-submit">
+                                                    <input type="hidden" name="id_san_pham" value="<?=$sanphan_ct['id'] ?>">
+                                                    <div class="cr-ratting-star">
+                                                        <span>Đánh giá của bạn :</span><div class="cr-t-review-rating-2" >
+                                                        <i class="ri-star-s-line" data-value="1"></i>
+                                                        <i class="ri-star-s-line" data-value="2"></i>
+                                                        <i class="ri-star-s-line" data-value="3"></i>
+                                                        <i class="ri-star-s-line" data-value="4"></i>
+                                                        <i class="ri-star-s-line" data-value="5"></i>
+                                                        </div>
+                                                        <input type="hidden" name="danh_gia" id="rating_value" value="" >
+                                                    </div>
+                                                    <textarea name="noi_dung" placeholder="Nhập đánh giá của bạn"></textarea>
+                                                    <button class="cr-button" type="submit" value="Submit">Gửi đánh giá</button>
+                                                </div>
+                                            </form>
+                                         
+>>>>>>> 6d544dbfc62ee5206ebefb206ac84c2d541c6c8f
                                         </div>
                                     <?php endforeach; ?>
                                     <h4 class="heading">Viết đánh giá</h4>
@@ -414,14 +439,37 @@
     const stars = document.querySelectorAll('.cr-t-review-rating-2 i');
     const ratingInput = document.getElementById('rating_value');
 
+<<<<<<< HEAD
     // Lặp qua từng sao và thêm sự kiện click
     stars.forEach(star => {
         star.addEventListener('click', function () {
             // Kiểm tra xem sao đã được đánh giá chưa
             if (star.classList.contains('rated')) return;  // Nếu sao đã đánh giá, không thay đổi gì
+=======
+// Mặc định hiển thị 5 sao đầy
+const defaultRating = 5;
+stars.forEach(star => {
+    if (parseInt(star.getAttribute('data-value')) <= defaultRating) {
+        star.classList.remove('ri-star-s-line');
+        star.classList.add('ri-star-s-fill');  // Sao đầy
+    } else {
+        star.classList.remove('ri-star-s-fill');
+        star.classList.add('ri-star-s-line');  // Sao rỗng
+    }
+});
+// Gán giá trị mặc định cho input
+ratingInput.value = defaultRating;
+
+// Lặp qua từng sao và thêm sự kiện click
+stars.forEach(star => {
+    star.addEventListener('click', function () {
+        // Kiểm tra xem sao đã được đánh giá chưa
+    
+>>>>>>> 6d544dbfc62ee5206ebefb206ac84c2d541c6c8f
 
             const rating = parseInt(this.getAttribute('data-value')); // Lấy giá trị sao người dùng chọn
 
+<<<<<<< HEAD
             // Cập nhật giao diện sao
             stars.forEach(star => {
                 if (parseInt(star.getAttribute('data-value')) <= rating) {
@@ -435,15 +483,35 @@
 
             // Lưu giá trị vào trường ẩn để gửi khi submit form
             ratingInput.value = rating;
+=======
+        // Cập nhật giao diện sao
+        stars.forEach(star => {
+            if (parseInt(star.getAttribute('data-value')) <= rating) {
+                star.classList.remove('ri-star-s-line');
+                star.classList.add('ri-star-s-fill'); // Sao đầy
+            } else {
+                star.classList.remove('ri-star-s-fill');
+                star.classList.add('ri-star-s-line'); // Sao rỗng
+            }
+>>>>>>> 6d544dbfc62ee5206ebefb206ac84c2d541c6c8f
         });
     });
 
+<<<<<<< HEAD
     // Đánh dấu sao đã đánh giá khi trang được tải
     const ratedStars = document.querySelectorAll('.cr-t-review-rating-2 i.rated');
     ratedStars.forEach(star => {
         star.classList.remove('ri-star-s-line');
         star.classList.add('ri-star-s-fill');  // Hiển thị sao đầy cho những sao đã đánh giá
     });
+=======
+// Đánh dấu sao đã đánh giá khi trang được tải
+const ratedStars = document.querySelectorAll('.cr-t-review-rating-2 i.rated');
+ratedStars.forEach(star => {
+    star.classList.remove('ri-star-s-line');
+    star.classList.add('ri-star-s-fill'); // Hiển thị sao đầy cho những sao đã đánh giá
+});
+>>>>>>> 6d544dbfc62ee5206ebefb206ac84c2d541c6c8f
 </script>
 
 <!-- Cập nhật số lượng sản phẩm khi thêm sản phẩm vào giỏ hàng -->

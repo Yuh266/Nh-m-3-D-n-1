@@ -30,6 +30,7 @@
                     chi_tiet_gio_hangs.id_san_pham, 
                     san_phams.ten_san_pham,
                     san_phams.gia_san_pham,
+                    san_phams.hinh_anh,
                     SUM(chi_tiet_gio_hangs.so_luong) AS tong_so_luong
                 FROM 
                     gio_hangs
@@ -40,14 +41,14 @@
                 WHERE 
                     gio_hangs.id_tai_khoan = :id
                 GROUP BY 
-                    chi_tiet_gio_hangs.id_san_pham, chi_tiet_gio_hangs.id, san_phams.ten_san_pham, san_phams.gia_san_pham';
+                    chi_tiet_gio_hangs.id_san_pham, chi_tiet_gio_hangs.id, san_phams.ten_san_pham, san_phams.gia_san_pham,san_phams.hinh_anh';
             
             $stmt = $this->conn->prepare($sql);
             $stmt->execute(['id' => $id]);
     
             return $stmt->fetchAll();
         } catch (Exception $e) {
-            echo "Lỗi: " . $e->getMessage();
+            echo "Lỗi:chi tiet " . $e->getMessage();
         }
     }
 
