@@ -21,6 +21,24 @@ class DanhGia{
         return false;
     }
 }
+public function checkTrangThaiDonHang($id_san_pham, $id_tai_khoan) {
+    $sql = "SELECT dh.id AS id_don_hang
+            FROM chi_tiet_don_hangs ctdh
+            JOIN don_hangs dh ON ctdh.id_don_hang = dh.id
+            WHERE ctdh.id_san_pham = :id_san_pham
+              AND dh.id_tai_khoan = :id_tai_khoan
+              AND dh.id_trang_thai = 4";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([
+        ':id_san_pham' => $id_san_pham,
+        ':id_tai_khoan'=>$id_tai_khoan,
+    ]);
+
+    return $stmt->fetch(); 
+}
+
+
     public function getReviewSanPham($id_san_pham){
         try{
             $sql = 'SELECT * FROM danh_gias 

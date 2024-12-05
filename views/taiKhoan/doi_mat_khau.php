@@ -151,9 +151,7 @@
                             <div class="login-buttons">
                                 <button type="submit" class="cr-button">Đổi</button>
                                 
-                                <a href="#" class="link">
-                                    Quên mật khẩu
-                                </a>
+                                
                             </div>
                         </form>
                     </div>
