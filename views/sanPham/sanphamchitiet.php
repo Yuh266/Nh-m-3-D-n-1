@@ -291,7 +291,7 @@
                                                         <i class="ri-star-s-line" data-value="4"></i>
                                                         <i class="ri-star-s-line" data-value="5"></i>
                                                         </div>
-                                                        <input type="hidden" name="danh_gia" id="rating_value" value="">
+                                                        <input type="hidden" name="danh_gia" id="rating_value" value="" >
                                                     </div>
                                                     <textarea name="noi_dung" placeholder="Nhập đánh giá của bạn"></textarea>
                                                     <button class="cr-button" type="submit" value="Submit">Gửi đánh giá</button>
@@ -446,11 +446,25 @@
 const stars = document.querySelectorAll('.cr-t-review-rating-2 i');
 const ratingInput = document.getElementById('rating_value');
 
+// Mặc định hiển thị 5 sao đầy
+const defaultRating = 5;
+stars.forEach(star => {
+    if (parseInt(star.getAttribute('data-value')) <= defaultRating) {
+        star.classList.remove('ri-star-s-line');
+        star.classList.add('ri-star-s-fill');  // Sao đầy
+    } else {
+        star.classList.remove('ri-star-s-fill');
+        star.classList.add('ri-star-s-line');  // Sao rỗng
+    }
+});
+// Gán giá trị mặc định cho input
+ratingInput.value = defaultRating;
+
 // Lặp qua từng sao và thêm sự kiện click
 stars.forEach(star => {
-    star.addEventListener('click', function() {
+    star.addEventListener('click', function () {
         // Kiểm tra xem sao đã được đánh giá chưa
-        if (star.classList.contains('rated')) return;  // Nếu sao đã đánh giá, không thay đổi gì
+    
 
         const rating = parseInt(this.getAttribute('data-value')); // Lấy giá trị sao người dùng chọn
 
@@ -458,10 +472,10 @@ stars.forEach(star => {
         stars.forEach(star => {
             if (parseInt(star.getAttribute('data-value')) <= rating) {
                 star.classList.remove('ri-star-s-line');
-                star.classList.add('ri-star-s-fill');  // Sao đầy
+                star.classList.add('ri-star-s-fill'); // Sao đầy
             } else {
                 star.classList.remove('ri-star-s-fill');
-                star.classList.add('ri-star-s-line');  // Sao rỗng
+                star.classList.add('ri-star-s-line'); // Sao rỗng
             }
         });
 
@@ -474,7 +488,7 @@ stars.forEach(star => {
 const ratedStars = document.querySelectorAll('.cr-t-review-rating-2 i.rated');
 ratedStars.forEach(star => {
     star.classList.remove('ri-star-s-line');
-    star.classList.add('ri-star-s-fill');  // Hiển thị sao đầy cho những sao đã đánh giá
+    star.classList.add('ri-star-s-fill'); // Hiển thị sao đầy cho những sao đã đánh giá
 });
 </script>
 <?php include './views/layout/footer.php' ?>
