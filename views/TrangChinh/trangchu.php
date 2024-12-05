@@ -161,7 +161,7 @@
                                                 <!-- <h5>Cây</h5> -->
                                             </div>
                                             <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">Mua ngay</a>
+                                                <a href="<?= BASE_URL . '?act=tim-kiem' ?>" class="cr-button">Mua ngay</a>
                                             </div>
                                         </div>
                                         <img style=" height: 600px; "
@@ -184,7 +184,7 @@
                                                 <!-- <h5>Cây để bàn</h5> -->
                                             </div>
                                             <div class="categories-button">
-                                                <a href="shop-left-sidebar.html" class="cr-button">Mua ngay</a>
+                                                <a href="<?= BASE_URL . '?act=tim-kiem' ?>" class="cr-button">Mua ngay</a>
                                             </div>
                                         </div>
                                         <img style=" height: 600px; "
@@ -224,31 +224,10 @@
                                             <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
                                                 alt="<?= $value['ten_san_pham'] ?> ">
                                         </div>
-                                        <!-- <div class="cr-side-view">
-                                            <a href="javascript:void(0)" class="wishlist">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                            <a  href="?act=san-pham-chi-tiet&id_san_pham=<?= $value['id'] ?>"
-                                                role="button">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </div> -->
-                                        <!-- <a class="cr-shopping-bag"
-                                        id="addToCartButton">
-                                            <i class="ri-shopping-bag-line"></i>
-                                        </a> -->
                                     </div>
                                     <div class="cr-product-details">
                                         <div class="cr-brand">
                                             <!-- <a href="shop-left-sidebar.html"><?= $value['ten_danh_muc'] ?></a> -->
-                                            <div class="cr-star">
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-line"></i>
-                                                <p>(4.5)</p>
-                                            </div>
                                         </div>
                                         <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $value['id'] ?>" class="title">
                                             <?= $value['ten_san_pham'] ?> </a>
@@ -295,17 +274,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-sm-6 col-6 cr-product-box banner-480 mb-24">
-                            <div class="cr-ice-cubes">
-                                <img src="assets/img/product/product-banner.jpg" alt="product banner">
-                                <div class="cr-ice-cubes-contain">
-                                    <h4 class="title">Juicy </h4>
-                                    <h5 class="sub-title">Fruits</h5>
-                                    <span>100% Natural</span>
-                                    <a href="shop-left-sidebar.html" class="cr-button">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-8 col-12 mb-24">
@@ -320,9 +289,7 @@
                                             <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
                                                 alt="<?= $value['ten_san_pham'] ?> ">
                                         </div>
-                                        <a class="cr-shopping-bag" href="javascript:void(0)" data-id="<?= $value['id'] ?>">
-                                            <i class="ri-shopping-bag-line"></i>
-                                        </a>
+                                       
                                     </div>
                                     <div class="cr-product-details">
                                         <a href="<?= BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=".$value['id'] ?>" class="title"> <?= $value['ten_san_pham'] ?>

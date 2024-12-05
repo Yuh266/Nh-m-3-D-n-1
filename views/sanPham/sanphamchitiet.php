@@ -173,7 +173,7 @@
                                             </button>
 
                                             <button type="submit" name="btn_submit"
-                                                class="cr-button text-white cr-shopping-bag">Mua ngay</button>
+                                                class="cr-button text-white">Mua ngay</button>
                                         </div>
                                     </div>
                                 </form>

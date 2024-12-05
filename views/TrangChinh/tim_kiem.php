@@ -172,30 +172,11 @@
                                     <div class="cr-image-inner zoom-image-hover">
                                         <img src="<?= BASE_URL . $value['hinh_anh'] ?>" alt="<?= $value['ten_san_pham'] ?> ">
                                     </div>
-                                    <div class="cr-side-view">
-                                        <a href="javascript:void(0)" class="wishlist">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                        <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                            role="button">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line"></i>
-                                    </a>
+                                   
                                 </div>
                                 <div class="cr-product-details">
                                     <div class="cr-brand">
-                                        <!-- <a href="shop-left-sidebar.html"><?= $value['ten_danh_muc']?></a> -->
-                                        <div class="cr-star">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-line"></i>
-                                            <p>(4.5)</p>
-                                        </div>
+                                        
                                     </div>
                                     <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $value['id']?>" class="title"> <?= $value['ten_san_pham'] ?> </a>
                                     <p class="cr-price"><span class="new-price"><?= number_format($value['gia_khuyen_mai']) . "đ" ?></span> <span class="old-price"><?= number_format($value['gia_san_pham']) . "đ" ?></span></p>
@@ -209,21 +190,7 @@
                             <p>Không có sản phẩm nào như tìm kiếm.</p>
                         </div>
                     <?php endif ?>
-                    <nav aria-label="..." class="cr-pagination">
-                        <ul class="pagination">
-                            <li class="page-item disabled">
-                                <span class="page-link">Trước</span>
-                            </li>
-                            <li class="page-item active" aria-current="page">
-                                <span class="page-link">1</span>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Sau</a>
-                            </li>
-                        </ul>
-                    </nav>
+                    
                 </div>
             </div>
         </div>
