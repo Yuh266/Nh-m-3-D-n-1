@@ -412,23 +412,32 @@
 <script>
 const stars = document.querySelectorAll('.cr-t-review-rating-2 i');
 const ratingInput = document.getElementById('rating_value');
-
+// Mặc định hiển thị 5 sao đầy
+const defaultRating = 5;
+stars.forEach(star => {
+    if (parseInt(star.getAttribute('data-value')) <= defaultRating) {
+        star.classList.remove('ri-star-s-line');
+        star.classList.add('ri-star-s-fill');  // Sao đầy
+    } else {
+        star.classList.remove('ri-star-s-fill');
+        star.classList.add('ri-star-s-line');  // Sao rỗng
+    }
+});
+// Gán giá trị mặc định cho input
+ratingInput.value = defaultRating;
 // Lặp qua từng sao và thêm sự kiện click
 stars.forEach(star => {
-    star.addEventListener('click', function() {
+    star.addEventListener('click', function () {
         // Kiểm tra xem sao đã được đánh giá chưa
-        if (star.classList.contains('rated')) return;  // Nếu sao đã đánh giá, không thay đổi gì
-
         const rating = parseInt(this.getAttribute('data-value')); // Lấy giá trị sao người dùng chọn
-
         // Cập nhật giao diện sao
         stars.forEach(star => {
             if (parseInt(star.getAttribute('data-value')) <= rating) {
                 star.classList.remove('ri-star-s-line');
-                star.classList.add('ri-star-s-fill');  // Sao đầy
+                star.classList.add('ri-star-s-fill'); // Sao đầy
             } else {
                 star.classList.remove('ri-star-s-fill');
-                star.classList.add('ri-star-s-line');  // Sao rỗng
+                star.classList.add('ri-star-s-line'); // Sao rỗng
             }
         });
 
@@ -441,9 +450,10 @@ stars.forEach(star => {
 const ratedStars = document.querySelectorAll('.cr-t-review-rating-2 i.rated');
 ratedStars.forEach(star => {
     star.classList.remove('ri-star-s-line');
-    star.classList.add('ri-star-s-fill');  // Hiển thị sao đầy cho những sao đã đánh giá
+    star.classList.add('ri-star-s-fill'); // Hiển thị sao đầy cho những sao đã đánh giá
 });
 </script>
+<!-- end đánh giá -->
 
 <!-- Cập nhật số lượng sản phẩm khi thêm sản phẩm vào giỏ hàng -->
 <script>

@@ -122,6 +122,15 @@ class AdminTaiKhoanController{
             if (empty($email)) {
                 $errors['email'] = 'Email không được để trống';
             }
+            elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = 'Email không hợp lệ';
+            }
+            $checkEmail= $this->modelTaiKhoan->checkEmail($email);
+            // var_dump($checkEmail);
+            // die();
+            if($checkEmail){
+                $errors['email'] = 'Email đã tồn tại ';
+            }
             if (empty($mat_khau)) { 
                 $errors['mat_khau'] = 'Mật khẩu không được để trống';
             } 
@@ -233,8 +242,14 @@ class AdminTaiKhoanController{
             if(empty($email)){
                 $error['email'] = "Không được bỏ trống";
             }
-            elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error['email'] = 'Email không hợp lệ';
+            }
+            $checkEmail= $this->modelTaiKhoan->checkEmailById($email,$id);
+            // var_dump($checkEmail);
+            // die();
+            if($checkEmail){
+                $error['email'] = 'Email đã tồn tại ';
             }
             if (!is_numeric($so_dien_thoai)) {
                 $error['so_dien_thoai'] = 'Số điện thoại phải là số';

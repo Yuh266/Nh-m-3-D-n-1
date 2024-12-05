@@ -157,7 +157,7 @@
                                     <input type="checkbox" id="ghi_nho" name="ghi_nho" <?= isset($_COOKIE['email']) ? 'checked' : '' ?>>
                                     <label for="ghi_nho">Ghi nhớ tôi</label>
                                 </span>
-                                <a class="link" href="forgot.html">Quên mật khẩu?</a>
+                             
                             </div><br>
                             <div class="login-buttons">
                                 <button type="submit" class="cr-button">Đăng nhập</button>

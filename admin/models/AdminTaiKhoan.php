@@ -80,6 +80,42 @@ class AdminTaiKhoan{
         }
     }
 
+    // Check email có tồn tại k
+    function checkEmailById($email,$id) {
+        try {
+            
+            $sql = 'SELECT COUNT(*) AS count FROM tai_khoans WHERE email = :email AND id != :id';
+            $stmt =$this->conn->prepare($sql);
+            $stmt->execute([
+                ':email'=>$email,
+                ':id'=>$id,
+            ]);
+            $result = $stmt->fetch();
+            return $result['count'] > 0; 
+        } catch (PDOException $th) {
+            echo  $th->getMessage();
+            return false;
+        }
+    }
+    function checkEmail($email) {
+        try {
+            
+            $sql = 'SELECT COUNT(*) AS count FROM tai_khoans WHERE email = :email ';
+            $stmt =$this->conn->prepare($sql);
+            $stmt->execute([
+                ':email'=>$email
+               
+            ]);
+            $result = $stmt->fetch();
+            return $result['count'] > 0; 
+        } catch (PDOException $th) {
+            echo  $th->getMessage();
+            return false;
+        }
+    }
+    
+    
+
    
 }
 
