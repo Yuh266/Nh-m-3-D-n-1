@@ -228,13 +228,22 @@
                                     <div class="cr-product-details">
                                         <div class="cr-brand">
                                             <!-- <a href="shop-left-sidebar.html"><?= $value['ten_danh_muc'] ?></a> -->
+                                            <!-- <div class="cr-star">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-line"></i>
+                                                <p>(4.5)</p>
+                                            </div> -->
+
                                         </div>
                                         <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $value['id'] ?>" class="title">
                                             <?= $value['ten_san_pham'] ?> </a>
                                         <p class="cr-price"><span
-                                                class="new-price"><?= number_format($value['gia_khuyen_mai']) . "đ" ?></span>
+                                                class="new-price"><?= number_format($value['gia_khuyen_mai'], 0, ',', '.') . " vnđ" ?></span>
                                             <span
-                                                class="old-price"><?= number_format($value['gia_san_pham']) . "đ" ?></span>
+                                                class="old-price"><?= number_format($value['gia_san_pham'], 0, ',', '.') . " vnđ" ?></span>
                                         </p>
                                     </div>
                                 </div>
@@ -295,9 +304,9 @@
                                         <a href="<?= BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=".$value['id'] ?>" class="title"> <?= $value['ten_san_pham'] ?>
                                         </a>
                                         <p class="cr-price"><span
-                                                class="new-price"><?= number_format($value['gia_khuyen_mai']) . "đ" ?></span>
+                                                class="new-price"><?= number_format($value['gia_khuyen_mai'], 0, ',', '.') . " vnđ"?></span>
                                             <span
-                                                class="old-price"><?= number_format($value['gia_san_pham']) . "đ" ?></span>
+                                                class="old-price"><?= number_format($value['gia_san_pham'], 0, ',', '.') . " vnđ" ?></span>
                                         </p>
                                     </div>
                                 </div>

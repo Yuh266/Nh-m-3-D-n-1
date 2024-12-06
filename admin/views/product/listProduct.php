@@ -62,7 +62,7 @@
                         <td><?= $product['ten_san_pham'] ?></td>
                         <td><img src="<?= BASE_URL . $product['hinh_anh'] ?>" style="width: 100px" alt=""
                         onerror="this.onerror=null; this.src='' "></td>
-                        <td><?= number_format($product['gia_san_pham'])." vnđ"  ?></td>
+                        <td><?= number_format($product['gia_khuyen_mai'])." vnđ"  ?></td>
                         <td><?= $product['so_luong'] ?></td>
                         <td><?= $product['ten_danh_muc'] ?></td>
                         <td><?= $product['trang_thai'] == 1 ? 'Còn Bán' : 'Dừng Bán' ?></td>

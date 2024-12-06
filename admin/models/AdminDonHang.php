@@ -152,7 +152,8 @@ class AdminDonHang
                     FROM don_hangs dh
                     JOIN dia_chi_nhan_hangs dcnh ON dh.id_dia_chi_nhan_hang = dcnh.id
                     JOIN trang_thai_don_hangs ttdh ON dh.id_trang_thai = ttdh.id
-                    JOIN tai_khoans tk ON dh.id_tai_khoan = tk.id";
+                    JOIN tai_khoans tk ON dh.id_tai_khoan = tk.id
+                    ORDER BY dh.ngay_dat DESC";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll();

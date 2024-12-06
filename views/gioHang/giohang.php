@@ -258,48 +258,48 @@
                         <?php foreach ($list_san_pham_hot as $key => $value): ?>
                             <div class="slick-slide">
                                 <div class="cr-product-card">
-                                <?php if (isset($value['trang_thai']) && (int)$value['trang_thai'] === 1): ?>
-                                    <div class="cr-product-image">
-                                        <div class="cr-image-inner zoom-image-hover">
-                                            <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
-                                                alt="<?= $value['ten_san_pham'] ?> ">
-                                        </div>
-                                        <div class="cr-side-view">
-                                            <a href="javascript:void(0)" class="wishlist">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                                role="button">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </div>
-                                        <a class="cr-shopping-bag" href="javascript:void(0)">
-                                            <i class="ri-shopping-bag-line"></i>
-                                        </a>
-                                    </div>
-                                    <div class="cr-product-details">
-                                        <div class="cr-brand">
-                                            <a href="shop-left-sidebar.html">Snacks</a>
-                                            <div class="cr-star">
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-line"></i>
-                                                <p>(4.5)</p>
+                                    <?php if ($value['trang_thai'] == 1): ?>
+                                        <div class="cr-product-image">
+                                            <div class="cr-image-inner zoom-image-hover">
+                                                <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
+                                                    alt="<?= $value['ten_san_pham'] ?> ">
                                             </div>
+                                            <div class="cr-side-view">
+                                                <a href="javascript:void(0)" class="wishlist">
+                                                    <i class="ri-heart-line"></i>
+                                                </a>
+                                                <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
+                                                    role="button">
+                                                    <i class="ri-eye-line"></i>
+                                                </a>
+                                            </div>
+                                            <a class="cr-shopping-bag" href="javascript:void(0)">
+                                                <i class="ri-shopping-bag-line"></i>
+                                            </a>
                                         </div>
-                                        <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $value['id'] ?>" class="title">
-                                            <?= $value['ten_san_pham'] ?> </a>
-                                        <p class="cr-price"><span
-                                                class="new-price"><?= number_format($value['gia_khuyen_mai']) . "đ" ?></span>
-                                            <span
-                                                class="old-price"><?= number_format($value['gia_san_pham']) . "đ" ?></span>
-                                        </p>
-                                    </div>
+                                        <div class="cr-product-details">
+                                            <!-- <div class="cr-brand">
+                                                <a href="shop-left-sidebar.html">Snacks</a>
+                                                <div class="cr-star">
+                                                    <i class="ri-star-fill"></i>
+                                                    <i class="ri-star-fill"></i>
+                                                    <i class="ri-star-fill"></i>
+                                                    <i class="ri-star-fill"></i>
+                                                    <i class="ri-star-line"></i>
+                                                    <p>(4.5)</p>
+                                                </div>
+                                            </div> -->
+                                            <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $value['id'] ?>" class="title">
+                                                <?= $value['ten_san_pham'] ?> </a>
+                                            <p class="cr-price"><span
+                                                    class="new-price"><?= number_format($value['gia_khuyen_mai']) . "đ" ?></span>
+                                                <span
+                                                    class="old-price"><?= number_format($value['gia_san_pham']) . "đ" ?></span>
+                                            </p>
+                                        </div>
 
-    <!-- Nội dung sản phẩm -->
-<?php endif; ?>
+                                        <!-- Nội dung sản phẩm -->
+                                    <?php endif; ?>
 
                                 </div>
                             </div>
