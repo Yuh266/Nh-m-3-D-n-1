@@ -119,7 +119,7 @@
                                                 <th>Tên sản phẩm</th>
                                                 <th>Giá</th>
                                                 <th class="text-center">Số lượng</th>
-                                                <th>Tổng cộng</th>
+                                                <!-- <th>Tổng cộng</th> -->
                                                 <th>Thao tác</th>
                                             </tr>
                                         </thead>
@@ -156,9 +156,9 @@
                                                                 data-id="<?= $chi_tiet_gio_hang['id'] ?>">-</button>
                                                         </div>
                                                     </td>
-                                                    <td class="cr-cart-subtotal">
+                                                    <!-- <td class="cr-cart-subtotal">
                                                         <?= number_format($chi_tiet_gio_hang['thanh_tien'], 0, ',', '.') . " vnđ" ?>
-                                                    </td>
+                                                    </td> -->
                                                     <td class="cr-cart-remove">
                                                         <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>"
                                                             onclick="return confirm('Bạn có đồng ý xóa hay không')">
@@ -201,10 +201,10 @@
                                                                 data-id="<?= $chi_tiet_gio_hang['id'] ?>">-</button>
                                                         </div>
                                                     </td>
-
+<!-- 
                                                     <td class="cr-cart-subtotal">
                                                         <?= number_format($chi_tiet_gio_hang['thanh_tien'], 0, ',', '.') . " vnđ" ?>
-                                                    </td>
+                                                    </td> -->
                                                     <td class="cr-cart-remove">
                                                         <a href="<?= BASE_URL . "?act=xoa-gio-hang&id_gio_hang=" . $chi_tiet_gio_hang['id'] ?>"
                                                             onclick="return confirm('Bạn có muốn xóa sản phẩm này không?')">

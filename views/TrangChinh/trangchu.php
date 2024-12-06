@@ -93,7 +93,7 @@
                                     <div class="col-lg-12">
                                         <div class="cr-left-side-contain slider-animation">
                                             <!-- <h5><span>100%</span> Organic Vegetables</h5> -->
-                                            <h1><?= $value['tieu_de'] ?></h1>
+                                            <h1 class="text-white" ><?= $value['tieu_de'] ?></h1>
                                             <p><?= $value['mo_ta'] ?></p>
                                             <div class="cr-last-buttons">
                                                 <a href="<?= $value['link_chuyen_huong'] ?>" class="cr-button">

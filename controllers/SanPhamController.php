@@ -20,20 +20,16 @@ class SanPhamController
         $this->modelSanPhamBienThe = new SanPhamBienThe();
         $this->modelDanhGia= new DanhGia();
     }
-    
-    public function Login(){
-        $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
-
-        require './views/taiKhoan/login.php' ;
-    }
-
 
     public function chiTietSanPham(){
-
           
         if(isset($_GET['id_san_pham'])){
             $id = $_GET['id_san_pham'];
 
+            // Tăng lượt xem 
+            $this->modelSanPham->updateLuotXem($id);
+            // End tăng lượt xem 
+            
             $list_danh_gias=$this->modelDanhGia->getReviewSanPham($id);
             $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
 
