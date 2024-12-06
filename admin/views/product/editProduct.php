@@ -47,7 +47,7 @@
 
 
                 <div class="mb-3 col-md-6">
-                  <label for="exampleInputEmail1" class="form-label">Giá sản phẩm</label>
+                  <label for="exampleInputEmail1" class="form-label">Giá gốc</label>
                   <input
                     value="<?= isset($sanPham['gia_san_pham']) ? $sanPham['gia_san_pham'] : ($_SESSION['san_pham']['gia_san_pham'] ?? '') ?>"
                     name="gia_san_pham" type="number" class="form-control" id="exampleInputEmail1"

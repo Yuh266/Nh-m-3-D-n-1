@@ -93,6 +93,45 @@ class AdminProduct{
         }
     }
 
+    public function getListBinhLuan($id){
+        try{
+            $sql =  'SELECT * FROM binh_luans WHERE id_san_pham=:id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':id' => $id,
+            ]);
+            return $stmt->fetchAll();
+        }catch(Exception $e){
+            echo "Lỗi".$e->getMessage();
+        }
+    }
+
+    public function getListDanhGia($id){
+        try{
+            $sql =  'SELECT * FROM danh_gias WHERE id_san_pham=:id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':id' => $id,
+            ]);
+            return $stmt->fetchAll();
+        }catch(Exception $e){
+            echo "Lỗi".$e->getMessage();
+        }
+    }
+
+    public function getListSanPhamBienThe($id){
+        try{
+            $sql =  'SELECT * FROM bien_the_san_phams WHERE id_san_pham=:id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':id' => $id,
+            ]);
+            return $stmt->fetchAll();
+        }catch(Exception $e){
+            echo "Lỗi".$e->getMessage();
+        }
+    }
+
 
     public function updateSanPham($id_san_pham, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai,
     $so_luong, $ngay_nhap, $id_danh_muc, $trang_thai, $mo_ta, $hinh_anh){
@@ -180,6 +219,45 @@ class AdminProduct{
     public function destroySanPham($id){
         try{
             $sql =  'DELETE FROM san_phams WHERE id=:id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':id' => $id,
+            ]);
+            return true;
+        }catch(Exception $e){
+            echo "Lỗi".$e->getMessage();
+        }
+    }
+
+    public function destroyBinhLuan($id){
+        try{
+            $sql =  'DELETE FROM binh_luans WHERE id_san_pham = :id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':id' => $id,
+            ]);
+            return true;
+        }catch(Exception $e){
+            echo "Lỗi".$e->getMessage();
+        }
+    }
+
+    public function destroyDanhGia($id){
+        try{
+            $sql =  'DELETE FROM danh_gias WHERE id_san_pham = :id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':id' => $id,
+            ]);
+            return true;
+        }catch(Exception $e){
+            echo "Lỗi".$e->getMessage();
+        }
+    }
+
+    public function destroySanPhamBienThe($id){
+        try{
+            $sql =  'DELETE FROM bien_the_san_phams WHERE id_san_pham=:id';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
                 ':id' => $id,

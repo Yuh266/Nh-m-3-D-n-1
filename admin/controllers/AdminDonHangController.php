@@ -65,7 +65,7 @@ class AdminDonHangController
         // $listDonHang = $this->modelDonHang->getAllDonHangVoiTrangThai();
         $donHang = $this->modelDonHang->getDonHangById($id);
         $donHang1 = $this->modelDonHang->getDonHangById1($id);
-        // var_dump($donHang);die();
+        var_dump($donHang);die();
         //     die();
         if ($donHang) {
             $title = "Chi Tiết Đơn Hàng";

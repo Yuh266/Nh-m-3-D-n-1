@@ -6,6 +6,9 @@ class AdminProductController
     public $modelProduct;
     public $modelDanhMuc;
     public $modelSanPhamBienThe;
+    public $modelBinhLuan;
+    public $modelDanhGia;
+
 
 
     public function __construct()
@@ -13,6 +16,8 @@ class AdminProductController
         $this->modelProduct = new AdminProduct();
         $this->modelSanPhamBienThe = new AdminSanPhamBienThe();
         $this->modelDanhMuc = new AdminDanhMuc();
+        $this->modelBinhLuan = new AdminBinhLuan();
+        $this->modelDanhGia = new AdminDanhGia();
     }
 
 
@@ -86,6 +91,9 @@ class AdminProductController
             }
             if (empty($gia_khuyen_mai)) {
                 $errors['gia_khuyen_mai'] = 'Giá khuyến mãi không được để trống';
+            }
+            if (empty($file_thumb)) {
+                $errors['hinh_anh'] = 'Hình ảnh không được để trống';
             }
             if (empty($so_luong)) {
                 $errors['so_luong'] = 'Số lượng sản phẩm không được để trống';
@@ -277,7 +285,7 @@ class AdminProductController
                 // var_dump($id);die;
                
                 $_SESSION['alert_success'] = 1;
-                $_SESSION['id_active'] = $id;
+                // $_SESSION['id_active'] = $id;
                 header('Location: ' . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $id_san_pham);
                 exit();
             } else {
@@ -409,8 +417,61 @@ class AdminProductController
                         deleteFile($sanPham['hinh_anh']);
                     }
                     $this->modelProduct->destroySanPham($value);
+
+                    $listBinhLuan = $this->modelProduct->getListBinhLuan($value);
+                    if ($listBinhLuan) {
+                        foreach ($listBinhLuan as $binhLuan) {
+                            if (!empty($binhLuan['id'])) {
+                                $this->modelProduct->destroyBinhLuan($binhLuan['id']);
+                            }
+                        }
+                    }
+
+                    $listDanhGia = $this->modelProduct->getListDanhGia($value);
+                    if ($listDanhGia) {
+                        foreach ($listDanhGia as $danhGia) {
+                            if (!empty($danhGia['id'])) {
+                                $this->modelProduct->destroyDanhGia($danhGia['id']);
+                            }
+                        }
+                    }
+
+                    $listSanPhamBienThe = $this->modelProduct->getListSanPhamBienThe($value);
+                    if ($listSanPhamBienThe) {
+                        foreach ($listSanPhamBienThe as $sanPhamBienThe) {
+                            if (!empty($sanPhamBienThe['id'])) {
+                                $this->modelProduct->destroySanPhamBienThe($sanPhamBienThe['id']);
+                            }
+                        }
+                    }
                 }
             } else {
+                $listBinhLuan = $this->modelProduct->getListBinhLuan($id);
+                    if ($listBinhLuan) {
+                        foreach ($listBinhLuan as $binhLuan) {
+                            if (!empty($binhLuan['id'])) {
+                                // $this->modelProduct->destroyBinhLuan($binhLuan['id']);
+                            }
+                        }
+                    }
+
+                    $listDanhGia = $this->modelProduct->getListDanhGia($id);
+                    if ($listDanhGia) {
+                        foreach ($listDanhGia as $danhGia) {
+                            if (!empty($danhGia['id'])) {
+                                // $this->modelProduct->destroyDanhGia($danhGia['id']);
+                            }
+                        }
+                    }
+
+                    $listSanPhamBienThe = $this->modelProduct->getListSanPhamBienThe($id);
+                    if ($listSanPhamBienThe) {
+                        foreach ($listSanPhamBienThe as $sanPhamBienThe) {
+                            if (!empty($sanPhamBienThe['id'])) {
+                                // $this->modelProduct->destroySanPhamBienThe($sanPhamBienThe['id']);
+                            }
+                        }
+                    }
                 $sanPham = $this->modelProduct->getDetailSanPham($id);
                 if ($sanPham) {
                     if (!empty($sanPham['hinh_anh'])) {
@@ -425,8 +486,12 @@ class AdminProductController
                             }
                         }
                     }
+                    $this->modelProduct->destroyBinhLuan($id);
+                    $this->modelProduct->destroyDanhGia( $id);
+                    $this->modelProduct->destroySanPhamBienThe($id);
                     $this->modelProduct->destroySanPham($id);
                     $this->modelProduct->destroyAnhSanPham($id);
+                    // var_dump($id); die();
                 }
             }
            

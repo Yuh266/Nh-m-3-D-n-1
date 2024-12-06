@@ -91,7 +91,7 @@
                                 <p><?= $sanphan_ct['mo_ta'] ?></p>
                             </div>
                             <div class="cr-size-and-weight">
-                                <div class="cr-review-star">
+                                <!-- <div class="cr-review-star">
                                     <div class="cr-star">
                                         <i class="ri-star-fill"></i>
                                         <i class="ri-star-fill"></i>
@@ -100,7 +100,7 @@
                                         <i class="ri-star-fill"></i>
                                     </div>
                                     <p>( 75 đánh giá )</p>
-                                </div>
+                                </div> -->
                                 <div class="list">
                                     <ul>
                                         <li><label>Thương hiệu <span>:</span></label>GreenGarden Co</li>
@@ -377,7 +377,7 @@
                                         </a>
                                     </div>
                                     <div class="cr-product-details">
-                                        <div class="cr-brand">
+                                        <!-- <div class="cr-brand">
                                             <a href="shop-left-sidebar.html">Snacks</a>
                                             <div class="cr-star">
                                                 <i class="ri-star-fill"></i>
@@ -387,7 +387,7 @@
                                                 <i class="ri-star-line"></i>
                                                 <p>(4.5)</p>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $value['id'] ?>" class="title">
                                             <?= $value['ten_san_pham'] ?> </a>
                                         <p class="cr-price"><span
