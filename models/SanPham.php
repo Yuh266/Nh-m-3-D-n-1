@@ -157,44 +157,18 @@ class SanPham
         }
     }
     
-    public function insertSanPham($ten_san_pham, $gia_san_pham, $gia_khuyen_mai, 
-    $so_luong, $ngay_nhap, $id_danh_muc, $trang_thai, $mo_ta, $hinh_anh){
-        try{
-            $sql =  'INSERT INTO san_phams (ten_san_pham, gia_san_pham, gia_khuyen_mai, 
-            so_luong, ngay_nhap, id_danh_muc,trang_thai, mo_ta, hinh_anh)
-            VALUE (:ten_san_pham, :gia_san_pham, :gia_khuyen_mai, :so_luong, 
-            :ngay_nhap, :id_danh_muc, :trang_thai, :mo_ta, :hinh_anh)';
+    public function updateLuotXem($id_san_pham) {
+       try {
+            $sql = "UPDATE san_phams SET luot_xem = luot_xem + 1 WHERE id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
-                ':ten_san_pham'=>$ten_san_pham,
-                ':gia_san_pham'=>$gia_san_pham, 
-                ':gia_khuyen_mai'=>$gia_khuyen_mai, 
-                ':so_luong'=>$so_luong, 
-                ':ngay_nhap'=>$ngay_nhap, 
-                ':id_danh_muc'=>$id_danh_muc, 
-                ':trang_thai'=>$trang_thai, 
-                ':mo_ta'=>$mo_ta, 
-                ':hinh_anh'=>$hinh_anh,
-            ]);
-
-            // Lấy id sản phẩm vừa thêm
-            return $this->conn->lastInsertId();
-        }catch(Exception $e){
-            echo "Lỗi".$e->getMessage();
-        }
+                ':id'=>$id_san_pham
+            ]);    
+            return true;
+       } catch (Exception $th) {
+            echo $th->getMessage() ;
+       }
     }
-    
-    // public function updateQuantity($id_gio_hang, $so_luong) {
-    //     // Truy vấn để cập nhật số lượng sản phẩm trong giỏ hàng
-    //     $query = "UPDATE chi_tiet_gio_hangs SET so_luong = :so_luong WHERE id_gio_hang = :id_gio_hang";
-    //     $stmt = $this->conn->prepare($query);
-    //     $stmt->execute([
-    //         ':so_luong'=>$so_luong,
-    //         ':id_gio_hang'=>$id_gio_hang
-    //     ]);    
-    //     return $stmt->fetch();
-
-    // }
     
 
 }

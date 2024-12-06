@@ -127,7 +127,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="<?= BASE_URL_ADMIN . '?act=danh-sach-gio-hang' ?>"
-                        class="nav-link <?= (isset($_GET['act']) && in_array($_GET['act'], ['danh-sach-danh-gia'])) ? 'active' : '' ?>">
+                        class="nav-link <?= (isset($_GET['act']) && in_array($_GET['act'], ['danh-sach-gio-hang'])) ? 'active' : '' ?>">
                         <i class="nav-icon bi bi-cart"></i>
                         <p>Quản trị giỏ hàng</p>
                     </a>

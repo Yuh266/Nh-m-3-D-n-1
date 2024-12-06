@@ -52,39 +52,6 @@ class TrangChinhController
         require './views/TrangChinh/login.php' ;
     }
 
-
-    public function chiTietSanPham(){
-        $id = $_GET['id_san_pham'];
-        $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
-        if(isset($_SESSION['client_user']['id'])){
-            $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
-            $id_gio_hang = $gio_hang['id'];
-            // $chi_tiet_gio_hangs = $this->modelGioHang->getChiTietGioHang($id_gio_hang);
-            // var_dump($chi_tiet_gio_hangs);die();       
-        }else{
-            echo"";
-        }
-        if(isset($_GET['id_san_pham'])){
-            $list_san_pham_hot = $this->modelSanPham->getAllSanPham();
-
-            $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc();
-
-            $sanphan_ct = $this->modelSanPham->getDetailSanPham($id);
-            
-            $danh_sach_anh = $this->modelSanPham->getListAnhSanPham($id);
-
-            // var_dump($sanphan_ct);die();
-            // var_dump($sanphan_ct); die;
-
-        }else{
-            header('Location' . BASE_URL . '/');
-            exit();
-        }
-
-        
-        require_once './views/sanPham/sanphamchitiet.php';
-    }
-
     public function timKiem(){
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
         // var_dump($_GET['id']);die();

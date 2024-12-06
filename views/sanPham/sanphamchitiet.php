@@ -106,10 +106,7 @@
                                         <li><label>Thương hiệu <span>:</span></label>GreenGarden Co</li>
                                         <li><label>Loại cây <span>:</span></label><?= $sanphan_ct['ten_san_pham'] ?>
                                         </li>
-                                        <!-- <li><label>Chế độ chăm sóc <span>:</span></label>Dễ chăm sóc</li> -->
-                                        <!-- <li><label>Kích thước <span>:</span></label>Cao 15 cm</li> -->
-                                        <!-- <li><label>Đặc điểm <span>:</span></label>Lọc không khí, Phù hợp nội thất</li> -->
-                                        <!-- <li><label>Thông tin khác <span>:</span></label>Không cần nhiều ánh sáng, Tặng kèm chậu</li> -->
+                                        <li><label>Lượt xem <span>:</span></label><?= $sanphan_ct['luot_xem'] ?></li>
                                         <li><label>Số lượng <span>:</span></label>Còn <?= $sanphan_ct['so_luong'] ?> cây
                                         </li>
                                     </ul>
