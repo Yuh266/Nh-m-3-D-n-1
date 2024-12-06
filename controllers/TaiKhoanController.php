@@ -15,7 +15,7 @@ class TaiKhoanController
     
     public function Login(){
         $list_danh_muc=$this->modelDanhMuc->getAllDanhMuc();
-        require './views/TrangChinh/login.php' ;
+        require './views/taiKhoan/login.php' ;
      
         
     }
@@ -82,7 +82,7 @@ class TaiKhoanController
     
     public function register(){
         $list_danh_muc=$this->modelDanhMuc->getAllDanhMuc();
-        require './views/TrangChinh/register.php' ;
+        require './views/taiKhoan/register.php' ;
     }
    
     public function post_Register(){
@@ -117,6 +117,12 @@ class TaiKhoanController
             }
             elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $errors['email'] = 'Email không hợp lệ';
+            }
+            $checkEmail= $this->modelTaiKhoan->checkEmail($email);
+            // var_dump($checkEmail);
+            // die();
+            if($checkEmail){
+                $errors['email'] = 'Email đã tồn tại ';
             }
             if (empty($mat_khau)) { 
                 $errors['mat_khau'] = 'Mật khẩu không được để trống';
@@ -187,7 +193,7 @@ class TaiKhoanController
         $list_danh_muc=$this->modelDanhMuc->getAllDanhMuc();
         $gio_hang = $this->modelGioHang->getGioHang($_SESSION['client_user']['id']);
 
-        require './views/TrangChinh/tai_khoan.php' ;
+        require './views/taiKhoan/tai_khoan.php' ;
               
     }
 
@@ -210,6 +216,15 @@ class TaiKhoanController
         if (empty($email)) {
             $error['email'] = "Không được bỏ trống";
         }
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $error['email'] = 'Email không hợp lệ';
+        }
+        $checkEmail= $this->modelTaiKhoan->checkEmailById($email,$id);
+            // var_dump($checkEmail);
+            // die();
+            if($checkEmail){
+                $error['email'] = 'Email đã tồn tại ';
+            }
         $date = empty($ngay_sinh) ? NULL : $ngay_sinh;  
         $_SESSION['error_update_tk_client'] = $error;
     
@@ -248,7 +263,7 @@ class TaiKhoanController
         $list_danh_muc=$this->modelDanhMuc->getAllDanhMuc();
         
 
-        require './views/TrangChinh/doi_mat_khau.php' ;
+        require './views/taiKhoan/doi_mat_khau.php' ;
               
     }
     

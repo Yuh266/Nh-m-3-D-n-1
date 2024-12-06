@@ -122,6 +122,15 @@ class AdminTaiKhoanController{
             if (empty($email)) {
                 $errors['email'] = 'Email không được để trống';
             }
+            elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = 'Email không hợp lệ';
+            }
+            $checkEmail= $this->modelTaiKhoan->checkEmail($email);
+            // var_dump($checkEmail);
+            // die();
+            if($checkEmail){
+                $errors['email'] = 'Email đã tồn tại ';
+            }
             if (empty($mat_khau)) { 
                 $errors['mat_khau'] = 'Mật khẩu không được để trống';
             } 
@@ -206,96 +215,99 @@ class AdminTaiKhoanController{
             header("Location:".BASE_URL_ADMIN."?act=danh-sach-tai-khoan") ;
         }        
     }
-    public function postEditTaiKhoan(){
+    public function postEditTaiKhoan() {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            $id = $_POST['id'] ?? "" ;
-            $old_image = $_POST['old_image'] ?? ($_POST['anh_dai_dien']  ?? "") ;
-            $ho_ten = $_POST['ho_ten'] ?? "" ;
-            $so_dien_thoai = $_POST['so_dien_thoai'] ?? "" ;
-            $gioi_tinh = $_POST['gioi_tinh'] ?? null ;
-            $email= $_POST['email'] ?? "" ;
-            $chuc_vu = $_POST['chuc_vu'] ?? null ;
-            $mat_khau = $_POST['mat_khau'] ?? '' ;
-            $trang_thai = $_POST['trang_thai']  ?? null  ;
-            $ngay_sinh = $_POST['ngay_sinh'] ?? null ;
-            $dia_chi = $_POST['dia_chi'] ?? null ;
-            // var_dump($mat_khau);die();
-            $file_anh = $_FILES['file_anh'] ?? "" ;
-            // var_dump("Vào r");
-            // Begin validate
-            $error = [] ;
-            if(empty($ho_ten)){
+            $id = $_POST['id'] ?? "";
+            $old_image = $_POST['old_image'] ?? ($_POST['anh_dai_dien'] ?? "");
+            $ho_ten = $_POST['ho_ten'] ?? "";
+            $so_dien_thoai = $_POST['so_dien_thoai'] ?? "";
+            $gioi_tinh = $_POST['gioi_tinh'] ?? null;
+            $email = $_POST['email'] ?? "";
+            $chuc_vu = $_POST['chuc_vu'] ?? null;
+            $mat_khau = $_POST['mat_khau'] ?? '';
+            $trang_thai = $_POST['trang_thai'] ?? null;
+            $ngay_sinh = $_POST['ngay_sinh'] ?? null;
+            $dia_chi = $_POST['dia_chi'] ?? null;
+    
+            $file_anh = $_FILES['file_anh'] ?? "";
+            $error = [];
+    
+            // Validate dữ liệu
+            if (empty($ho_ten)) {
                 $error['ho_ten'] = "Không được bỏ trống";
             }
-            if (empty($mat_khau)) { 
-                $error['mat_khau'] = 'Kkhông được để trống';
-            }
-            if(empty($email)){
+    
+            if (empty($email)) {
                 $error['email'] = "Không được bỏ trống";
-            }
-            elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error['email'] = 'Email không hợp lệ';
-            }
-            if (!is_numeric($so_dien_thoai)) {
-                $error['so_dien_thoai'] = 'Số điện thoại phải là số';
-            } elseif (strlen($so_dien_thoai) > 11  || strlen($so_dien_thoai) < 10 ) {
-                $error['so_dien_thoai'] = 'Vui lòng nhập lại số điện thoại';
+            } elseif ($this->modelTaiKhoan->checkEmailById($email, $id)) {
+                $error['email'] = 'Email đã tồn tại';
             }
             
-            $date = empty($ngay_sinh) ? NULL : $ngay_sinh;  
-            // End validate
-         
-            
+            if (!empty($so_dien_thoai)) {
+                if (!is_numeric($so_dien_thoai)) {
+                    $error['so_dien_thoai'] = 'Số điện thoại phải là số';
+                } elseif (strlen($so_dien_thoai) > 11 || strlen($so_dien_thoai) < 10) {
+                    $error['so_dien_thoai'] = 'Vui lòng nhập lại số điện thoại';
+                }
+            }
+    
+            $date = empty($ngay_sinh) ? null : $ngay_sinh;
+    
             $_SESSION['error'] = $error;
-            // var_dump($error);die();
-
+    
             if (empty($error)) {
-                $hashed_password = password_hash($mat_khau, PASSWORD_DEFAULT);
-                // var_dump(444);die();
-                // Xử lí ảnh
-                if(isset($file_anh) && $file_anh["error"] == UPLOAD_ERR_OK  ){
-                    $link_anh = upLoadFile($file_anh,"./uploads/");
+                $hashed_password = $mat_khau ? password_hash($mat_khau, PASSWORD_DEFAULT) : null;
+    
+                // Xử lý ảnh
+                if (isset($file_anh) && $file_anh["error"] == UPLOAD_ERR_OK) {
+                    $link_anh = upLoadFile($file_anh, "./uploads/");
                     if (!empty($old_image)) {
                         deleteFile($old_image);
                     }
-                }else{
+                } else {
                     $link_anh = $old_image;
                 }
-                
-                if ($this->modelTaiKhoan->updateTaikhoan($id,$ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, $email,$chuc_vu,$hashed_password,$trang_thai,$date,$dia_chi)){
-
-                    
-                    $_SESSION['alert_success'] = 1 ;
-                    $_SESSION['id_active'] = $id ;
-                    
-                    
-                    // var_dump($_SESSION['id_active']);die();
-                    header('Location:'.BASE_URL_ADMIN.'/?act=form-sua-tai-khoan&id='.$id) ;
-
-                }else{
-                    echo"Lỗi";
+    
+              
+                $check = $this->modelTaiKhoan->updateTaikhoan(
+                    $id, $ho_ten, $link_anh, $so_dien_thoai, $gioi_tinh, 
+                    $email, $chuc_vu, $hashed_password, $trang_thai, $date, $dia_chi
+                );
+                // var_dump($check);
+                // die();
+    
+                if ($check) {
+                    $_SESSION['alert_success'] = 1;
+                    $_SESSION['id_active'] = $id;
+    
+                    header('Location:' . BASE_URL_ADMIN . '/?act=form-sua-tai-khoan&id=' . $id);
+                    exit();
+                } else {
+                    echo "Lỗi";
                 }
-            }else {
-                $tai_khoan = [
-                    'anh_dai_dien'=>$old_image,
-                    'id'=>$id,
-                    'ho_ten'=>$ho_ten,
-                    'so_dien_thoai'=>$so_dien_thoai,
-                    'gioi_tinh'=>$gioi_tinh,
-                    'email'=>$email,
-                    'chuc_vu'=>$chuc_vu,
-                    'mat_khau'=>$mat_khau,
-                    'trang_thai'=>$trang_thai,
-                    'ngay_sinh'=>$date,
-                    'dia_chi'=>$dia_chi
+            } else {
+                // Trả về dữ liệu cũ nếu có lỗi
+                $_SESSION['tai_khoan'] = [
+                    'anh_dai_dien' => $old_image,
+                    'id' => $id,
+                    'ho_ten' => $ho_ten,
+                    'so_dien_thoai' => $so_dien_thoai,
+                    'gioi_tinh' => $gioi_tinh,
+                    'email' => $email,
+                    'chuc_vu' => $chuc_vu,
+                    'mat_khau' => $mat_khau,
+                    'trang_thai' => $trang_thai,
+                    'ngay_sinh' => $date,
+                    'dia_chi' => $dia_chi,
                 ];
-                $_SESSION['tai_khoan'] = $tai_khoan;
-                $_SESSION['flash'] = 1 ;
-
-                $_SESSION['alert_error'] = 1 ;
-
-                // var_dump(444);die();
-                header('Location:'.BASE_URL_ADMIN.'?act=form-sua-tai-khoan&id='.$id ) ;
+    
+                $_SESSION['flash'] = 1;
+                $_SESSION['alert_error'] = 1;
+    
+                header('Location:' . BASE_URL_ADMIN . '?act=form-sua-tai-khoan&id=' . $id);
+                exit();
             }
         }
     }

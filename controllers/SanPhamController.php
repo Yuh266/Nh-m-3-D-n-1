@@ -24,7 +24,7 @@ class SanPhamController
     public function Login(){
         $list_danh_muc = $this->modelDanhMuc->getAllDanhMuc(); 
 
-        require './views/TrangChinh/login.php' ;
+        require './views/taiKhoan/login.php' ;
     }
 
 
@@ -168,7 +168,14 @@ class SanPhamController
                 $id_san_pham = $_POST['id_san_pham'] ?? '';
            
                 $check = $this->modelDanhGia->checkDanhGia($id_san_pham, $id_tai_khoan);
-               
+                $check_tt=$this->modelDanhGia->checkTrangThaiDonHang($id_san_pham, $id_tai_khoan);
+                if(!$check_tt){
+                    echo "<script>
+                    alert('Bạn chỉ được đánh giá sản phẩm sau khi đã nhân hàng.');
+                    window.location.href = '" . BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=" . $id_san_pham . "';
+                </script>";
+                exit();
+                }
                 if ($check) {
                     echo "<script>
                     alert('Bạn chỉ được phép đánh giá sản phẩm này một lần');

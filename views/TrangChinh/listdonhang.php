@@ -151,15 +151,19 @@
                                                     <td>
                                                         <?php if ($value['id_trang_thai'] ==1):?>
                                                             <a onclick="return confirm('Bạn chắc chắn muốn hủy chứ?') " href="<?= BASE_URL . "?act=huy-don-hang&id_don_hang=".$value['id_don_hang'] ?>">
-                                                                <button class="btn btn-primary">Hủy đơn</button>
-                                                            </a>
+                                                                <button class="btn btn-danger">Hủy đơn</button>
+                                                            </a> 
+                                                            
                                                             <form action="<?= BASE_URL . "/?act=form-thanh-toan" ?>" method="post">
                                                                 <input type="text" name="id_don_hang" value="<?= $value['id_don_hang'] ?>" hidden >
-                                                                <button type="submit" name="btn_thanh_toan" class="btn btn-primary">Thanh toán</button>
+                                                                <button type="submit" name="btn_thanh_toan" class="btn btn-success">Thanh toán</button>
                                                             </form>
-                                                            
                                                         <?php  endif ?>
-
+                                                        <?php if ($value['id_trang_thai'] ==4):?>
+                                                            <a href="<?= BASE_URL . "?act=san-pham-chi-tiet&id_san_pham=".$value['id_san_pham'] ?>">
+                                                                <button class="btn btn-primary">Đánh giá</button>
+                                                            </a>
+                                                        <?php  endif ?>
                                                         <a href="<?= BASE_URL . "/?act=chi-tiet-don-hang&id=".$value['id_don_hang'] ?>">
                                                             <button type="submit" class="btn btn-primary">Xem</button>
                                                         </a>
@@ -208,18 +212,7 @@
                                             <img src="<?= BASE_URL . $value['hinh_anh'] ?>"
                                                 alt="<?= $value['ten_san_pham'] ?> ">
                                         </div>
-                                        <div class="cr-side-view">
-                                            <a href="javascript:void(0)" class="wishlist">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                                role="button">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </div>
-                                        <a class="cr-shopping-bag" href="javascript:void(0)">
-                                            <i class="ri-shopping-bag-line"></i>
-                                        </a>
+                                        
                                     </div>
                                     <div class="cr-product-details">
                                         <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $value['id'] ?>" class="title">
