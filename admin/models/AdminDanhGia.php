@@ -32,6 +32,7 @@
                             danh_gias.id,
                             danh_gias.noi_dung,
                             danh_gias.ngay_danh_gia,
+                            danh_gias.danh_gia,
                             tai_khoans.ho_ten,
                             danh_gias.id_san_pham
                     FROM danh_gias 
