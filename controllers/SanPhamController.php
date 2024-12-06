@@ -67,7 +67,7 @@ class SanPhamController
                 $id_bien_the = $_POST['id_bien_the'] ;   
 
             }
-           
+            
             if (isset($id_bien_the)) {
                 $san_pham_bien_the_id = $this->modelSanPhamBienThe->getSanPhamBienTheByID($id_bien_the);
 

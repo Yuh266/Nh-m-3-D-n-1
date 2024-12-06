@@ -63,6 +63,7 @@ class TrangChinhController
         }else{
             echo"";
         }
+        // Bắt đầu xử lí
         $keyword = $_GET['keyword']??"";
         $maxPrice = $_GET['maxPrice']??"";
         $minPrice = $_GET['minPrice']??"";

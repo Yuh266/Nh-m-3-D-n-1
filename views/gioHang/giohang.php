@@ -138,7 +138,7 @@
                                                     </td>
                                                     <td class="cr-cart-name">
                                                         <a href="javascript:void(0)">
-                                                            <span><?= $chi_tiet_gio_hang['ten_san_pham'] . " " . $chi_tiet_gio_hang['gia_tri'] ?></span>
+                                                            <span><?= $chi_tiet_gio_hang['ten_san_pham'] . " => " . $chi_tiet_gio_hang['gia_tri'] ?></span>
                                                         </a>
                                                     </td>
                                                     <td class="cr-cart-price">

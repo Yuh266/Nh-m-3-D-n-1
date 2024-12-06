@@ -9,7 +9,7 @@ class SanPham
     public function getAllSanPham() {
         try {
             $sql = "SELECT * FROM san_phams
-                    ORDER BY luot_xem 
+                    ORDER BY luot_xem DESC
                     ";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();

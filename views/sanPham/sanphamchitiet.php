@@ -120,7 +120,6 @@
                                 <?php if (!empty($gia_tri_bien_the)): ?>
                                     <?php foreach ($thuoc_tinh as $value): ?>
                                         <div class="cr-size-weight">
-
                                             <div class="cr-kg">
                                                 <ul>
                                                     <?php foreach ($gia_tri_bien_the as $key => $value): ?>
@@ -360,18 +359,7 @@
                                                 src="<?= BASE_URL . $value['hinh_anh'] ?>"
                                                 alt="<?= $value['ten_san_pham'] ?> ">
                                         </div>
-                                        <div class="cr-side-view">
-                                            <a href="javascript:void(0)" class="wishlist">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                            <a class="model-oraganic-product" data-bs-toggle="modal" href="#quickview"
-                                                role="button">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </div>
-                                        <a class="cr-shopping-bag" href="javascript:void(0)">
-                                            <i class="ri-shopping-bag-line"></i>
-                                        </a>
+                                        
                                     </div>
                                     <div class="cr-product-details">
                                         <!-- <div class="cr-brand">

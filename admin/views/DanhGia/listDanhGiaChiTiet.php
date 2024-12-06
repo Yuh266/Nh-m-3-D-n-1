@@ -29,6 +29,7 @@
                 <th>#</th>
                 <th>Nội dung</th>
                 <th>Ngày đánh giá</th>
+                <th>Điểm đánh giá</th>
                 <th>Người bình luận</th>
                 <th>Thao tác</th>
             </tr>
@@ -39,6 +40,7 @@
                     <td><input name="id[]" value="<?= $danhGia['id'] ?>" type="checkbox"></td>
                     <td><?= $danhGia['noi_dung'] ?></td>
                     <td><?= $danhGia['ngay_danh_gia'] ?></td>
+                    <td><?= $danhGia['danh_gia'] ?></td>
                     <td><?= $danhGia['ho_ten'] ?></td>
                     <td>
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal" data-link="<?= BASE_URL_ADMIN . "?act=xoa-danh-gia&id=".$danhGia['id']."&id_san_pham=".$_GET['id'] ?>">Xóa</button>
